@@ -6,20 +6,15 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>数据结构第二章（线性表） | Flying My Dream</title>
+  <title>Tag: 研究生 | Flying My Dream</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="数据结构逻辑结构与存储结构：">
-<meta name="keywords" content="数据结构">
-<meta property="og:type" content="article">
-<meta property="og:title" content="数据结构第二章（线性表）">
-<meta property="og:url" content="http://yoursite.com/2017/12/13/数据结构第二章（线性表）/index.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Flying My Dream">
+<meta property="og:url" content="http://yoursite.com/tags/研究生/index.html">
 <meta property="og:site_name" content="Flying My Dream">
-<meta property="og:description" content="数据结构逻辑结构与存储结构：">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-12-14T15:56:31.199Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="数据结构第二章（线性表）">
-<meta name="twitter:description" content="数据结构逻辑结构与存储结构：">
+<meta name="twitter:title" content="Flying My Dream">
   
     <link rel="alternative" href="/atom.xml" title="Flying My Dream" type="application/atom+xml">
   
@@ -155,233 +150,62 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-数据结构第二章（线性表）" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+            
   
-    <h1 class="article-title" itemprop="name">
-      数据结构第二章（线性表）
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2021" class="archive-year">2021</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2021/04/15/重新开始-代码虐我千万遍，我视代码如初恋/" class="archive-article-date">
+  	<time datetime="2021-04-15T15:32:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-04-15</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2021/04/15/重新开始-代码虐我千万遍，我视代码如初恋/">重新开始,代码虐我千万遍，我视代码如初恋</a>
     </h1>
   
 
 
 
-        
-        <a href="/2017/12/13/数据结构第二章（线性表）/" class="archive-article-date">
-  	<time datetime="2017-12-13T15:25:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-13</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>数据结构逻辑结构与存储结构：<br><a id="more"></a></p>
-<h1 id="一、逻辑结构："><a href="#一、逻辑结构：" class="headerlink" title="一、逻辑结构："></a>一、逻辑结构：</h1><p>（是数据元素间的逻辑关系,而不是数据元素内部的数据项之间的关系）</p>
-<h2 id="1、线性结构："><a href="#1、线性结构：" class="headerlink" title="1、线性结构："></a>1、线性结构：</h2><blockquote>
-<p>​    有且只有一个开始结点和一个终端结点，并且所有结点都最多只有一个直接前驱和一个直接后继。例如：线性表，典型的线性表有：顺序表、链表、栈（顺序栈、链栈）和队列（顺序队列、链队列）。它们共同的特点就是数据之间的线性关系，除了头结点和尾结点之外，每个结点都有唯一的前驱和唯一的后继，也就是所谓的一对一的关系。</p>
-</blockquote>
-<h2 id="2、非线性结构-集合、树、网-："><a href="#2、非线性结构-集合、树、网-：" class="headerlink" title="2、非线性结构(集合、树、网)："></a>2、非线性结构(集合、树、网)：</h2><blockquote>
-<p>​    对应于线性结构，非线性结构也就是每个结点可以有不止一个直接前驱和直接后继。常见的非线性结构包括：树（二叉树）、图（网）等。</p>
-</blockquote>
-<h1 id="二、存储结构："><a href="#二、存储结构：" class="headerlink" title="二、存储结构："></a>二、存储结构：</h1><h2 id="1、顺序存储："><a href="#1、顺序存储：" class="headerlink" title="1、顺序存储："></a>1、顺序存储：</h2><blockquote>
-<p>​    把逻辑上相邻的节点存储在物理位置上相邻的存储单元中，结点之间的逻辑关系由存储单元的邻接关系来体现。由此得到的存储结构为顺序存储结构，通常顺序存储结构是借助于数组来描述的。</p>
-</blockquote>
-<p>优点：节省空间，可以实现随机存取；<br>缺点：插入、删除时需要移动元素，效率低。</p>
-<h2 id="2、链式存储："><a href="#2、链式存储：" class="headerlink" title="2、链式存储："></a>2、链式存储：</h2><blockquote>
-<p>​    在计算机中用一组任意的存储单元存储线性表的数据元素(这组存储单元可以是连续的,也可以是不连续的)。特点是元素在物理上可以不相邻，所以每个数据元素包括了一个数据域和一个指针域，数据域用来存放数据，而指针域用来指向其后继结点的位置。</p>
-</blockquote>
-<p>优点：插入、删除灵活；<br>缺点：不能随机存取，查找速度慢。</p>
-<p>PTA作业三</p>
-<p>##线性表：（连续的）</p>
-<p>###顺序存储+链式存储</p>
-<p>顺序存储：是一种随机存取的存储结构 PTA作业一   作业四 2-9？？？ （第i个到底i有没有0？？？）<br>链式存储：PTA作业二<br>若用链表来表示一个线性表，则表中元素的地址不一定是连续的<br>将长度为n的单链表连接在长度为m的单链表之后的算法的时间复杂度为（O（m） ）<br>单链表：<br>双链表：<br>循环链表：主要优点从表中的任意结点出发都能扫描到整个链表<br>单向循环链表：<br>双向循环链表（是否有头尾指针）：</p>
-<p>1-6 有的题目不太懂<br>for example：<br>与单链表相比，双链表的优点之一是（）？？？</p>
-<p>可以用带表头附加结点的链表表示线性表，也可以用不带头结点的链表表示线性表，前者最主要的好处是（）。 (1分)<br>A.节省存储空间<br>B.可以加快对表的遍历<br>C.使空表和非空表的处理统一  （对）<br>D.可以提高存取表元素的速度</p>
-<p>链表： （可连续可不连续）</p>
-
-      
-
-      
-        <div class="page-reward">
-          <a href="javascript:;" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    <div class="reward-box-item">
-                      <img class="reward-img" src="/uploads/Alipay.png">
-                      <span class="reward-type">支付宝</span>
-                    </div>
-                    
-                    
-                    <div class="reward-box-item">
-                      <img class="reward-img" src="/uploads/Wepay.png">
-                      <span class="reward-type">微信</span>
-                    </div>
-                    
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-          </a>
-        </div>
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
+        <div class="article-info info-on-right">
+          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">数据结构</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">研究生</a>
         		</li>
       		
 		</ul>
 	</div>
 
-      
+          
 
-      
-
-      
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
         </div>
-      </div>
-    </span>
-  </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2017/12/13/数据结构第二章（线性表）/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-      
-      <div class="clearfix"></div>
-    </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-  
-<nav id="article-nav">
-  
-    <a href="/2017/12/14/数据结构第三章（栈和队列）/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          数据结构第三章（栈和队列）
-        
-      </div>
-    </a>
   
   
-    <a href="/2017/12/10/数据结构第一章（绪论）/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">数据结构第一章（绪论等）</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-        <div class="toc-container tooltip-left">
-            <i class="icon-font icon-category"></i>
-            <div class="tooltip tooltip-east">
-                <span class="tooltip-item">
-                </span>
-                <span class="tooltip-content">
-                    <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#一、逻辑结构："><span class="toc-number">1.</span> <span class="toc-text">一、逻辑结构：</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1、线性结构："><span class="toc-number">1.1.</span> <span class="toc-text">1、线性结构：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2、非线性结构-集合、树、网-："><span class="toc-number">1.2.</span> <span class="toc-text">2、非线性结构(集合、树、网)：</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#二、存储结构："><span class="toc-number">2.</span> <span class="toc-text">二、存储结构：</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1、顺序存储："><span class="toc-number">2.1.</span> <span class="toc-text">1、顺序存储：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2、链式存储："><span class="toc-number">2.2.</span> <span class="toc-text">2、链式存储：</span></a></li></ol></li></ol>
-                    </div>
-                </span>
-            </div>
-        </div>
-        
-    </div>
-</aside>
-
-
-
-  
-  
+    </div></section>
   
 
-  
-  <div id="SOHUCS" sid="数据结构第二章（线性表）" ></div> 
-<script charset="utf-8" type="text/javascript" src="//changyan.sohu.com/upload/changyan.js" ></script>
-<script type="text/javascript">
-    window.changyan.api.config({
-        appid: "cytlQONPQ",
-        conf: "d29a57eddd6a27009b0cb31c5d042226"
-    });
-</script>
-</script>
-  
-
-  
-
-  
+    
 
 
           </div>
@@ -404,9 +228,9 @@
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: true,
+		isPost: false,
 		isArchive: false,
-		isTag: false,
+		isTag: true,
 		isCategory: false,
 		open_in_new: true,
 		toc_hide_index: true,
