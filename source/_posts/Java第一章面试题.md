@@ -1,5 +1,5 @@
 ---
-title: 'JAVA第一章面试题'
+title: 'JAVA基本知识面试题'
 date: 2021-04-17 23:24:33
 tags:
 	- JAVA

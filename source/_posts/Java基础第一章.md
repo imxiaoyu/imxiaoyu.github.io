@@ -1,5 +1,5 @@
 ---
-title: 'JAVA第一章'
+title: 'JAVA基本知识'
 date: 2021-04-17 15:24:33
 tags:
 	- JAVA
