@@ -8,12 +8,11 @@ tags:
 
 # 章节练习题及面试题
 
-<!-- more -->
 ## java语言的特点是什么？
 	>面向对象性：两个基本概念：类、对象；三大特性：封装、继承、多态
 	>健壮性：吸收了C/C++语言的优点，但去掉了其影响程序健壮性的部分（如指针、内存的申请与释放等），提供了一个相对安全的内存管理和访问机制
 	>跨平台性：通过Java语言编写的应用程序在不同的系统平台上都可以运行。“Write once , Run Anywhere”
-
+<!-- more -->
 ## System.out.println()和System.out.print()什么区别呢？
 	System.out.println();打印完后，会换行。  
 	System.out.print();打印完后，不会换行。
