@@ -34,18 +34,18 @@ tags:
 	Window->Preferences->General->Workspace中：
 		Text file encoding 中设置 Other中的 UTF-8
 
-### 7.设置字体,字形,字体大小
+## 7.设置字体,字形,字体大小
 
 	Window->Preferences->General->Appearance->Colors and For：
 		Basic->Text Font 双击可以设置字体
 
-### 8.设置 package explorer 中右键:new 下显示的结构
+## 8.设置 package explorer 中右键:new 下显示的结构
 
 	Window->Preferences->Customize Perspective->Menu Visibility中：
 	File左下角->New左边方框勾选去掉：
 		去除 New 前的选择,从子列表中选择常用的结构即可。
 
-### 9.保存当前透视图
+## 9.保存当前透视图
 
 	Window->Perspective->Save Perspective As
 	Java EE(default)->OK：

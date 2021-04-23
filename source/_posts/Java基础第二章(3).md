@@ -20,16 +20,15 @@ tags:
 	 System.currentTimeMillis()
 
 
-## 问题：输出质数 算法优化
+## 1.问题：输出质数 算法优化
+
+**问题：**
+>100000以内的所有质数的输出。
+>质数：素数，只能被1和它本身整除的自然数。-->从2开始，到这个数-1结束为止，都不能被这个数本身整除。
+
 
 ### 实现方式一：使用break和sqrt进行优化
-/*
 
-100000以内的所有质数的输出。
-质数：素数，只能被1和它本身整除的自然数。-->从2开始，到这个数-1结束为止，都不能被这个数本身整除。
-
-对PrimeNumberTest.java文件中质数输出问题的优化
-*/
 
 	class PrimeNumberTest1 {
 		public static void main(String[] args) {
@@ -72,12 +71,7 @@ tags:
 
 ### 实现方式二：使用continue标签的方式优化
 
-/*
-100000以内的所有质数的输出。
-质数：素数，只能被1和它本身整除的自然数。-->从2开始，到这个数-1结束为止，都不能被这个数本身整除。
 
-对PrimeNumberTest.java文件中质数输出问题的优化
-*/
 
 	class PrimeNumberTest2 {
 		public static void main(String[] args) {
