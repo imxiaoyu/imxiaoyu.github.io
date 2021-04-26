@@ -88,7 +88,7 @@ tags:
 
 # 三、一个例子：C++调用cplex求解VRPTW完整代码
 
-## 1.代码：
+## 1.代码
 
 	#include <ilcplex/ilocplex.h>
 	#include <stdio.h>

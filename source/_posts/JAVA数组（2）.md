@@ -8,7 +8,7 @@ tags:
 
 # 一、数组中的算法
 
-## 1. 数组的赋值与复制数据：
+## 1. 数组的赋值与复制数据
 
 	int[] array1,array2;
 	array1 = new int[]{1,2,3,4};
@@ -154,32 +154,32 @@ tags:
 
 # 二、Arrays工具类的使用
 
-## 1.理解：
+## 1.理解
 
 ① 定义在java.util包下。
 ② Arrays:提供了很多操作数组的方法。
 
 ## 2.使用
 
-### (1).boolean equals(int[] a,int[] b) :判断两个数组是否相等。
+### (1).boolean equals(int[] a,int[] b) :判断两个数组是否相等
 
 	int[] arr1 = new int[]{1,2,3,4};
 	int[] arr2 = new int[]{1,3,2,4};
 	boolean isEquals = Arrays.equals(arr1, arr2);
 	System.out.println(isEquals);
 		
-### (2).String toString(int[] a) :输出数组信息。
+### (2).String toString(int[] a) :输出数组信息
 
 	System.out.println(Arrays.toString(arr1));
 		
 			
-### (3).void fill(int[] a,int val) :将指定值填充到数组之中。
+### (3).void fill(int[] a,int val) :将指定值填充到数组之中
 
 	Arrays.fill(arr1,10);
 	System.out.println(Arrays.toString(arr1));
 		
 
-### (4).void sort(int[] a) :对数组进行排序。
+### (4).void sort(int[] a) :对数组进行排序
 
 	Arrays.sort(arr2);
 	System.out.println(Arrays.toString(arr2));
