@@ -113,7 +113,7 @@ tags:
 	}
 
 **说明：**
->Object类中定义的equals()和==的作用是相同的：比较两个对象的地址值是否相同.即两个引用是否指向同一个对象实体
+Object类中定义的equals()和==的作用是相同的：比较两个对象的地址值是否相同.即两个引用是否指向同一个对象实体
 
 
 
@@ -160,9 +160,8 @@ tags:
 		return getClass().getName() + "@" + Integer.toHexString(hashCode());
 	}
 
->3.像String、Date、File、包装类等都重写了Object类中的toString()方法。
->使得在调用对象的toString()时，返回"实体内容"信息
->4. 自定义类也可以重写toString()方法，当调用此方法时，返回对象的"实体内容"
+>3.像String、Date、File、包装类等都重写了Object类中的toString()方法。使得在调用对象的toString()时，返回"实体内容"信息
+>4.自定义类也可以重写toString()方法，当调用此方法时，返回对象的"实体内容"
 
 
 ### (2)如何重写toString()
@@ -217,10 +216,10 @@ boolean|Boolean
 ## 3.需要掌握的类型间的转换：（基本数据类型、包装类、String）
 
 >**简易版：**
->基本数据类型<--->包装类：JDK 5.0 新特性：自动装箱 与自动拆箱
->基本数据类型、包装类--->String:调用String重载的valueOf(Xxx xxx)
->String--->基本数据类型、包装类:调用包装类的parseXxx(String s)
->注意：转换时，可能会报NumberFormatException
+>1.**基本数据类型<--->包装类**：JDK 5.0 新特性：自动装箱 与自动拆箱
+>2.**基本数据类型、包装类--->String**:调用String重载的valueOf(Xxx xxx)
+>3.**String--->基本数据类型、包装类:**调用包装类的parseXxx(String s)
+>**注意：**转换时，可能会报NumberFormatException
 >**应用场景举例：**
 >Vector类中关于添加元素，只定义了形参为Object类型的方法：
 >v.addElement(Object obj);   //基本数据类型 --->包装类 --->使用多态
