@@ -10,7 +10,7 @@ tags:
 **以下教程基于eclipse-jee-neon-1a-win_64版本**
 
 # 一、Eclipse 的使用配置
-## 1. Eclipse 的安装
+## 1.Eclipse 的安装
 ## 2.设置 workspace
 
 首次启动,选择指定的工作空间(workspace)，用于存放 java 代码。
@@ -118,7 +118,20 @@ Window-->Preferences-->Java-->Code Style-->Code Templates
 
 大家对应填写自己的信息即可。
 
-# 四、常用快捷键的使用
+# 四、Debug调试
+
+操作|作用
+:--:|:-:
+step into跳入(f5)|进入当前行所调用的方法中
+step over跳过(f6)|执行完当前行的语句，进入下一行
+step return 跳回(f7)|执行完当前行所在的方法，进入下一行
+drop to frame|回到当前行所在方法的第一行
+resume 恢复|执行完当前行所在断点的所有代码,进入下一个断点，如果没有就结束
+Terminate 终止|停止JVM,后面的程序不会再执行
+
+
+
+# 五、常用快捷键的使用
 
 > ************
 > 1.补全代码的声明：alt + /
