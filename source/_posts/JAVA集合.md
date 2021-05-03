@@ -214,13 +214,12 @@ tags:
 >- 后续的添加和扩容操作与jdk 7无异。
 
 >3.**小结：**jdk7中的ArrayList的对象的创建类似于单例的饿汉式，而jdk8中的ArrayList的对象的创建类似于单例的懒汉式，延迟了数组的创建，节省内存。
-*
 
 ### (2)LinkedList的源码分析
->LinkedList list = new LinkedList(); 内部声明了Node类型的first和last属性，默认值为null
->list.add(123);//将123封装到Node中，创建了Node对象。
+>1.LinkedList list = new LinkedList(); 内部声明了Node类型的first和last属性，默认值为null
+>2.list.add(123);//将123封装到Node中，创建了Node对象。
 	
->其中，Node定义为：体现了LinkedList的双向链表的说法
+>3.其中，Node定义为：体现了LinkedList的双向链表的说法
 
 
 	private static class Node<E> {
@@ -243,8 +242,8 @@ tags:
 添加的对象，所在的类要重写equals()方法
 
 >**面试题：ArrayList、LinkedList、Vector者的异同？**
->**同：**三个类都是实现了List接口，存储数据的特点相同：存储序的、可重复的数据
->**不同：**见上（第3部分+第4部分）
+>**1.同：**三个类都是实现了List接口，存储数据的特点相同：存储有序的、可重复的数据
+>**2.不同：**见上（第3部分+第4部分）
 
 
 
