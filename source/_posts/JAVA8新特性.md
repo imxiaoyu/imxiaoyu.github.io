@@ -450,8 +450,7 @@ forEach(Consumer c)|内部迭代(使用 Collection接口需要用户去做迭代
 reduce(T iden, BinaryOperator b)|可以将流中元素反复结合起来，得到一个值。返回 T
 reduce(BinaryOperator b)|可以将流中元素反复结合起来，得到一个值。返回 Optional< T >
 
-**备注：**map 和 reduce 的连接通常称为 map-reduce 模式，因 Google 
-用它来进行网络搜索而出名。
+**备注：**map 和 reduce 的连接通常称为 map-reduce 模式，因 Google 用它来进行网络搜索而出名。
 ### (3)收集
 
 方 法|描 述
