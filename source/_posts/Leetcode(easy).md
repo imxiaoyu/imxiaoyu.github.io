@@ -1,0 +1,145 @@
+---
+title: 'Leetcode(dp)'
+date: 2021/5/6 23:46:00 
+tags:
+	- Leetcode
+	- 动态规划
+---
+# 1.两数之和
+
+<!-- more -->
+## 题目
+## 题解
+## 代码
+
+### java暴力
+
+	class Solution {
+	    public int[] twoSum(int[] nums, int target) {
+	        int numsLength = nums.length;
+	        for(int i = 0; i < numsLength; i++){
+	            for(int j = i + 1; j < numsLength; j++){
+	                if(nums[i] + nums[j] == target){
+	                    return new int[]{i,j};
+	                }
+	            }
+	        }
+	        return new int[]{0,0};
+	    }
+	    
+	}
+
+### HashMap优化
+
+	class Solution {
+	    public int[] twoSum(int[] nums, int target) {
+	        Map<Integer,Integer> hashMap = new HashMap<>();
+	            int numsLength = nums.length;
+	
+	            for(int i = 0; i < numsLength; i++){
+	                if(hashMap.containsKey(target - nums[i])){
+	                    return new int[]{hashMap.get(target - nums[i]),i};
+	                }
+	                hashMap.put(nums[i],i);
+	            }
+	            return new int[]{0,0};
+	    }
+	    
+	}
+
+
+# 7.整数反转
+
+## 题目
+## 题解
+## 代码
+简单的取余 *10 复杂度反而小
+
+	class Solution {
+	    public int reverse(int x) {
+	        boolean flag = x > 0 ? true : false;
+	            long temp = Math.abs(x);
+	            long result = 0;
+	            while(temp > 0){
+	                result = result * 10 + temp % 10;
+	                temp = temp / 10;
+	            }
+	            if(!flag){
+	                result = -result;
+	            }
+	            if(result > Integer.MAX_VALUE || result < Integer.MIN_VALUE)
+	                return 0;
+	            else
+	                return (int)result;
+	        
+	    }
+	}
+
+# 1486.数组异或操作
+
+## 题目
+## 题解
+## 代码
+### 傻瓜方法
+
+	class Solution {
+	    public int xorOperation(int n, int start) {
+	        int result = start;
+	        for(int i = start + 2; i < start + 2 * n; i += 2){
+	            result = result ^ i;
+	        }
+	        return result; 
+	    }
+	}
+
+### 优化方法：数学来做(题解)
+
+# 1480.一维数组的动态和
+
+## 题目
+## 题解
+没啥说的，太简单
+## 代码
+
+	class Solution {
+	    public int[] runningSum(int[] nums) {
+	        int numsLength = nums.length;
+	        for(int i = 1; i < numsLength; i++){
+	            nums[i] += nums[i - 1];
+	        }
+	        return nums;
+	    }
+	}
+# 1720.解码异或后的数组
+
+## 题目
+## 题解
+## 代码
+
+简单的模拟：
+
+	class Solution {
+	    public int[] decode(int[] encoded, int first) {
+	        int arrLength = encoded.length + 1;
+	        int[] arr = new int[arrLength];
+	        int temp = 0;
+	        arr[temp] = first;
+	        while(temp < arrLength - 1){
+	            arr[++temp] = arr[temp - 1] ^ encoded[temp - 1];
+	        }
+	        return arr;
+	    }
+	}
+
+
+
+# 剑指offer 58 - II 左旋转字符串
+
+## 题目
+## 题解
+## 代码
+
+# 面试题 02.03 删除中间节点
+## 题目
+## 题解
+## 代码
