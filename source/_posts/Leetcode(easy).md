@@ -6,9 +6,8 @@ tags:
 	- 简单题目
 ---
 # 1.两数之和
-
-
 ## 题目
+https://leetcode-cn.com/problems/two-sum
 ## 题解
 ## 代码
 
@@ -52,6 +51,7 @@ tags:
 # 7.整数反转
 
 ## 题目
+https://leetcode-cn.com/problems/reverse-integer
 ## 题解
 ## 代码
 简单的取余 *10 复杂度反而小
@@ -79,6 +79,7 @@ tags:
 # 1486.数组异或操作
 
 ## 题目
+https://leetcode-cn.com/problems/xor-operation-in-an-array/
 ## 题解
 ## 代码
 ### 傻瓜方法
@@ -98,6 +99,7 @@ tags:
 # 1480.一维数组的动态和
 
 ## 题目
+https://leetcode-cn.com/problems/running-sum-of-1d-array
 ## 题解
 没啥说的，太简单
 ## 代码
@@ -114,6 +116,7 @@ tags:
 # 1720.解码异或后的数组
 
 ## 题目
+https://leetcode-cn.com/problems/decode-xored-array
 ## 题解
 ## 代码
 
@@ -137,6 +140,7 @@ tags:
 # 剑指offer 58 - II 左旋转字符串
 
 ## 题目
+https://leetcode-cn.com/problems/zuo-xuan-zhuan-zi-fu-chuan-lcof
 ## 题解
 StringBuffer.append()的使用
 ## 代码
@@ -153,6 +157,7 @@ StringBuffer.append()的使用
 
 # 面试题 02.03 删除中间节点
 ## 题目
+https://leetcode-cn.com/problems/delete-middle-node-lcci
 ## 题解
 	//将这个结点的数据替换为下一个结点
 	node.val = node.next.val;
