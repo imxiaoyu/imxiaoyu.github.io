@@ -1,13 +1,13 @@
 ---
-title: 'Leetcode(dp)'
+title: 'Leetcode(easy)'
 date: 2021/5/6 23:46:00 
 tags:
 	- Leetcode
-	- 动态规划
+	- 简单题目
 ---
 # 1.两数之和
 
-<!-- more -->
+
 ## 题目
 ## 题解
 ## 代码
@@ -29,6 +29,7 @@ tags:
 	    
 	}
 
+<!-- more -->
 ### HashMap优化
 
 	class Solution {
@@ -137,9 +138,43 @@ tags:
 
 ## 题目
 ## 题解
+StringBuffer.append()的使用
 ## 代码
+
+	class Solution {
+	    public String reverseLeftWords(String s, int n) {
+	        StringBuffer sb = new StringBuffer();
+	            int sLength = s.length();
+	            sb.append(s,n,sLength);
+	            sb.append(s,0,n);
+	            return sb.toString();
+	    }
+	}
 
 # 面试题 02.03 删除中间节点
 ## 题目
 ## 题解
+	//将这个结点的数据替换为下一个结点
+	node.val = node.next.val;
+	//删除下一个结点
+	node.next = node.next.next;
+
+
 ## 代码
+
+	/**
+	 * Definition for singly-linked list.
+	 * public class ListNode {
+	 *     int val;
+	 *     ListNode next;
+	 *     ListNode(int x) { val = x; }
+	 * }
+	 */
+	class Solution {
+	    public void deleteNode(ListNode node) {
+	            node.val = node.next.val;
+	            node.next = node.next.next;       
+	    }
+	}
+
+
