@@ -5,6 +5,15 @@ tags:
 	- Leetcode
 	- 中等题目
 ---
+>**题目列表：**
+>2.两数相加
+>3.无重复字符的最长子串
+>5.最长回文子串（有dp解法**）
+>6.Z字形变换
+>8.字符串转换整数 (atoi)
+
+
+<!-- more -->
 # 2.两数相加
 ## 题目
 https://leetcode-cn.com/problems/add-two-numbers
@@ -15,7 +24,6 @@ https://leetcode-cn.com/problems/add-two-numbers
 代码用时2ms 超过100%用户；
 代码内存消耗超过70.9%用户.
 
-<!-- more -->
 ## 代码
 
 	```java
@@ -176,7 +184,7 @@ https://leetcode-cn.com/problems/longest-substring-without-repeating-characters
 	    }
 	}
 
-# 5.最长回文子串（有dp解法）
+# 5.最长回文子串（有dp解法**）
 ## 题目
 https://leetcode-cn.com/problems/longest-palindromic-substring/
 ## 题解
@@ -286,3 +294,136 @@ https://leetcode-cn.com/problems/longest-palindromic-substring/solution/xiang-xi
 	    return s.substring(maxEnd - maxLen + 1, maxEnd + 1);
 	}
 
+# 6.Z字形变换
+## 题目
+https://leetcode-cn.com/problems/zigzag-conversion/
+## 题解
+https://leetcode-cn.com/problems/zigzag-conversion/solution/stringbuffercun-chu-xing-qiu-jie-by-rain-5oep/
+>**思路一：**
+>按照行列两个for硬模拟，有点麻烦
+>**思路二：**
+>1.对于numRows行为1或者行数大于字串长度的特殊情况if(numRows == 1 || numRows >= length) return s;
+>2.其他情况
+>- 创建长度为 行数+1 的StringBuffer数组，按照坐标存储字符串应该所在的行，如示例1中第一个最后results[1]="PAHN",其他坐标的类似
+
+
+## 代码
+**方法一：**
+
+	class Solution {
+	    public String convert(String s, int numRows) {
+	        int l = numRows + numRows - 2;
+	        int length = s.length();
+	        if(numRows == 1 || numRows >= length) return s;
+	        StringBuffer result = new StringBuffer();
+	        if(numRows == 2){
+	            for(int i = 0; i < length; i++){
+	                if(i % 2 == 0)
+	                    result.append(s.charAt(i));
+	            }
+	            for(int i = 0; i < length; i++){
+	                if(i % 2 == 1)
+	                    result.append(s.charAt(i));
+	            }
+	            return result.toString();
+	        }
+	        //可以分成zNum组
+	        int zNum = length / l + 1;
+	        //最多有这些列
+	        int numL = zNum  * (numRows - 1) - 1;
+	        //numRows 行
+	        for(int i = 0; i < numRows; i++){
+	            //numL 列
+	            for(int j = 0; j < numL; j++){
+	                int temp = j / (numRows - 1);
+	                if(l * temp + i < length && j % (numRows - 1) == 0){
+	                    result.append(s.charAt(l * temp + i));
+	                }else if(l * temp + numRows - 1 + numRows - i - 1 < length && j % (numRows - 1) == numRows - i - 1){
+	                    result.append(s.charAt(l * temp + numRows - 1 + numRows - i - 1));
+	                }else{
+	                    ;
+	                }
+	                
+	                    
+	            }
+	        }
+	        return result.toString();
+	    }
+	}
+
+**方法二：**
+
+	class Solution {
+	    public String convert(String s, int numRows) {
+	        int length = s.length();
+	
+	
+	        //1.对于行为1或者行数大于字串长度的特殊情况
+	        if(numRows == 1 || numRows >= length) return s;
+	
+	        //2.其他情况
+	        //创建长度为 行数+1 的StringBuffer数组，按照坐标存储字符串应该所在的行，如最后results[1]="PAHN";其他坐标的类似
+	        StringBuffer[] results = new StringBuffer[numRows + 1];
+	        for(int i = 0; i < numRows + 1; i++){results[i] = new StringBuffer();}
+	        //当前该记录在哪一行
+	        int temp = 1;
+	        //真：Z往下走的 假：Z往上走的
+	        boolean flag = true;
+	        //把行相同的分别存起来
+	        for(int i = 0; i < length; i++){
+	            results[temp].append(s.charAt(i));
+	            if(flag){temp++;}
+	            else{temp--;}
+	            if(temp == 1 || temp == numRows){flag = !flag;}
+	        }
+	        //一行一行的整合到结果results[0]中
+	        for(int i = 0; i < numRows + 1; i++)
+	            results[0].append(results[i].toString());
+	        //返回结果results[0]
+	        return results[0].toString();
+	    }
+	}
+
+
+# 8.字符串转换整数 (atoi)
+## 题目
+https://leetcode-cn.com/problems/string-to-integer-atoi/
+## 题解
+
+https://leetcode-cn.com/problems/string-to-integer-atoi/solution/liang-chong-jian-dan-mo-ni-by-rain-ru-ezao/
+
+第一种用了StringBuffer把数字存在里面，最后强转为long判断
+第二种直接定义了一个long判断，第二种执行时间明显少了很多。
+
+## 代码
+
+	class Solution {
+	    public int myAtoi(String s) {
+	        //字符数组长度
+	        int length = s.length();
+	        //存答案
+	        long ans = 0;
+	        //存取正负：正为真，负为假
+	        boolean flag = true;
+	        //判断是否已经读取过数字或者正负号，没有为true，读取过为false
+	        boolean yes = true;
+	        for(int i = 0; i < length; i++){
+	            //1.没读过数字和正负号，开头是空格就继续
+	            if(yes && s.charAt(i) == ' ') continue;
+	            //2.没读过数字和正负号，遇到正号，yes变为false
+	            else if(yes && ans == 0 && s.charAt(i) == '+') yes = false;
+	            //3.没读过数字和正负号，遇到负号，yes和flag均变为false
+	            else if(yes && ans == 0 && s.charAt(i) == '-') yes = flag = false;
+	            //4.遇到非数字了，也不是上面三种情况，返回ans或者-ans（flag决定的）
+	            else if(s.charAt(i) < '0' || s.charAt(i) > '9') return flag ? (int)ans : (int)-ans;
+	            //5.其他（读取到的数字）,yes变为false且ans更新
+	            else {yes = false;ans = ans * 10 + s.charAt(i) - '0';}
+	
+	            //现在的ans已经( ans > int的上界 或 -ans <= int的下界)越界就直接返回
+	            if(ans > Integer.MAX_VALUE)
+	                return flag ? (int)Math.min((long)Integer.MAX_VALUE, ans) : (int)Math.max((long)Integer.MIN_VALUE, -ans);
+	        }
+	        //字符判断一遍也没越界，返回ans或者-ans（flag决定的）
+	        return flag ? (int)ans : (int)-ans;
+	    }
+	}

@@ -5,6 +5,18 @@ tags:
 	- Leetcode
 	- 简单题目
 ---
+>**题目列表：**
+>1.两数之和
+>7.整数反转
+>9.回文数
+>1486.数组异或操作
+>1480.一维数组的动态和
+>1720.解码异或后的数组
+>剑指offer 58 - II 左旋转字符串
+>面试题 02.03 删除中间节点
+
+
+<!-- more -->
 # 1.两数之和
 ## 题目
 https://leetcode-cn.com/problems/two-sum
@@ -28,7 +40,6 @@ https://leetcode-cn.com/problems/two-sum
 	    
 	}
 
-<!-- more -->
 ### HashMap优化
 
 	class Solution {
@@ -73,6 +84,26 @@ https://leetcode-cn.com/problems/reverse-integer
 	            else
 	                return (int)result;
 	        
+	    }
+	}
+# 9.回文数
+
+## 题目
+https://leetcode-cn.com/problems/palindrome-number/
+## 题解
+简单模拟，数字转为 String,然后从左右开始判断
+## 代码
+
+	class Solution {
+	    public boolean isPalindrome(int x) {
+	        int l, r;
+	        String s = new String(Integer.toString(x));
+	        for(l = 0 , r = s.length() - 1; l < r; l++, r--){
+	            if(s.charAt(l) != s.charAt(r)){
+	                return false;
+	            }
+	        }
+	        return true;
 	    }
 	}
 

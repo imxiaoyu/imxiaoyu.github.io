@@ -1,17 +1,23 @@
 ---
 title: 'Leetcode(difficult)'
 date: 2021/5/7 22:37:04 
-date: 2021/5/6 22:37:04 
 tags:
 	- Leetcode
 	- 困难题目
 ---
-# 4.寻找两个正序数组的中位数
-## 题目
-https://leetcode-cn.com/problems/median-of-two-sorted-arrays/
+>**题目列表：**
+>4.寻找两个正序数组的中位数
+>1723.完成所有工作的最短时间（dfs+剪枝多写）**
+
 
 <!-- more -->
+# 4.寻找两个正序数组的中位数
+## 题目
+
+https://leetcode-cn.com/problems/median-of-two-sorted-arrays/
+
 ## 题解
+
 >**方法一：**
 >创建一个数组，把两个数组的元素都加进去，然后排序，去中位数
 >**方法二：**
@@ -21,6 +27,7 @@ https://leetcode-cn.com/problems/median-of-two-sorted-arrays/
 
 
 ## 代码
+
 **方法一：**
 
 	class Solution {
@@ -116,5 +123,104 @@ https://leetcode-cn.com/problems/median-of-two-sorted-arrays/
 	                onePos++;
 	            }
 	        }   
+	    }
+	}
+
+
+# 1723.完成所有工作的最短时间（dfs+剪枝多写）**
+## 题目
+https://leetcode-cn.com/problems/find-minimum-time-to-finish-all-jobs/
+
+## 题解
+
+https://leetcode-cn.com/problems/find-minimum-time-to-finish-all-jobs/solution/gong-shui-san-xie-yi-ti-shuang-jie-jian-4epdd/
+
+1.dfs（TL）
+2.dfs+剪枝
+3.模拟退火
+4.状压dp
+
+## 代码
+
+**dfs无剪枝（会超时）：**
+
+	class Solution {
+	    int num;
+	    int[] job;
+	    int kk;
+	    int ans = Integer.MAX_VALUE;
+	    public int minimumTimeRequired(int[] jobs, int k) {
+	        num = jobs.length;
+	        job = jobs;
+	        kk = k;
+	
+	        //工人长度的数组，dfs相当于给工人分任务
+	        int[] sum = new int[kk];
+	        dfs(0, sum, 0);
+	        return ans;
+	    }
+	    public void dfs(int cur, int[] sum, int max){
+	        if(max >= ans) return ;
+	        if(cur == num){
+	            ans = max;
+	            return ;
+	        }
+	        for(int i = 0; i < kk; i++){
+	            if(sum[i] == 0){
+	                sum[i] += job[cur];
+	                dfs(cur + 1, sum, Math.max(max,sum[i]));
+	                sum[i] -= job[cur];
+	            }
+	        }
+	        
+	
+	        for(int i = 0; i < kk; i++){
+	            sum[i] += job[cur];
+	            dfs(cur + 1, sum, Math.max(max,sum[i]));
+	            sum[i] -= job[cur];
+	        }
+	        
+	    }
+	}
+
+**dfs剪枝：**
+
+	class Solution {
+	    int num;
+	    int[] job;
+	    int kk;
+	    int ans = Integer.MAX_VALUE;
+	    public int minimumTimeRequired(int[] jobs, int k) {
+	        num = jobs.length;
+	        job = jobs;
+	        kk = k;
+	
+	        //工人长度的数组，dfs相当于给工人分任务
+	        int[] sum = new int[kk];
+	        dfs(0, 0, sum, 0);
+	        return ans;
+	    }
+	    public void dfs(int cur, int used, int[] sum, int max){
+	        if(max >= ans) return ;
+	        if(cur == num){
+	            ans = max;
+	            return ;
+	        }
+
+			//剪枝
+	        if(used < kk){
+	            sum[used] += job[cur];
+	            dfs(cur + 1, used + 1, sum, Math.max(max,sum[used]));
+	            sum[used] = 0;
+	        }
+	        //剪枝结束
+			
+			//剪枝中uesd也改了
+	        for(int i = 0; i < used; i++){
+	            sum[i] += job[cur];
+	            dfs(cur + 1, used, sum, Math.max(max,sum[i]));
+	            sum[i] -= job[cur];
+	        }
+	        
 	    }
 	}
