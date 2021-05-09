@@ -16,6 +16,8 @@ tags:
 >面试题 02.03 删除中间节点
 
 
+简单的不在更新，以后只更新中等和困难，我LeetCode也都写了题解，个人网页
+https://leetcode-cn.com/u/rain-ru/
 <!-- more -->
 # 1.两数之和
 ## 题目
