@@ -15,10 +15,15 @@ tags:
 >12.整数转罗马数字
 >1482.制作 m 束花所需的最少天数（二分）
 >剑指 Offer 04 二维数组中查找
+>15.三数之和
+>16.最接近的三数之和
+>17.电话号码的字母组合
+>18.四数之和
 
 
 <!-- more -->
 # 2.两数相加
+
 ## 题目
 https://leetcode-cn.com/problems/add-two-numbers
 ## 题解
@@ -121,6 +126,7 @@ https://leetcode-cn.com/problems/add-two-numbers
 
 
 # 3.无重复字符的最长子串
+
 ## 题目
 https://leetcode-cn.com/problems/longest-substring-without-repeating-characters
 ## 题解
@@ -189,6 +195,7 @@ https://leetcode-cn.com/problems/longest-substring-without-repeating-characters
 	}
 
 # 5.最长回文子串（有dp解法**）
+
 ## 题目
 https://leetcode-cn.com/problems/longest-palindromic-substring/
 ## 题解
@@ -299,6 +306,7 @@ https://leetcode-cn.com/problems/longest-palindromic-substring/solution/xiang-xi
 	}
 
 # 6.Z字形变换
+
 ## 题目
 https://leetcode-cn.com/problems/zigzag-conversion/
 ## 题解
@@ -390,6 +398,7 @@ https://leetcode-cn.com/problems/zigzag-conversion/solution/stringbuffercun-chu-
 
 
 # 8.字符串转换整数 (atoi)
+
 ## 题目
 https://leetcode-cn.com/problems/string-to-integer-atoi/
 ## 题解
@@ -433,6 +442,7 @@ https://leetcode-cn.com/problems/string-to-integer-atoi/solution/liang-chong-jia
 	}
 
 # 11.盛最多水的容器
+
 ## 题目
 https://leetcode-cn.com/problems/container-with-most-water
 ## 题解
@@ -479,6 +489,7 @@ https://leetcode-cn.com/problems/container-with-most-water/solution/si-lu-qing-x
 
 
 # 12.整数转罗马数字
+
 ## 题目
 https://leetcode-cn.com/problems/integer-to-roman
 ## 题解
@@ -543,6 +554,7 @@ https://leetcode-cn.com/problems/integer-to-roman/solution/mo-ni-si-lu-qing-xi-b
 	}
 
 # 1482.制作 m 束花所需的最少天数（二分）
+
 ## 题目
 https://leetcode-cn.com/problems/minimum-number-of-days-to-make-m-bouquets
 ## 题解
@@ -621,6 +633,7 @@ https://leetcode-cn.com/problems/minimum-number-of-days-to-make-m-bouquets/solut
 
 
 # 剑指 Offer 04 二维数组中查找
+
 ## 题目
 https://leetcode-cn.com/problems/er-wei-shu-zu-zhong-de-cha-zhao-lcof
 ## 题解
@@ -693,3 +706,185 @@ https://leetcode-cn.com/problems/er-wei-shu-zu-zhong-de-cha-zhao-lcof/solution/x
 	    }
 	}
 
+# 15.三数之和
+
+## 题目
+https://leetcode-cn.com/problems/3sum
+## 题解
+https://leetcode-cn.com/problems/3sum/solution/shuang-zhi-zhen-nei-cun-100-by-rain-ru-ow22/
+![image.png](https://pic.leetcode-cn.com/1620630918-PVcEtx-image.png)
+一开始暴力写的，两个for虽然也过了，但是时间空间可怜，就用双指针写了一个：
+
+**主要思路**:先排序再从0位置开始循环当前位置、当前位置+1和最后位置这三个数，看和是否为0
+**具体思路：**
+1.排序
+2.for循环从数组0坐标开始遍历
+（1）如果当前位置不是数组起始位置0并且当前的i位置的数组值和前一i位置数组值相同，则跳过本次for循环（因为和前一回合的结果重复）
+（2）如果当前的i位置数组值都大于0了，直接返回结果（因为数组排序了,当前大于0，则加后面的两个数字总和肯定大于零）
+（3）其他情况下，初始化l和r (l = i + 1; r = nums.length - 1;) ,当l < r执行（sum = nums[i] + nums[l] + nums[r]）：
+- ①sum = 0：则把此时的三个数加入到结果List中，然后l++,r--（并且需要while()一下当此时新的l位置数组值和r位置数组值不能与之前的l、r位置相同，说明结果是重复的，就继续l++，r--，直到与之前不同或者l >=r 了，结束）
+- ②sum > 0: 说明此时的r位置数组值太大，所以r--
+- ③sum < 0: 说明此时的l位置数组值太小，所以l++
+## 代码
+```java
+class Solution {
+    public List<List<Integer>> threeSum(int[] nums) {
+        List<List<Integer>> result = new ArrayList<>();
+        int l, r, sum, n = nums.length;
+        Arrays.sort(nums);
+        
+        for(int i = 0; i < n; i++){
+            if(i != 0 && nums[i] == nums[i - 1]) continue;
+            else if(nums[i] > 0) return result;
+            else{
+                l = i + 1;
+                r = n - 1;
+                while(l < r){
+                    sum = nums[i] + nums[l] + nums[r];
+                    if(sum == 0){
+                        result.add(Arrays.asList(nums[i], nums[l++], nums[r--])); 
+                        while(l < r && nums[l] == nums[l - 1]) l++;
+                        while(l < r && nums[r] == nums[r + 1]) r--;
+                    }
+                    else if(sum < 0) l++;
+                    else r--;              
+                }
+            }  
+        }
+        return result;
+    }
+}
+```
+# 16.最接近的三数之和
+
+## 题目
+https://leetcode-cn.com/problems/3sum-closest
+## 题解
+![image.png](https://pic.leetcode-cn.com/1620633756-GHLZOW-image.png)
+上一道题目双指针修改了一下，上一道题目我的解析：
+https://leetcode-cn.com/problems/3sum/solution/shuang-zhi-zhen-nei-cun-100-by-rain-ru-ow22/
+
+**本题主要思路**:先排序再从0位置开始循环当前位置、当前位置+1和最后位置这三个数，看和是否为0
+**具体思路：**
+1.排序
+2.for循环从数组0坐标开始遍历
+（1）如果当前位置不是数组起始位置0并且当前的i位置的数组值和前一i位置数组值相同，则跳过本次for循环（因为和前一回合的结果重复）
+（2）其他情况下，初始化l和r (l = i + 1; r = nums.length - 1;) ,当l < r执行（sum = nums[i] + nums[l] + nums[r]）：
+- ①sum = target：直接返回target
+- ②sum > target 或 sum < target: 
+    首先更新此时的result和当前的差值；
+    如果sum > target说明此时的r位置数组值太大，所以需要再r--；
+    如果sum < target说明此时的l位置数组值太小，所以需要再l++。
+
+## 代码
+```java
+class Solution {
+    public int threeSumClosest(int[] nums, int target) {
+        Arrays.sort(nums);
+        int l, r, sum, temCha;
+
+        int n = nums.length;
+        int result = nums[0] + nums[1] + nums[2];
+        int cha = Math.abs(target - result);
+        
+        for(int i = 0; i < n - 2; i++){
+            if(i != 0 && nums[i] == nums[i - 1]) continue;
+            else{
+                l = i + 1;
+                r = n - 1;
+                while(l < r){
+                    sum = nums[i] + nums[l] + nums[r];
+                    if(sum == target){
+                        return target;
+                    }else{
+                        temCha = Math.abs(sum - target);
+                        if(cha > temCha){result = sum; cha = temCha;}
+                        if(sum < target) l++;
+                        else r--;
+                    }           
+                }
+            }  
+        }
+        return result;
+    }
+}
+```
+# 17.电话号码的字母组合
+
+## 题目
+https://leetcode-cn.com/problems/letter-combinations-of-a-phone-number
+## 题解
+![image.png](https://pic.leetcode-cn.com/1620656272-sdACSF-image.png)
+如果知道字符的确定长度，肯定就直接可以暴力for循环了，但是不知道，所以可以用DFS来写
+需要注意的是如果字符长度为0，需要新建一个List<String>返回，直接返回我创建的result是[""],我也不知道为啥……
+## 代码
+```java
+class Solution {
+    List<String> result = new ArrayList<String>();
+    String[] ant = new String[]{"abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"};
+    public List<String> letterCombinations(String digits) {
+        if(digits.length() == 0) return new ArrayList<String>();
+        StringBuffer ans = new StringBuffer();
+        dfs(digits, 0, ans);
+        return result;
+    }
+    public void dfs(String digits, int temp, StringBuffer ans){
+        if(temp == digits.length()) result.add(ans.toString());
+        else{
+            int num = digits.charAt(temp) - '0' - 2;
+            for(int i = 0; i < ant[num].length(); i++){
+                ans.append(ant[num].charAt(i));
+                dfs(digits, temp + 1, ans);
+                ans.deleteCharAt(temp);
+            }
+        }
+    }
+}
+```
+# 18.四数之和
+
+## 题目
+https://leetcode-cn.com/problems/4sum
+## 题解
+![image.png](https://pic.leetcode-cn.com/1620660356-iLECIv-image.png)
+
+双指针，前面三个数之和又加了一层for，前面两题我的题解：
+https://leetcode-cn.com/problems/3sum/solution/shuang-zhi-zhen-nei-cun-100-by-rain-ru-ow22/
+https://leetcode-cn.com/problems/3sum-closest/solution/shuang-zhi-zhen-80shi-jian-80kong-jian-b-07wd/
+## 代码
+```java
+class Solution {
+    public List<List<Integer>> fourSum(int[] nums, int target) {
+        List<List<Integer>> result = new ArrayList<>();
+        int temp, i, l, r, sum, n = nums.length;
+        if(n < 4) return result;
+        else Arrays.sort(nums);
+    
+        for(temp = 0; temp < n - 3; temp++){
+            if(temp != 0 && nums[temp] == nums[temp - 1]) continue;
+            else if(nums[temp] > target && nums[temp] > 0) return result;
+            else{
+                for(i = temp + 1; i < n - 2; i++){
+                    if(i != temp + 1 && nums[i] == nums[i - 1]) continue;
+                    else if(nums[i] > target - nums[temp] && nums[i] > 0) break;
+                    else{
+                        l = i + 1;
+                        r = n - 1;
+                        while(l < r){
+                            sum = nums[temp] + nums[i] + nums[l] + nums[r];
+                            if(sum == target){
+                                result.add(Arrays.asList(nums[temp], nums[i], nums[l++], nums[r--])); 
+                                while(l < r && nums[l] == nums[l - 1]) l++;
+                                while(l < r && nums[r] == nums[r + 1]) r--;
+                            }
+                            else if(sum < target) l++;
+                            else r--;              
+                        }
+                    }  
+                }
+            }   
+        }
+        return result;
+    }
+}
+```
