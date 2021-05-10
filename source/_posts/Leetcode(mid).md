@@ -13,12 +13,13 @@ tags:
 >8.字符串转换整数 (atoi)
 >11.盛最多水的容器
 >12.整数转罗马数字
->1482.制作 m 束花所需的最少天数（二分）
->剑指 Offer 04 二维数组中查找
 >15.三数之和
 >16.最接近的三数之和
 >17.电话号码的字母组合
 >18.四数之和
+>1482.制作 m 束花所需的最少天数（二分）
+>剑指 Offer 04 二维数组中查找
+
 
 
 <!-- more -->
@@ -35,7 +36,7 @@ https://leetcode-cn.com/problems/add-two-numbers
 
 ## 代码
 
-	```java
+```java
 	/**
 	 * Definition for singly-linked list.
 	 * public class ListNode {
@@ -122,7 +123,7 @@ https://leetcode-cn.com/problems/add-two-numbers
 	
 	    }
 	}
-	```
+```
 
 
 # 3.无重复字符的最长子串
@@ -145,7 +146,7 @@ https://leetcode-cn.com/problems/longest-substring-without-repeating-characters
 
 
 ## 代码
-
+```java
 	class Solution {
 	    public int lengthOfLongestSubstring(String s) {
 	        Map<Character,Integer> hashMap = new HashMap<>();
@@ -193,7 +194,7 @@ https://leetcode-cn.com/problems/longest-substring-without-repeating-characters
 	        return Math.max(ans,tempAns);
 	    }
 	}
-
+```
 # 5.最长回文子串（有dp解法**）
 
 ## 题目
@@ -219,7 +220,7 @@ https://leetcode-cn.com/problems/longest-palindromic-substring/solution/xiang-xi
 
 ## 代码
 **方法一:**
-	
+```java
 	class Solution {
 	    public String longestPalindrome(String s) {
 	        boolean flag = true;
@@ -241,9 +242,10 @@ https://leetcode-cn.com/problems/longest-palindromic-substring/solution/xiang-xi
 	        return "";
 	    }
 	}
+```
 **方法二：**
 **最长公共子串的代码：**
-
+```java
 	public String longestPalindrome(String s) {
 	    if (s.equals(""))
 	        return "";
@@ -271,9 +273,9 @@ https://leetcode-cn.com/problems/longest-palindromic-substring/solution/xiang-xi
 		}
 		return s.substring(maxEnd - maxLen + 1, maxEnd + 1);
 	}
-
+```
 **对于该问题修改后的：**
-
+```java
 	public String longestPalindrome(String s) {
 	    if (s.equals(""))
 	        return "";
@@ -304,7 +306,7 @@ https://leetcode-cn.com/problems/longest-palindromic-substring/solution/xiang-xi
 	        }
 	    return s.substring(maxEnd - maxLen + 1, maxEnd + 1);
 	}
-
+```
 # 6.Z字形变换
 
 ## 题目
@@ -321,7 +323,7 @@ https://leetcode-cn.com/problems/zigzag-conversion/solution/stringbuffercun-chu-
 
 ## 代码
 **方法一：**
-
+```java
 	class Solution {
 	    public String convert(String s, int numRows) {
 	        int l = numRows + numRows - 2;
@@ -362,9 +364,9 @@ https://leetcode-cn.com/problems/zigzag-conversion/solution/stringbuffercun-chu-
 	        return result.toString();
 	    }
 	}
-
+```
 **方法二：**
-
+```java
 	class Solution {
 	    public String convert(String s, int numRows) {
 	        int length = s.length();
@@ -395,7 +397,7 @@ https://leetcode-cn.com/problems/zigzag-conversion/solution/stringbuffercun-chu-
 	        return results[0].toString();
 	    }
 	}
-
+```
 
 # 8.字符串转换整数 (atoi)
 
@@ -409,7 +411,7 @@ https://leetcode-cn.com/problems/string-to-integer-atoi/solution/liang-chong-jia
 第二种直接定义了一个long判断，第二种执行时间明显少了很多。
 
 ## 代码
-
+```java
 	class Solution {
 	    public int myAtoi(String s) {
 	        //字符数组长度
@@ -440,7 +442,7 @@ https://leetcode-cn.com/problems/string-to-integer-atoi/solution/liang-chong-jia
 	        return flag ? (int)ans : (int)-ans;
 	    }
 	}
-
+```
 # 11.盛最多水的容器
 
 ## 题目
@@ -462,7 +464,7 @@ https://leetcode-cn.com/problems/container-with-most-water/solution/si-lu-qing-x
 你肯定发现规律了吧！对的！我们只需要考虑两边短的那个桶就可以了，所以只需要两个指针就能解决问题
 
 ## 代码
-
+```java
 	class Solution {
 	    public int maxArea(int[] height) {
 	        //存放最大容量结果
@@ -486,7 +488,7 @@ https://leetcode-cn.com/problems/container-with-most-water/solution/si-lu-qing-x
 	        return result;
 	    }
 	}
-
+```
 
 # 12.整数转罗马数字
 
@@ -496,7 +498,7 @@ https://leetcode-cn.com/problems/integer-to-roman
 
 https://leetcode-cn.com/problems/integer-to-roman/solution/mo-ni-si-lu-qing-xi-by-rain-ru-n0a0/
 ## 代码
-
+```java
 	class Solution {
 	    public String intToRoman(int num) {
 	        StringBuffer result = new StringBuffer();
@@ -552,7 +554,7 @@ https://leetcode-cn.com/problems/integer-to-roman/solution/mo-ni-si-lu-qing-xi-b
 	        return String.valueOf(result);
 	    }
 	}
-
+```
 # 1482.制作 m 束花所需的最少天数（二分）
 
 ## 题目
@@ -570,7 +572,7 @@ https://leetcode-cn.com/problems/minimum-number-of-days-to-make-m-bouquets/solut
 
 
 ## 代码
-
+```java
 	class Solution {
 	    int mm;
 	    int kk;
@@ -630,7 +632,7 @@ https://leetcode-cn.com/problems/minimum-number-of-days-to-make-m-bouquets/solut
 	        }
 	    }
 	}
-
+```
 
 # 剑指 Offer 04 二维数组中查找
 
@@ -647,7 +649,7 @@ https://leetcode-cn.com/problems/er-wei-shu-zu-zhong-de-cha-zhao-lcof/solution/x
 
 
 ## 代码
-
+```java
 	class Solution {
 	    public boolean findNumberIn2DArray(int[][] matrix, int target) {
 	        int n = matrix.length;
@@ -705,14 +707,14 @@ https://leetcode-cn.com/problems/er-wei-shu-zu-zhong-de-cha-zhao-lcof/solution/x
 	        }
 	    }
 	}
-
+```
 # 15.三数之和
 
 ## 题目
 https://leetcode-cn.com/problems/3sum
 ## 题解
 https://leetcode-cn.com/problems/3sum/solution/shuang-zhi-zhen-nei-cun-100-by-rain-ru-ow22/
-![image.png](https://pic.leetcode-cn.com/1620630918-PVcEtx-image.png)
+
 一开始暴力写的，两个for虽然也过了，但是时间空间可怜，就用双指针写了一个：
 
 **主要思路**:先排序再从0位置开始循环当前位置、当前位置+1和最后位置这三个数，看和是否为0
@@ -760,7 +762,7 @@ class Solution {
 ## 题目
 https://leetcode-cn.com/problems/3sum-closest
 ## 题解
-![image.png](https://pic.leetcode-cn.com/1620633756-GHLZOW-image.png)
+
 上一道题目双指针修改了一下，上一道题目我的解析：
 https://leetcode-cn.com/problems/3sum/solution/shuang-zhi-zhen-nei-cun-100-by-rain-ru-ow22/
 
@@ -814,7 +816,6 @@ class Solution {
 ## 题目
 https://leetcode-cn.com/problems/letter-combinations-of-a-phone-number
 ## 题解
-![image.png](https://pic.leetcode-cn.com/1620656272-sdACSF-image.png)
 如果知道字符的确定长度，肯定就直接可以暴力for循环了，但是不知道，所以可以用DFS来写
 需要注意的是如果字符长度为0，需要新建一个List<String>返回，直接返回我创建的result是[""],我也不知道为啥……
 ## 代码
@@ -846,7 +847,6 @@ class Solution {
 ## 题目
 https://leetcode-cn.com/problems/4sum
 ## 题解
-![image.png](https://pic.leetcode-cn.com/1620660356-iLECIv-image.png)
 
 双指针，前面三个数之和又加了一层for，前面两题我的题解：
 https://leetcode-cn.com/problems/3sum/solution/shuang-zhi-zhen-nei-cun-100-by-rain-ru-ow22/

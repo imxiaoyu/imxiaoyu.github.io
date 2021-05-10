@@ -76,7 +76,7 @@ https://leetcode-cn.com/problems/delete-and-earn
 ## 代码
 
 **自己优化了一下：**
-
+```java
 	class Solution {
 	    public int deleteAndEarn(int[] nums) {
 	        int max_Num = 0;
@@ -95,7 +95,7 @@ https://leetcode-cn.com/problems/delete-and-earn
 	        return dp[max_Num];
 	    }
 	}
-
+```
 # 198.打家劫舍
 
 ## 题目
@@ -140,7 +140,7 @@ https://leetcode-cn.com/problems/house-robber
 
 ## 代码
 
-
+```java
 	class Solution {
 	    public int rob(int[] nums) {
 	        int numLength = nums.length;
@@ -162,7 +162,7 @@ https://leetcode-cn.com/problems/house-robber
 	        }
 	    }
 	}
-
+```
 # 213.打家劫舍II
 
 ## 题目
@@ -214,7 +214,7 @@ https://leetcode-cn.com/problems/house-robber-ii
 
 ## 代码
 
-
+```java
 	class Solution2 {
 	    public int rob(int[] nums) {
 	        int numLength = nums.length;
@@ -243,7 +243,7 @@ https://leetcode-cn.com/problems/house-robber-ii
 	        }
 	    }
 	}
-
+```
 # 337.打家劫舍III(需要多写几次) **
 
 ## 题目
@@ -264,7 +264,7 @@ https://leetcode-cn.com/problems/house-robber-iii
 
 ## 代码
 
-
+```java
 	class Solution {
     Map<TreeNode, Integer> select = new HashMap<>();
     Map<TreeNode, Integer> refuse = new HashMap<>();
@@ -280,9 +280,9 @@ https://leetcode-cn.com/problems/house-robber-iii
         refuse.put(root, Math.max(select.getOrDefault(root.left, 0), refuse.getOrDefault(root.left, 0)) + Math.max(select.getOrDefault(root.right, 0), refuse.getOrDefault(root.right, 0)));
     }
 }
-
+```
 用数组优化后：
-	
+```java
 	class Solution {
 	    public int rob(TreeNode root) {
 	    int[] result = dp(root);
@@ -300,3 +300,4 @@ https://leetcode-cn.com/problems/house-robber-iii
 	
 	        return new int[]{not_rob, rob};
 	    }
+```

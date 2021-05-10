@@ -16,7 +16,7 @@ tags:
 >面试题 02.03 删除中间节点
 
 
-简单的不在更新，以后只更新中等和困难，我LeetCode也都写了题解，个人网页
+简单的不再更新，以后只更新中等和困难，我LeetCode也都写了题解，Leetcode个人网页
 https://leetcode-cn.com/u/rain-ru/
 <!-- more -->
 # 1.两数之和
@@ -26,7 +26,7 @@ https://leetcode-cn.com/problems/two-sum
 ## 代码
 
 ### java暴力
-
+```java
 	class Solution {
 	    public int[] twoSum(int[] nums, int target) {
 	        int numsLength = nums.length;
@@ -41,9 +41,9 @@ https://leetcode-cn.com/problems/two-sum
 	    }
 	    
 	}
-
+```
 ### HashMap优化
-
+```java
 	class Solution {
 	    public int[] twoSum(int[] nums, int target) {
 	        Map<Integer,Integer> hashMap = new HashMap<>();
@@ -59,7 +59,7 @@ https://leetcode-cn.com/problems/two-sum
 	    }
 	    
 	}
-
+```
 
 # 7.整数反转
 
@@ -68,7 +68,7 @@ https://leetcode-cn.com/problems/reverse-integer
 ## 题解
 ## 代码
 简单的取余 *10 复杂度反而小
-
+```java
 	class Solution {
 	    public int reverse(int x) {
 	        boolean flag = x > 0 ? true : false;
@@ -88,6 +88,7 @@ https://leetcode-cn.com/problems/reverse-integer
 	        
 	    }
 	}
+```
 # 9.回文数
 
 ## 题目
@@ -95,7 +96,7 @@ https://leetcode-cn.com/problems/palindrome-number/
 ## 题解
 简单模拟，数字转为 String,然后从左右开始判断
 ## 代码
-
+```java
 	class Solution {
 	    public boolean isPalindrome(int x) {
 	        int l, r;
@@ -108,7 +109,7 @@ https://leetcode-cn.com/problems/palindrome-number/
 	        return true;
 	    }
 	}
-
+```
 # 1486.数组异或操作
 
 ## 题目
@@ -116,7 +117,7 @@ https://leetcode-cn.com/problems/xor-operation-in-an-array/
 ## 题解
 ## 代码
 ### 傻瓜方法
-
+```java
 	class Solution {
 	    public int xorOperation(int n, int start) {
 	        int result = start;
@@ -126,7 +127,7 @@ https://leetcode-cn.com/problems/xor-operation-in-an-array/
 	        return result; 
 	    }
 	}
-
+```
 ### 优化方法：数学来做(题解)
 
 # 1480.一维数组的动态和
@@ -136,7 +137,7 @@ https://leetcode-cn.com/problems/running-sum-of-1d-array
 ## 题解
 没啥说的，太简单
 ## 代码
-
+```java
 	class Solution {
 	    public int[] runningSum(int[] nums) {
 	        int numsLength = nums.length;
@@ -146,6 +147,7 @@ https://leetcode-cn.com/problems/running-sum-of-1d-array
 	        return nums;
 	    }
 	}
+```
 # 1720.解码异或后的数组
 
 ## 题目
@@ -154,7 +156,7 @@ https://leetcode-cn.com/problems/decode-xored-array
 ## 代码
 
 简单的模拟：
-
+```java
 	class Solution {
 	    public int[] decode(int[] encoded, int first) {
 	        int arrLength = encoded.length + 1;
@@ -167,7 +169,7 @@ https://leetcode-cn.com/problems/decode-xored-array
 	        return arr;
 	    }
 	}
-
+```
 
 
 # 剑指offer 58 - II 左旋转字符串
@@ -177,7 +179,7 @@ https://leetcode-cn.com/problems/zuo-xuan-zhuan-zi-fu-chuan-lcof
 ## 题解
 StringBuffer.append()的使用
 ## 代码
-
+```java
 	class Solution {
 	    public String reverseLeftWords(String s, int n) {
 	        StringBuffer sb = new StringBuffer();
@@ -187,7 +189,7 @@ StringBuffer.append()的使用
 	            return sb.toString();
 	    }
 	}
-
+```
 # 面试题 02.03 删除中间节点
 ## 题目
 https://leetcode-cn.com/problems/delete-middle-node-lcci
@@ -199,7 +201,7 @@ https://leetcode-cn.com/problems/delete-middle-node-lcci
 
 
 ## 代码
-
+```java
 	/**
 	 * Definition for singly-linked list.
 	 * public class ListNode {
@@ -214,5 +216,5 @@ https://leetcode-cn.com/problems/delete-middle-node-lcci
 	            node.next = node.next.next;       
 	    }
 	}
-
+```
 

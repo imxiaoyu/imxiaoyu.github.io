@@ -29,7 +29,7 @@ https://leetcode-cn.com/problems/median-of-two-sorted-arrays/
 ## 代码
 
 **方法一：**
-
+```java
 	class Solution {
 	    public double findMedianSortedArrays(int[] nums1, int[] nums2) {
 	        int oneLength = nums1.length;
@@ -52,9 +52,9 @@ https://leetcode-cn.com/problems/median-of-two-sorted-arrays/
 	            return (double)result[length / 2];
 	    }
 	}
-
+```
 **方法二：**
-
+```java
 	class Solution {
 	    public double findMedianSortedArrays(int[] nums1, int[] nums2) {
 	        int oneLength = nums1.length;
@@ -125,7 +125,7 @@ https://leetcode-cn.com/problems/median-of-two-sorted-arrays/
 	        }   
 	    }
 	}
-
+```
 
 # 1723.完成所有工作的最短时间（dfs+剪枝多写）**
 ## 题目
@@ -143,7 +143,7 @@ https://leetcode-cn.com/problems/find-minimum-time-to-finish-all-jobs/solution/g
 ## 代码
 
 **dfs无剪枝（会超时）：**
-
+```java
 	class Solution {
 	    int num;
 	    int[] job;
@@ -182,9 +182,9 @@ https://leetcode-cn.com/problems/find-minimum-time-to-finish-all-jobs/solution/g
 	        
 	    }
 	}
-
+```
 **dfs剪枝：**
-
+```java
 	class Solution {
 	    int num;
 	    int[] job;
@@ -224,3 +224,4 @@ https://leetcode-cn.com/problems/find-minimum-time-to-finish-all-jobs/solution/g
 	        
 	    }
 	}
+```
