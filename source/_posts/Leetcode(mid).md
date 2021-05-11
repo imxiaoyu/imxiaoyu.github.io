@@ -17,7 +17,10 @@ tags:
 >16.最接近的三数之和
 >17.电话号码的字母组合
 >18.四数之和
+>19.删除链表的倒数第 N 个结点
+>22.括号生成
 >1482.制作 m 束花所需的最少天数（二分）
+>1734.解码异或后的排列
 >剑指 Offer 04 二维数组中查找
 
 
@@ -195,6 +198,7 @@ https://leetcode-cn.com/problems/longest-substring-without-repeating-characters
 	    }
 	}
 ```
+
 # 5.最长回文子串（有dp解法**）
 
 ## 题目
@@ -555,159 +559,6 @@ https://leetcode-cn.com/problems/integer-to-roman/solution/mo-ni-si-lu-qing-xi-b
 	    }
 	}
 ```
-# 1482.制作 m 束花所需的最少天数（二分）
-
-## 题目
-https://leetcode-cn.com/problems/minimum-number-of-days-to-make-m-bouquets
-## 题解
-https://leetcode-cn.com/problems/minimum-number-of-days-to-make-m-bouquets/solution/er-fen-ya-by-rain-ru-scmx/
-
-凌晨看到题目，一开始感觉暴力?又感觉不太行，后来上了床想了想感觉可以二分呀！
-1.二分bloomDay数组中最大最小值，得到temp，
-2.然后判断bloomDay数组中元素是否能满足题意，
-
-满足就存一下此时temp再二分小的和temp-1；
-不满足就二分temp+1和大的
-3.判断左右大小关系，左>右终止，返回最后存储的temp值
-
-
-## 代码
-```java
-	class Solution {
-	    int mm;
-	    int kk;
-	    int length;
-	    int result;
-	    public int minDays(int[] bloomDay, int m, int k) {
-	        length = bloomDay.length;
-	        if(m * k > length) return -1;
-	        else{
-	            int max_Num = 0;
-	            int min_Num = Integer.MAX_VALUE;
-	            for(int i = 0; i < length; i++){
-	                if(bloomDay[i] > max_Num)
-	                    max_Num = bloomDay[i];
-	                if(bloomDay[i] < min_Num)
-	                    min_Num = bloomDay[i];
-	            }
-	            if(m * k == length) return max_Num;
-	            else{
-	                mm = m;
-	                kk = k;
-	                result = max_Num;
-	                two_Solve(bloomDay, min_Num, max_Num);
-	                return result;
-	
-	            }
-	        }
-	        
-	    }
-	    public void two_Solve(int [] days, int l, int r){
-	        if(l > r) return ;
-	        int temp = (l + r) / 2;
-	        int tempM = 0;
-	        int tempK = 0;
-	        boolean flag = false;
-	
-	        for(int i = 0; i < length; i++){
-	            if(days[i] <= temp){
-	                tempK++;
-	                if(tempK == kk){
-	                    tempK = 0;
-	                    tempM++;
-	                    if(tempM == mm){
-	                        flag = true;
-	                        break;
-	                    }
-	                }
-	            }else{
-	                tempK = 0;
-	            }
-	        }
-	        if(flag){
-	            result = temp;
-	            two_Solve(days, l, temp - 1);
-	        }else{
-	            two_Solve(days, temp + 1, r);
-	        }
-	    }
-	}
-```
-
-# 剑指 Offer 04 二维数组中查找
-
-## 题目
-https://leetcode-cn.com/problems/er-wei-shu-zu-zhong-de-cha-zhao-lcof
-## 题解
-https://leetcode-cn.com/problems/er-wei-shu-zu-zhong-de-cha-zhao-lcof/solution/xun-zhao-dao-zui-xiao-de-ju-zhen-fan-wei-4l26/
-**寻找最小矩阵的行起始位置、行终止位置；列起始位置、列终止位置：**
-
-1.判断每一行最后一个，如果小于target 则更新最小矩阵行起始位置rowl为当前行的下一行
-2.判断每一行第一个，如果大于target 则更新最小矩阵行终止位置rowr为当前行的上一行
-3.判断每一列最后一个，如果小于target 则更新最小矩阵列起始位置lisl为当前列的下一列
-4.判断每一列第一个，如果大于target 则更新最小矩阵列终止位置lisr为当前列的上一列
-
-
-## 代码
-```java
-	class Solution {
-	    public boolean findNumberIn2DArray(int[][] matrix, int target) {
-	        int n = matrix.length;
-	        if(n == 0) return false;
-	        int m = matrix[0].length;
-	        if(m == 0) return false;
-	
-	        if(target < matrix[0][0] || target > matrix[n - 1][m - 1])
-	            return false;
-	        else{
-	            //存储矩阵的行起始位置、行终止位置；列起始位置、列终止位置
-	            int rowl = 0;
-	            int rowr = n - 1;
-	            int lisl = 0;
-	            int lisr = m - 1;
-	            //1.判断每一行最后一个，如果小于target 则更新行起始位置rowl为当前行的下一行
-	             for(int i = rowl; i < rowr + 1; i++){
-	                if(target == matrix[i][m - 1])
-	                    return true;
-	                if(target > matrix[i][m - 1])
-	                    rowl = i + 1;
-	             }
-	             //2.判断每一行第一个，如果大于target 则更新行终止位置rowr为当前行的上一行
-	             for(int i = rowl; i < rowr + 1; i++){
-	                if(target == matrix[i][0])
-	                    return true;
-	                if(target < matrix[i][0])
-	                    rowr = i - 1;
-	             }
-	
-	             //3.判断每一列最后一个，如果小于target 则更新列起始位置lisl为当前列的下一列
-	             for(int i = lisl; i < lisr + 1; i++){
-	                if(target == matrix[n - 1][i])
-	                    return true;
-	                if(target > matrix[n - 1][i])
-	                    lisl = i + 1;
-	             }
-	             //4.判断每一列第一个，如果大于target 则更新列终止位置lisr为当前列的上一列
-	             for(int i = lisl; i < lisr + 1; i++){
-	                if(target == matrix[0][i])
-	                    return true;
-	                if(target < matrix[0][i])
-	                    lisr = i - 1;
-	             }
-	
-	
-	            //遍历寻找这个矩阵，找到就输出true，找不到就最后输出false
-	             for(int i = rowl; i <= rowr; i++){
-	                 for(int j = lisl; j <= lisr; j++){
-	                     if(target == matrix[i][j])
-	                        return true;
-	                 }
-	             }
-	             return false;
-	        }
-	    }
-	}
-```
 # 15.三数之和
 
 ## 题目
@@ -757,6 +608,7 @@ class Solution {
     }
 }
 ```
+
 # 16.最接近的三数之和
 
 ## 题目
@@ -888,3 +740,273 @@ class Solution {
     }
 }
 ```
+
+# 19.删除链表的倒数第 N 个结点
+## 题目
+https://leetcode-cn.com/problems/remove-nth-node-from-end-of-list/
+## 题解
+先把头指针存下来，然后遍历一遍看链表多长：
+1.如果n==长度，则返回头指针的next结果
+2.如果不相等，则再从头开始遍历到删除节点前的那个节点，让他head.next = head.next.next
+最后返回存储的头指针
+##代码
+```java
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
+class Solution {
+    public ListNode removeNthFromEnd(ListNode head, int n) {
+        int temp = 0;
+        ListNode result = head;
+        while(head != null){temp++; head = head.next;}
+        if(n == temp) return result.next;
+        n = temp - n;
+        head = result; 
+        temp = 1;
+        while(head != null){
+            if(temp == n){
+                head.next = head.next.next;
+                return result;
+            }else{
+                head = head.next;
+                temp++;
+            }
+        }
+        return result;
+    }
+}
+```
+# 22.括号生成
+## 题目
+https://leetcode-cn.com/problems/generate-parentheses/
+## 题解
+dfs里面循环(StringBuffer字符串,"("出现次数，")"出现次数，题目的n)：
+1.剪枝if(r > l || l > n || r > n || l + r > 2 * n) return; （这些都不符合题意）
+2.l == n && r == n result.add(s.toString()); 此时加入结果List中
+3.l == n 此时"("数量够了，只加")"
+4.l == r 此时"("、")"数量相同，只加"("
+5.其他,此时"("数量 > ")"数量，"("、")"都可以加
+##代码
+```java
+class Solution {
+    List<String> result = new ArrayList<>();
+    public List<String> generateParenthesis(int n) {
+        StringBuffer s = new StringBuffer();
+        dfs(s, 0, 0, n);
+        return result;
+    }
+    public void dfs(StringBuffer s, int l, int r, int n){
+        if(r > l || l > n || r > n || l + r > 2 * n) return;
+        else if(l == n && r == n) result.add(s.toString());
+        else if(l == n){
+            s.append(")");
+            dfs(s, l, r + 1, n);
+            s.deleteCharAt(l + r);
+        }else if(l == r){
+            s.append("(");
+            dfs(s, l + 1, r, n);
+            s.deleteCharAt(l + r);
+        }else{
+            s.append(")");
+            dfs(s, l, r + 1, n);
+            s.deleteCharAt(l + r);
+            s.append("(");
+            dfs(s, l + 1, r, n);
+            s.deleteCharAt(l + r);
+        }
+    }
+}
+```
+# 1482.制作 m 束花所需的最少天数（二分）
+
+## 题目
+https://leetcode-cn.com/problems/minimum-number-of-days-to-make-m-bouquets
+## 题解
+https://leetcode-cn.com/problems/minimum-number-of-days-to-make-m-bouquets/solution/er-fen-ya-by-rain-ru-scmx/
+
+凌晨看到题目，一开始感觉暴力?又感觉不太行，后来上了床想了想感觉可以二分呀！
+1.二分bloomDay数组中最大最小值，得到temp，
+2.然后判断bloomDay数组中元素是否能满足题意，
+
+满足就存一下此时temp再二分小的和temp-1；
+不满足就二分temp+1和大的
+3.判断左右大小关系，左>右终止，返回最后存储的temp值
+
+
+## 代码
+```java
+	class Solution {
+	    int mm;
+	    int kk;
+	    int length;
+	    int result;
+	    public int minDays(int[] bloomDay, int m, int k) {
+	        length = bloomDay.length;
+	        if(m * k > length) return -1;
+	        else{
+	            int max_Num = 0;
+	            int min_Num = Integer.MAX_VALUE;
+	            for(int i = 0; i < length; i++){
+	                if(bloomDay[i] > max_Num)
+	                    max_Num = bloomDay[i];
+	                if(bloomDay[i] < min_Num)
+	                    min_Num = bloomDay[i];
+	            }
+	            if(m * k == length) return max_Num;
+	            else{
+	                mm = m;
+	                kk = k;
+	                result = max_Num;
+	                two_Solve(bloomDay, min_Num, max_Num);
+	                return result;
+	
+	            }
+	        }
+	        
+	    }
+	    public void two_Solve(int [] days, int l, int r){
+	        if(l > r) return ;
+	        int temp = (l + r) / 2;
+	        int tempM = 0;
+	        int tempK = 0;
+	        boolean flag = false;
+	
+	        for(int i = 0; i < length; i++){
+	            if(days[i] <= temp){
+	                tempK++;
+	                if(tempK == kk){
+	                    tempK = 0;
+	                    tempM++;
+	                    if(tempM == mm){
+	                        flag = true;
+	                        break;
+	                    }
+	                }
+	            }else{
+	                tempK = 0;
+	            }
+	        }
+	        if(flag){
+	            result = temp;
+	            two_Solve(days, l, temp - 1);
+	        }else{
+	            two_Solve(days, temp + 1, r);
+	        }
+	    }
+	}
+```
+# 1734.解码异或后的排列
+## 题目
+https://leetcode-cn.com/problems/decode-xored-permutation/
+## 题解
+**数学公式须知：** 
+1.自己 ^ 自己 = 0
+2.如果a ^ b = c， 那么a ^ c = b, b ^ c = a
+
+**思路：**
+1.由题意可知，数组中为[1,encoded.length + 1]，那么我们能算出从1到encoded.length + 1的异或结果total
+2.由题意可知，encoded[i] = perm[i] ^ perm[i + 1],那么我们其实也就能根据这个公式算出**perm除了某个位置之外**的其他所有位置的异或和，在这里:
+- **假设我们去求perm 0位置**，那么我们只需要把perm原位置1到encoded.length + 1位置的全部异或了，就是除了0位置之外异或和，关键是这个该如何去计算?
+- 其实只需要计算odd = encoded[1] ^ encoded[3] ^ encoded[5] ^ …… ^ encoded[encoded.length - 1]，
+- 因为根据题中公式能直接转换为odd = perm[1] ^ perm[2] ^ perm[3] ^ …… ^ perm[n - 1] ^ perm[n], 
+- 然后根据那个**数学公式1**，自己 ^ 自己 = 0，那么total ^ odd = perm[0]；
+
+3.求出一个位置后,用**数学公式2**去计算其他位置
+##代码
+```java
+class Solution {
+    public int[] decode(int[] encoded) {
+        int n = encoded.length;
+        int[] result = new int[n + 1];
+        int total = 1;
+        int odd = encoded[1];
+        for(int i = 2; i <= n + 1; i++) total = total ^ i;
+        for(int i = 3; i < n ; i += 2) odd = odd ^ encoded[i];
+        result[0] = total ^ odd;
+        for(int i = 1; i < n + 1 ; i++) result[i] = result[i - 1] ^ encoded[i - 1];
+        return result;
+    }
+}
+```
+# 剑指 Offer 04 二维数组中查找
+
+## 题目
+https://leetcode-cn.com/problems/er-wei-shu-zu-zhong-de-cha-zhao-lcof
+## 题解
+https://leetcode-cn.com/problems/er-wei-shu-zu-zhong-de-cha-zhao-lcof/solution/xun-zhao-dao-zui-xiao-de-ju-zhen-fan-wei-4l26/
+**寻找最小矩阵的行起始位置、行终止位置；列起始位置、列终止位置：**
+
+1.判断每一行最后一个，如果小于target 则更新最小矩阵行起始位置rowl为当前行的下一行
+2.判断每一行第一个，如果大于target 则更新最小矩阵行终止位置rowr为当前行的上一行
+3.判断每一列最后一个，如果小于target 则更新最小矩阵列起始位置lisl为当前列的下一列
+4.判断每一列第一个，如果大于target 则更新最小矩阵列终止位置lisr为当前列的上一列
+
+
+## 代码
+```java
+	class Solution {
+	    public boolean findNumberIn2DArray(int[][] matrix, int target) {
+	        int n = matrix.length;
+	        if(n == 0) return false;
+	        int m = matrix[0].length;
+	        if(m == 0) return false;
+	
+	        if(target < matrix[0][0] || target > matrix[n - 1][m - 1])
+	            return false;
+	        else{
+	            //存储矩阵的行起始位置、行终止位置；列起始位置、列终止位置
+	            int rowl = 0;
+	            int rowr = n - 1;
+	            int lisl = 0;
+	            int lisr = m - 1;
+	            //1.判断每一行最后一个，如果小于target 则更新行起始位置rowl为当前行的下一行
+	             for(int i = rowl; i < rowr + 1; i++){
+	                if(target == matrix[i][m - 1])
+	                    return true;
+	                if(target > matrix[i][m - 1])
+	                    rowl = i + 1;
+	             }
+	             //2.判断每一行第一个，如果大于target 则更新行终止位置rowr为当前行的上一行
+	             for(int i = rowl; i < rowr + 1; i++){
+	                if(target == matrix[i][0])
+	                    return true;
+	                if(target < matrix[i][0])
+	                    rowr = i - 1;
+	             }
+	
+	             //3.判断每一列最后一个，如果小于target 则更新列起始位置lisl为当前列的下一列
+	             for(int i = lisl; i < lisr + 1; i++){
+	                if(target == matrix[n - 1][i])
+	                    return true;
+	                if(target > matrix[n - 1][i])
+	                    lisl = i + 1;
+	             }
+	             //4.判断每一列第一个，如果大于target 则更新列终止位置lisr为当前列的上一列
+	             for(int i = lisl; i < lisr + 1; i++){
+	                if(target == matrix[0][i])
+	                    return true;
+	                if(target < matrix[0][i])
+	                    lisr = i - 1;
+	             }
+	
+	
+	            //遍历寻找这个矩阵，找到就输出true，找不到就最后输出false
+	             for(int i = rowl; i <= rowr; i++){
+	                 for(int j = lisl; j <= lisr; j++){
+	                     if(target == matrix[i][j])
+	                        return true;
+	                 }
+	             }
+	             return false;
+	        }
+	    }
+	}
+```
+
