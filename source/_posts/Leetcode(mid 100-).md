@@ -1,0 +1,781 @@
+---
+title: 'Leetcode(mid 100-)'
+date: 2021/5/16 20:14:35 
+tags:
+	- Leetcode
+---
+>153.寻找旋转排序数组中的最小值（二分）
+>198.打家劫舍（dp）
+>213.打家劫舍II（dp）
+>337.打家劫舍III(需要多写几次**)
+>343.整数拆分（dp）
+>421.数组中两个数的最大异或值(字典树)
+>740.删除并获得点数（dp）
+>1310.子数组异或查询（异或运用）
+>1482.制作 m 束花所需的最少天数（二分）
+>1734.解码异或后的排列
+>5743.增长的内存泄露
+>5744.旋转盒子
+>5760.构成交替字符串需要的最小交换次数
+>5761.找出和为指定值的下标对
+
+
+<!-- more -->
+# 153.寻找旋转排序数组中的最小值
+## 题目
+https://leetcode-cn.com/problems/find-minimum-in-rotated-sorted-array/
+## 题解
+每次对比都是**左侧元素**和**中间元素**对比，**共两种情况**：
+**1.左 < 中：**此时最小值**仅可能**是**左或在[mid + 1，r]中**，更新一下结果 ，左 = mid + 1
+**2.左 > 中：**此时最小值**仅可能**是**中或在[l，mid - 1]中**，更新一下结果 ，右 = mid - 1
+
+**两种情况例子：**
+**1.**[**1**，2，3，4，5]或[1，2，3，4，**0**]，1 < 3(nums[0] < nums[2])，最小值1是左 **或** 最小值0在[mid + 1，r]中
+**2.**[3，4，**2**，3，3]或[3，**1**，2，3，3]，3 > 2(nums[0] > nums[2])，最小值2是中 **或** 最小值1在在[l，mid - 1]中
+
+## 代码
+
+```java
+class Solution {
+    public int findMin(int[] nums) {
+        int n = nums.length;
+        int result = nums[0];
+        int l = 0, r = n - 1;
+        while(l <= r){
+            int mid = (l + r + 1) >> 1;
+            if(nums[l] < nums[mid]){
+                result = Math.min(result, nums[l]); 
+                l = mid  + 1;
+            }else{
+                result = Math.min(result, nums[mid]);
+                r = mid  - 1;
+            }
+        }
+        return result;
+    }
+}
+```
+
+# 198.打家劫舍
+
+## 题目
+https://leetcode-cn.com/problems/house-robber
+>1.你是一个专业的小偷，计划偷窃沿街的房屋。每间房内都藏有一定的现金，影响你偷窃的唯一制约因素就是相邻的房屋装有相互连通的防盗系统，如果两间相邻的房屋在同一晚上被小偷闯入，系统会自动报警。
+>2.给定一个代表每个房屋存放金额的非负整数数组，计算你 不触动警报装置的情况下 ，一夜之内能够偷窃到的最高金额。
+
+
+>**提示：**
+>1 <= nums.length <= 100
+>1 <= nums[i] <= 400
+
+
+### 示例 1
+>**输入：**nums = [1,2,3,1]
+>**输出：**4
+>**解释：**
+>- 偷窃 1 号房屋 (金额 = 1) ，然后偷窃 3 号房屋 (金额 = 3)。
+>- 偷窃到的最高金额 = 1 + 3 = 4 。
+
+
+### 示例 2
+
+>**输入：**nums = [2,7,9,3,1]
+>**输出：**12
+>**解释：**
+>- 偷窃 1 号房屋 (金额 = 2), 偷窃 3 号房屋 (金额 = 9)，接着偷窃 5 号房屋 (金额 = 1)。
+>- 偷窃到的最高金额 = 2 + 9 + 1 = 12 。
+
+
+## 思路
+
+>跟上题类似
+
+**最优子结构的公式：**
+>dp[i] = Math.max(dp[i - 1], dp[i - 2] + nums[i]);
+
+**注意：**
+>1.当数组长度为1时:返回nums[0];
+>2.当数组长度为2时:返回Math.max(nums[0],nums[1]);
+>3.当数组长度大于3时:结构为上式。
+
+## 代码
+
+```java
+	class Solution {
+	    public int rob(int[] nums) {
+	        int numLength = nums.length;
+	        int[] dp = new int[numLength];
+
+	        if(numLength == 1){return nums[0];}
+
+	        else if(numLength == 2){return Math.max(nums[0],nums[1]);}
+
+	        else{
+	            dp[0] = nums[0];
+	            dp[1] = Math.max(nums[0],nums[1]);
+
+				//dp[i] = Math.max(dp[i - 1], dp[i - 2] + nums[i]);
+	            for(int i = 2; i < numLength; i++) {
+	                dp[i] = Math.max(dp[i - 1], dp[i - 2] + nums[i]);
+	            }
+	            return dp[numLength - 1];
+	        }
+	    }
+	}
+```
+# 213.打家劫舍II
+
+## 题目
+https://leetcode-cn.com/problems/house-robber-ii
+>1.你是一个专业的小偷，计划偷窃沿街的房屋，每间房内都藏有一定的现金。这个地方所有的房屋都** 围成一圈 **，这意味着第一个房屋和最后一个房屋是紧挨着的。同时，相邻的房屋装有相互连通的防盗系统，如果两间相邻的房屋在同一晚上被小偷闯入，系统会自动报警 。
+>2.给定一个代表每个房屋存放金额的非负整数数组，计算你 在不触动警报装置的情况下 ，今晚能够偷窃到的最高金额。
+
+
+>**提示：**
+>1 <= nums.length <= 100
+>1 <= nums[i] <= 1000
+
+
+
+### 示例 1
+>**输入：**nums = [2,3,2]
+>**输出：**3
+>**解释：**
+>- 你不能先偷窃 1 号房屋（金额 = 2），然后偷窃 3 号房屋（金额 = 2）, 因为他们是相邻的。
+
+
+### 示例 2
+
+>**输入：**nums = [1,2,3,1]
+>**输出：**4
+>**解释：**
+>- 你可以先偷窃 1 号房屋（金额 = 1），然后偷窃 3 号房屋（金额 = 3）。
+>- 偷窃到的最高金额 = 1 + 3 = 4 。
+
+
+### 示例 3
+>**输入：**nums = [0]
+>**输出：**0
+
+
+## 思路
+
+>**跟上题类似，但是可以分别去掉首部和尾部，然后判断两个的大小，返回大的。**
+
+
+**最优子结构的公式：**
+>dp[i] = Math.max(dp[i - 1], dp[i - 2] + nums[i]);
+
+**注意：**
+>1.当数组长度为1时:返回nums[0];
+>2.当数组长度为2时:返回Math.max(nums[0], nums[1]);
+>3.当数组长度为3时:返回Math.max(Math.max(nums[0], nums[1]), nums[2]);
+>4.当数组长度大于4时:去掉首部和尾部分为两部分进行求解。
+
+## 代码
+
+```java
+	class Solution2 {
+	    public int rob(int[] nums) {
+	        int numLength = nums.length;
+	        int[] dp = new int[numLength + 1];
+	        if(numLength == 1){return nums[0];}
+	        else if(numLength == 2){return Math.max(nums[0],nums[1]);}
+	        else if(numLength == 3){return Math.max(Math.max(nums[0],nums[1]),nums[2]);}
+	        else{
+	
+	            //去掉第一个房间，判断剩下的
+	            dp[2] = nums[1];
+	            dp[3] = Math.max(nums[1],nums[2]);
+	            //dp[i] = Math.max(dp[i - 1], dp[i - 2] + nums[i]);
+	            for(int i = 4; i < numLength + 1; i++) {
+	                dp[i] = Math.max(dp[i - 1], dp[i - 2] + nums[i - 1]);
+	            }
+	
+	            //去掉最后一个房间，判断剩下的
+	            dp[1] = nums[0];
+	            dp[2] = Math.max(nums[0],nums[1]);
+	            for(int i = 3; i < numLength; i++) {
+	                dp[i] = Math.max(dp[i - 1], dp[i - 2] + nums[i - 1]);
+	            }
+	
+	            return Math.max(dp[numLength - 1], dp[numLength]);
+	        }
+	    }
+	}
+```
+# 337.打家劫舍III(需要多写几次) **
+
+## 题目
+https://leetcode-cn.com/problems/house-robber-iii
+二叉树状房间
+## 思路
+
+>**简化一下这个问题：**一棵二叉树，树上的每个点都有对应的权值，每个点有两种状态（选中和不选中），问在不能同时选中有父子关系的点的情况下，能选中的点的最大权值和是多少。
+
+>我们可以用 f(o)f(o) 表示选择 o 节点的情况下，o 节点的子树上被选择的节点的最大权值和；g(o)g(o) 表示不选择 o 节点的情况下，o 节点的子树上被选择的节点的最大权值和；l 和 r 代表 o 的左右孩子。
+
+>**1.**当 o 被选中时，o 的左右孩子都不能被选中，故 o 被选中情况下子树上被选中点的最大权值和为 l 和 r 不被选中的最大权值和相加，即 f(o) = g(l) + g(r)f(o)=g(l)+g(r)。
+>**2.**当 o 不被选中时，o 的左右孩子可以被选中，也可以不被选中。对于 o 的某个具体的孩子 xx，它对 o 的贡献是 xx 被选中和不被选中情况下权值和的较大值。故 g(o) = \max \{ f(l) , g(l)\}+\max\{ f(r) , g(r) \}g(o)=max{f(l),g(l)}+max{f(r),g(r)}。
+
+
+>至此，我们可以用哈希表来存 f 和 g 的函数值，用深度优先搜索的办法后序遍历这棵二叉树，我们就可以得到每一个节点的 f 和 g。根节点的 f 和 g 的最大值就是我们要找的答案。
+
+
+## 代码
+
+```java
+	class Solution {
+    Map<TreeNode, Integer> select = new HashMap<>();
+    Map<TreeNode, Integer> refuse = new HashMap<>();
+    public int rob(TreeNode root) {
+        dfs(root);
+        return Math.max(select.get(root),refuse.get(root));
+    }
+    public void dfs(TreeNode root){
+        if(root == null) return;
+        dfs(root.left);
+        dfs(root.right);
+        select.put(root, root.val + refuse.getOrDefault(root.left, 0) + refuse.getOrDefault(root.right, 0));
+        refuse.put(root, Math.max(select.getOrDefault(root.left, 0), refuse.getOrDefault(root.left, 0)) + Math.max(select.getOrDefault(root.right, 0), refuse.getOrDefault(root.right, 0)));
+    }
+}
+```
+用数组优化后：
+```java
+	class Solution {
+	    public int rob(TreeNode root) {
+	    int[] result = dp(root);
+	    return Math.max(result[0], result[1]);
+	    }
+	
+	    public int[] dp(TreeNode root){
+	        if(root == null) return new int[]{0,0};
+	    
+	        int[] left  = dp(root.left);
+	        int[] right = dp(root.right);
+	
+	        int rob     = root.val + left[0] + right[0];
+	        int not_rob = Math.max(left[0], left[1]) + Math.max(right[0], right[1]) ;
+	
+	        return new int[]{not_rob, rob};
+	    }
+```
+
+
+# 343.整数拆分
+## 题目
+https://leetcode-cn.com/problems/integer-break/
+## 题解
+**n米长的绳子，他截取后最长的情况只能来自于：**
+1.把他截成两段后，每一段分别自己截取的最长结果相乘（举例，12米：截成两段可以是（1，11）、（2、10）、（3，9）、（4，8）、（5，7）、（6，6），这6种截法，每一种截法都有两段，每一段肯定也有会自己的截取后最长相乘结果，因此我们可以计算出来这6种最大的情况）
+2.对于第一种情况其实有一些不满足，比如4米的绳子只有（1，3）、（2、2）两种截法，按照1算出最大是第二种截法的result[2] * result[2] = 1，其实应该为2 * 2 = 4,所以第二种情况就是截取成两段直接相乘的情况了
+
+**dp公式：** dp[i] = max(max(dp[i - 1], (i - 1)) * 1, max(dp[i - 2], (i - 2)) * 2, max(dp[i - 3], (i - 3)) * 3,……,) = max(max(dp[i - j], (i - j)) * j)  j取值为（1, i / 2 + 1）
+
+**代码过程：**
+1.定义一个 n + 1长度的数组，下标代表为该长度时的最大值，初始化result[1] = 1
+2.for从2开始循环到需要计算的结果n, 每一次for表示求取当前下标时的最大值，所以需要第二个for来统计上面我们得到的两种情况(因为result[0]用不到，这里有需要新创建一个变量，所以直接使用result[0]来纪录最大值)
+3.for循环结束，返回结果
+## 代码
+
+```java
+class Solution {
+    public int integerBreak(int n) {
+        int[] nums = new int[n + 1];
+        nums[1] = 1;
+        for(int i = 2; i <= n; i++){
+            for(int j = 1; j < i / 2 + 1; j++){
+                nums[0] = (i - j >= nums[i - j] ? i - j : nums[i - j]) * j ;
+                nums[i] = nums[i] >= nums[0] ? nums[i] : nums[0];
+            }
+        }
+        return nums[n];
+    }
+}
+```
+# 421.数组中两个数的最大异或值
+## 题目
+https://leetcode-cn.com/problems/maximum-xor-of-two-numbers-in-an-array
+
+## 题解
+暴力属于钻了漏洞，还是说下**字典树的思路**吧：
+**第一步：** 把每个数的二进制取出来，存在32深度的树当中（比如15，对应二进制0000 0000 0000 1111，那么32深度的树就会从15的二进制从左到右存，即先存0，再0，再0……一直到1），每个数存完了，现在我们的字典树其实就可以还原出每一个数字了，
+**第二步：** 我们去找每个数字异或的最大值，也就是从高位开始，如果和这个数字的当前位二进制不同的字典树存在我们就进去并加上此位置异或的结果，因为此时异或肯定比相同的时候大，一直这样下去，就可以找到最大异或值了。
+
+
+**例子：** 数组中为 15，1，2
+**第一步：** 存三个数
+**第二步：** 
+- 1.找15（二进制后四位1111）的异或最大，从高位开始，
+- 2.最高位0，字典树中最高位1的树不存在,所以继续15的下一位，和字典树下一位；
+- 3.第二位还是0，字典树中还不存在，继续下一位……；
+- 4.到了1这一位了，字典树中这一位时0存在，进入0，结果ans += 8（此时位数对应的数） = 8，继续还是1，字典树中这一位时0存在，进入0，结果ans += 4（此时位数对应的数） = 12；
+- 5.继续，此时还是1，字典树中这一位呢（0，1都存在，因为2的二进制最后四位0010，1的二进制最后四位0001，所以倒数第二位的字典树中0和1均存在），进入0的（肯定不同时异或结果最大），结果ans += 2（此时位数对应的数） = 14；
+- 6.继续，此时还是1，字典树中这一位呢？只有1存在，（你可能问数字2的最后一位不是0吗？因为上一步中我们选择了进入0的字典树，所以就进入了数字1这个支路，此时这个支路中没有数字2）所以最终结果 14；
+
+
+## 代码
+**java暴力：**
+```java
+class Solution {
+    public int findMaximumXOR(int[] nums) {
+        int result = Integer.MIN_VALUE;
+        for(int i = 0; i < nums.length; i++)
+            for(int j = i; j < nums.length; j++)
+                result = Math.max(nums[i] ^ nums[j], result);
+        return result;
+    }
+}
+```
+
+**字典树：**
+```java
+class Solution {
+    int tempBit;
+    int result = 0;
+    Tree start = new Tree();
+    public class Tree{
+        public Tree[] next = new Tree[2];
+    }
+    public void init(int num){
+        Tree treeBits = start;
+        for(int i = 31 ; i >= 0; i--){
+            tempBit = num >> i & 1;
+            if(treeBits.next[tempBit] == null){
+                treeBits.next[tempBit] = new Tree();
+            }
+            treeBits = treeBits.next[tempBit];
+        }
+    }
+    public void searchMax(int num){
+        int sum = 0;
+        Tree treeBits = start;
+        for(int i = 31 ; i >= 0; i--){
+            tempBit = num >> i & 1;
+            if(treeBits.next[1 - tempBit] != null){
+                sum += 1 << i;
+                treeBits = treeBits.next[1 - tempBit];
+            }
+            else{     
+                treeBits = treeBits.next[tempBit];
+            }
+        }
+        result = Math.max(result, sum);
+    }
+    public int findMaximumXOR(int[] nums) {
+        for(int num : nums){
+            init(num);
+            searchMax(num);
+        } 
+        return result;
+    }
+}
+```
+
+# 740.删除并获得点数
+## 题目
+https://leetcode-cn.com/problems/delete-and-earn
+>1.给你一个整数数组 nums ，你可以对它进行一些操作。
+>2.每次操作中，选择任意一个 nums[i] ，删除它并获得 nums[i] 的点数。之后，你必须删除每个等于 nums[i] - 1 或 nums[i] + 1 的元素。
+>3.开始你拥有 0 个点数。返回你能通过这些操作获得的最大点数。
+
+
+>**提示：**
+>1 <= nums.length <= 2 * 10^4
+>1 <= nums[i] <= 10^4
+
+
+### 示例 1
+>**输入：**nums = [3,4,2]
+>**输出：**6
+>**解释：**
+>- 删除 4 获得 4 个点数，因此 3 也被删除。
+>- 之后，删除 2 获得 2 个点数。总共获得 6 个点数。
+
+
+### 示例 2
+
+>**输入：**nums = [2,2,3,3,3,4]
+>**输出：**9
+>**解释：**
+>- 删除 3 获得 3 个点数，接着要删除两个 2 和 4 。
+>- 之后，再次删除 3 获得 3 个点数，再次删除 3 获得 3 个点数。总共获得 9 个点数。
+
+
+
+## 思路
+
+借鉴的一个leetcode大神（陆艰步走）的解释：
+
+>首先，我们先明确一个概念，就是每个位置上的数字是可以在两种前结果之上进行选择的：
+>- 1.如果你不删除当前位置的数字，那么你得到就是前一个数字的位置的最优结果。
+>- 2.如果你觉得当前的位置数字i需要被删，那么你就会得到i - 2位置的那个最优结果加上当前位置的数字乘以个数。
+>
+>以上两个结果，你每次取最大的，记录下来，然后答案就是最后那个数字了。
+
+
+**先把数字进行整理一下。**
+>我们在原来的 nums 的基础上构造一个临时的数组 all，这个数组，以元素的值来做下标，下标对应的元素是原来的元素的个数。
+>**举个例子：**
+>nums = [2, 2, 3, 3, 3, 4]
+>**构造后：**
+>all=[0, 0, 2, 3, 1];
+>就是代表着 22 的个数有两个，33 的个数有 33 个，44 的个数有 11 个。
+
+其实这样就可以变成打家劫舍(我还没做过，马上做，下面会加上)的问题了呗。
+
+**打家劫舍的最优子结构的公式：**
+>dp[i] = Math.max(dp[i - 1], dp[i - 2] + nums[i]);
+
+
+**再来看看现在对这个问题的最优子结构公式：**
+>dp[i] = Math.max(dp[i - 1], dp[i - 2] + i * all[i]);
+
+
+## 代码
+
+**自己优化了一下：**
+```java
+	class Solution {
+	    public int deleteAndEarn(int[] nums) {
+	        int max_Num = 0;
+	        //遍历求取数组中最大值
+	        for(int num: nums){ if(max_Num < num) max_Num = num; }
+	        //根据最大值创建多大的数组
+	        int[] dp = new int[max_Num + 1];
+	
+	        //把数组中的元素存在新的新的数组中，数组下标表示指，该下标的数组指表示该下标出现的次数
+	        for (int num: nums) { dp[num]++; }
+	
+	        //动态规划求解 dp[i] = Math.max(dp[i - 1], dp[i - 2] + i * all[i]);
+	        for(int i = 2; i <= max_Num; i++) {
+	            dp[i] = Math.max(dp[i - 1], dp[i - 2] + dp[i] * i);
+	        }
+	        return dp[max_Num];
+	    }
+	}
+```
+
+# 1310.子数组异或查询
+## 题目
+https://leetcode-cn.com/problems/xor-queries-of-a-subarray/
+## 题解
+**数学公式须知：** 
+1.自己 ^ 自己 = 0
+
+**思路：**
+用数组result存一下前i个的异或结果，然后区间[l,r]异或的话就用result[l - 1] ^ result[r]就好了（注意下l是0时,结果直接就是result[r]就好了）
+**之前题目的题解：**
+https://leetcode-cn.com/problems/decode-xored-permutation/solution/su-kan-you-qu-de-shu-xue-ti-si-lu-qing-x-q8uu/
+## 代码
+
+```java
+class Solution {
+    public int[] xorQueries(int[] arr, int[][] queries) {
+        int arrLength = arr.length;
+        int queriesLenth = queries.length;
+        int[] result = new int[arrLength];
+        int[] ans = new int[queriesLenth];
+        int l, r;
+        
+        result[0] = arr[0];
+        for(int i = 1; i < arrLength; i++){result[i] = result[i - 1] ^ arr[i];}
+        
+        for(int i = 0; i < queriesLenth; i++){
+            l = queries[i][0];
+            r = queries[i][1];
+            if(l == 0)
+                ans[i] = result[r]; 
+            else
+                ans[i] = result[l - 1] ^ result[r];
+        }
+        return ans;
+    }
+}
+```
+
+# 1482.制作 m 束花所需的最少天数（二分）
+
+## 题目
+https://leetcode-cn.com/problems/minimum-number-of-days-to-make-m-bouquets
+## 题解
+https://leetcode-cn.com/problems/minimum-number-of-days-to-make-m-bouquets/solution/er-fen-ya-by-rain-ru-scmx/
+
+凌晨看到题目，一开始感觉暴力?又感觉不太行，后来上了床想了想感觉可以二分呀！
+1.二分bloomDay数组中最大最小值，得到temp，
+2.然后判断bloomDay数组中元素是否能满足题意，
+
+满足就存一下此时temp再二分小的和temp-1；
+不满足就二分temp+1和大的
+3.判断左右大小关系，左>右终止，返回最后存储的temp值
+
+
+## 代码
+```java
+	class Solution {
+	    int mm;
+	    int kk;
+	    int length;
+	    int result;
+	    public int minDays(int[] bloomDay, int m, int k) {
+	        length = bloomDay.length;
+	        if(m * k > length) return -1;
+	        else{
+	            int max_Num = 0;
+	            int min_Num = Integer.MAX_VALUE;
+	            for(int i = 0; i < length; i++){
+	                if(bloomDay[i] > max_Num)
+	                    max_Num = bloomDay[i];
+	                if(bloomDay[i] < min_Num)
+	                    min_Num = bloomDay[i];
+	            }
+	            if(m * k == length) return max_Num;
+	            else{
+	                mm = m;
+	                kk = k;
+	                result = max_Num;
+	                two_Solve(bloomDay, min_Num, max_Num);
+	                return result;
+	
+	            }
+	        }
+	        
+	    }
+	    public void two_Solve(int [] days, int l, int r){
+	        if(l > r) return ;
+	        int temp = (l + r) / 2;
+	        int tempM = 0;
+	        int tempK = 0;
+	        boolean flag = false;
+	
+	        for(int i = 0; i < length; i++){
+	            if(days[i] <= temp){
+	                tempK++;
+	                if(tempK == kk){
+	                    tempK = 0;
+	                    tempM++;
+	                    if(tempM == mm){
+	                        flag = true;
+	                        break;
+	                    }
+	                }
+	            }else{
+	                tempK = 0;
+	            }
+	        }
+	        if(flag){
+	            result = temp;
+	            two_Solve(days, l, temp - 1);
+	        }else{
+	            two_Solve(days, temp + 1, r);
+	        }
+	    }
+	}
+```
+# 1734.解码异或后的排列
+## 题目
+https://leetcode-cn.com/problems/decode-xored-permutation/
+## 题解
+**数学公式须知：** 
+1.自己 ^ 自己 = 0
+2.如果a ^ b = c， 那么a ^ c = b, b ^ c = a
+
+**思路：**
+1.由题意可知，数组中为[1,encoded.length + 1]，那么我们能算出从1到encoded.length + 1的异或结果total
+2.由题意可知，encoded[i] = perm[i] ^ perm[i + 1],那么我们其实也就能根据这个公式算出**perm除了某个位置之外**的其他所有位置的异或和，在这里:
+- **假设我们去求perm 0位置**，那么我们只需要把perm原位置1到encoded.length + 1位置的全部异或了，就是除了0位置之外异或和，关键是这个该如何去计算?
+- 其实只需要计算odd = encoded[1] ^ encoded[3] ^ encoded[5] ^ …… ^ encoded[encoded.length - 1]，
+- 因为根据题中公式能直接转换为odd = perm[1] ^ perm[2] ^ perm[3] ^ …… ^ perm[n - 1] ^ perm[n], 
+- 然后根据那个**数学公式1**，自己 ^ 自己 = 0，那么total ^ odd = perm[0]；
+
+3.求出一个位置后,用**数学公式2**去计算其他位置
+## 代码
+```java
+class Solution {
+    public int[] decode(int[] encoded) {
+        int n = encoded.length;
+        int[] result = new int[n + 1];
+        int total = 1;
+        int odd = encoded[1];
+        for(int i = 2; i <= n + 1; i++) total = total ^ i;
+        for(int i = 3; i < n ; i += 2) odd = odd ^ encoded[i];
+        result[0] = total ^ odd;
+        for(int i = 1; i < n + 1 ; i++) result[i] = result[i - 1] ^ encoded[i - 1];
+        return result;
+    }
+}
+```
+
+# 5743.增长的内存泄露
+## 题目
+https://leetcode-cn.com/problems/incremental-memory-leak/
+## 题解 
+谁大去减谁
+
+## 代码
+
+```java
+class Solution {
+    public int[] memLeak(int memory1, int memory2) {
+        int s = 0;
+        while(memory1 >= s || memory2 >= s){
+            if(memory2 > memory1) memory2 -= s;
+            else memory1 -= s;
+            s++;
+        }
+        return new int[]{s, memory1, memory2};
+    }
+}
+```
+
+
+# 5744.旋转盒子
+## 题目
+https://leetcode-cn.com/problems/rotating-the-box/
+## 题解 
+## 代码
+```java
+class Solution {
+    public char[][] rotateTheBox(char[][] box) {
+        int m = box.length;
+        int n = box[0].length;
+        int nums = 0;
+        int top = 0;
+        boolean flag;
+        for(int i = 0; i < m; i++){
+            nums = 0;
+            top = 0;
+            flag = false;
+            for(int j = 0; j < n; j++){
+                if(box[i][j] == '#') nums++;
+                else if(nums > 0 && (box[i][j] == '*' || j == n - 1) && flag){
+                    if(box[i][j] == '*')
+                    {
+                        for(int k = top; k < j; k++){
+                            if(j - k > nums) box[i][k] = '.';
+                            else box[i][k] = '#';
+                        }
+                    }
+                    else{
+                        for(int k = top; k < n; k++){
+                            if(j - k > nums - 1) box[i][k] = '.';
+                            else box[i][k] = '#';
+                        }
+                    }
+                    top = j + 1;
+                    flag = false;
+                    nums = 0;
+                }
+                else if(!flag && box[i][j] == '*') {top = j + 1; nums = 0;}
+                else if(box[i][j] == '*'){
+                    flag = false;
+                    nums = 0;
+                }
+                else if(box[i][j] == '.' && nums > 0) flag = true;
+                if(flag && j == n - 1 && nums > 0){
+                    for(int k = top; k < n; k++){
+                        if(j - k > nums - 1) box[i][k] = '.';
+                        else box[i][k] = '#';
+                    }
+                    top = j + 1;
+                    flag = false;
+                    nums = 0;
+                }
+            }
+        }
+        char[][] result = new char[n][m];
+        for(int i = 0; i < n; i++){
+            for(int j = 0; j < m; j++){
+                result[i][j] = box[m - j - 1][i];
+            }
+        }
+        return result;
+    }
+}
+```
+
+# 5760.构成交替字符串需要的最小交换次数
+## 题目
+https://leetcode-cn.com/problems/minimum-number-of-swaps-to-make-the-binary-string-alternating/
+## 题解 
+1.先判断是否 需要返回-1,就是 s长度为偶数，然后0的个数 != 1的个数, 或者 s长度为奇数，然后0的个数-1 != 1的个数且0的个数+1 != 1的个数
+2.后面用0101010……0串和1010101……1串和s进行比较，n为奇数和偶数时分别返回的也不相同
+
+## 代码
+
+```java
+class Solution {
+    public int minSwaps(String s) {
+        int n = s.length();
+        int zeroNums = 0;
+        for(int i = 0; i < n; i++) if(s.charAt(i) == '0') zeroNums++;
+        if(zeroNums != n / 2 && n % 2 == 0) return -1;
+        else if(zeroNums != n / 2 + 1 && zeroNums != n / 2 && n % 2 == 1) return -1;
+        else{
+            StringBuffer zeroOne = new StringBuffer();
+            StringBuffer oneZero = new StringBuffer();
+            for(int i = 0; i < n; i++){
+                zeroOne.append(i % 2);
+                oneZero.append((i + 1) % 2);
+            }
+            int oneZeroNums = 0;
+            int zeroOneNums = 0;
+            for(int i = 0; i < n; i++){
+                if(zeroOne.charAt(i) != s.charAt(i)) zeroOneNums++;
+                else oneZeroNums++;
+            }
+            if(zeroNums == n / 2 && n % 2 == 0)
+                return Math.min(oneZeroNums, zeroOneNums) / 2;
+            else if(zeroNums == n / 2 && n % 2 == 1)
+                return oneZeroNums / 2;
+            else
+                return zeroOneNums / 2;
+        }
+    }
+}
+```
+
+
+# 5761.找出和为指定值的下标对
+## 题目
+https://leetcode-cn.com/problems/finding-pairs-with-a-certain-sum/
+## 题解 
+因为有统计操作，然后nums2的最大长度有点大，所以我们可以创建一个HashMap存一下nums2中每一个数字出现的次数，key为这个数字，value为在nums2中出现的次数（需要注意的是我们要在初始化中就把HashMap就创建好并初始化好，这样后面add操作可以直接修改一个值，而不需要每进行一次统计操作就去HashMap初始化一下，否则会超时）
+
+## 代码
+
+```java
+class FindSumPairs {
+    public int[] nums1;
+    public int[] nums2;
+    Map<Integer, Integer> nums = new HashMap<>();
+    public FindSumPairs(int[] nums1, int[] nums2) {
+        this.nums1 = nums1;
+        this.nums2 = nums2;
+        for(int i = 0; i < nums2.length; i++) { 
+            if(nums.containsKey(nums2[i]))
+                nums.put(nums2[i],nums.get(nums2[i]) + 1);
+            else
+                nums.put(nums2[i],1);
+        }
+    }
+    
+    public void add(int index, int val) {
+        nums.put(nums2[index],nums.get(nums2[index]) - 1);
+        nums2[index] += val;
+        if(nums.containsKey(nums2[index]))
+                nums.put(nums2[index],nums.get(nums2[index]) + 1);
+            else
+                nums.put(nums2[index],1);
+    }
+    
+    public int count(int tot) {
+        int result = 0;
+        for(int i = 0; i < nums1.length; i++){
+            if(nums.containsKey(tot - nums1[i])) result += nums.get(tot - nums1[i]);
+        }
+        return result;
+    }
+}
+```

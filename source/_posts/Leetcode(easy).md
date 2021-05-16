@@ -3,7 +3,6 @@ title: 'Leetcode(easy)'
 date: 2021/5/6 23:46:00 
 tags:
 	- Leetcode
-	- 简单题目
 ---
 >**题目列表：**
 >1.两数之和

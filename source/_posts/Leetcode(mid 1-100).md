@@ -1,9 +1,8 @@
 ---
-title: 'Leetcode(mid)'
-date: 2021/5/7 13:29:32  
+title: 'Leetcode(mid 1-100)'
+date: 2021/5/16 19:59:28 
 tags:
 	- Leetcode
-	- 中等题目
 ---
 >**题目列表：**
 >2.两数相加
@@ -19,9 +18,14 @@ tags:
 >18.四数之和
 >19.删除链表的倒数第 N 个结点
 >22.括号生成
->1482.制作 m 束花所需的最少天数（二分）
->1734.解码异或后的排列
->剑指 Offer 04 二维数组中查找
+>24.两两交换链表中的节点（链表）
+>29.两数相除（位运算，模拟）
+>33.搜索旋转排序数组（二分）
+>34.在排序数组中查找元素的第一个和最后一个位置(二分)
+>39.组合总和（dfs）
+>40.组合总和 II(dfs)
+>81.搜索旋转排序数组 II（二分）
+
 
 
 
@@ -824,189 +828,397 @@ class Solution {
     }
 }
 ```
-# 1482.制作 m 束花所需的最少天数（二分）
 
+
+# 24.两两交换链表中的节点
 ## 题目
-https://leetcode-cn.com/problems/minimum-number-of-days-to-make-m-bouquets
+https://leetcode-cn.com/problems/swap-nodes-in-pairs
 ## 题解
-https://leetcode-cn.com/problems/minimum-number-of-days-to-make-m-bouquets/solution/er-fen-ya-by-rain-ru-scmx/
+**非递归：**
+分三种情况在while内循环：
+**1.head.next.next == null ：** 此时只要完成head节点和head.next节点的互换就可以，注意换完后最后的listNode.next == null ,否则就成了一个环了（**举例** 1,2:我们想换成2,1）先初始1->2,转换后没有null 2->1且1->2
+**2.head.next.next.next != null ：** 此时要完成4个点之间的关联 （**举例** 1,2,3,4,……：我们想换成2,1,4,3）所以先把2，3分别存一下，然后1->4,2->1,把head节点换为3（此时节点内指向为2->1->4->……,3->4->……）
+**3.其他情况，也就是head.next.next != null且head.next.next.next == null** （**举例** 1,2,3：我们想换成2,1,3）所以我们把2->1,1->3就好了，注意提前存一下2节点
 
-凌晨看到题目，一开始感觉暴力?又感觉不太行，后来上了床想了想感觉可以二分呀！
-1.二分bloomDay数组中最大最小值，得到temp，
-2.然后判断bloomDay数组中元素是否能满足题意，
+**递归(配合例子理解)：**
+递归是重复做一样的事情，所以只需要去考虑一步是怎么进行的：
+假设需要交换的节点分别为head和next，hand因为通过交换要去next后面，所以hand肯定需要接受递归返回的后面交换好的链表为他的next（也就是后面递归完成交换的next节点），接受后就可以把hand赋给next.next完成当前轮次的交换了，所以终止只需要当没有节点交换了，也就是head == null或者heda.next == null 时结束（返回hand）。
+**举例：** 1,2,3,4,5:
+**第一轮head = 1,next = 2：**
+head.next = swapPairs(next.next); 也就是 head(1).next = swapPairs(2.next);
+**第二轮head = 3,next = 4：**
+head.next = swapPairs(next.next); 也就是 head(3).next = swapPairs(4.next);
+**第三轮head = 5,next = null：**  返回head = 5 给第二轮
+**第二轮head = 3,next = 4接受第三轮返回并返回给第一轮：** head(3).next = swapPairs(4.next) = 5, next(4).next = 3;此时next(4)及其之后排序为 ->4->3->5 ,返回next = 4 给第一轮
+**第一轮head = 1,next = 2接受第二轮返回并返回最终结果：** head(1).next = swapPairs(2.next) = 4, next(2).next = 1;此时next(2)及其之后排序为 2->1->4->3->5 ,返回next = 2
+## 代码
+**非递归：**
+```java
+class Solution {
+    public ListNode swapPairs(ListNode head) {
+        if(head == null || head.next == null) return head;
+        else{
+            ListNode result = head.next;
+            ListNode tempSecond = new ListNode();
+            ListNode tempThird = new ListNode();
+            while(head != null && head.next != null){
+                if(head.next.next == null){
+                    head.next.next = head;
 
-满足就存一下此时temp再二分小的和temp-1；
-不满足就二分temp+1和大的
-3.判断左右大小关系，左>右终止，返回最后存储的temp值
+                    head.next = null;
+                }
+                else if(head.next.next.next != null){
+                    tempSecond = head.next;
+                    tempThird = tempSecond.next;
+                    head.next = tempThird.next;
+                    tempSecond.next = head;
+
+                    head = tempThird;
+                    }
+                else{
+                    tempSecond = head.next;
+                    head.next = head.next.next;
+                    tempSecond.next = head;
+
+                    head = head.next.next;
+                }
+            }
+            return result;
+        }
+
+    }
+}
+
+```
+**递归：**
+```java
+class Solution {
+    public ListNode swapPairs(ListNode head) {
+        if(head == null || head.next == null) return head;
+        ListNode next = head.next;
+        head.next = swapPairs(next.next);
+        next.next = head;
+        return next;
+    }
+}
+```
+
+# 29.两数相除
+## 题目
+https://leetcode-cn.com/problems/divide-two-integers
+## 题解
+**位运算须知：**  
+- result << 表示电脑存储的result二进制数左移，result << 1 表示就是 result * 2
+- result >> 表示电脑存储的result二进制数右移，result >> 1 表示就是 result / 2
+
+**思路：** 用long存一下，然后判断一下结果正负号，并把除数和被除数都转成正的，然后两个while循环 位运算（比如31 / 1）
+**例子（31 / 1）：** 
+**第一轮：**
+- 31 - 1 >= 0 所以进入**第一个while**，然后 temp = 1 << 1 = 2 ,result = 1 ;
+- 31 - 2 >= 0 所以进入**第二个while**，然后 result = result << 1 = 2; temp = temp << 1 = 4;
+- 31 - 4 >= 0 所以还在**第二个while**，然后 result = result << 1 = 4; temp = temp << 1 = 8;
+- 31 - 8 >= 0 所以还在**第二个while**，然后 result = result << 1 = 8; temp = temp << 1 = 16;
+- 31 - 16 >= 0 所以还在**第二个while**，然后 result = result << 1 = 16; temp = temp << 1 = 32;
+- 31 - 32 < 0 所以**跳出第二个while**，然后更新被除数divid -= temp >> 1 = 31 - 16 = 15; 更新结果ans += result = 0 + 16 = 16;
+
+**新一轮：**
+- 15 - 1 >= 0 所以进入**第一个while**，然后 temp = 1 << 1 = 2 ,result = 1 ;
+- 15 - 2 >= 0 所以进入**第二个while**，然后 result = result << 1 = 2; temp = temp << 1 = 4;
+- ……
+- 15 - 8 >= 0 所以还在**第二个while**，然后 result = result << 1 = 8; temp = temp << 1 = 16;
+- 15 - 16 < 0 所以**跳出第二个while**，然后更新被除数divid -= temp >> 1 = 15 - 8 = 7; 更新结果ans += result = 16 + 8 = 24;
+
+**新一轮：**
+- ……
+
+
+最后**第一个while都没有进去**就可以得到最终结果了：注意结果的符号
+## 代码
+```java
+class Solution {
+    public int divide(int dividend, int divisor) {
+        if(dividend == Integer.MIN_VALUE && divisor == -1) return Integer.MAX_VALUE;
+        long divid = (int)dividend;
+        long divis = (int)divisor;
+
+        boolean flag = true;
+        long temp, result = 1, ans = 0;
+
+        if(divid < 0 && divis > 0){divid = - divid; flag = false;}
+        else if(divid > 0 && divis < 0){divis = - divis; flag = false;}
+        else if(divid < 0 && divis < 0){divid = - divid; divis = - divis;}
+        else ;
+
+        while(divid - divis >= 0){
+            temp = divis << 1;
+            result = 1;
+            while(divid - temp >= 0){
+                result = result << 1;
+                temp = temp << 1;
+            }
+            divid -= temp >> 1;
+            ans += result;
+        }
+        
+        if(flag) return (int)ans;
+        else return (int)-ans;
+    }
+}
+```
+
+# 33.搜索旋转排序数组
+## 题目
+https://leetcode-cn.com/problems/search-in-rotated-sorted-array
+## 题解
+**共三种情况（请综合我下面给的例子来看后两种情况）**：
+**1.左 == target：** 直接返回 左
+**2.左 < 中：** 此时需要分情况讨论：
+- （1）target比左小**或者**target比中大时（比小的都小**或者**比大的都大）：此时target只可能在[mid, r]中，所以l = mid;
+- （2）其他，即target比左大**并且**target比中小时（大小在左和中之间）：此时target只可能在[左 + 1, mid]中，所以 l = l + 1; r = mid;
+
+**3.左 > 中：** 此时需要分情况讨论：
+- （1）target比左小**并且**target比中大时（大小在左和中之间）：此时target只可能在[mid, r]中，所以l = mid;
+- （2）其他，即target比左大**或者**比中小时（比大的都大**或者**比小的都小）：此时target只可能在[左 + 1, mid]中，所以 l = l + 1; r = mid;
+
+**后两种情况即2.3情况例子：**
+
+**2.** [1，2，3，4，5] 或 [1，2，3，4，0]，1 < 3(nums[0] < nums[2]，**左 < 中**)
+- （1）[1，2，3，4，**0**]中目标target 0 或者 [1，2，3，4，**5**]中目标target 5 都在[mid, r]中
+- （2）[1，**2**，3，4，0]中目标target 2 只在[左 + 1, mid]中
+
+**3.** [5，6，2，3，4] 或 [5，1，2，3，4]，5 > 2(nums[0] > nums[2]，**左 > 中**)
+- （1）[5，6，2，**3**，4]中目标target 3 只在[mid, r]中
+- （2）[5，**6**，2，3，4]中目标target 6 或者 [5，**1**，2，3，4]中目标target 1 都只在[左 + 1, mid]中
 
 
 ## 代码
-```java
-	class Solution {
-	    int mm;
-	    int kk;
-	    int length;
-	    int result;
-	    public int minDays(int[] bloomDay, int m, int k) {
-	        length = bloomDay.length;
-	        if(m * k > length) return -1;
-	        else{
-	            int max_Num = 0;
-	            int min_Num = Integer.MAX_VALUE;
-	            for(int i = 0; i < length; i++){
-	                if(bloomDay[i] > max_Num)
-	                    max_Num = bloomDay[i];
-	                if(bloomDay[i] < min_Num)
-	                    min_Num = bloomDay[i];
-	            }
-	            if(m * k == length) return max_Num;
-	            else{
-	                mm = m;
-	                kk = k;
-	                result = max_Num;
-	                two_Solve(bloomDay, min_Num, max_Num);
-	                return result;
-	
-	            }
-	        }
-	        
-	    }
-	    public void two_Solve(int [] days, int l, int r){
-	        if(l > r) return ;
-	        int temp = (l + r) / 2;
-	        int tempM = 0;
-	        int tempK = 0;
-	        boolean flag = false;
-	
-	        for(int i = 0; i < length; i++){
-	            if(days[i] <= temp){
-	                tempK++;
-	                if(tempK == kk){
-	                    tempK = 0;
-	                    tempM++;
-	                    if(tempM == mm){
-	                        flag = true;
-	                        break;
-	                    }
-	                }
-	            }else{
-	                tempK = 0;
-	            }
-	        }
-	        if(flag){
-	            result = temp;
-	            two_Solve(days, l, temp - 1);
-	        }else{
-	            two_Solve(days, temp + 1, r);
-	        }
-	    }
-	}
-```
-# 1734.解码异或后的排列
-## 题目
-https://leetcode-cn.com/problems/decode-xored-permutation/
-## 题解
-**数学公式须知：** 
-1.自己 ^ 自己 = 0
-2.如果a ^ b = c， 那么a ^ c = b, b ^ c = a
 
-**思路：**
-1.由题意可知，数组中为[1,encoded.length + 1]，那么我们能算出从1到encoded.length + 1的异或结果total
-2.由题意可知，encoded[i] = perm[i] ^ perm[i + 1],那么我们其实也就能根据这个公式算出**perm除了某个位置之外**的其他所有位置的异或和，在这里:
-- **假设我们去求perm 0位置**，那么我们只需要把perm原位置1到encoded.length + 1位置的全部异或了，就是除了0位置之外异或和，关键是这个该如何去计算?
-- 其实只需要计算odd = encoded[1] ^ encoded[3] ^ encoded[5] ^ …… ^ encoded[encoded.length - 1]，
-- 因为根据题中公式能直接转换为odd = perm[1] ^ perm[2] ^ perm[3] ^ …… ^ perm[n - 1] ^ perm[n], 
-- 然后根据那个**数学公式1**，自己 ^ 自己 = 0，那么total ^ odd = perm[0]；
-
-3.求出一个位置后,用**数学公式2**去计算其他位置
-##代码
 ```java
 class Solution {
-    public int[] decode(int[] encoded) {
-        int n = encoded.length;
-        int[] result = new int[n + 1];
-        int total = 1;
-        int odd = encoded[1];
-        for(int i = 2; i <= n + 1; i++) total = total ^ i;
-        for(int i = 3; i < n ; i += 2) odd = odd ^ encoded[i];
-        result[0] = total ^ odd;
-        for(int i = 1; i < n + 1 ; i++) result[i] = result[i - 1] ^ encoded[i - 1];
+    public int search(int[] nums, int target) {
+        int n = nums.length;
+        int result = -1;
+        int l = 0, r = n - 1;
+        while(l <= r){
+            int mid = (l + r + 1) >> 1;
+            if(nums[l] == target) return l;
+            else if(nums[l] < nums[mid]){
+                if(nums[l] > target || nums[mid] < target) l = mid;
+                else{
+                    l = l + 1;
+                    r = mid;
+                }
+            }else{
+                if(nums[l] > target && nums[mid] < target) l = mid;
+                else{
+                    l = l + 1;
+                    r = mid;
+                }
+            }
+        }
         return result;
     }
 }
 ```
-# 剑指 Offer 04 二维数组中查找
+
+# 34.在排序数组中查找元素的第一个和最后一个位置
+## 题目
+https://leetcode-cn.com/problems/find-first-and-last-position-of-element-in-sorted-array
+## 题解
+**共四种情况（请综合我下面给的例子来看后三种情况）**：
+**1.左 == target：** 此时需要分情况讨论：
+- （1）右 == target，则return new int[]{l, r};
+- （2）nums[mid] == target，去找一下mid右边是否还有target,则r--;
+- （3）其余情况，mid右边肯定没有target，所以 r = mid - 1;
+
+**2.左 == 中 || 中 == target：** 此时target初始位置**在[左，mid]中，左 = 左 + 1
+**3.左 < 中：** 此时需要分情况讨论：
+- （1）target比左小**或者**target比中大时（比小的都小**或者**比大的都大）：此时target只可能在[mid, r]中，所以l = mid;
+- （2）其他，即target比左大**并且**target比中小时（大小在左和中之间）：此时target只可能在[左 + 1, mid]中，所以 l = l + 1; r = mid;
+
+**4.左 > 中：** 此时需要分情况讨论：
+- （1）target比左小**并且**target比中大时（大小在左和中之间）：此时target只可能在[mid, r]中，所以l = mid;
+- （2）其他，即target比左大**或者**比中小时（比大的都大**或者**比小的都小）：此时target只可能在[左 + 1, mid]中，所以 l = l + 1; r = mid;
+
+**后三种情况即2.3.4情况例子：**
+**2.** [3，1，3，3，3] 或 [3，3，3，3，1]，3 == 3(nums[0] == nums[2]，**左 == 中**)，目标target 1 在[左，mid]中 **或** 在[mid + 1, r]中
+**3.** [1，2，3，4，5] 或 [1，2，3，4，0]，1 < 3(nums[0] < nums[2]，**左 < 中**)
+- （1）[1，2，3，4，**0**]中目标target 0 或者 [1，2，3，4，**5**]中目标target 5 都在[mid, r]中
+- （2）[1，**2**，3，4，0]中目标target 2 只在[左 + 1, mid]中
+
+**4.** [5，6，2，3，4] 或 [5，1，2，3，4]，5 > 2(nums[0] > nums[2]，**左 > 中**)
+- （1）[5，6，2，**3**，4]中目标target 3 只在[mid, r]中
+- （2）[5，**6**，2，3，4]中目标target 6 或者 [5，**1**，2，3，4]中目标target 1 都只在[左 + 1, mid]中
+
+## 代码
+
+```java
+class Solution {
+    public int[] searchRange(int[] nums, int target) {
+        int n = nums.length;
+        int[] result = new int[]{-1, -1};
+        int l = 0, r = n - 1;
+        while(l <= r){
+            int mid = (l + r + 1) >> 1;
+            if(nums[l] == target){
+                if(nums[r] == target) return new int[]{l, r};
+                else if(nums[mid] == target) r--;
+                else r = mid - 1;
+            }
+            else if(nums[l] == nums[mid] || nums[mid] == target) l++;
+            else if(nums[l] < nums[mid]){
+                if(nums[l] > target || nums[mid] < target) l = mid;
+                else{
+                    l = l + 1;
+                    r = mid;
+                }
+            }
+            else{
+                if(nums[l] > target && nums[mid] < target) l = mid;
+                else{
+                    l = l + 1;
+                    r = mid;
+                }
+            }
+        }
+        return result;
+    }
+}
+```
+
+# 39.组合总和
+## 题目
+https://leetcode-cn.com/problems/combination-sum
+## 题解
+## 代码
+```java
+class Solution {
+    List<List<Integer>> result = new ArrayList<List<Integer>>();
+    public List<List<Integer>> combinationSum(int[] candidates, int target) {
+        dfs(candidates, target, 0, 0, new ArrayList<Integer>());
+        return result;
+    }
+    public void dfs(int[] candidates, int target, int temp, int sum, List<Integer> list){
+        if(sum == target){
+            List<Integer> ans = new ArrayList<Integer>();
+            for(int i = 0; i < list.size(); i++) ans.add(list.get(i));
+            result.add(ans);
+        }
+        else if(temp == candidates.length) return;
+        else{
+            for(int i = temp; i < candidates.length; i++){
+                for(int j = 1; j <= (target - sum) / candidates[i]; j++){
+                    for(int k = 0; k < j; k++) list.add(candidates[i]);
+                    dfs(candidates, target, i + 1, sum + j * candidates[i], list);
+                    for(int k = 0; k < j; k++) list.remove(new Integer(candidates[i]));
+                }  
+            }
+        }
+    }
+}
+
+
+```
+# 40.组合总和 II
+## 题目
+https://leetcode-cn.com/problems/combination-sum-ii
+## 题解
+39修改
+## 代码
+
+```java
+class Solution {
+    int length = 0;
+    int[] nums = new int[201];
+    List<List<Integer>> result = new ArrayList<List<Integer>>();
+    public List<List<Integer>> combinationSum2(int[] candidates, int target) {
+        Arrays.sort(candidates);
+
+        for(int i = 0; i < candidates.length; i++) {nums[candidates[i]]++; if(nums[candidates[i]] == 1) length++;}
+        int[] candidate = new int[length];
+        
+        int temp = 0;
+        for(int i = 1; i < 201; i++){
+            if(nums[i] > 0) candidate[temp++] = i;
+        }
+        dfs(candidate, target, 0, 0, new ArrayList<Integer>());
+        return result;
+    }
+    public void dfs(int[] candidates, int target, int temp, int sum, List<Integer> list){
+        if(sum == target){
+            List<Integer> ans = new ArrayList<Integer>();
+            for(int i = 0; i < list.size(); i++) ans.add(list.get(i));
+            result.add(ans);
+        }
+        else if(temp == length || candidates[temp] > target - sum) return;
+        else{
+            for(int i = temp; i < length; i++){
+                if(candidates[i] > target - sum) return;
+                for(int j = 1; j <= Math.min((target - sum) / candidates[i], nums[candidates[i]]); j++){
+                    for(int k = 0; k < j; k++) list.add(candidates[i]);
+                    dfs(candidates, target, i + 1, sum + j * candidates[i], list);
+                    for(int k = 0; k < j; k++) list.remove(new Integer(candidates[i]));
+                }  
+            }
+        }
+    }
+}
+
+```
+
+# 81.搜索旋转排序数组 II
 
 ## 题目
-https://leetcode-cn.com/problems/er-wei-shu-zu-zhong-de-cha-zhao-lcof
+https://leetcode-cn.com/problems/search-in-rotated-sorted-array-ii
 ## 题解
-https://leetcode-cn.com/problems/er-wei-shu-zu-zhong-de-cha-zhao-lcof/solution/xun-zhao-dao-zui-xiao-de-ju-zhen-fan-wei-4l26/
-**寻找最小矩阵的行起始位置、行终止位置；列起始位置、列终止位置：**
+**共四种情况（请综合我下面给的例子来看后三种情况）**：
+**1.左 == target 或 中 == target 或 右 == target：** 直接返回 true
+**2.左 == 中：**此时target**可能在[左，mid]中**，**也可能在[mid + 1, r]中**，左 = 左 + 1
+**3.左 < 中：** 此时需要分情况讨论：
+- （1）target比左小**或者**target比中大时（比小的都小**或者**比大的都大）：此时target只可能在[mid, r]中，所以l = mid;
+- （2）其他，即target比左大**并且**target比中小时（大小在左和中之间）：此时target只可能在[左 + 1, mid]中，所以 l = l + 1; r = mid;
 
-1.判断每一行最后一个，如果小于target 则更新最小矩阵行起始位置rowl为当前行的下一行
-2.判断每一行第一个，如果大于target 则更新最小矩阵行终止位置rowr为当前行的上一行
-3.判断每一列最后一个，如果小于target 则更新最小矩阵列起始位置lisl为当前列的下一列
-4.判断每一列第一个，如果大于target 则更新最小矩阵列终止位置lisr为当前列的上一列
+**4.左 > 中：** 此时需要分情况讨论：
+- （1）target比左小**并且**target比中大时（大小在左和中之间）：此时target只可能在[mid, r]中，所以l = mid;
+- （2）其他，即target比左大**或者**比中小时（比大的都大**或者**比小的都小）：此时target只可能在[左 + 1, mid]中，所以 l = l + 1; r = mid;
+
+**后三种情况即2.3.4情况例子：**
+**2.** [3，1，3，3，3] 或 [3，3，3，3，1]，3 == 3(nums[0] == nums[2]，**左 == 中**)，目标target 1 在[左，mid]中 **或** 在[mid + 1, r]中
+**3.** [1，2，3，4，5] 或 [1，2，3，4，0]，1 < 3(nums[0] < nums[2]，**左 < 中**)
+- （1）[1，2，3，4，**0**]中目标target 0 或者 [1，2，3，4，**5**]中目标target 5 都在[mid, r]中
+- （2）[1，**2**，3，4，0]中目标target 2 只在[左 + 1, mid]中
+
+**4.** [5，6，2，3，4] 或 [5，1，2，3，4]，5 > 2(nums[0] > nums[2]，**左 > 中**)
+- （1）[5，6，2，**3**，4]中目标target 3 只在[mid, r]中
+- （2）[5，**6**，2，3，4]中目标target 6 或者 [5，**1**，2，3，4]中目标target 1 都只在[左 + 1, mid]中
 
 
 ## 代码
 ```java
-	class Solution {
-	    public boolean findNumberIn2DArray(int[][] matrix, int target) {
-	        int n = matrix.length;
-	        if(n == 0) return false;
-	        int m = matrix[0].length;
-	        if(m == 0) return false;
-	
-	        if(target < matrix[0][0] || target > matrix[n - 1][m - 1])
-	            return false;
-	        else{
-	            //存储矩阵的行起始位置、行终止位置；列起始位置、列终止位置
-	            int rowl = 0;
-	            int rowr = n - 1;
-	            int lisl = 0;
-	            int lisr = m - 1;
-	            //1.判断每一行最后一个，如果小于target 则更新行起始位置rowl为当前行的下一行
-	             for(int i = rowl; i < rowr + 1; i++){
-	                if(target == matrix[i][m - 1])
-	                    return true;
-	                if(target > matrix[i][m - 1])
-	                    rowl = i + 1;
-	             }
-	             //2.判断每一行第一个，如果大于target 则更新行终止位置rowr为当前行的上一行
-	             for(int i = rowl; i < rowr + 1; i++){
-	                if(target == matrix[i][0])
-	                    return true;
-	                if(target < matrix[i][0])
-	                    rowr = i - 1;
-	             }
-	
-	             //3.判断每一列最后一个，如果小于target 则更新列起始位置lisl为当前列的下一列
-	             for(int i = lisl; i < lisr + 1; i++){
-	                if(target == matrix[n - 1][i])
-	                    return true;
-	                if(target > matrix[n - 1][i])
-	                    lisl = i + 1;
-	             }
-	             //4.判断每一列第一个，如果大于target 则更新列终止位置lisr为当前列的上一列
-	             for(int i = lisl; i < lisr + 1; i++){
-	                if(target == matrix[0][i])
-	                    return true;
-	                if(target < matrix[0][i])
-	                    lisr = i - 1;
-	             }
-	
-	
-	            //遍历寻找这个矩阵，找到就输出true，找不到就最后输出false
-	             for(int i = rowl; i <= rowr; i++){
-	                 for(int j = lisl; j <= lisr; j++){
-	                     if(target == matrix[i][j])
-	                        return true;
-	                 }
-	             }
-	             return false;
-	        }
-	    }
-	}
+class Solution {
+    public boolean search(int[] nums, int target) {
+        int n = nums.length;
+        boolean result = false;
+        int l = 0, r = n - 1;
+        while(l <= r){
+            int mid = (l + r + 1) >> 1;
+            if(nums[l] == target || nums[mid] == target || nums[r] == target) return true;
+            else if(nums[l] == nums[mid]) l++;
+            else if(nums[l] < nums[mid]){
+                if(nums[l] > target || nums[mid] < target) l = mid;
+                else{
+                    l = l + 1;
+                    r = mid;
+                }
+            }else{
+                if(nums[l] > target && nums[mid] < target) l = mid;
+                else{
+                    l = l + 1;
+                    r = mid;
+                }
+            }
+        }
+        return result;
+    }
+}
 ```
-

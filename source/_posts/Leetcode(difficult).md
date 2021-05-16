@@ -1,12 +1,14 @@
 ---
 title: 'Leetcode(difficult)'
-date: 2021/5/7 22:37:04 
+date: 2021/5/16 19:54:23 
 tags:
 	- Leetcode
-	- 困难题目
 ---
 >**题目列表：**
 >4.寻找两个正序数组的中位数
+>23.合并K个升序链表（优先队列）
+>154.寻找旋转排序数组中的最小值 II（二分）
+>1269.停在原地的方案数（dp）
 >1723.完成所有工作的最短时间（dfs+剪枝多写）**
 
 
@@ -125,6 +127,165 @@ https://leetcode-cn.com/problems/median-of-two-sorted-arrays/
 	        }   
 	    }
 	}
+```
+
+
+
+# 23.合并K个升序链表
+## 题目
+https://leetcode-cn.com/problems/merge-k-sorted-lists
+
+## 题解
+优先队列的写法
+## 代码
+**暴力模拟：**
+```java
+class Solution {
+    public ListNode mergeKLists(ListNode[] lists) {
+        int[] pos = new int[lists.length];
+        int tempMinPosi = 0;
+        int nums = 0;
+        ListNode ans = new ListNode(10000);
+        for(int i = 0; i < lists.length; i++){
+            if(lists[i] != null){
+                if(lists[i].val < ans.val){
+                    tempMinPosi = i;
+                    ans = lists[i];
+                }
+            }
+            else nums++;
+        }
+        if(nums == lists.length)
+            return null;
+        ListNode result = ans;
+        lists[tempMinPosi] = lists[tempMinPosi].next;
+
+        while(true)
+        {
+            ListNode tempMin = new ListNode(10000);
+            tempMinPosi = 0;
+            nums = 0;
+            for(int i = 0; i < lists.length; i++){
+                if(lists[i] != null){
+                    if(lists[i].val < tempMin.val){
+                        tempMinPosi = i;
+                        tempMin = lists[i];
+                    }
+                }
+                else{
+                    nums++;
+                }
+            }
+            if(nums == lists.length)
+                break;
+            ans.next = tempMin;
+            ans = ans.next;
+            lists[tempMinPosi] = lists[tempMinPosi].next;
+        }
+        return result;
+    }
+}
+```
+
+**优先队列：**
+```java
+class Solution {
+    public ListNode mergeKLists(ListNode[] lists) {
+        PriorityQueue<ListNode> q = new PriorityQueue<>((x,y)->x.val-y.val);
+        for(ListNode node : lists){
+            if(node != null){
+                q.add(node);
+            }
+        }
+        ListNode head = new ListNode();
+        ListNode tail = head;
+        while(!q.isEmpty()){
+            tail.next = q.poll();
+            tail = tail.next;
+            if (tail.next != null){
+                q.add(tail.next);
+            }
+        }
+        return head.next;
+    }
+}
+```
+
+# 154.寻找旋转排序数组中的最小值 II
+## 题目
+https://leetcode-cn.com/problems/find-minimum-in-rotated-sorted-array-ii
+
+## 题解
+**二分：**
+每次对比都是**左侧元素**和**中间元素**对比，**共三种情况**：
+**1.左 == 中：**此时最小值**可能在[左，mid]中**，**也可能在[mid + 1, r]中**，更新一下结果 ，左 = 左 + 1
+**2.左 < 中：**此时最小值**仅可能**是**左或在[mid + 1，r]中**，更新一下结果 ，左 = mid + 1
+**3.左 > 中：**此时最小值**仅可能**是**中或在[l，mid - 1]中**，更新一下结果 ，右 = mid - 1
+
+**三种情况例子：**
+**1.**[3，**1**，3，3，3]或[3，3，3，3，**2**]，3 == 3(nums[0] == nums[2])，最小值1在[左，mid]中 **或** 最小值2在[mid + 1, r]中
+**2.**[**1**，2，3，4，5]或[1，2，3，4，**0**]，1 < 3(nums[0] < nums[2])，最小值1是左 **或** 最小值0在[mid + 1，r]中
+**3.**[3，4，**2**，3，3]或[3，**1**，2，3，3]，3 > 2(nums[0] > nums[2])，最小值2是中 **或** 最小值1在在[l，mid - 1]中
+
+## 代码
+
+
+```java
+class Solution {
+    public int findMin(int[] nums) {
+        int n = nums.length;
+        int result = nums[0];
+        int l = 0, r = n - 1;
+        while(l <= r){
+            int mid = (l + r + 1) >> 1;
+            if(nums[l] == nums[mid]){
+                result = Math.min(result, nums[mid]); 
+                l++;
+            }else if(nums[l] < nums[mid]){
+                result = Math.min(result, nums[l]); 
+                l = mid  + 1;
+            }else{
+                result = Math.min(result, nums[mid]);
+                r = mid  - 1;
+            }
+        }
+        return result;
+    }
+}
+```
+
+# 1269.停在原地的方案数
+## 题目
+https://leetcode-cn.com/problems/number-of-ways-to-stay-in-the-same-place-after-some-steps
+
+## 题解
+
+**思路：**
+- **动态规划公式** dp[i][j] = dp[i - 1][j - 1] + dp[i - 1][j] + dp[i - 1][j + 1]:
+- **说明：** i表示**步数**，j表示**位置**，dp[i][j] 表示第i步到达j位置的方案数，此时因为只能从i - 1步的 j - 1 位置、j 位置、 j + 1 位置到达，公式由此得到。
+
+**代码优化：**
+- **1.创建数组的行数：** 因为第 i 步和上一步的结果有关，所以可以用两个一维数组来存取，这里直接创建一个二维数组 然后加上**位运算来分上下步**；
+- **2.创建数组的列数：** 二维数组两行的话，那应该多少列呢？最简单的就是arrLen列了，但是我们可以优化一下，因为你如果想要返回起点，肯定**走到一半步数时**就要往回走了，不然就无法回到起点，所以**最多就走到一半的位置**，所以我们**取Math.min(steps / 2 + 1, arrLen)来创建数组**；
+- **3.创建数组的列数（修正）：** 然后写代码时会发现，第i步j位置和 i - 1的j - 1位置 **以及** i - 1 的 j + 1位置有关，那么他有可能超出数组长度的上界和下界（即j为0 **或者** j为一半位置时），那么我们创建数组时**列空间再 +2**好了，**用数组列下标1表示起始位置，列下标arrLen表示终止位置**；
+- **4.数据初始化：** 起始时，即0步1位置（也就是0步初始位置）要初始化为1（result[0][1] = 1;）
+- **5.位运算须知：** 奇 & 1 = 1 ，偶数 & 1 = 0，所以for循环中的行进行位运算实现了上一步和下一步的转换
+
+## 代码
+```java
+class Solution {
+    public int numWays(int steps, int arrLen) {
+        int  min = Math.min(steps / 2 + 1, arrLen);
+        int[][] result = new int[2][min + 2];
+        result[0][1] = 1;
+        for(int i = 1; i <= steps; i++){
+            for(int j = 1; j <= min; j++){
+                result[i & 1][j] =( ( result[(i - 1) & 1][j - 1] + result[(i - 1) & 1][j] ) % (1000000007) + result[(i - 1) & 1][j + 1] ) % (1000000007);
+            }
+        }
+        return result[steps & 1][1];
+    }
+}
 ```
 
 # 1723.完成所有工作的最短时间（dfs+剪枝多写）**
