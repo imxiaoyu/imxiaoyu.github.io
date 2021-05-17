@@ -1,6 +1,6 @@
 ---
 title: 'Leetcode(easy)'
-date: 2021/5/6 23:46:00 
+date: 2021/5/6 23:46:00
 tags:
 	- Leetcode
 ---

@@ -1,6 +1,6 @@
 ---
 title: 'Leetcode(difficult)'
-date: 2021/5/16 19:54:23 
+date: 2021/5/18 0:00:26 
 tags:
 	- Leetcode
 ---
@@ -10,6 +10,8 @@ tags:
 >154.寻找旋转排序数组中的最小值 II（二分）
 >1269.停在原地的方案数（dp）
 >1723.完成所有工作的最短时间（dfs+剪枝多写）**
+>1862.向下取整数对和 （化简遍历数目）
+
 
 
 <!-- more -->
@@ -385,4 +387,38 @@ https://leetcode-cn.com/problems/find-minimum-time-to-finish-all-jobs/solution/g
 	        
 	    }
 	}
+```
+
+# 1862.向下取整数对和
+## 题目
+https://leetcode-cn.com/problems/sum-of-floored-pairs/
+
+## 题解
+
+**举个例子：** nums = [2,5,9]
+我们创建一个数组number[] 长度为nums中最大值+1，这里就是10,然后number初始化：
+number[0] = 0, number[1] = 0, number[2] = 1, number[3] = 1, number[4] = 1, 
+number[5] = 2, number[6] = 2, number[7] = 2, number[8] = 2, number[9] = 3, 
+对的，就是把截止到现在在nums中<=当前number下标的数字出现的次数，然后我们就可以用来求取结果了，对于2来说，我们分段求取[2,3]是÷2 = 1的，[4,5]是÷2 = 2的，[6,7]是÷2 = 3的，[8,9]是÷2 = 4的，分段就能够求取出所有除以2的结果的和，然后再去求5，求9，结束
+## 代码
+
+```java
+class Solution {
+    public int sumOfFlooredPairs(int[] nums) {
+        Arrays.sort(nums);
+        int maxNum = nums[nums.length - 1];
+        int[] number = new int[maxNum + 1];
+        
+        long res = 0;
+        for(int num : nums){number[num]++;}
+        for(int i = 1; i <= maxNum; i++){number[i] += number[i - 1];}
+        for(int i = 0; i < nums.length; i++){
+            for(int j = 1; j < maxNum / nums[i] + 1; j++){
+                res += (number[Math.min(nums[i] * (j + 1) - 1, maxNum)] - number[nums[i] * j - 1]) * j;
+                res %= 1000000007;
+            }
+        }
+        return (int)res;
+    }
+}
 ```

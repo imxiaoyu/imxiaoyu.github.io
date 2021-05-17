@@ -1,6 +1,6 @@
 ---
-title: 'Leetcode(mid 1-100)'
-date: 2021/5/16 19:59:28 
+title: 'Leetcode(mid1-100)'
+date: 2021/5/16 19:59:28
 tags:
 	- Leetcode
 ---
