@@ -1,6 +1,6 @@
 ---
 title: 'Leetcode(mid100-)'
-date: 2021/5/16 20:14:35
+date: 2021/5/18 22:46:30 
 tags:
 	- Leetcode
 ---
@@ -13,6 +13,7 @@ tags:
 >421.数组中两个数的最大异或值(字典树)
 >740.删除并获得点数（dp）
 >1310.子数组异或查询（异或运用）
+>1442. 形成两个异或相等数组的三元组数目
 >1482.制作 m 束花所需的最少天数（二分）
 >1734.解码异或后的排列
 >5743.增长的内存泄露
@@ -496,6 +497,81 @@ class Solution {
     }
 }
 ```
+
+
+# 1442. 形成两个异或相等数组的三元组数目
+## 题目
+https://leetcode-cn.com/problems/count-triplets-that-can-form-two-arrays-of-equal-xor/
+
+## 题解
+
+把题目给的数组存一下前i位的所有数字的异或结果（比如arr = [2, 3, 1, 6, 7]，变化为arr = [2, 2^3, 2^3^1, 2^3^1^6, 2^3^1^6^7]）,这样有什么好处呢？这样可以快速计算某一个区间内的异或结果，比如计算区间[1,3],那么我们直接arr[3] ^ arr[0]就好了，因为根据上面公式(a ^ a = 0)自己异或自己为0，arr[3]里面包含了arr[0]的部分，所以一异或相当于就去掉了那一部分，所以做题的思路就出来了，暴力i,j,k然后分别求出a和b来，再比较一下，就好了。
+
+**代码优化：** 
+1.求a，b还是有点麻烦，我突然发现a == b才是符合题意的（所以a ^ b = 0），而a、b的求取区间又可以合并为一个区间，所以我们直接判断[i - 1, k] 这个区间的异或结果是不是0就可以了（注意一下i为0时的判断）
+2.不用求a，b了那j遍历还有意义吗？其实也可以去掉了
+3.还可以优化嘛？其实还可以，我们不是首先求了前i位的所有数字的异或结果，这里遍历了一遍，其实直接可以放在我们遍历i和k的地方就可以了，只需要修改一下i,k的遍历顺序。
+
+## 代码
+
+
+**优化前：**
+```java
+class Solution {
+    public int countTriplets(int[] arr) {
+        int result = 0;
+        for(int i = 1; i < arr.length; i++) arr[i] ^= arr[i - 1];
+        for(int i = 0; i < arr.length - 1; i++)
+            for(int j = i + 1; j < arr.length; j++)
+                for(int k = j; k < arr.length; k++)
+                    if((i == 0 && arr[j - 1] == (arr[k] ^ arr[j - 1])) || (i != 0 && (arr[j - 1] ^ arr[i - 1]) == (arr[k] ^ arr[j - 1]))) result++;              
+        return result;
+    }
+}
+```
+**仅优化1后：**
+```java
+class Solution {
+    public int countTriplets(int[] arr) {
+        int result = 0;
+        for(int i = 1; i < arr.length; i++) arr[i] ^= arr[i - 1];
+        for(int i = 0; i < arr.length - 1; i++)
+            for(int j = i + 1; j < arr.length; j++)
+                for(int k = j; k < arr.length; k++)
+                    if((i == 0 && arr[k] == 0) || (i != 0 && (arr[k] ^ arr[i - 1]) == 0)) result++;              
+        return result;
+    }
+}
+```
+ **仅优化1和2后：**
+```java
+class Solution {
+    public int countTriplets(int[] arr) {
+        int result = 0;
+        for(int i = 1; i < arr.length; i++) arr[i] ^= arr[i - 1];
+        for(int i = 0; i < arr.length - 1; i++)
+            for(int k = i + 1; k < arr.length; k++)
+                if((i == 0 && arr[k] == 0) || (i != 0 && (arr[k] ^ arr[i - 1]) == 0)) result += k - i;              
+        return result;
+   }
+}
+```
+ **优化1和2和3后：**
+
+```java
+class Solution {
+    public int countTriplets(int[] arr) {
+        int result = 0;
+        for(int k = 1; k < arr.length; k++){
+            arr[k] ^= arr[k - 1];
+            for(int i = 0; i < k; i++)
+                if((i == 0 && arr[k] == 0) || (i != 0 && (arr[k] ^ arr[i - 1]) == 0)) result += k - i;              
+        }       
+        return result;
+   }
+}
+```
+
 
 # 1482.制作 m 束花所需的最少天数（二分）
 

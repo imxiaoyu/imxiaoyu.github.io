@@ -1,5 +1,5 @@
 ---
-title: 'MySQL(1)'
+title: 'MySQL'
 date: 2021/5/18 0:01:38 
 tags:
 	- MySQL
