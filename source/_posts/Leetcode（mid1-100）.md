@@ -1,6 +1,6 @@
 ---
 title: 'Leetcode(mid1-100)'
-date: 2021/5/16 19:59:28
+date: 2021/5/19 22:29:22 
 tags:
 	- Leetcode
 ---
@@ -24,6 +24,9 @@ tags:
 >34.在排序数组中查找元素的第一个和最后一个位置(二分)
 >39.组合总和（dfs）
 >40.组合总和 II(dfs)
+>50.Pow(x, n)(位运算)
+>54.螺旋矩阵
+>79.单词搜索(dfs)
 >81.搜索旋转排序数组 II（二分）
 
 
@@ -1165,6 +1168,161 @@ class Solution {
 }
 
 ```
+
+
+# 50.Pow(x, n)
+## 题目
+https://leetcode-cn.com/problems/powx-n/
+## 题解
+
+1.自己定义一个 pow数组，存的是 x的1次方，2次方，4次方，8次方，16次方……这样可以简便最后的运算
+2.通过while求取pow
+3.再来一个while 通过位运算计算当前位是否需要×上对应pow数组
+4.返回结果
+## 代码
+
+```java
+class Solution {
+    public double myPow(double x, int n) {
+        if(x == 1 || n == 0 || (x == -1 && n % 2 == 0)) return 1;
+        if(x == -1 && n % 2 == 1) return -1;
+        if(x == 0 || n == Integer.MIN_VALUE) return 0;
+
+        if(n < 0){n = -n; x = 1.0 / x;}
+
+        int temp = 1;
+        double result = 1;
+        double[] pow = new double[32];
+        pow[1] = x;
+
+        while(temp < 31 && pow[temp] >= -10000 && pow[temp] <= 10000){
+            temp++;
+            pow[temp] = pow[temp - 1] * pow[temp - 1];
+        }
+        int flag = temp;
+        temp = 1;
+        while(temp < flag){
+            if((n & 1) == 1) result *= pow[temp];
+            n = n >> 1;   
+            temp++;
+        }
+
+        return result;
+
+    }
+}
+```
+
+# 54.螺旋矩阵
+## 题目
+https://leetcode-cn.com/problems/spiral-matrix/
+## 题解
+因为就四种走法，所以定义一个上up下down左left右right的边界，定义一个当前的坐标(x,y)，定义一个结果队列result：
+- 1.左->右:result.add(matrix[x][y++]);
+- 2.上->下:result.add(matrix[x++][y]);
+- 3.右->左:result.add(matrix[x][y--]);
+- 4.下->上:result.add(matrix[x--][y]);
+- 上面四种情况while里面跑完记得更新下边界还有(x,y)坐标使得下一阶段起始时坐标是对的
+
+返回结果result
+
+## 代码
+
+```java
+class Solution {
+    public List<Integer> spiralOrder(int[][] matrix) {
+        int m = matrix.length;
+        int n = matrix[0].length;
+        List<Integer> result = new ArrayList<>();
+        //上下左右边界
+        int up = 0;
+        int down = m - 1;
+        int left = 0;
+        int right = n - 1;
+        //当前坐标(x,y)
+        int x = 0;
+        int y = 0;
+        while(up <= down && left <= right){
+            //左->右
+            while(y <= right && up <= down && left <= right) result.add(matrix[x][y++]);
+
+            x = ++up;
+            y = right;
+            //上->下
+            while(x <= down && up <= down && left <= right) result.add(matrix[x++][y]);
+
+            x = down;
+            y = --right;
+            //右->左
+            while(y >= left && up <= down && left <= right) result.add(matrix[x][y--]);
+            
+            x = --down;
+            y = left;
+            //下->上
+            while(x >= up && up <= down && left <= right) result.add(matrix[x--][y]);
+            
+            x = up;
+            y = ++left;
+        }
+        return result;
+    }
+}
+```
+
+
+# 79.单词搜索
+## 题目
+https://leetcode-cn.com/problems/word-search/
+## 题解
+boolean[][] used 记录这个位置是否使用过
+int x记录当前行
+int y记录当前列
+temp 记录当前匹配了几个word中的字符
+dfs中： 上下左右进行遍历，注意下返回条件和 行列 范围就可以了
+
+## 代码
+
+```java
+class Solution {
+    boolean result = false;
+    int m;
+    int n;
+    int length;
+    public boolean exist(char[][] board, String word) {
+        m = board.length;
+        n = board[0].length;
+        length = word.length();
+        boolean[][] used = new boolean[m][n];
+        for(int i = 0; i < m; i++){
+            for(int j = 0; j < n; j++){
+                if(result)
+                    return result;
+                else if(board[i][j] == word.charAt(0))
+                    dfs(board, used, i, j, 0, word);
+                else 
+                    continue;
+            }
+        }
+        return result;
+    }
+    public void dfs(char[][] board, boolean[][] used, int x, int y, int temp, String word){
+        if(temp == length) {result = true; return;}
+        else if(result) return;
+        else if(x > -1 && x < m && y > -1 && y < n){
+            if(!used[x][y] && board[x][y] == word.charAt(temp)){
+                used[x][y] = true;
+                dfs(board, used, x - 1, y, temp + 1, word);
+                dfs(board, used, x + 1, y, temp + 1, word);
+                dfs(board, used, x, y - 1, temp + 1, word);
+                dfs(board, used, x, y + 1, temp + 1, word);
+                used[x][y] = false;
+            }
+        }
+        else return;
+    }
+}
+```
+
 
 # 81.搜索旋转排序数组 II
 

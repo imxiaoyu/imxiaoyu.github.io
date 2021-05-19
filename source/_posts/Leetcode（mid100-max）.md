@@ -1,6 +1,6 @@
 ---
 title: 'Leetcode(mid100-)'
-date: 2021/5/18 22:46:30 
+date: 2021/5/19 22:29:31
 tags:
 	- Leetcode
 ---
@@ -8,6 +8,7 @@ tags:
 >153.寻找旋转排序数组中的最小值（二分）
 >198.打家劫舍（dp）
 >213.打家劫舍II（dp）
+>240.搜索二维矩阵 II
 >337.打家劫舍III(需要多写几次**)
 >343.整数拆分（dp）
 >421.数组中两个数的最大异或值(字典树)
@@ -16,10 +17,14 @@ tags:
 >1442.形成两个异或相等数组的三元组数目
 >1482.制作 m 束花所需的最少天数（二分）
 >1734.解码异或后的排列
->5743.增长的内存泄露
->5744.旋转盒子
->5760.构成交替字符串需要的最小交换次数
->5761.找出和为指定值的下标对
+>1738.找出第 K 大的异或坐标值
+>1860.增长的内存泄露
+>1861.旋转盒子
+>1864.构成交替字符串需要的最小交换次数
+>1865.找出和为指定值的下标对
+
+
+
 
 
 <!-- more -->
@@ -62,35 +67,11 @@ class Solution {
 
 ## 题目
 https://leetcode-cn.com/problems/house-robber
->1.你是一个专业的小偷，计划偷窃沿街的房屋。每间房内都藏有一定的现金，影响你偷窃的唯一制约因素就是相邻的房屋装有相互连通的防盗系统，如果两间相邻的房屋在同一晚上被小偷闯入，系统会自动报警。
->2.给定一个代表每个房屋存放金额的非负整数数组，计算你 不触动警报装置的情况下 ，一夜之内能够偷窃到的最高金额。
 
 
->**提示：**
->1 <= nums.length <= 100
->1 <= nums[i] <= 400
+## 题解
 
-
-### 示例 1
->**输入：**nums = [1,2,3,1]
->**输出：**4
->**解释：**
->- 偷窃 1 号房屋 (金额 = 1) ，然后偷窃 3 号房屋 (金额 = 3)。
->- 偷窃到的最高金额 = 1 + 3 = 4 。
-
-
-### 示例 2
-
->**输入：**nums = [2,7,9,3,1]
->**输出：**12
->**解释：**
->- 偷窃 1 号房屋 (金额 = 2), 偷窃 3 号房屋 (金额 = 9)，接着偷窃 5 号房屋 (金额 = 1)。
->- 偷窃到的最高金额 = 2 + 9 + 1 = 12 。
-
-
-## 思路
-
->跟上题类似
+>跟740类似
 
 **最优子结构的公式：**
 >dp[i] = Math.max(dp[i - 1], dp[i - 2] + nums[i]);
@@ -130,38 +111,8 @@ https://leetcode-cn.com/problems/house-robber
 
 ## 题目
 https://leetcode-cn.com/problems/house-robber-ii
->1.你是一个专业的小偷，计划偷窃沿街的房屋，每间房内都藏有一定的现金。这个地方所有的房屋都** 围成一圈 **，这意味着第一个房屋和最后一个房屋是紧挨着的。同时，相邻的房屋装有相互连通的防盗系统，如果两间相邻的房屋在同一晚上被小偷闯入，系统会自动报警 。
->2.给定一个代表每个房屋存放金额的非负整数数组，计算你 在不触动警报装置的情况下 ，今晚能够偷窃到的最高金额。
 
-
->**提示：**
->1 <= nums.length <= 100
->1 <= nums[i] <= 1000
-
-
-
-### 示例 1
->**输入：**nums = [2,3,2]
->**输出：**3
->**解释：**
->- 你不能先偷窃 1 号房屋（金额 = 2），然后偷窃 3 号房屋（金额 = 2）, 因为他们是相邻的。
-
-
-### 示例 2
-
->**输入：**nums = [1,2,3,1]
->**输出：**4
->**解释：**
->- 你可以先偷窃 1 号房屋（金额 = 1），然后偷窃 3 号房屋（金额 = 3）。
->- 偷窃到的最高金额 = 1 + 3 = 4 。
-
-
-### 示例 3
->**输入：**nums = [0]
->**输出：**0
-
-
-## 思路
+## 题解
 
 >**跟上题类似，但是可以分别去掉首部和尾部，然后判断两个的大小，返回大的。**
 
@@ -207,12 +158,85 @@ https://leetcode-cn.com/problems/house-robber-ii
 	    }
 	}
 ```
+
+# 240.搜索二维矩阵 II
+## 题目
+https://leetcode-cn.com/problems/search-a-2d-matrix-ii/
+## 题解
+**寻找最小矩阵的行起始位置、行终止位置；列起始位置、列终止位置：**
+- 1.判断每一行最后一个，如果小于target 则更新最小矩阵行起始位置rowl为当前行的下一行
+- 2.判断每一行第一个，如果大于target 则更新最小矩阵行终止位置rowr为当前行的上一行
+- 3.判断每一列最后一个，如果小于target 则更新最小矩阵列起始位置lisl为当前列的下一列
+- 4.判断每一列第一个，如果大于target 则更新最小矩阵列终止位置lisr为当前列的上一列
+
+## 代码
+
+```java
+class Solution {
+    public boolean searchMatrix(int[][] matrix, int target) {
+        int n = matrix.length;
+        if(n == 0) return false;
+        int m = matrix[0].length;
+        if(m == 0) return false;
+
+        if(target < matrix[0][0] || target > matrix[n - 1][m - 1])
+            return false;
+        else{
+            //存储矩阵的行起始位置、行终止位置；列起始位置、列终止位置
+            int rowl = 0;
+            int rowr = n - 1;
+            int lisl = 0;
+            int lisr = m - 1;
+            //1.判断每一行最后一个，如果小于target 则更新行起始位置rowl为当前行的下一行
+             for(int i = rowl; i < rowr + 1; i++){
+                if(target == matrix[i][m - 1])
+                    return true;
+                if(target > matrix[i][m - 1])
+                    rowl = i + 1;
+             }
+             //2.判断每一行第一个，如果大于target 则更新行终止位置rowr为当前行的上一行
+             for(int i = rowl; i < rowr + 1; i++){
+                if(target == matrix[i][0])
+                    return true;
+                if(target < matrix[i][0])
+                    rowr = i - 1;
+             }
+
+             //3.判断每一列最后一个，如果小于target 则更新列起始位置lisl为当前列的下一列
+             for(int i = lisl; i < lisr + 1; i++){
+                if(target == matrix[n - 1][i])
+                    return true;
+                if(target > matrix[n - 1][i])
+                    lisl = i + 1;
+             }
+             //4.判断每一列第一个，如果大于target 则更新列终止位置lisr为当前列的上一列
+             for(int i = lisl; i < lisr + 1; i++){
+                if(target == matrix[0][i])
+                    return true;
+                if(target < matrix[0][i])
+                    lisr = i - 1;
+             }
+
+
+            //遍历寻找这个矩阵，找到就输出true，找不到就最后输出false
+             for(int i = rowl; i <= rowr; i++){
+                 for(int j = lisl; j <= lisr; j++){
+                     if(target == matrix[i][j])
+                        return true;
+                 }
+             }
+             return false;
+        }
+    }
+}
+```
+
 # 337.打家劫舍III(需要多写几次) **
 
 ## 题目
 https://leetcode-cn.com/problems/house-robber-iii
 二叉树状房间
-## 思路
+## 题解
 
 >**简化一下这个问题：**一棵二叉树，树上的每个点都有对应的权值，每个点有两种状态（选中和不选中），问在不能同时选中有父子关系的点的情况下，能选中的点的最大权值和是多少。
 
@@ -379,35 +403,9 @@ class Solution {
 # 740.删除并获得点数
 ## 题目
 https://leetcode-cn.com/problems/delete-and-earn
->1.给你一个整数数组 nums ，你可以对它进行一些操作。
->2.每次操作中，选择任意一个 nums[i] ，删除它并获得 nums[i] 的点数。之后，你必须删除每个等于 nums[i] - 1 或 nums[i] + 1 的元素。
->3.开始你拥有 0 个点数。返回你能通过这些操作获得的最大点数。
 
 
->**提示：**
->1 <= nums.length <= 2 * 10^4
->1 <= nums[i] <= 10^4
-
-
-### 示例 1
->**输入：**nums = [3,4,2]
->**输出：**6
->**解释：**
->- 删除 4 获得 4 个点数，因此 3 也被删除。
->- 之后，删除 2 获得 2 个点数。总共获得 6 个点数。
-
-
-### 示例 2
-
->**输入：**nums = [2,2,3,3,3,4]
->**输出：**9
->**解释：**
->- 删除 3 获得 3 个点数，接着要删除两个 2 和 4 。
->- 之后，再次删除 3 获得 3 个点数，再次删除 3 获得 3 个点数。总共获得 9 个点数。
-
-
-
-## 思路
+## 题解
 
 借鉴的一个leetcode大神（陆艰步走）的解释：
 
@@ -685,7 +683,44 @@ class Solution {
 }
 ```
 
-# 5743.增长的内存泄露
+# 1738.找出第 K 大的异或坐标值
+## 题目
+https://leetcode-cn.com/problems/find-kth-largest-xor-coordinate-value/
+## 题解
+https://leetcode-cn.com/problems/find-kth-largest-xor-coordinate-value/solution/su-kan-si-lu-qing-xi-shi-jian-98-kong-ji-2d3k/
+根据题意，(i,j)坐标意思是矩阵行为[0,i]列为[0,j]的全部元素异或和，那么我们还用原数组存一下异或结果，然后用一个新创建的一维数组存一下这些异或和，最后排序一下输出第k大就好了
+
+**求异或：**
+1.i == 0 && j == 0时，matrix[i][j] = matrix[0][0];
+2.i == 0时，matrix[i][j] ^= matrix[i][j - 1];
+3.j == 0时，matrix[i][j] ^= matrix[i - 1][j];
+4.i > 0,j > 0时，matrix[i][j] ^= (matrix[i][j - 1] ^ matrix[i - 1][j - 1] ^ matrix[i - 1][j]) , 相当于下图中，用matrix[i][j - 1] ^ matrix[i - 1][j]时左上角那部分重合自己异或自己为0了，所以需要再次^ matrix[i - 1][j - 1]补回来
+
+
+## 代码
+
+```java
+class Solution {
+    public int kthLargestValue(int[][] matrix, int k) {
+        int m = matrix.length;
+        int n = matrix[0].length;
+        int[] result = new int[m * n];
+        for(int i = 0; i < m; i++){
+            for(int j = 0; j < n; j++){
+                if(i == 0 && j == 0) ;
+                else if(i == 0) matrix[i][j] ^= matrix[i][j - 1];
+                else if(j == 0) matrix[i][j] ^= matrix[i - 1][j];
+                else matrix[i][j] ^= (matrix[i][j - 1] ^ matrix[i - 1][j - 1] ^ matrix[i - 1][j]);
+                result[i * n + j] = matrix[i][j];
+            }
+        }
+        Arrays.sort(result);
+        return result[m * n - k];
+    }
+}
+```
+
+# 1860.增长的内存泄露
 ## 题目
 https://leetcode-cn.com/problems/incremental-memory-leak/
 ## 题解 
@@ -708,7 +743,7 @@ class Solution {
 ```
 
 
-# 5744.旋转盒子
+# 1861.旋转盒子
 ## 题目
 https://leetcode-cn.com/problems/rotating-the-box/
 ## 题解 
@@ -773,7 +808,7 @@ class Solution {
 }
 ```
 
-# 5760.构成交替字符串需要的最小交换次数
+# 1864.构成交替字符串需要的最小交换次数
 ## 题目
 https://leetcode-cn.com/problems/minimum-number-of-swaps-to-make-the-binary-string-alternating/
 ## 题解 
@@ -815,7 +850,7 @@ class Solution {
 ```
 
 
-# 5761.找出和为指定值的下标对
+# 1865.找出和为指定值的下标对
 ## 题目
 https://leetcode-cn.com/problems/finding-pairs-with-a-certain-sum/
 ## 题解 
