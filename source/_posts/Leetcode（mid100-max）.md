@@ -12,6 +12,7 @@ tags:
 >337.打家劫舍III(需要多写几次**)
 >343.整数拆分（dp）
 >421.数组中两个数的最大异或值(字典树)
+>692.前K个高频单词
 >740.删除并获得点数（dp）
 >1310.子数组异或查询（异或运用）
 >1442.形成两个异或相等数组的三元组数目
@@ -399,6 +400,77 @@ class Solution {
     }
 }
 ```
+# 692.前K个高频单词
+## 题目
+https://leetcode-cn.com/problems/top-k-frequent-words/
+
+
+## 题解
+**一、暴力求法：**
+- 1、创建一个HashMap用来存取每个单词出现的次数
+- 2、遍历HashMap k次找寻出现次数最多的单词（如果多个一样就取字母顺序排序），找到单词后存在result队列中
+- 3、返回结果
+
+**二、Comparator接口求法：**
+
+- 1、创建一个HashMap用来存取每个单词出现的次数
+- 2、直接把HashMap中求的单词存在result集合中
+- 3、使用comparator接口完成排序
+- 4、返回结果
+
+## 代码
+**一、暴力求解：**
+```java
+class Solution {
+    public List<String> topKFrequent(String[] words, int k) {
+        Map<String,Integer> word = new HashMap<>();
+        for (String s : words) word.put(s, word.getOrDefault(s, 0) + 1);   
+        List<String> result = new ArrayList<>();
+        StringBuffer tempMaxString = new StringBuffer();
+        int tempMaxNum = 0;
+        for(int i = 0; i < k; i++){
+            tempMaxNum = 0;
+            for(Map.Entry<String, Integer> entry : word.entrySet()){
+                if(tempMaxNum < entry.getValue()){
+                    tempMaxNum = entry.getValue();
+                    tempMaxString.delete(0, tempMaxString.length());
+                    tempMaxString.append(entry.getKey());
+                }
+                else if(tempMaxNum == entry.getValue()){
+                    if(tempMaxString.toString().compareTo(entry.getKey()) > 0){
+                        tempMaxNum = entry.getValue();
+                        tempMaxString.delete(0, tempMaxString.length());
+                        tempMaxString.append(entry.getKey());
+                    }
+                }
+            }
+            word.remove(tempMaxString.toString());
+            result.add(tempMaxString.toString());
+        }
+        return result;
+    }
+}
+```
+**二、Comparator接口：**
+```java
+class Solution {
+    public List<String> topKFrequent(String[] words, int k) {
+        Map<String, Integer> word = new HashMap<String, Integer>();
+        for (String s : words) word.put(s, word.getOrDefault(s, 0) + 1);
+
+        List<String> result = new ArrayList<String>();
+        for (String s : word.keySet()) result.add(s);
+            
+        Collections.sort(result, new Comparator<String>() {
+            public int compare(String word1, String word2) {
+                return word.get(word1) == word.get(word2) ? word1.compareTo(word2) : word.get(word2) - word.get(word1);
+            }
+        });
+        return result.subList(0, k);
+    }
+}
+```
+
 
 # 740.删除并获得点数
 ## 题目

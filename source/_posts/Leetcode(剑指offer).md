@@ -11,6 +11,7 @@ tags:
 >剑指 Offer 14-I.剪绳子（dp）
 >剑指 Offer 14-II.剪绳子 II（找规律？）
 >剑指 Offer 16.数值的整数次方（位运算）
+>剑指 Offer 26.树的子结构（dfs或者递归)
 >面试题 (10.03).搜索旋转数组（二分）
 
 
@@ -311,6 +312,57 @@ class Solution {
 
         return result;
 
+    }
+}
+```
+
+# 剑指 Offer 26.树的子结构
+
+## 题目
+https://leetcode-cn.com/problems/shu-de-zi-jie-gou-lcof/
+## 题解
+1.先用dfs求二叉树B的长度，接下来需要用长度来判断是不是A的部分和B匹配上了
+2.再用dfs去匹配A和B：
+- ①如果当前A的val和当前tempB的val一样，匹配长度+1继续去匹配A的左子树、tempB的左子树，A的右子树、tempB的右子树
+- ②如果当前A的val和当前tempB的val不一样，那么tempB变为B的初始根节点去匹配A的左子树、A的右子树
+- ③当匹配长度等于二叉树B的长度时，停止匹配
+
+## 代码
+
+```java
+class Solution {
+    int tempNum = 0;
+    int bLength = 0;
+    boolean result = false;
+    public boolean isSubStructure(TreeNode A, TreeNode B) {
+        if(A == null || B == null) return false;
+        bLengthDfs(B);
+        dfs(A, B, B);
+        return result;
+    }
+    public void bLengthDfs(TreeNode B){
+        if(B == null) return;
+        else{
+            bLength++;
+            bLengthDfs(B.left);
+            bLengthDfs(B.right);
+        }
+    }
+    public void dfs(TreeNode A, TreeNode B, TreeNode tempB){
+        if(tempNum == bLength) result = true;
+        else if(result || A == null || tempB == null) return ;
+        else{
+            if(A.val == tempB.val){
+                tempNum++;
+                dfs(A.left, B, tempB.left);
+                dfs(A.right, B,  tempB.right);
+            }
+            else{
+                tempNum = 0;
+                dfs(A.left, B, B);
+                dfs(A.right, B, B);
+            }
+        }
     }
 }
 ```
