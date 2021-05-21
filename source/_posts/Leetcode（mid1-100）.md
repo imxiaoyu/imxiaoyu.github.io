@@ -1,6 +1,6 @@
 ---
 title: 'Leetcode(mid1-100)'
-date: 2021/5/19 22:29:22 
+date: 2021/5/21 22:07:51 
 tags:
 	- Leetcode
 ---
@@ -22,6 +22,7 @@ tags:
 >29.两数相除（位运算，模拟）
 >33.搜索旋转排序数组（二分）
 >34.在排序数组中查找元素的第一个和最后一个位置(二分)
+>36.有效的数独
 >39.组合总和（dfs）
 >40.组合总和 II(dfs)
 >50.Pow(x, n)(位运算)
@@ -1089,6 +1090,50 @@ class Solution {
 }
 ```
 
+# 36.有效的数独
+## 题目
+https://leetcode-cn.com/problems/valid-sudoku/
+## 题解
+1.判断行和列，两个for循环，用两个boolean直接判断了
+2.判断九宫格，需要四个for来控制行和列
+
+## 代码
+
+```java
+class Solution {
+    public boolean isValidSudoku(char[][] board) {
+        //判断行和列
+        for(int i = 0; i < 9; i++){
+            boolean[] usedRow = new boolean[9];
+            boolean[] usedList = new boolean[9];
+            for(int j = 0; j < 9; j++){
+                if(board[i][j] == '.') ;
+                else if(board[i][j] > '0' && board[i][j] <= '9' && !usedRow[board[i][j] - '1']) usedRow[board[i][j] - '1'] = true;
+                else return false;
+                if(board[j][i] == '.') ;
+                else if(board[j][i] > '0' && board[j][i] <= '9' && !usedList[board[j][i] - '1']) usedList[board[j][i] - '1'] = true;
+                else return false;
+            }
+        }
+
+        //判断九宫格
+        for(int m = 0; m < 3; m++){
+            for(int n = 0; n < 3; n++){
+                boolean[] used = new boolean[9];
+                for(int i = m * 3; i < m * 3 + 3; i++){
+                    for(int j = n * 3; j < n * 3 + 3; j++){
+                        if(board[i][j] == '.') ;
+                        else if(board[i][j] > '0' && board[i][j] <= '9' && !used[board[i][j] - '1']) used[board[i][j] - '1'] = true;
+                        else return false;
+                    }
+                }
+            }
+        }
+        return true;
+    }
+}
+```
+
 # 39.组合总和
 ## 题目
 https://leetcode-cn.com/problems/combination-sum
@@ -1120,8 +1165,8 @@ class Solution {
     }
 }
 
-
 ```
+
 # 40.组合总和 II
 ## 题目
 https://leetcode-cn.com/problems/combination-sum-ii

@@ -1,6 +1,6 @@
 ---
 title: 'Leetcode(mid100-)'
-date: 2021/5/19 22:29:31
+date: 2021/5/21 22:08:10 
 tags:
 	- Leetcode
 ---
@@ -14,6 +14,7 @@ tags:
 >421.数组中两个数的最大异或值(字典树)
 >692.前K个高频单词
 >740.删除并获得点数（dp）
+>1035.不相交的线(最长公共子序列 经典dp 模板)
 >1310.子数组异或查询（异或运用）
 >1442.形成两个异或相等数组的三元组数目
 >1482.制作 m 束花所需的最少天数（二分）
@@ -528,6 +529,36 @@ https://leetcode-cn.com/problems/delete-and-earn
 	        return dp[max_Num];
 	    }
 	}
+```
+
+# 1035.不相交的线
+## 题目
+https://leetcode-cn.com/problems/uncrossed-lines/
+## 题解
+dp[i][j] 二维数组代表的是数组1的i位置 **和** 数组2的j位置 最长匹配的个数  (dp[0][0] = 0,dp[0][j] = 0, dp[i][0] = 0)
+所以对于nums1[i - 1]和nums2[j - 1]：
+- 1.如果nums1[i - 1] == nums2[j - 1],那么dp[i][j] = dp[i - 1][j - 1] + 1;
+- 2.如果nums1[i - 1] != nums2[j - 1],那么dp[i][j] = Math.max(dp[i - 1][j], dp[i][j - 1]);
+
+## 代码
+
+```java
+class Solution {
+    public int maxUncrossedLines(int[] nums1, int[] nums2) {
+        int m = nums1.length;
+        int n = nums2.length;
+        int[][] dp = new int[m + 1][n + 1];
+        for(int i = 1; i <= m; i++){
+            int num1 = nums1[i - 1];
+            for(int j = 1; j <= n; j++){
+                int num2 = nums2[j - 1];
+                if(num1 == num2) dp[i][j] = dp[i - 1][j - 1] + 1;
+                else dp[i][j] = Math.max(dp[i - 1][j], dp[i][j - 1]);
+            }
+        }
+        return dp[m][n];
+    }
+}
 ```
 
 # 1310.子数组异或查询
