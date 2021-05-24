@@ -23,6 +23,7 @@ tags:
 >33.搜索旋转排序数组（二分）
 >34.在排序数组中查找元素的第一个和最后一个位置(二分)
 >36.有效的数独
+>38.外观数列
 >39.组合总和（dfs）
 >40.组合总和 II(dfs)
 >50.Pow(x, n)(位运算)
@@ -1133,6 +1134,44 @@ class Solution {
     }
 }
 ```
+
+
+# 38.外观数列
+## 题目
+https://leetcode-cn.com/problems/count-and-say/
+## 题解
+把每个数的都存下里，每次都找下个数
+
+## 代码
+
+```java
+class Solution {
+    public String countAndSay(int n) {
+        StringBuffer[] result = new StringBuffer[n];
+        for(int i = 0; i < n; i++) result[i] = new StringBuffer();
+        result[0].append(1);
+        int tempNum = 1;
+        for(int i = 1; i < n; i++){
+            tempNum = 1;
+            for(int j = 0; j < result[i - 1].length(); j++){
+                if(j != result[i - 1].length() - 1){
+                    if(result[i - 1].charAt(j) != result[i - 1].charAt(j + 1)){
+                        result[i].append(tempNum + "" + result[i - 1].charAt(j));
+                        tempNum = 1;
+                    }
+                    else if(result[i - 1].charAt(j) == result[i - 1].charAt(j + 1))
+                        tempNum++;
+                }
+                else{
+                        result[i].append(tempNum + "" + result[i - 1].charAt(j));
+                }
+            }
+        }
+        return result[n - 1].toString();
+    }
+}
+```
+
 
 # 39.组合总和
 ## 题目
