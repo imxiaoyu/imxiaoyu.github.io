@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="https:">
   <title>Leetcode(difficult) | Flying My Dream</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="题目列表：4.寻找两个正序数组的中位数23.合并K个升序链表（优先队列）25.K个一组翻转链表(模拟)154.寻找旋转排序数组中的最小值 II（二分）810.黑板异或游戏1269.停在原地的方案数（dp）1723.完成所有工作的最短时间（dfs+剪枝多写）**1862.向下取整数对和 （化简遍历数目）  664.奇怪的打印机1707.与数组中元素的最大异或值">
+  <meta name="description" content="题目列表：4.寻找两个正序数组的中位数23.合并K个升序链表（优先队列）25.K个一组翻转链表(模拟)154.寻找旋转排序数组中的最小值 II（二分）810.黑板异或游戏1269.停在原地的方案数（dp）1723.完成所有工作的最短时间（dfs+剪枝多写）**1862.向下取整数对和 （化简遍历数目）  664.奇怪的打印机1707.与数组中元素的最大异或值1787.使所有区间的异或结果为零">
 <meta name="keywords" content="Leetcode">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Leetcode(difficult)">
 <meta property="og:url" content="https:/2021/05/18/Leetcode(difficult)/index.html">
 <meta property="og:site_name" content="Flying My Dream">
-<meta property="og:description" content="题目列表：4.寻找两个正序数组的中位数23.合并K个升序链表（优先队列）25.K个一组翻转链表(模拟)154.寻找旋转排序数组中的最小值 II（二分）810.黑板异或游戏1269.停在原地的方案数（dp）1723.完成所有工作的最短时间（dfs+剪枝多写）**1862.向下取整数对和 （化简遍历数目）  664.奇怪的打印机1707.与数组中元素的最大异或值">
+<meta property="og:description" content="题目列表：4.寻找两个正序数组的中位数23.合并K个升序链表（优先队列）25.K个一组翻转链表(模拟)154.寻找旋转排序数组中的最小值 II（二分）810.黑板异或游戏1269.停在原地的方案数（dp）1723.完成所有工作的最短时间（dfs+剪枝多写）**1862.向下取整数对和 （化简遍历数目）  664.奇怪的打印机1707.与数组中元素的最大异或值1787.使所有区间的异或结果为零">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2021-05-24T15:43:14.627Z">
+<meta property="og:updated_time" content="2021-05-25T15:38:23.149Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Leetcode(difficult)">
-<meta name="twitter:description" content="题目列表：4.寻找两个正序数组的中位数23.合并K个升序链表（优先队列）25.K个一组翻转链表(模拟)154.寻找旋转排序数组中的最小值 II（二分）810.黑板异或游戏1269.停在原地的方案数（dp）1723.完成所有工作的最短时间（dfs+剪枝多写）**1862.向下取整数对和 （化简遍历数目）  664.奇怪的打印机1707.与数组中元素的最大异或值">
+<meta name="twitter:description" content="题目列表：4.寻找两个正序数组的中位数23.合并K个升序链表（优先队列）25.K个一组翻转链表(模拟)154.寻找旋转排序数组中的最小值 II（二分）810.黑板异或游戏1269.停在原地的方案数（dp）1723.完成所有工作的最短时间（dfs+剪枝多写）**1862.向下取整数对和 （化简遍历数目）  664.奇怪的打印机1707.与数组中元素的最大异或值1787.使所有区间的异或结果为零">
   
     <link rel="alternative" href="/atom.xml" title="Flying My Dream" type="application/atom+xml">
   
@@ -180,7 +180,7 @@
         <blockquote>
 <p><strong>题目列表：</strong><br>4.寻找两个正序数组的中位数<br>23.合并K个升序链表（优先队列）<br>25.K个一组翻转链表(模拟)<br>154.寻找旋转排序数组中的最小值 II（二分）<br>810.黑板异或游戏<br>1269.停在原地的方案数（dp）<br>1723.完成所有工作的最短时间（dfs+剪枝多写）**<br>1862.向下取整数对和 （化简遍历数目）</p>
 </blockquote>
-<p>664.奇怪的打印机<br>1707.与数组中元素的最大异或值<br><a id="more"></a></p>
+<p>664.奇怪的打印机<br>1707.与数组中元素的最大异或值<br>1787.使所有区间的异或结果为零<br><a id="more"></a></p>
 <h1 id="4-寻找两个正序数组的中位数"><a href="#4-寻找两个正序数组的中位数" class="headerlink" title="4.寻找两个正序数组的中位数"></a>4.寻找两个正序数组的中位数</h1><h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p><a href="https://leetcode-cn.com/problems/median-of-two-sorted-arrays/" target="_blank" rel="noopener">https://leetcode-cn.com/problems/median-of-two-sorted-arrays/</a></p>
 <h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><blockquote>
 <p><strong>方法一：</strong><br>创建一个数组，把两个数组的元素都加进去，然后排序，去中位数<br><strong>方法二：</strong><br>1.两个数组分别排序；<br>2.然后把一个数组为空的情况输出一下，两个数组都只有一个元素的情况输出一下；<br>3.对于剩下的情况，两个数组同步进行记录小的元素，然后次小的……直到中位数（两个数组长度为奇数）或者中间两个数（两个数组长度为偶数），输出。</p>
@@ -546,11 +546,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Leetcode</a>
+                <a href="javascript:void(0)" class="js-tag color3">博客</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">博客</a>
+                <a href="javascript:void(0)" class="js-tag color4">Leetcode</a>
               </li>
              
               <li class="article-tag-list-item">
