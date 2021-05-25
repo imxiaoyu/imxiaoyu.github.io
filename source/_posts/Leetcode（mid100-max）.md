@@ -1,6 +1,6 @@
 ---
 title: 'Leetcode(mid100-)'
-date: 2021/5/24 23:34:28 
+date: 2021/5/25 23:08:37 
 tags:
 	- Leetcode
 ---
@@ -14,6 +14,7 @@ tags:
 >421.数组中两个数的最大异或值(字典树)
 >692.前K个高频单词
 >740.删除并获得点数（dp）
+>990.等式方程的可满足性（并查集）
 >1035.不相交的线(最长公共子序列 经典dp 模板)
 >1310.子数组异或查询（异或运用）
 >1442.形成两个异或相等数组的三元组数目
@@ -27,7 +28,7 @@ tags:
 
 
 
-990.等式方程的可满足性
+
 
 <!-- more -->
 # 153.寻找旋转排序数组中的最小值
@@ -530,6 +531,58 @@ https://leetcode-cn.com/problems/delete-and-earn
 	    }
 	}
 ```
+
+# 990.等式方程的可满足性
+## 题目
+https://leetcode-cn.com/problems/satisfiability-of-equality-equations/
+## 题解
+首先创建一个26*26的数组，用来存取字母间的关系：
+1.如果数组relation[i][j] = 1,那么说明i表示的字母和j表示的字母对应的数值相同
+2.如果数组relation[i][j] = 0,那么说明i表示的字母和j表示的字母对应的数值不知道相同不相同
+3.如果数组relation[i][j] = -1,那么说明i表示的字母和j表示的字母对应的数值不相同
+首先自己和自己肯定相同，然后把题目给的存一下，这里注意如果出现了矛盾就返回false，然后用三个for来判断是否出现a==b,b==c,但是a!=c这样的情况，出现了就直接返回false。
+最后返回true
+
+## 代码
+
+```java
+class Solution {
+    public boolean equationsPossible(String[] equations) {
+        int[][] relation = new int[26][26];
+        for(int i = 0; i < 26; i++) relation[i][i] = 1;
+        for(int i = 0; i < equations.length; i++){
+            char flag = equations[i].charAt(1);
+            int x = equations[i].charAt(0) - 'a';
+            int y = equations[i].charAt(3) - 'a';
+            if(flag == '!' && relation[x][y] != 1){
+                relation[x][y] = -1;
+                relation[y][x] = -1;
+            }
+            else if(flag == '=' && relation[x][y] != -1) {
+                relation[x][y] = 1;
+                relation[y][x] = 1;
+            }
+            else return false;
+        }
+        
+        for(int i = 0; i < 26; i++){
+            for(int j = 0; j < 26; j++){          
+                for(int k = 0; k < 26; k++){
+                    if(relation[i][j] == 1 && relation[j][k] == 1){
+                        if(relation[i][k] == -1) return false;
+                        else {
+                            relation[i][k] = 1;
+                            relation[k][i] = 1;
+                        }    
+                    }
+                }
+            }
+        }
+        return true;
+    }
+}
+```
+
 
 # 1035.不相交的线
 ## 题目
