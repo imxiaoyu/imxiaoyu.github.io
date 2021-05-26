@@ -1,13 +1,9 @@
 ---
 title: 'MySQL'
-date: 2021/5/18 0:01:38 
+date: 2021/5/26 20:54:03 
 tags:
 	- MySQL
 ---
-
-
-
-
 
 # 本单元目标
 	一、为什么要学习数据库
@@ -435,6 +431,7 @@ sql92
 ## 插入
 
 语法：
+
 	insert into 表名(字段名，...)
 	values(值1，...);
 
@@ -452,6 +449,7 @@ sql92
 
 	update 表名 set 字段=新值,字段=新值
 	【where 条件】
+
 修改多表语法：
 
 	update 表1 别名1,表2 别名2
@@ -511,8 +509,6 @@ sql92
 		stuName VARCHAR(20),
 		gender CHAR,
 		bornDate DATETIME
-		
-	
 	);
 
 	DESC studentinfo;

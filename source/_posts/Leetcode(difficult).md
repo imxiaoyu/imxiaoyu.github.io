@@ -1,6 +1,6 @@
 ---
 title: 'Leetcode(difficult)'
-date: 2021/5/18 0:00:26 
+date: 2021/5/26 23:49:11 
 tags:
 	- Leetcode
 ---
@@ -9,14 +9,15 @@ tags:
 >23.合并K个升序链表（优先队列）
 >25.K个一组翻转链表(模拟)
 >154.寻找旋转排序数组中的最小值 II（二分）
+>664.奇怪的打印机（二维动态规划dp）
 >810.黑板异或游戏
 >1269.停在原地的方案数（dp）
->1723.完成所有工作的最短时间（dfs+剪枝多写）**
+>1723.完成所有工作的最短时间（dfs+剪枝多写）
 >1862.向下取整数对和 （化简遍历数目）
 
 
 
-664.奇怪的打印机
+
 1707.与数组中元素的最大异或值
 1787.使所有区间的异或结果为零
 <!-- more -->
@@ -318,6 +319,46 @@ class Solution {
 }
 ```
 
+# 664.奇怪的打印机
+## 题目
+https://leetcode-cn.com/problems/strange-printer/
+## 题解
+
+`dp[i][j]`表示的是区间`[i,j]`内的**字符需要的最少打印次数**，那么对于区间`[left,right]`我们进行分析:
+1.如果区间`[left,right]`中`left`位置的字符 **等于** `right`位置的字符，此时`dp[left][right] = dp[left][right - 1]`,
+- **举例:** 
+- `s = "aaab",left = 0, right = 2,dp[0][0] = 1,dp[0][1] = 1`
+- 那么`dp[left][right] = dp[0][2] = dp[0][1] = 1;`
+
+2.如果区间`[left,right]`中`left`位置的字符 **不等于** `right`位置的字符，此时`dp[left][right] = min(dp[left][mid - 1] + dp[mid][right]) (left < mid <= right)`
+- **举例:** 
+- `s = "aaab",left = 0, right = 3,dp[0][0] = 1,dp[0][1] = 1,dp[0][2] = 1`
+- 那么`dp[left][right] = min(dp[left][mid - 1] + dp[mid][right]) = min(dp[0][0] + dp[1][3], dp[0][1] + dp[2][3], dp[0][2] + dp[3][3]) = 2;`
+
+## 代码
+
+```java
+class Solution {
+    public int strangePrinter(String s) {
+        int n = s.length();
+        int[][] dp = new int[n][n];
+        for(int i = 0; i < n; i++) dp[i][i] = 1;
+        for(int right = 0; right < n; right++){
+            for(int left = right - 1; left >= 0; left--){
+                if(s.charAt(left) == s.charAt(right)) dp[left][right] = dp[left][right - 1];
+                else{
+                    int min = Integer.MAX_VALUE;
+                    for(int mid = right; mid > left; mid--) 
+                        min = Math.min(min, dp[left][mid - 1] + dp[mid][right]);          
+                    dp[left][right] = min;
+                }
+                
+            }
+        }
+        return dp[0][n - 1];
+    }
+}
+```
 
 # 810.黑板异或游戏
 ## 题目

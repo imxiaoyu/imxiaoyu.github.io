@@ -12,10 +12,11 @@ tags:
 >337.打家劫舍III(需要多写几次**)
 >343.整数拆分（dp）
 >421.数组中两个数的最大异或值(字典树)
->692.前K个高频单词
+>692.前K个高频单词（暴力排序，或者Comparator接口）
 >740.删除并获得点数（dp）
 >990.等式方程的可满足性（并查集）
 >1035.不相交的线(最长公共子序列 经典dp 模板)
+>1190.反转每对括号间的子串（栈，反转字符串）
 >1310.子数组异或查询（异或运用）
 >1442.形成两个异或相等数组的三元组数目
 >1482.制作 m 束花所需的最少天数（二分）
@@ -613,6 +614,44 @@ class Solution {
     }
 }
 ```
+
+# 1190.反转每对括号间的子串
+## 题目
+https://leetcode-cn.com/problems/reverse-substrings-between-each-pair-of-parentheses/
+## 题解
+每在一对括号内就要反转一次，所以我们可以运用这个特性，当出现了左括号就把截止到现在的result字符存在栈中，出现右括号说明匹配上了一对括号，就把result现在存的字符反转一下，再取出栈顶部的元素放在result字符串首尾中并等着匹配下一对括号。
+
+**例子：** `s = "(u(love)i)"`
+`(`: 当前result为空，存在栈中，并清空result
+`u`: 存在result中，此时`result = "u"`
+`(`: 当前`result = "u"`，存在栈中，此时栈中仅一个String为"u",并清空result
+`l`: 存在result中，此时`result = "l"`
+`o`: 存在result中，此时`result = "lo"`
+`v`: 存在result中，此时`result = "lov"`
+`e`: 存在result中，此时`result = "love"`
+`)`: 匹配上一对括号了，该反转了，反转result，此时result为"ovel",然后result再加上栈头的元素"u"到首位，此时`result = "uovel"`
+`i`: 存在result中，此时`result = "uoveli"`
+`)`: 匹配上一对括号了，该反转了，反转result，此时result为"iloveu",然后result再加上栈头的元素到首位(此时栈为空)，所以最终结果`result = "iloveu"`
+
+## 代码
+
+```java
+class Solution {
+    public String reverseParentheses(String s) {
+        Stack<String> q = new Stack<>();
+        StringBuffer result = new StringBuffer();
+        for(int i = 0; i < s.length(); i++){
+            char c = s.charAt(i);
+            if(c == '(') {q.push(result.toString()); result.delete(0, result.length());}
+            else if(c == ')') result.reverse().insert(0, q.pop());
+            else result.append(c);
+        }
+        return result.toString();
+    }
+}
+
+```
+
 
 # 1310.子数组异或查询
 ## 题目
