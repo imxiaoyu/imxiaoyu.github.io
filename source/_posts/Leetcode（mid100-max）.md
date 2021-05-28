@@ -1,6 +1,6 @@
 ---
 title: 'Leetcode(mid100-)'
-date: 2021/5/25 23:08:37 
+date: 2021/5/28 22:15:42 
 tags:
 	- Leetcode
 ---
@@ -9,9 +9,12 @@ tags:
 >198.打家劫舍（dp）
 >213.打家劫舍II（dp）
 >240.搜索二维矩阵 II
+>274.H 指数
+>275.H 指数 II
 >337.打家劫舍III(需要多写几次**)
 >343.整数拆分（dp）
 >421.数组中两个数的最大异或值(字典树)
+>477.汉明距离总和
 >692.前K个高频单词（暴力排序，或者Comparator接口）
 >740.删除并获得点数（dp）
 >990.等式方程的可满足性（并查集）
@@ -235,6 +238,52 @@ class Solution {
 }
 ```
 
+
+# 274.H 指数
+
+## 题目
+https://leetcode-cn.com/problems/h-index/
+## 题解
+从小到大排序一下，然后数组倒着遍历，遍历的同时有一个结果值`result`每循环一次`＋1`，直到结果值大于等于当前位置的数组值结束，也就是`result >= citations[i]`
+
+## 代码
+
+```java
+class Solution {
+    public int hIndex(int[] citations) {
+        Arrays.sort(citations);
+        int result = 0;
+        for(int i = citations.length - 1; i >= 0; i--){
+            if(result >= citations[i]) break;
+            else result++;
+        }
+        return result;
+    }
+}
+```
+
+# 275.H 指数 II
+
+## 题目
+https://leetcode-cn.com/problems/h-index-ii/
+## 题解
+数组倒着遍历，遍历的同时有一个结果值`result`每循环一次`＋1`，直到结果值大于等于当前位置的数组值结束，也就是`result >= citations[i]`
+
+## 代码
+
+```java
+class Solution {
+    public int hIndex(int[] citations) {
+        int result = 0;
+        for(int i = citations.length - 1; i >= 0; i--){
+            if(result >= citations[i]) break;
+            else result++;
+        }
+        return result;
+    }
+}
+```
+
 # 337.打家劫舍III(需要多写几次) **
 
 ## 题目
@@ -403,6 +452,30 @@ class Solution {
     }
 }
 ```
+
+# 477.汉明距离总和
+## 题目
+https://leetcode-cn.com/problems/total-hamming-distance/
+## 题解
+统计一下 **数组中每一个数的 同一位的二进制0或1的个数** ，这样**对于这一位来说他的汉明距离和就是0的个数 × 1的个数**，一共32位那么循环一下加和就好了。
+
+## 代码
+
+```java
+class Solution {
+    public int totalHammingDistance(int[] nums) {
+        int result = 0;
+        int zero = 0;
+        for(int i = 0; i < 32; i++){
+            zero = 0;
+            for(int j = 0; j < nums.length; j++) if((nums[j] >> i & 1) == 1) zero++;
+            result += (nums.length - zero) * zero;
+        }
+        return result;
+    }
+}
+```
+
 # 692.前K个高频单词
 ## 题目
 https://leetcode-cn.com/problems/top-k-frequent-words/
