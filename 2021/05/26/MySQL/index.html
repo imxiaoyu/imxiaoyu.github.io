@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="Flying My Dream">
 <meta property="og:description" content="本单元目标一、为什么要学习数据库 二、数据库的相关概念           DBMS、DB、SQL 三、数据库存储数据的特点 四、初始MySQL     MySQL产品的介绍             MySQL产品的安装          ★             MySQL服务的启动和停止     ★     MySQL服务的登录和退出     ★           MySQL的常见命令和语">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2021-05-26T14:16:29.438Z">
+<meta property="og:updated_time" content="2021-05-26T16:01:35.174Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MySQL">
 <meta name="twitter:description" content="本单元目标一、为什么要学习数据库 二、数据库的相关概念           DBMS、DB、SQL 三、数据库存储数据的特点 四、初始MySQL     MySQL产品的介绍             MySQL产品的安装          ★             MySQL服务的启动和停止     ★     MySQL服务的登录和退出     ★           MySQL的常见命令和语">
@@ -372,11 +372,7 @@ order by 排序的字段|表达式|函数|别名 【asc|desc】
     user当前连接用户
 
 
-
-
-
 二、分组函数
-
 
     sum 求和
     max 最大值
@@ -795,10 +791,32 @@ FROM 表;
 </code></pre><p>使用：</p>
 <pre><code>select 变量名
 </code></pre><p>二者的区别：</p>
-<pre><code>作用域            定义位置        语法
-</code></pre><p>用户变量    当前会话        会话的任何地方        加@符号，不用指定类型<br>局部变量    定义它的BEGIN END中     BEGIN END的第一句话    一般不用加@,需要指定类型</p>
-<h2 id="分支"><a href="#分支" class="headerlink" title="分支"></a>分支</h2><p>一、if函数<br>    语法：if(条件，值1，值2)<br>    特点：可以用在任何位置</p>
-<p>二、case语句</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center"></th>
+<th style="text-align:center">作用域</th>
+<th style="text-align:center">定义位置</th>
+<th>语法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">用户变量</td>
+<td style="text-align:center">当前会话 会话的任何地方</td>
+<td style="text-align:center">加@符号，不用指定类型</td>
+</tr>
+<tr>
+<td style="text-align:center">局部变量</td>
+<td style="text-align:center">定义它的BEGIN END中     BEGIN END的第一句话</td>
+<td style="text-align:center">一般不用加@,需要指定类型</td>
+</tr>
+</tbody>
+</table>
+<h2 id="分支"><a href="#分支" class="headerlink" title="分支"></a>分支</h2><p>一、if函数</p>
+<pre><code>语法：if(条件，值1，值2)
+特点：可以用在任何位置
+</code></pre><p>二、case语句</p>
 <p>语法：</p>
 <pre><code>情况一：类似于switch
 case 表达式
@@ -815,17 +833,23 @@ when 条件2 then 结果2或语句2(如果是语句，需要加分号)
 ...
 else 结果n或语句n(如果是语句，需要加分号)
 end 【case】（如果是放在begin end中需要加上case，如果放在select后面不需要）
-</code></pre><p>特点：<br>    可以用在任何位置</p>
-<p>三、if elseif语句</p>
+</code></pre><p>特点：</p>
+<pre><code>可以用在任何位置
+</code></pre><p>三、if elseif语句</p>
 <p>语法：</p>
 <pre><code>if 情况1 then 语句1;
 elseif 情况2 then 语句2;
 ...
 else 语句n;
 end if;
-</code></pre><p>特点：<br>    只能用在begin end中！！！！！！！！！！！！！！！</p>
-<p>三者比较：<br>            应用场合<br>    if函数        简单双分支<br>    case结构    等值判断 的多分支<br>    if结构        区间判断 的多分支</p>
-<h2 id="循环"><a href="#循环" class="headerlink" title="循环"></a>循环</h2><p>语法：</p>
+</code></pre><p>特点：</p>
+<pre><code>只能用在begin end中！！！！！！！！！！！！！！！
+</code></pre><p>三者比较：</p>
+<pre><code>              应用场合
+if函数        简单双分支
+case结构      等值判断 的多分支
+if结构        区间判断 的多分支
+</code></pre><h2 id="循环"><a href="#循环" class="headerlink" title="循环"></a>循环</h2><p>语法：</p>
 <pre><code>【标签：】WHILE 循环条件  DO
     循环体
 END WHILE 【标签】;
@@ -959,8 +983,8 @@ leave类似于java中的break语句，跳出所在循环！！！
     </a>
   
   
-    <a href="/2021/05/25/Leetcode（mid100-max）/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Leetcode(mid100-)</div>
+    <a href="/2021/05/21/Leetcode（mid1-100）/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Leetcode(mid1-100)</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -1146,11 +1170,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Leetcode</a>
+                <a href="javascript:void(0)" class="js-tag color3">博客</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">博客</a>
+                <a href="javascript:void(0)" class="js-tag color4">Leetcode</a>
               </li>
              
               <li class="article-tag-list-item">
