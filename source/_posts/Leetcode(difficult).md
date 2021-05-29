@@ -11,6 +11,7 @@ tags:
 >154.寻找旋转排序数组中的最小值 II（二分）
 >664.奇怪的打印机（二维动态规划dp）
 >810.黑板异或游戏
+>1074.元素和为目标值的子矩阵数量（前缀和+暴力）
 >1269.停在原地的方案数（dp）
 >1723.完成所有工作的最短时间（dfs+剪枝多写）
 >1862.向下取整数对和 （化简遍历数目）
@@ -389,6 +390,40 @@ class Solution {
 }
 ```
 
+# 1074.元素和为目标值的子矩阵数量
+## 题目
+https://leetcode-cn.com/problems/number-of-submatrices-that-sum-to-target/
+
+## 题解
+1.先创建一个数组存一下矩阵`[0,i][0,j]`的矩阵和(存的时候注意加上两个小一号矩阵时会多加一部分，所以需要减去，其实跟下面暴力求解中求任意矩阵的和思路类似，可结合第二步理解这个公式)
+
+2. **暴力上up下down左left右right矩阵边界** ，如上图：
+求红色的矩阵和`[up,down][left,right]`，用矩阵和`[0,down][0,right]`**减去两个褐色的矩阵和**`[0,up][0,right]`、`[0,down][0,left]`，因为**多减去了**一遍紫色矩阵和，所以需要**再加上**`[0,up][0,left]`，然后判断该**矩阵和的值是否与target值相同**，相同结果`+1`
+
+
+## 代码
+
+```java
+class Solution {
+    public int numSubmatrixSumTarget(int[][] matrix, int target) {
+        int n = matrix.length + 1;
+        int m = matrix[0].length + 1;
+        int ans = 0;
+        int[][] result = new int[n][m];
+        for(int i = 1; i < n; i++)
+            for(int j = 1; j < m; j++)
+                result[i][j] = matrix[i - 1][j - 1] + result[i - 1][j] + result[i][j - 1] - result[i - 1][j - 1];
+
+        for(int down = 1; down < n; down++)
+            for(int right = 1; right < m; right++)
+                for(int up = 0; up < down; up++)
+                    for(int left = 0; left < right; left++)
+                        if((result[down][right] - result[up][right] - result[down][left] + result[up][left]) == target)
+                            ans++;
+        return ans;
+    }
+}
+```
 
 # 1269.停在原地的方案数
 ## 题目
