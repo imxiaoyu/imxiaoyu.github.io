@@ -1,6 +1,6 @@
 ---
 title: 'Leetcode(mid100-)'
-date: 2021/5/28 22:15:42 
+date: 2021/5/30 17:10:28 
 tags:
 	- Leetcode
 ---
@@ -8,9 +8,9 @@ tags:
 >153.寻找旋转排序数组中的最小值（二分）
 >198.打家劫舍（dp）
 >213.打家劫舍II（dp）
->240.搜索二维矩阵 II
->274.H 指数
->275.H 指数 II
+>240.搜索二维矩阵 II（优化搜索）
+>274.H 指数（规律+数组）
+>275.H 指数 II（规律+数组）
 >337.打家劫舍III(需要多写几次**)
 >343.整数拆分（dp）
 >421.数组中两个数的最大异或值(字典树)
@@ -21,20 +21,22 @@ tags:
 >1035.不相交的线(最长公共子序列 经典dp 模板)
 >1190.反转每对括号间的子串（栈，反转字符串）
 >1310.子数组异或查询（异或运用）
->1442.形成两个异或相等数组的三元组数目
+>1442.形成两个异或相等数组的三元组数目（优化+异或+前缀和）
 >1482.制作 m 束花所需的最少天数（二分）
->1734.解码异或后的排列
->1738.找出第 K 大的异或坐标值
->1860.增长的内存泄露
->1861.旋转盒子
->1864.构成交替字符串需要的最小交换次数
->1865.找出和为指定值的下标对
+>1734.解码异或后的排列（异或规律）
+>1738.找出第 K 大的异或坐标值（二维前缀和）
+>1860.增长的内存泄露（模拟）
+>1861.旋转盒子（模拟）
+>1864.构成交替字符串需要的最小交换次数（统计+规律）
+>1865.找出和为指定值的下标对（HashMap运用）
+>1878.矩阵中最大的三个菱形和(模拟)
 
 
 
 
 5755.数组中最大数对和的最小值（数组）
-5757.矩阵中最大的三个菱形和(模拟)
+5773.插入后的最大值（模拟）
+5774.使用服务器处理任务(优先队列)
 <!-- more -->
 # 153.寻找旋转排序数组中的最小值
 ## 题目
@@ -1158,6 +1160,171 @@ class FindSumPairs {
             if(nums.containsKey(tot - nums1[i])) result += nums.get(tot - nums1[i]);
         }
         return result;
+    }
+}
+```
+
+# 1878.矩阵中最大的三个菱形和  
+## 题目
+https://leetcode-cn.com/problems/get-biggest-three-rhombus-sums-in-a-grid/
+## 题解 
+k表示菱形每条斜边占了几个方格，然后循环一下起始位置
+## 代码
+
+```java
+class Solution {
+    public int[] getBiggestThree(int[][] grid) {
+        int m = grid.length;
+        int n = grid[0].length;
+        int[] ans = new int[]{0,0,0};
+            
+        for(int k = 1; k <= (Math.min(m, n) + 1) / 2; k++){
+            for(int up = 0; up <= m - k * 2 + 1; up++){
+                for(int left = 0; left <= n - k * 2 + 1; left++){
+                    int sum = 0;
+                    for(int i = 0; i <= k - 1; i++){
+                        if(i == 0) sum += grid[up][left + k - 1];
+                        else sum += (grid[up + i][left + k - 1 - i] + grid[up + i][left + k - 1 + i]);
+                    }
+                    //System.out.println(" k: " + k + " up: " + up + " left: " + left + " sum: " +sum);
+                    for(int i = 0; i < k - 1; i++){
+                        if(i == 0) sum += grid[up + k * 2 - 2][left + k - 1];
+                        else sum += (grid[up + k * 2 - 2 - i][left + k - 1 - i] + grid[up + k * 2 - 2 - i][left + k - 1 + i]);
+                    }
+                    if(sum <= ans[2] || sum == ans[0] || sum == ans[1]) ;
+                    else if(sum > ans[0]){ans[2] = ans[1]; ans[1] = ans[0]; ans[0] = sum;}
+                    else if(sum > ans[1]){ans[2] = ans[1]; ans[1] = sum;}
+                    else ans[2] = sum;
+                }
+            }     
+        }
+        if(ans[1] == 0 && ans[2] == 0) return new int[]{ans[0]};
+        else if(ans[2] == 0) return new int[]{ans[0], ans[1]};
+        else return ans;
+    }
+}
+```
+
+
+# 5755.数组中最大数对和的最小
+## 题目
+https://leetcode-cn.com/problems/minimize-maximum-pair-sum-in-array/
+## 题解 
+
+排一下序，然后左右加，找到最大的就返回
+
+## 代码
+
+```java
+class Solution {
+    public int minPairSum(int[] nums) {
+        Arrays.sort(nums);
+        int ans = 0;
+        int left = 0;
+        int right = nums.length - 1;
+        for(;left < right;) ans = Math.max(ans, nums[left++] + nums[right--]);
+        return ans;
+    }
+}
+```
+
+# 5773.插入后的最大值
+
+## 题目
+https://leetcode-cn.com/problems/maximum-value-after-insertion/
+## 题解 
+
+分正负，讨论一下：
+1.负的插入的x越小越要放前面
+2.正的插入的x越大越要放前面
+
+## 代码
+
+```java
+class Solution {
+    public String maxValue(String n, int x) {
+        int temPosi = 0;
+        boolean flag = false;
+        StringBuffer result = new StringBuffer();
+        if(n.charAt(0) == '-'){
+            result.append(n.charAt(temPosi++));
+            while(temPosi < n.length()){
+                if(!flag && x < n.charAt(temPosi) - '0'){result.append(x); flag = true;}
+                else result.append(n.charAt(temPosi++));
+            }  
+        }else{
+            while(temPosi < n.length()){
+                if(!flag && x > n.charAt(temPosi) - '0'){result.append(x); flag = true;}
+                else result.append(n.charAt(temPosi++));
+            }  
+        }
+        if(!flag) result.append(x);
+        return result.toString();           
+    }
+}
+```
+
+
+# 5774.使用服务器处理任务
+## 题目
+https://leetcode-cn.com/problems/process-tasks-using-servers/
+## 题解 
+创建两个长度为3的int数组类型（int中位置0存放位置，1存放权重，2存放最后一次任务第几秒结束）优先队列：
+1.一个存放所有服务器allServer的信息**并**根据服务器最后一个任务截至时间、服务器权重、服务器编号排序
+2.另一个存放截止到当前时间time的空闲服务器freeServer信息**并**根据服务器权重、服务器编号排序
+思路：
+1.首先把每个服务器的信息放到优先队列allServer中，初始最后一个任务截至时间都为0
+2.循环每一个任务：
+- ①把所有服务器allServer中截止到当前时间空闲的都放到空闲服务器freeServer中
+- ②如果空闲服务器freeServer大小为0，说明截止到当前时间没有空闲的服务器，那么就去找所有服务器allServer中每个服务器完成其最后一个任务的截止时间最小的，把他取出来然后做当前的任务
+- ③如果空闲服务器freeServer大小不为0，取空闲服务器freeServer中的头做当前的任务
+- ④更新取出的服务器信息并再放到所有服务器allServer中
+- ⑤更新时间：如果进了②说明时间time需要更新为取出来的服务器的最后一个任务的截止时间。对于所有情况来说当当前的时间time <= 第i个任务的开始时间i时，time需要+1
+## 代码
+
+```java
+class Solution {
+    //int数组位置0存放位置，1存放权重，2存放最后一次任务第几秒结束
+    public int[] assignTasks(int[] servers, int[] tasks) {
+        PriorityQueue<int[]> allServer = new PriorityQueue<>(new Comparator<int[]>(){
+            @Override
+            public int compare(int [] o1, int [] o2) {
+                if(o1[2] != o2[2]) return o1[2] - o2[2];
+                else{
+                    if(o1[1] != o2[1]) return o1[1] - o2[1];
+                    else return o1[0] - o2[0];
+                }
+            }
+        });
+        PriorityQueue<int[]> freeServer = new PriorityQueue<>(new Comparator<int[]>(){
+            @Override
+            public int compare(int [] o1, int [] o2) {
+                if(o1[1] != o2[1]) return o1[1] - o2[1];
+                else return o1[0] - o2[0];              
+            }
+        });
+
+        for(int i = 0; i < servers.length; i++)  
+            allServer.add(new int[]{i, servers[i], 0});
+
+        int temp[];
+        int time = 0;
+        for(int i = 0; i < tasks.length; i++){       
+            while(allServer.size() != 0 && allServer.peek()[2] <= time)
+                freeServer.add(allServer.poll());
+            if(freeServer.size() == 0){
+                temp = allServer.poll();
+                time = temp[2];       
+            }
+            else temp = freeServer.poll();
+                
+            temp[2] = time + tasks[i];
+            allServer.add(temp);
+            tasks[i] = temp[0];
+
+            if(time <= i) time++;
+        }
+        return tasks;
     }
 }
 ```

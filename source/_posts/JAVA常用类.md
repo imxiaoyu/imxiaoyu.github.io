@@ -775,3 +775,5 @@ java.lang.Math提供了一系列静态方法用于科学计算。其方法的参
 		system.out.println(bd.divide(bd2，BigDecimal.ROUND_HALF_UP));
 		System.out.println(bd.divide(bd2,15,BigDecimaL.ROUND_HALF_UP));
 	}
+
+
