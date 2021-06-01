@@ -1,6 +1,6 @@
 ---
 title: 'Leetcode(mid100-)'
-date: 2021/5/30 17:10:28 
+date: 2021/6/1 11:20:36 
 tags:
 	- Leetcode
 ---
@@ -25,18 +25,19 @@ tags:
 >1482.制作 m 束花所需的最少天数（二分）
 >1734.解码异或后的排列（异或规律）
 >1738.找出第 K 大的异或坐标值（二维前缀和）
+>1744.你能在你最喜欢的那天吃到你最喜欢的糖果吗？（前缀和）
 >1860.增长的内存泄露（模拟）
 >1861.旋转盒子（模拟）
 >1864.构成交替字符串需要的最小交换次数（统计+规律）
 >1865.找出和为指定值的下标对（HashMap运用）
+>1877.数组中最大数对和的最小值（数组）
 >1878.矩阵中最大的三个菱形和(模拟)
+>1881.插入后的最大值（模拟）
+>1882.使用服务器处理任务(优先队列)
 
 
 
 
-5755.数组中最大数对和的最小值（数组）
-5773.插入后的最大值（模拟）
-5774.使用服务器处理任务(优先队列)
 <!-- more -->
 # 153.寻找旋转排序数组中的最小值
 ## 题目
@@ -991,6 +992,44 @@ class Solution {
 }
 ```
 
+# 1744.你能在你最喜欢的那天吃到你最喜欢的糖果吗？
+## 题目
+https://leetcode-cn.com/problems/can-you-eat-your-favorite-candy-on-your-favorite-day/
+## 题解 
+创建要给long的candies数组，对应下标i处存放前i种类型的糖果的总数，然后开始判断能不能在那一天吃到他喜欢的糖：
+**思路：**
+- 1.**每天吃一个糖:** 到他想吃的那天 吃的糖总数 <= 截止到他喜欢的那种糖的类型总数
+- 2.**每天吃能吃的最大糖：** 到他想吃的那天 吃的糖总数 > 截止到他喜欢的那种糖的前一类型总数
+- 3.满足1和2就说明他能在想吃糖的那天吃到想吃的糖
+
+
+**注意:**
+- 1.想吃的糖类型为0时第2种情况下0的前一类型会越界，为0时仅判断1就可以
+- 2.算吃的糖总数时可能会超出int，所以需要用double存一下天数和能吃的最大糖。
+
+我只会心疼哥哥，给哥哥糖吃，哥哥女朋友不会打我吧
+
+## 代码
+
+```java
+class Solution {
+    public boolean[] canEat(int[] candiesCount, int[][] queries) {
+        boolean[] result = new boolean[queries.length];
+        long[] candies = new long[candiesCount.length];
+        candies[0] = candiesCount[0];
+        for(int i = 1; i < candies.length; i++) candies[i] = candies[i - 1] + candiesCount[i];
+        for(int i = 0; i < queries.length; i++){
+            int type = queries[i][0];
+            double day = queries[i][1] + 1;
+            double dayMaxEatNum = queries[i][2];
+            if(type == 0 && day <= candies[type]) result[i] = true;
+            else if(type != 0 && day <= candies[type] && day * dayMaxEatNum > candies[type - 1]) result[i] = true;
+        }
+        return result;
+    }
+}
+```
+
 # 1860.增长的内存泄露
 ## 题目
 https://leetcode-cn.com/problems/incremental-memory-leak/
@@ -1164,7 +1203,29 @@ class FindSumPairs {
 }
 ```
 
-# 1878.矩阵中最大的三个菱形和  
+# 1877.数组中最大数对和的最小值
+## 题目
+https://leetcode-cn.com/problems/minimize-maximum-pair-sum-in-array/
+## 题解 
+
+排一下序，然后左右加，找到最大的就返回
+
+## 代码
+
+```java
+class Solution {
+    public int minPairSum(int[] nums) {
+        Arrays.sort(nums);
+        int ans = 0;
+        int left = 0;
+        int right = nums.length - 1;
+        for(;left < right;) ans = Math.max(ans, nums[left++] + nums[right--]);
+        return ans;
+    }
+}
+```
+
+# 1878.矩阵中最大的三个菱形和
 ## 题目
 https://leetcode-cn.com/problems/get-biggest-three-rhombus-sums-in-a-grid/
 ## 题解 
@@ -1206,29 +1267,7 @@ class Solution {
 ```
 
 
-# 5755.数组中最大数对和的最小
-## 题目
-https://leetcode-cn.com/problems/minimize-maximum-pair-sum-in-array/
-## 题解 
-
-排一下序，然后左右加，找到最大的就返回
-
-## 代码
-
-```java
-class Solution {
-    public int minPairSum(int[] nums) {
-        Arrays.sort(nums);
-        int ans = 0;
-        int left = 0;
-        int right = nums.length - 1;
-        for(;left < right;) ans = Math.max(ans, nums[left++] + nums[right--]);
-        return ans;
-    }
-}
-```
-
-# 5773.插入后的最大值
+# 1881.插入后的最大值
 
 ## 题目
 https://leetcode-cn.com/problems/maximum-value-after-insertion/
@@ -1265,7 +1304,7 @@ class Solution {
 ```
 
 
-# 5774.使用服务器处理任务
+# 1882.使用服务器处理任务
 ## 题目
 https://leetcode-cn.com/problems/process-tasks-using-servers/
 ## 题解 
