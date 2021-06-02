@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="Flying My Dream">
 <meta property="og:description" content="在LeetCode上刷题自己常用的java类方法，总结了一下：">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2021-05-30T09:20:24.217Z">
+<meta property="og:updated_time" content="2021-06-02T11:31:43.270Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JAVA刷题常用方法">
 <meta name="twitter:description" content="在LeetCode上刷题自己常用的java类方法，总结了一下：">
@@ -410,7 +410,9 @@
 <li>③ 普通的循环</li>
 </ul>
 </blockquote>
-<pre><code>add(Object obj),
+<p>Collections的一些方法：</p>
+<pre><code>Collections.reverse(arrayList); //反转
+add(Object obj),
 addAll(Collection coll),
 size(),
 isEmpty(),
@@ -424,7 +426,10 @@ retainsAll(Collection coll),
 equals(Object obj);
 
 hasCode(),
-toArray(),
+toArray(),//可以这么用的：！！！
+List&lt;int[]&gt; res = new ArrayList&lt;&gt;();
+return res.toArray(new int[0][]);
+
 iterator();
 </code></pre><h1 id="四、HashMap-底层-lt-Set-List-gt"><a href="#四、HashMap-底层-lt-Set-List-gt" class="headerlink" title="四、HashMap:底层&lt;Set,List&gt;"></a>四、HashMap:底层&lt;Set,List&gt;</h1><h2 id="1-方法-3"><a href="#1-方法-3" class="headerlink" title="1.方法"></a>1.方法</h2><blockquote>
 <p>1.添加：put(Object key,Object value)<br>2.删除：remove(Object key)<br>3.修改：put(Object key,Object value)<br>4.查询：get(Object key)<br>5.长度：size()<br>6.遍历：keySet() / values() / entrySet()<br>7.containsKey(Object key) 包含返回true，否则false<br>8.getOrDefault(Object key, int 0) 得到key对应的value，如果不存在返回自己设定的默认值</p>
@@ -663,11 +668,11 @@ PriorityQueue&lt;Integer&gt; maxHeap = new PriorityQueue&lt;Integer&gt;(new Comp
   
 <nav id="article-nav">
   
-    <a href="/2021/06/01/Leetcode（mid100-max）/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2021/06/02/Leetcode(剑指offer)/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          Leetcode(mid100-)
+          Leetcode(剑指offer面试)
         
       </div>
     </a>
@@ -856,10 +861,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Leetcode</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">JAVA面试</a>
               </li>
              
@@ -868,11 +869,19 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Leetcode</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">科研</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">MySQL</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">JDBC</a>
               </li>
             
             <div class="clearfix"></div>

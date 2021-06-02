@@ -6,20 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="https:">
-  <title>JAVA枚举类和注解 | Flying My Dream</title>
+  <title>JDBC | Flying My Dream</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="一、枚举类的使用1.枚举类的说明 1.枚举类的理解：类的对象只有有限个，确定的。我们称此类为枚举类2.当需要定义一组常量时，强烈建议使用枚举类3.如果枚举类中只一个对象，则可以作为单例模式的实现方式。">
-<meta name="keywords" content="JAVA,JAVA基础">
+  <meta name="description" content="一、JDBC介绍 JDBC(Java Database Connectivity)是一个独立于特定数据库管理系统、通用的SQL数据库存取和操作的公共接口（一组API），定义了用来访问数据库的标准Java类库，（java.sql,javax.sql）使用这些类库可以以一种标准的方法、方便地访问数据库资源。 JDBC为访问不同的数据库提供了一种统一的途径，为开发者屏蔽了一些细节问题。 JDBC的目标是">
+<meta name="keywords" content="JAVA,JDBC">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JAVA枚举类和注解">
-<meta property="og:url" content="https:/2021/04/30/JAVA枚举类和注解/index.html">
+<meta property="og:title" content="JDBC">
+<meta property="og:url" content="https:/2021/06/02/JDBC/index.html">
 <meta property="og:site_name" content="Flying My Dream">
-<meta property="og:description" content="一、枚举类的使用1.枚举类的说明 1.枚举类的理解：类的对象只有有限个，确定的。我们称此类为枚举类2.当需要定义一组常量时，强烈建议使用枚举类3.如果枚举类中只一个对象，则可以作为单例模式的实现方式。">
+<meta property="og:description" content="一、JDBC介绍 JDBC(Java Database Connectivity)是一个独立于特定数据库管理系统、通用的SQL数据库存取和操作的公共接口（一组API），定义了用来访问数据库的标准Java类库，（java.sql,javax.sql）使用这些类库可以以一种标准的方法、方便地访问数据库资源。 JDBC为访问不同的数据库提供了一种统一的途径，为开发者屏蔽了一些细节问题。 JDBC的目标是">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2021-05-16T13:44:25.085Z">
+<meta property="og:updated_time" content="2021-06-02T13:08:06.751Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JAVA枚举类和注解">
-<meta name="twitter:description" content="一、枚举类的使用1.枚举类的说明 1.枚举类的理解：类的对象只有有限个，确定的。我们称此类为枚举类2.当需要定义一组常量时，强烈建议使用枚举类3.如果枚举类中只一个对象，则可以作为单例模式的实现方式。">
+<meta name="twitter:title" content="JDBC">
+<meta name="twitter:description" content="一、JDBC介绍 JDBC(Java Database Connectivity)是一个独立于特定数据库管理系统、通用的SQL数据库存取和操作的公共接口（一组API），定义了用来访问数据库的标准Java类库，（java.sql,javax.sql）使用这些类库可以以一种标准的方法、方便地访问数据库资源。 JDBC为访问不同的数据库提供了一种统一的途径，为开发者屏蔽了一些细节问题。 JDBC的目标是">
   
     <link rel="alternative" href="/atom.xml" title="Flying My Dream" type="application/atom+xml">
   
@@ -155,199 +155,131 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-JAVA枚举类和注解" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-JDBC" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      JAVA枚举类和注解
+      JDBC
     </h1>
   
 
 
 
         
-        <a href="/2021/04/30/JAVA枚举类和注解/" class="archive-article-date">
-  	<time datetime="2021-04-30T12:19:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-04-30</time>
+        <a href="/2021/06/02/JDBC/" class="archive-article-date">
+  	<time datetime="2021-06-02T12:30:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-06-02</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="一、枚举类的使用"><a href="#一、枚举类的使用" class="headerlink" title="一、枚举类的使用"></a>一、枚举类的使用</h1><h2 id="1-枚举类的说明"><a href="#1-枚举类的说明" class="headerlink" title="1.枚举类的说明"></a>1.枚举类的说明</h2><blockquote>
-<p>1.枚举类的理解：类的对象只有有限个，确定的。我们称此类为枚举类<br>2.当需要定义一组常量时，强烈建议使用枚举类<br>3.如果枚举类中只一个对象，则可以作为单例模式的实现方式。</p>
-</blockquote>
+        <h1 id="一、JDBC介绍"><a href="#一、JDBC介绍" class="headerlink" title="一、JDBC介绍"></a>一、JDBC介绍</h1><ul>
+<li>JDBC(Java Database Connectivity)是一个<strong>独立于特定数据库管理系统、通用的SQL数据库存取和操作的公共接口</strong>（一组API），定义了用来访问数据库的标准Java类库，（<strong>java.sql,javax.sql</strong>）使用这些类库可以以一种<strong>标准</strong>的方法、方便地访问数据库资源。</li>
+<li>JDBC为访问不同的数据库提供了一种<strong>统一的途径</strong>，为开发者屏蔽了一些细节问题。</li>
+<li>JDBC的目标是使Java程序员使用JDBC可以连接任何<strong>提供了JDBC驱动程序</strong>的数据库系统，这样就使得程序员无需对特定的数据库系统的特点有过多的了解，从而大大简化和加快了开发过程。</li>
+</ul>
 <a id="more"></a>
-<h2 id="2-如何自定义枚举类？"><a href="#2-如何自定义枚举类？" class="headerlink" title="2.如何自定义枚举类？"></a>2.如何自定义枚举类？</h2><pre><code>//自定义枚举类
-class Season{
-    //1.声明Season对象的属性:private final修饰
-    private final String seasonName;
-    private final String seasonDesc;
-
-    //2.私化类的构造器,并给对象属性赋值
-    private Season(String seasonName,String seasonDesc){
-        this.seasonName = seasonName;
-        this.seasonDesc = seasonDesc;
-    }
-
-    //3.提供当前枚举类的多个对象：public static final的
-    public static final Season SPRING = new Season(&quot;春天&quot;,&quot;春暖花开&quot;);
-    public static final Season SUMMER = new Season(&quot;夏天&quot;,&quot;夏日炎炎&quot;);
-    public static final Season AUTUMN = new Season(&quot;秋天&quot;,&quot;秋高气爽&quot;);
-    public static final Season WINTER = new Season(&quot;冬天&quot;,&quot;冰天雪地&quot;);
-
-    //4.其他诉求1：获取枚举类对象的属性
-    public String getSeasonName() {
-        return seasonName;
-    }
-
-    public String getSeasonDesc() {
-        return seasonDesc;
-    }
-    //4.其他诉求1：提供toString()
-    @Override
-    public String toString() {
-        return &quot;Season{&quot; +
-                &quot;seasonName=&apos;&quot; + seasonName + &apos;\&apos;&apos; +
-                &quot;, seasonDesc=&apos;&quot; + seasonDesc + &apos;\&apos;&apos; +
-                &apos;}&apos;;
-    }
-}
-</code></pre><h2 id="3-jdk-5-0-新增使用enum定义枚举类"><a href="#3-jdk-5-0-新增使用enum定义枚举类" class="headerlink" title="3.jdk 5.0 新增使用enum定义枚举类"></a>3.jdk 5.0 新增使用enum定义枚举类</h2><pre><code>//使用enum关键字枚举类
-enum Season1 {
-    //1.提供当前枚举类的对象，多个对象之间用&quot;,&quot;隔开，末尾对象&quot;;&quot;结束
-    SPRING(&quot;春天&quot;,&quot;春暖花开&quot;),
-    SUMMER(&quot;夏天&quot;,&quot;夏日炎炎&quot;),
-    AUTUMN(&quot;秋天&quot;,&quot;秋高气爽&quot;),
-    WINTER(&quot;冬天&quot;,&quot;冰天雪地&quot;);
-
-    //2.声明Season对象的属性:private final修饰
-    private final String seasonName;
-    private final String seasonDesc;
-
-    //2.私化类的构造器,并给对象属性赋值
-
-    private Season1(String seasonName,String seasonDesc){
-        this.seasonName = seasonName;
-        this.seasonDesc = seasonDesc;
-    }
-
-    //4.其他诉求1：获取枚举类对象的属性
-    public String getSeasonName() {
-        return seasonName;
-    }
-
-    public String getSeasonDesc() {
-        return seasonDesc;
-    }
-
-}
-</code></pre><h2 id="4-使用enum定义枚举类之后，枚举类常用方法：（继承于java-lang-Enum类）"><a href="#4-使用enum定义枚举类之后，枚举类常用方法：（继承于java-lang-Enum类）" class="headerlink" title="4.使用enum定义枚举类之后，枚举类常用方法：（继承于java.lang.Enum类）"></a>4.使用enum定义枚举类之后，枚举类常用方法：（继承于java.lang.Enum类）</h2><pre><code>Season1 summer = Season1.SUMMER;
-        //toString():返回枚举类对象的名称
-        System.out.println(summer.toString());
-
-//        System.out.println(Season1.class.getSuperclass());
-        System.out.println(&quot;****************&quot;);
-        //values():返回所的枚举类对象构成的数组
-        Season1[] values = Season1.values();
-        for(int i = 0;i &lt; values.length;i++){
-            System.out.println(values[i]);
-        }
-        System.out.println(&quot;****************&quot;);
-        Thread.State[] values1 = Thread.State.values();
-        for (int i = 0; i &lt; values1.length; i++) {
-            System.out.println(values1[i]);
-        }
-
-        //valueOf(String objName):返回枚举类中对象名是objName的对象。
-        Season1 winter = Season1.valueOf(&quot;WINTER&quot;);
-        //如果没objName的枚举类对象，则抛异常：IllegalArgumentException
-//        Season1 winter = Season1.valueOf(&quot;WINTER1&quot;);
-        System.out.println(winter);
-</code></pre><h2 id="5-使用enum定义枚举类之后，如何让枚举类对象分别实现接口"><a href="#5-使用enum定义枚举类之后，如何让枚举类对象分别实现接口" class="headerlink" title="5.使用enum定义枚举类之后，如何让枚举类对象分别实现接口"></a>5.使用enum定义枚举类之后，如何让枚举类对象分别实现接口</h2><pre><code>interface Info{
-    void show();
-}
-
-//使用enum关键字枚举类
-enum Season1 implements Info{
-    //1.提供当前枚举类的对象，多个对象之间用&quot;,&quot;隔开，末尾对象&quot;;&quot;结束
-    SPRING(&quot;春天&quot;,&quot;春暖花开&quot;){
-        @Override
-        public void show() {
-            System.out.println(&quot;春天在哪里？&quot;);
-        }
-    },
-    SUMMER(&quot;夏天&quot;,&quot;夏日炎炎&quot;){
-        @Override
-        public void show() {
-            System.out.println(&quot;宁夏&quot;);
-        }
-    },
-    AUTUMN(&quot;秋天&quot;,&quot;秋高气爽&quot;){
-        @Override
-        public void show() {
-            System.out.println(&quot;秋天不回来&quot;);
-        }
-    },
-    WINTER(&quot;冬天&quot;,&quot;冰天雪地&quot;){
-        @Override
-        public void show() {
-            System.out.println(&quot;大约在冬季&quot;);
-        }
-    };
-}
-</code></pre><h1 id="二、注解的使用"><a href="#二、注解的使用" class="headerlink" title="二、注解的使用"></a>二、注解的使用</h1><h2 id="1-注解的理解"><a href="#1-注解的理解" class="headerlink" title="1.注解的理解"></a>1.注解的理解</h2><blockquote>
-<p>1.jdk 5.0 新增的功能<br>2.Annotation 其实就是代码里的特殊标记, 这些标记可以在编译, 类加载, 运行时被读取, 并执行相应的处理。通过使用 Annotation,</p>
+<h1 id="二、获取数据库连接"><a href="#二、获取数据库连接" class="headerlink" title="二、获取数据库连接"></a>二、获取数据库连接</h1><h2 id="要素一：Driver接口实现类"><a href="#要素一：Driver接口实现类" class="headerlink" title="要素一：Driver接口实现类"></a>要素一：Driver接口实现类</h2><h3 id="1-Driver接口介绍"><a href="#1-Driver接口介绍" class="headerlink" title="1.Driver接口介绍"></a>1.Driver接口介绍</h3><ul>
+<li><p>java.sql.Driver 接口是所有 JDBC 驱动程序需要实现的接口。这个接口是提供给数据库厂商使用的，不同数据库厂商提供不同的实现。</p>
+</li>
+<li><p>在程序中不需要直接去访问实现了 Driver 接口的类，而是由驱动程序管理器类(java.sql.DriverManager)去调用这些Driver实现。</p>
 <ul>
-<li>程序员可以在不改变原逻辑的情况下, 在源文件中嵌入一些补充信息。</li>
+<li>Oracle的驱动：<strong>oracle.jdbc.driver.OracleDriver</strong></li>
+<li>mySql的驱动： <strong>com.mysql.jdbc.Driver</strong></li>
 </ul>
-<p>3.在JavaSE中，注解的使用目的比较简单，例如标记过时的功能，忽略警告等。在JavaEE/Android</p>
+</li>
+</ul>
 <ul>
-<li>中注解占据了更重要的角色，例如用来配置应用程序的任何切面，代替JavaEE旧版中所遗留的繁冗</li>
-<li>代码和XML配置等。</li>
+<li>将jar包拷贝到Java工程的一个目录中，习惯上新建一个lib文件夹。</li>
 </ul>
-</blockquote>
-<p><strong>框架 = 注解 + 反射机制 + 设计模式</strong></p>
-<h2 id="2-注解的使用示例"><a href="#2-注解的使用示例" class="headerlink" title="2.注解的使用示例"></a>2.注解的使用示例</h2><blockquote>
-<p><strong>示例一：</strong>生成文档相关的注解<br><strong>示例二：</strong>在编译时进行格式检查(JDK内置的个基本注解)<br>@Override: 限定重写父类方法, 该注解只能用于方法<br>@Deprecated: 用于表示所修饰的元素(类, 方法等)已过时。通常是因为所修饰的结构危险或存在更好的择<br>@SuppressWarnings: 抑制编译器警告</p>
-</blockquote>
+<p>在驱动jar上右键–&gt;Build Path–&gt;Add to Build Path</p>
+<p>注意：如果是Dynamic Web Project（动态的web项目）话，则是把驱动jar放到WebContent（有的开发工具叫WebRoot）目录中的WEB-INF目录中的lib目录下即可</p>
+<h3 id="2-加载与注册JDBC驱动"><a href="#2-加载与注册JDBC驱动" class="headerlink" title="2.加载与注册JDBC驱动"></a>2.加载与注册JDBC驱动</h3><ul>
+<li><p>加载驱动：加载 JDBC 驱动需调用 Class 类的静态方法 forName()，向其传递要加载的 JDBC 驱动的类名</p>
+<ul>
+<li><strong>Class.forName(“com.mysql.jdbc.Driver”);</strong></li>
+</ul>
+</li>
+<li><p>注册驱动：DriverManager 类是驱动程序管理器类，负责管理驱动程序</p>
+<ul>
+<li><p><strong>使用DriverManager.registerDriver(com.mysql.jdbc.Driver)来注册驱动</strong></p>
+</li>
+<li><p>通常不用显式调用 DriverManager 类的 registerDriver() 方法来注册驱动程序类的实例，因为 Driver 接口的驱动程序类<strong>都</strong>包含了静态代码块，在这个静态代码块中，会调用 DriverManager.registerDriver() 方法来注册自身的一个实例。</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="要素二：URL"><a href="#要素二：URL" class="headerlink" title="要素二：URL"></a>要素二：URL</h2><ul>
+<li><p>JDBC URL 用于标识一个被注册的驱动程序，驱动程序管理器通过这个 URL 选择正确的驱动程序，从而建立到数据库的连接。</p>
+</li>
+<li><p>JDBC URL的标准由三部分组成，各部分间用冒号分隔。 </p>
+<ul>
+<li><strong>jdbc:子协议:子名称</strong></li>
+<li><strong>协议</strong>：JDBC URL中的协议总是jdbc </li>
+<li><strong>子协议</strong>：子协议用于标识一个数据库驱动程序</li>
+<li><strong>子名称</strong>：一种标识数据库的方法。子名称可以依不同的子协议而变化，用子名称的目的是为了<strong>定位数据库</strong>提供足够的信息。包含<strong>主机名</strong>(对应服务端的ip地址)<strong>，端口号，数据库名</strong></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p><strong>几种常用数据库的 JDBC URL</strong></p>
+<ul>
+<li><p>MySQL的连接URL编写方式：</p>
+<ul>
+<li>jdbc:mysql://主机名称:mysql服务端口号/数据库名称?参数=值&amp;参数=值</li>
+<li>jdbc:mysql://localhost:3306/atguigu</li>
+<li>jdbc:mysql://localhost:3306/atguigu<strong>?useUnicode=true&amp;characterEncoding=utf8</strong>（如果JDBC程序与服务器端的字符集不一致，会导致乱码，那么可以通过参数指定服务器端的字符集）</li>
+<li>jdbc:mysql://localhost:3306/atguigu?user=root&amp;password=123456</li>
+</ul>
+</li>
+<li><p>Oracle 9i的连接URL编写方式：</p>
+<ul>
+<li>jdbc:oracle:thin:@主机名称:oracle服务端口号:数据库名称</li>
+<li>jdbc:oracle:thin:@localhost:1521:atguigu</li>
+</ul>
+</li>
+<li><p>SQLServer的连接URL编写方式：</p>
+<ul>
+<li><p>jdbc:sqlserver://主机名称:sqlserver服务端口号:DatabaseName=数据库名称</p>
+</li>
+<li><p>jdbc:sqlserver://localhost:1433:DatabaseName=atguigu</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="要素三：用户名和密码"><a href="#要素三：用户名和密码" class="headerlink" title="要素三：用户名和密码"></a>要素三：用户名和密码</h2><ul>
+<li>user,password可以用“属性名=属性值”方式告诉数据库</li>
+<li>可以调用 DriverManager 类的 getConnection() 方法建立到数据库的连接</li>
+</ul>
+<h2 id="数据库连接方式举例"><a href="#数据库连接方式举例" class="headerlink" title="数据库连接方式举例"></a>数据库连接方式举例</h2><h3 id="1-连接方式一"><a href="#1-连接方式一" class="headerlink" title="1.连接方式一"></a>1.连接方式一</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testConnection1</span><span class="params">()</span> </span>&#123;</span><br><span class="line">       <span class="keyword">try</span> &#123;</span><br><span class="line">           <span class="comment">//1.提供java.sql.Driver接口实现类的对象</span></span><br><span class="line">           Driver driver = <span class="keyword">null</span>;</span><br><span class="line">           driver = <span class="keyword">new</span> com.mysql.jdbc.Driver();</span><br><span class="line"></span><br><span class="line">           <span class="comment">//2.提供url，指明具体操作的数据</span></span><br><span class="line">           String url = <span class="string">"jdbc:mysql://localhost:3306/test"</span>;</span><br><span class="line"></span><br><span class="line">           <span class="comment">//3.提供Properties的对象，指明用户名和密码</span></span><br><span class="line">           Properties info = <span class="keyword">new</span> Properties();</span><br><span class="line">           info.setProperty(<span class="string">"user"</span>, <span class="string">"root"</span>);</span><br><span class="line">           info.setProperty(<span class="string">"password"</span>, <span class="string">"abc123"</span>);</span><br><span class="line"></span><br><span class="line">           <span class="comment">//4.调用driver的connect()，获取连接</span></span><br><span class="line">           Connection conn = driver.connect(url, info);</span><br><span class="line">           System.out.println(conn);</span><br><span class="line">       &#125; <span class="keyword">catch</span> (SQLException e) &#123;</span><br><span class="line">           e.printStackTrace();</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
 <blockquote>
-<p><strong>示例：</strong>跟踪代码依赖性，实现替代配置文件功能</p>
+<p>说明：上述代码中显式出现了第三方数据库的API</p>
 </blockquote>
-<h2 id="3-如何自定义注解：参照-SuppressWarnings定义"><a href="#3-如何自定义注解：参照-SuppressWarnings定义" class="headerlink" title="3.如何自定义注解：参照@SuppressWarnings定义"></a>3.如何自定义注解：参照@SuppressWarnings定义</h2><blockquote>
-<p>1.注解声明为：@interface<br>2.内部定义成员，通常使用value表示<br>3.可以指定成员的默认值，使用default定义<br>4.如果自定义注解没成员，表明是一个标识作用。</p>
-</blockquote>
+<h3 id="2-连接方式二"><a href="#2-连接方式二" class="headerlink" title="2.连接方式二"></a>2.连接方式二</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testConnection2</span><span class="params">()</span> </span>&#123;</span><br><span class="line">       <span class="keyword">try</span> &#123;</span><br><span class="line">           <span class="comment">//1.实例化Driver</span></span><br><span class="line">           String className = <span class="string">"com.mysql.jdbc.Driver"</span>;</span><br><span class="line">           Class clazz = Class.forName(className);</span><br><span class="line">           Driver driver = (Driver) clazz.newInstance();</span><br><span class="line"></span><br><span class="line">           <span class="comment">//2.提供url，指明具体操作的数据</span></span><br><span class="line">           String url = <span class="string">"jdbc:mysql://localhost:3306/test"</span>;</span><br><span class="line"></span><br><span class="line">           <span class="comment">//3.提供Properties的对象，指明用户名和密码</span></span><br><span class="line">           Properties info = <span class="keyword">new</span> Properties();</span><br><span class="line">           info.setProperty(<span class="string">"user"</span>, <span class="string">"root"</span>);</span><br><span class="line">           info.setProperty(<span class="string">"password"</span>, <span class="string">"abc123"</span>);</span><br><span class="line"></span><br><span class="line">           <span class="comment">//4.调用driver的connect()，获取连接</span></span><br><span class="line">           Connection conn = driver.connect(url, info);</span><br><span class="line">           System.out.println(conn);</span><br><span class="line"></span><br><span class="line">       &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">           e.printStackTrace();</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
 <blockquote>
-<p><strong>说明：</strong><br>如果注解有成员，在使用注解时，需要指明成员的值。<br>自定义注解必须配上注解的信息处理流程(使用反射)才意义。<br>自定义注解通过都会指明两个元注解：Retention、Target</p>
+<p>说明：相较于方式一，这里使用反射实例化Driver，不在代码中体现第三方数据库的API。体现了面向接口编程思想。</p>
 </blockquote>
-<p><strong>代码举例：</strong></p>
-<pre><code>@Inherited
-@Repeatable(MyAnnotations.class)
-@Retention(RetentionPolicy.RUNTIME)
-@Target({TYPE, FIELD, METHOD, PARAMETER, CONSTRUCTOR, LOCAL_VARIABLE,TYPE_PARAMETER,TYPE_USE})
-public @interface MyAnnotation {
-
-    String value() default &quot;hello&quot;;
-}
-</code></pre><h2 id="4-元注解-：对现有的注解进行解释说明的注解"><a href="#4-元注解-：对现有的注解进行解释说明的注解" class="headerlink" title="4.元注解 ：对现有的注解进行解释说明的注解"></a>4.元注解 ：对现有的注解进行解释说明的注解</h2><blockquote>
-<p><strong>jdk 提供的4种元注解：</strong><br><strong>1.Retention：</strong>指定所修饰的 Annotation 的生命周期：SOURCE \ CLASS（默认行为） \ RUNTIME</p>
-<ul>
-<li>只声明为RUNTIME生命周期的注解，才能通过反射获取。</li>
-</ul>
-<p><strong>2.Target:</strong>用于指定被修饰的 Annotation 能用于修饰哪些程序元素<br><strong>下面两个出现的频率较低:</strong><br><strong>3.Documented:</strong>表示所修饰的注解在被javadoc解析时，保留下来。<br><strong>4.Inherited:</strong>被它修饰的 Annotation 将具继承性。</p>
-<ul>
-<li>类比：元数据的概念：String name = “Tom”;</li>
-</ul>
+<h3 id="3-连接方式三"><a href="#3-连接方式三" class="headerlink" title="3.连接方式三"></a>3.连接方式三</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testConnection3</span><span class="params">()</span> </span>&#123;</span><br><span class="line">       <span class="keyword">try</span> &#123;</span><br><span class="line">           <span class="comment">//1.数据库连接的4个基本要素：</span></span><br><span class="line">           String url = <span class="string">"jdbc:mysql://localhost:3306/test"</span>;</span><br><span class="line">           String user = <span class="string">"root"</span>;</span><br><span class="line">           String password = <span class="string">"abc123"</span>;</span><br><span class="line">           String driverName = <span class="string">"com.mysql.jdbc.Driver"</span>;</span><br><span class="line"></span><br><span class="line">           <span class="comment">//2.实例化Driver</span></span><br><span class="line">           Class clazz = Class.forName(driverName);</span><br><span class="line">           Driver driver = (Driver) clazz.newInstance();</span><br><span class="line">           <span class="comment">//3.注册驱动</span></span><br><span class="line">           DriverManager.registerDriver(driver);</span><br><span class="line">           <span class="comment">//4.获取连接</span></span><br><span class="line">           Connection conn = DriverManager.getConnection(url, user, password);</span><br><span class="line">           System.out.println(conn);</span><br><span class="line">       &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">           e.printStackTrace();</span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>说明：使用DriverManager实现数据库的连接。体会获取连接必要的4个基本要素。</p>
 </blockquote>
-<h2 id="5-如何获取注解信息-通过发射来进行获取、调用"><a href="#5-如何获取注解信息-通过发射来进行获取、调用" class="headerlink" title="5.如何获取注解信息:通过发射来进行获取、调用"></a>5.如何获取注解信息:通过发射来进行获取、调用</h2><p><strong>前提：</strong>要求此注解的元注解Retention中声明的生命周期状态为：RUNTIME.</p>
-<h2 id="6-JDK8中注解的新特性：可重复注解、类型注解"><a href="#6-JDK8中注解的新特性：可重复注解、类型注解" class="headerlink" title="6.JDK8中注解的新特性：可重复注解、类型注解"></a>6.JDK8中注解的新特性：可重复注解、类型注解</h2><h3 id="1-可重复注解"><a href="#1-可重复注解" class="headerlink" title="(1)可重复注解"></a>(1)可重复注解</h3><blockquote>
-<p>1.在MyAnnotation上声明@Repeatable，成员值为MyAnnotations.class<br>2.MyAnnotation的Target和Retention等元注解与MyAnnotations相同。</p>
+<h3 id="4-连接方式四"><a href="#4-连接方式四" class="headerlink" title="4.连接方式四"></a>4.连接方式四</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testConnection4</span><span class="params">()</span> </span>&#123;</span><br><span class="line">       <span class="keyword">try</span> &#123;</span><br><span class="line">           <span class="comment">//1.数据库连接的4个基本要素：</span></span><br><span class="line">           String url = <span class="string">"jdbc:mysql://localhost:3306/test"</span>;</span><br><span class="line">           String user = <span class="string">"root"</span>;</span><br><span class="line">           String password = <span class="string">"abc123"</span>;</span><br><span class="line">           String driverName = <span class="string">"com.mysql.jdbc.Driver"</span>;</span><br><span class="line"></span><br><span class="line">           <span class="comment">//2.加载驱动 （①实例化Driver ②注册驱动）</span></span><br><span class="line">           Class.forName(driverName);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">           <span class="comment">//Driver driver = (Driver) clazz.newInstance();</span></span><br><span class="line">           <span class="comment">//3.注册驱动</span></span><br><span class="line">           <span class="comment">//DriverManager.registerDriver(driver);</span></span><br><span class="line">           <span class="comment">/*</span></span><br><span class="line"><span class="comment">           可以注释掉上述代码的原因，是因为在mysql的Driver类中声明有：</span></span><br><span class="line"><span class="comment">           static &#123;</span></span><br><span class="line"><span class="comment">               try &#123;</span></span><br><span class="line"><span class="comment">                   DriverManager.registerDriver(new Driver());</span></span><br><span class="line"><span class="comment">               &#125; catch (SQLException var1) &#123;</span></span><br><span class="line"><span class="comment">                   throw new RuntimeException("Can't register driver!");</span></span><br><span class="line"><span class="comment">               &#125;</span></span><br><span class="line"><span class="comment">           &#125;</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">            */</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">           <span class="comment">//3.获取连接</span></span><br><span class="line">           Connection conn = DriverManager.getConnection(url, user, password);</span><br><span class="line">           System.out.println(conn);</span><br><span class="line">       &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">           e.printStackTrace();</span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>说明：不必显式的注册驱动了。因为在DriverManager的源码中已经存在静态代码块，实现了驱动的注册。</p>
 </blockquote>
-<h3 id="2-类型注解"><a href="#2-类型注解" class="headerlink" title="(2)类型注解"></a>(2)类型注解</h3><blockquote>
-<p>1.ElementType.TYPE_PARAMETER 表示该注解能写在类型变量的声明语句中（如：泛型声明。<br>2.ElementType.TYPE_USE 表示该注解能写在使用类型的任何语句中。</p>
+<h3 id="5-连接方式五-最终版"><a href="#5-连接方式五-最终版" class="headerlink" title="5.连接方式五(最终版)"></a>5.连接方式五(最终版)</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span>  <span class="keyword">void</span> <span class="title">testConnection5</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">   	<span class="comment">//1.加载配置文件</span></span><br><span class="line">       InputStream is = ConnectionTest.class.getClassLoader().getResourceAsStream(<span class="string">"jdbc.properties"</span>);</span><br><span class="line">       Properties pros = <span class="keyword">new</span> Properties();</span><br><span class="line">       pros.load(is);</span><br><span class="line">       </span><br><span class="line">       <span class="comment">//2.读取配置信息</span></span><br><span class="line">       String user = pros.getProperty(<span class="string">"user"</span>);</span><br><span class="line">       String password = pros.getProperty(<span class="string">"password"</span>);</span><br><span class="line">       String url = pros.getProperty(<span class="string">"url"</span>);</span><br><span class="line">       String driverClass = pros.getProperty(<span class="string">"driverClass"</span>);</span><br><span class="line"></span><br><span class="line">       <span class="comment">//3.加载驱动</span></span><br><span class="line">       Class.forName(driverClass);</span><br><span class="line"></span><br><span class="line">       <span class="comment">//4.获取连接</span></span><br><span class="line">       Connection conn = DriverManager.getConnection(url,user,password);</span><br><span class="line">       System.out.println(conn);</span><br><span class="line"></span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<p>其中，配置文件声明在工程的src目录下：【jdbc.properties】</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">user=root</span><br><span class="line">password=abc123</span><br><span class="line">url=jdbc:mysql://localhost:3306/test</span><br><span class="line">driverClass=com.mysql.jdbc.Driver</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>说明：使用配置文件的方式保存配置信息，在代码中加载配置文件</p>
+<p><strong>使用配置文件的好处：</strong></p>
+<p>①实现了代码和数据的分离，如果需要修改配置信息，直接在配置文件中修改，不需要深入代码<br>②如果修改了配置信息，省去重新编译的过程。</p>
 </blockquote>
 
       
@@ -397,7 +329,7 @@ public @interface MyAnnotation {
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">JAVA基础</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">JDBC</a>
         		</li>
       		
 		</ul>
@@ -453,7 +385,7 @@ public @interface MyAnnotation {
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http:https:/2021/04/30/JAVA枚举类和注解/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http:https:/2021/06/02/JDBC/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -467,18 +399,9 @@ public @interface MyAnnotation {
   
 <nav id="article-nav">
   
-    <a href="/2021/05/01/JAVA集合/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          JAVA集合
-        
-      </div>
-    </a>
   
-  
-    <a href="/2021/04/29/JAVA常用类/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">JAVA常用类</div>
+    <a href="/2021/06/02/Leetcode（mid100-max）/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Leetcode(mid100-)</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -505,7 +428,7 @@ public @interface MyAnnotation {
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#一、枚举类的使用"><span class="toc-number">1.</span> <span class="toc-text">一、枚举类的使用</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-枚举类的说明"><span class="toc-number">1.1.</span> <span class="toc-text">1.枚举类的说明</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-如何自定义枚举类？"><span class="toc-number">1.2.</span> <span class="toc-text">2.如何自定义枚举类？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-jdk-5-0-新增使用enum定义枚举类"><span class="toc-number">1.3.</span> <span class="toc-text">3.jdk 5.0 新增使用enum定义枚举类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-使用enum定义枚举类之后，枚举类常用方法：（继承于java-lang-Enum类）"><span class="toc-number">1.4.</span> <span class="toc-text">4.使用enum定义枚举类之后，枚举类常用方法：（继承于java.lang.Enum类）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-使用enum定义枚举类之后，如何让枚举类对象分别实现接口"><span class="toc-number">1.5.</span> <span class="toc-text">5.使用enum定义枚举类之后，如何让枚举类对象分别实现接口</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#二、注解的使用"><span class="toc-number">2.</span> <span class="toc-text">二、注解的使用</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-注解的理解"><span class="toc-number">2.1.</span> <span class="toc-text">1.注解的理解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-注解的使用示例"><span class="toc-number">2.2.</span> <span class="toc-text">2.注解的使用示例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-如何自定义注解：参照-SuppressWarnings定义"><span class="toc-number">2.3.</span> <span class="toc-text">3.如何自定义注解：参照@SuppressWarnings定义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-元注解-：对现有的注解进行解释说明的注解"><span class="toc-number">2.4.</span> <span class="toc-text">4.元注解 ：对现有的注解进行解释说明的注解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-如何获取注解信息-通过发射来进行获取、调用"><span class="toc-number">2.5.</span> <span class="toc-text">5.如何获取注解信息:通过发射来进行获取、调用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-JDK8中注解的新特性：可重复注解、类型注解"><span class="toc-number">2.6.</span> <span class="toc-text">6.JDK8中注解的新特性：可重复注解、类型注解</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-可重复注解"><span class="toc-number">2.6.1.</span> <span class="toc-text">(1)可重复注解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-类型注解"><span class="toc-number">2.6.2.</span> <span class="toc-text">(2)类型注解</span></a></li></ol></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#一、JDBC介绍"><span class="toc-number">1.</span> <span class="toc-text">一、JDBC介绍</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#二、获取数据库连接"><span class="toc-number">2.</span> <span class="toc-text">二、获取数据库连接</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#要素一：Driver接口实现类"><span class="toc-number">2.1.</span> <span class="toc-text">要素一：Driver接口实现类</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Driver接口介绍"><span class="toc-number">2.1.1.</span> <span class="toc-text">1.Driver接口介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-加载与注册JDBC驱动"><span class="toc-number">2.1.2.</span> <span class="toc-text">2.加载与注册JDBC驱动</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#要素二：URL"><span class="toc-number">2.2.</span> <span class="toc-text">要素二：URL</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#要素三：用户名和密码"><span class="toc-number">2.3.</span> <span class="toc-text">要素三：用户名和密码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数据库连接方式举例"><span class="toc-number">2.4.</span> <span class="toc-text">数据库连接方式举例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-连接方式一"><span class="toc-number">2.4.1.</span> <span class="toc-text">1.连接方式一</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-连接方式二"><span class="toc-number">2.4.2.</span> <span class="toc-text">2.连接方式二</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-连接方式三"><span class="toc-number">2.4.3.</span> <span class="toc-text">3.连接方式三</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-连接方式四"><span class="toc-number">2.4.4.</span> <span class="toc-text">4.连接方式四</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-连接方式五-最终版"><span class="toc-number">2.4.5.</span> <span class="toc-text">5.连接方式五(最终版)</span></a></li></ol></li></ol></li></ol>
                     </div>
                 </span>
             </div>
@@ -521,7 +444,7 @@ public @interface MyAnnotation {
   
 
   
-  <div id="SOHUCS" sid="JAVA枚举类和注解" ></div> 
+  <div id="SOHUCS" sid="JDBC" ></div> 
 <script charset="utf-8" type="text/javascript" src="//changyan.sohu.com/upload/changyan.js" ></script>
 <script type="text/javascript">
     window.changyan.api.config({
