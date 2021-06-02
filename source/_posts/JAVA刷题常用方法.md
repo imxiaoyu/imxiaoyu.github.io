@@ -124,7 +124,9 @@ Set<Object> set = new HashSet<>();
 >- ② 增强for循环
 >- ③ 普通的循环
 
+Collections的一些方法：
 
+	Collections.reverse(arrayList); //反转
 	add(Object obj),
 	addAll(Collection coll),
 	size(),
@@ -139,7 +141,10 @@ Set<Object> set = new HashSet<>();
 	equals(Object obj);
 
 	hasCode(),
-	toArray(),
+	toArray(),//可以这么用的：！！！
+	List<int[]> res = new ArrayList<>();
+	return res.toArray(new int[0][]);
+
 	iterator();
 
 

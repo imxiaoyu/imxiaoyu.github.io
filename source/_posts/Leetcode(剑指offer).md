@@ -1,6 +1,6 @@
 ---
 title: 'Leetcode(剑指offer面试)'
-date: 2021/5/16 20:14:35
+date: 2021/6/2 20:12:23 
 tags:
 	- Leetcode
 ---
@@ -12,10 +12,12 @@ tags:
 >剑指 Offer 14-II.剪绳子 II（找规律？）
 >剑指 Offer 16.数值的整数次方（位运算）
 >剑指 Offer 26.树的子结构（dfs或者递归)
+>剑指 Offer 32.-I.从上到下打印二叉树(BFS)
+>剑指 Offer 32.-III.从上到下打印二叉树 III(BFS)
 >面试题 (10.03).搜索旋转数组（二分）
 
 
-
+10道题目
 <!-- more -->
 # 剑指 Offer 04 二维数组中查找
 
@@ -363,6 +365,85 @@ class Solution {
                 dfs(A.right, B, B);
             }
         }
+    }
+}
+```
+
+
+# 剑指 Offer 32.-I.从上到下打印二叉树
+
+## 题目
+https://leetcode-cn.com/problems/cong-shang-dao-xia-da-yin-er-cha-shu-lcof/
+## 题解
+- 1.用一个List ant储存树中的节点
+- 2.当ant不为空时说明还有节点，然后按顺序取出ant中的每一个节点
+- 3.对于每一个节点在ant的最后存一下他的val并把他的非空左孩子和非空右孩子，直到ant为空
+- 4.最后把存的val放到数组里返回
+
+## 代码
+
+```java
+class Solution {
+    public int[] levelOrder(TreeNode root) {
+        if(root == null) return new int[]{};
+        List<TreeNode> ant = new ArrayList<>();
+        List<Integer> ans = new ArrayList<>();
+        ant.add(root);
+        while(ant.size() != 0){
+            TreeNode temp = ant.get(0);
+            ans.add(temp.val);
+            if(temp.left != null) ant.add(temp.left);
+            if(temp.right != null) ant.add(temp.right);
+            ant.remove(0);           
+        }
+        int[] result = new int[ans.size()];
+        for(int i = 0; i < ans.size(); i++)
+            result[i] = ans.get(i);
+        return result;    
+    }
+}
+```
+
+
+# 剑指 Offer 32.-III.从上到下打印二叉树 III
+
+## 题目
+https://leetcode-cn.com/problems/cong-shang-dao-xia-da-yin-er-cha-shu-iii-lcof/
+## 题解
+- 1.定义一个**当前层的List tempDeep存放非空的根节点root**
+- 2.tempDeep非空时**进入第一层while**，创建一个下一层的List nextDeep 和 当前层的val结果List
+- 3.tempDeep非空时**进入第二层while**，把当前层tempDeep中每一个节点的val放入一个Integer的List中，然后他的非空左右孩子按顺序放到下一层nextDeep中，删除遍历完的节点
+- 4.当tempDeep判断完一遍后也就是tempDeep变为空**退出第二层while**，然后更新当前层为下一层即tempDeep = nextDeep，把存放val的List放入结果result中(注意题目要求奇数层正向输出，偶数层反向输出，所以定义一个flag，偶数层的时候反转一下val存放的List)
+- 5.tempDeep非空时又**进入第二层while（也就是第3步）**
+- 6.**tempDeep为空**了，第一层while也结束，返回结果result
+
+## 代码
+
+```java
+class Solution {
+    public List<List<Integer>> levelOrder(TreeNode root) {
+        boolean flag = false;
+        List<List<Integer>> result = new ArrayList<>();
+        if(root == null) return result; 
+        List<TreeNode> tempDeep = new ArrayList<>();
+        tempDeep.add(root);
+        while(tempDeep.size() != 0){
+            List<TreeNode> nextDeep = new ArrayList<>();
+            List<Integer> ans = new ArrayList<>();
+            while(tempDeep.size() != 0){
+                TreeNode tempNode = tempDeep.get(0);
+                tempDeep.remove(0);
+                ans.add(tempNode.val);
+                if(tempNode.left != null) nextDeep.add(tempNode.left);
+                if(tempNode.right != null) nextDeep.add(tempNode.right); 
+            }
+            if(flag) Collections.reverse(ans);
+            result.add(ans);
+            tempDeep = nextDeep; 
+            if(flag) flag = false;
+            else flag = true;
+        }
+        return result;  
     }
 }
 ```

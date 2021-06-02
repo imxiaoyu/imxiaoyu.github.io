@@ -31,7 +31,7 @@ tags:
 >79.单词搜索(dfs)
 >81.搜索旋转排序数组 II（二分）
 
-
+25道中等题目
 
 
 <!-- more -->
@@ -1030,63 +1030,34 @@ class Solution {
 ## 题目
 https://leetcode-cn.com/problems/find-first-and-last-position-of-element-in-sorted-array
 ## 题解
-**共四种情况（请综合我下面给的例子来看后三种情况）**：
+**共四种情况**：
 **1.左 == target：** 此时需要分情况讨论：
 - （1）右 == target，则return new int[]{l, r};
-- （2）nums[mid] == target，去找一下mid右边是否还有target,则r--;
-- （3）其余情况，mid右边肯定没有target，所以 r = mid - 1;
+- （2）nums[mid] == target，此时target范围可能在[左，右 - 1]中，所以右 = 右 + 1
+- （3）其余情况，也就是nums[mid] > target,此时target范围可能在[左，mid - 1]中，所以右 = mid - 1;
 
-**2.左 == 中 || 中 == target：** 此时target初始位置**在[左，mid]中，左 = 左 + 1
-**3.左 < 中：** 此时需要分情况讨论：
-- （1）target比左小**或者**target比中大时（比小的都小**或者**比大的都大）：此时target只可能在[mid, r]中，所以l = mid;
-- （2）其他，即target比左大**并且**target比中小时（大小在左和中之间）：此时target只可能在[左 + 1, mid]中，所以 l = l + 1; r = mid;
-
-**4.左 > 中：** 此时需要分情况讨论：
-- （1）target比左小**并且**target比中大时（大小在左和中之间）：此时target只可能在[mid, r]中，所以l = mid;
-- （2）其他，即target比左大**或者**比中小时（比大的都大**或者**比小的都小）：此时target只可能在[左 + 1, mid]中，所以 l = l + 1; r = mid;
-
-**后三种情况即2.3.4情况例子：**
-**2.** [3，1，3，3，3] 或 [3，3，3，3，1]，3 == 3(nums[0] == nums[2]，**左 == 中**)，目标target 1 在[左，mid]中 **或** 在[mid + 1, r]中
-**3.** [1，2，3，4，5] 或 [1，2，3，4，0]，1 < 3(nums[0] < nums[2]，**左 < 中**)
-- （1）[1，2，3，4，**0**]中目标target 0 或者 [1，2，3，4，**5**]中目标target 5 都在[mid, r]中
-- （2）[1，**2**，3，4，0]中目标target 2 只在[左 + 1, mid]中
-
-**4.** [5，6，2，3，4] 或 [5，1，2，3，4]，5 > 2(nums[0] > nums[2]，**左 > 中**)
-- （1）[5，6，2，**3**，4]中目标target 3 只在[mid, r]中
-- （2）[5，**6**，2，3，4]中目标target 6 或者 [5，**1**，2，3，4]中目标target 1 都只在[左 + 1, mid]中
+**2.中 == target：** 此时target范围可能在[左 + 1，mid]中，所以左 = 左 + 1
+**3.中 < target：** 此时target范围可能在[mid + 1，右]中，所以左 = mid + 1
+**4.其他，中 > target：** 此时target范围可能在[左，mid - 1]中，所以右 = mid - 1;
 
 ## 代码
 
 ```java
 class Solution {
     public int[] searchRange(int[] nums, int target) {
-        int n = nums.length;
-        int[] result = new int[]{-1, -1};
-        int l = 0, r = n - 1;
+        int l = 0, r = nums.length - 1;
         while(l <= r){
-            int mid = (l + r + 1) >> 1;
+            int mid = (l + r + 1) / 2;
             if(nums[l] == target){
                 if(nums[r] == target) return new int[]{l, r};
                 else if(nums[mid] == target) r--;
                 else r = mid - 1;
             }
-            else if(nums[l] == nums[mid] || nums[mid] == target) l++;
-            else if(nums[l] < nums[mid]){
-                if(nums[l] > target || nums[mid] < target) l = mid;
-                else{
-                    l = l + 1;
-                    r = mid;
-                }
-            }
-            else{
-                if(nums[l] > target && nums[mid] < target) l = mid;
-                else{
-                    l = l + 1;
-                    r = mid;
-                }
-            }
+            else if(nums[mid] == target) l++;
+            else if(nums[mid] < target) l = mid + 1;
+            else r = mid - 1;
         }
-        return result;
+        return new int[]{-1, -1};
     }
 }
 ```

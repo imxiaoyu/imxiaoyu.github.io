@@ -1,10 +1,11 @@
 ---
 title: 'Leetcode(mid100-)'
-date: 2021/6/1 11:20:36 
+date: 2021/6/2 20:14:03 
 tags:
 	- Leetcode
 ---
 >**题目列表：**
+>102.二叉树的层序遍历(BFS)
 >153.寻找旋转排序数组中的最小值（二分）
 >198.打家劫舍（dp）
 >213.打家劫舍II（dp）
@@ -15,6 +16,7 @@ tags:
 >343.整数拆分（dp）
 >421.数组中两个数的最大异或值(字典树)
 >477.汉明距离总和（异或运算）
+>523.连续的子数组和(前缀和)
 >692.前K个高频单词（暴力排序，或者Comparator接口）
 >740.删除并获得点数（dp）
 >990.等式方程的可满足性（并查集）
@@ -37,8 +39,46 @@ tags:
 
 
 
-
+31道题目
 <!-- more -->
+# 102.二叉树的层序遍历
+## 题目
+https://leetcode-cn.com/problems/binary-tree-level-order-traversal/
+## 题解
+- 1.定义一个**当前层的List tempDeep存放非空的根节点root**
+- 2.tempDeep非空时**进入第一层while**，创建一个下一层的List nextDeep 和 当前层的val结果List
+- 3.tempDeep非空时**进入第二层while**，把当前层tempDeep中每一个节点的val放入一个Integer的List中，然后他的非空左右孩子按顺序放到下一层nextDeep中，删除遍历完的节点
+- 4.当tempDeep判断完一遍后也就是tempDeep变为空**退出第二层while**，然后更新当前层为下一层即tempDeep = nextDeep，把存放val的List放入结果result中
+- 5.tempDeep非空时又**进入第二层while（也就是第3步）**
+- 6.**tempDeep为空**了，第一层while也结束，返回结果result
+
+## 代码
+
+```java
+class Solution {
+    public List<List<Integer>> levelOrder(TreeNode root) {
+        List<List<Integer>> result = new ArrayList<>();
+        if(root == null) return result; 
+        List<TreeNode> tempDeep = new ArrayList<>();
+        tempDeep.add(root);
+        while(tempDeep.size() != 0){
+            List<TreeNode> nextDeep = new ArrayList<>();
+            List<Integer> ans = new ArrayList<>();
+            while(tempDeep.size() != 0){
+                TreeNode tempNode = tempDeep.get(0);
+                tempDeep.remove(0);
+                ans.add(tempNode.val);
+                if(tempNode.left != null) nextDeep.add(tempNode.left);
+                if(tempNode.right != null) nextDeep.add(tempNode.right);          
+            }
+            result.add(ans);
+            tempDeep = nextDeep; 
+        }
+        return result;  
+    }
+}
+```
+
 # 153.寻找旋转排序数组中的最小值
 ## 题目
 https://leetcode-cn.com/problems/find-minimum-in-rotated-sorted-array/
@@ -476,6 +516,38 @@ class Solution {
             result += (nums.length - zero) * zero;
         }
         return result;
+    }
+}
+```
+
+# 523.连续的子数组和
+## 题目
+https://leetcode-cn.com/problems/continuous-subarray-sum/
+
+## 题解
+用原数组存一下前缀和，然后两层for判断一下是否是k的倍数：
+1.第一层for：
+- 如果前i(i > 0)个数的和是k的倍数**或者**第i(i > 1)个数与第i - 1个数的和为0（因为0也是k的倍数）直接返回true
+
+2.第二层for：
+- 如果[j,i]区间内原数组元素的和比k都小了，直接结束第二个for（因为原数组是为非负数，所以第二个for里面后面的[j,i]的和肯定也比k小，即不是k的倍数，没必要继续在第二层for里面判断了）
+- 如果[j,i]区间内原数组元素的和是k的倍数，直接返回true
+
+## 代码
+
+```java
+class Solution {
+    public boolean checkSubarraySum(int[] nums, int k) {
+        if(nums.length < 2) return false;
+        for(int i = 1; i < nums.length; i++) nums[i] += nums[i - 1];
+        for(int i = 1; i < nums.length; i++){
+            if(nums[i] % k == 0 || (i > 1 && nums[i] - nums[i - 2] == 0)) return true;
+            for(int j = 0; j < i - 1; j++){   
+                if(nums[i] - nums[j] < k) break; 
+                if((nums[i] - nums[j]) % k == 0) return true;  
+            }
+        }
+        return false;
     }
 }
 ```
