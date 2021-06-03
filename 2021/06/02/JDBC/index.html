@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="Flying My Dream">
 <meta property="og:description" content="一、JDBC介绍 JDBC(Java Database Connectivity)是一个独立于特定数据库管理系统、通用的SQL数据库存取和操作的公共接口（一组API），定义了用来访问数据库的标准Java类库，（java.sql,javax.sql）使用这些类库可以以一种标准的方法、方便地访问数据库资源。 JDBC为访问不同的数据库提供了一种统一的途径，为开发者屏蔽了一些细节问题。 JDBC的目标是">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2021-06-02T13:08:06.751Z">
+<meta property="og:updated_time" content="2021-06-03T15:42:24.028Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JDBC">
 <meta name="twitter:description" content="一、JDBC介绍 JDBC(Java Database Connectivity)是一个独立于特定数据库管理系统、通用的SQL数据库存取和操作的公共接口（一组API），定义了用来访问数据库的标准Java类库，（java.sql,javax.sql）使用这些类库可以以一种标准的方法、方便地访问数据库资源。 JDBC为访问不同的数据库提供了一种统一的途径，为开发者屏蔽了一些细节问题。 JDBC的目标是">
@@ -281,7 +281,7 @@
 <p><strong>使用配置文件的好处：</strong></p>
 <p>①实现了代码和数据的分离，如果需要修改配置信息，直接在配置文件中修改，不需要深入代码<br>②如果修改了配置信息，省去重新编译的过程。</p>
 </blockquote>
-
+<h1 id="三、使用PreparedStatement实现CRUD操作"><a href="#三、使用PreparedStatement实现CRUD操作" class="headerlink" title="三、使用PreparedStatement实现CRUD操作"></a>三、使用PreparedStatement实现CRUD操作</h1>
       
 
       
@@ -399,9 +399,18 @@
   
 <nav id="article-nav">
   
+    <a href="/2021/06/03/Leetcode（mid100-max）/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          Leetcode(mid100-)
+        
+      </div>
+    </a>
   
-    <a href="/2021/06/02/Leetcode（mid100-max）/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Leetcode(mid100-)</div>
+  
+    <a href="/2021/06/02/Leetcode(剑指offer)/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Leetcode(剑指offer面试)</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -428,7 +437,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#一、JDBC介绍"><span class="toc-number">1.</span> <span class="toc-text">一、JDBC介绍</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#二、获取数据库连接"><span class="toc-number">2.</span> <span class="toc-text">二、获取数据库连接</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#要素一：Driver接口实现类"><span class="toc-number">2.1.</span> <span class="toc-text">要素一：Driver接口实现类</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Driver接口介绍"><span class="toc-number">2.1.1.</span> <span class="toc-text">1.Driver接口介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-加载与注册JDBC驱动"><span class="toc-number">2.1.2.</span> <span class="toc-text">2.加载与注册JDBC驱动</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#要素二：URL"><span class="toc-number">2.2.</span> <span class="toc-text">要素二：URL</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#要素三：用户名和密码"><span class="toc-number">2.3.</span> <span class="toc-text">要素三：用户名和密码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数据库连接方式举例"><span class="toc-number">2.4.</span> <span class="toc-text">数据库连接方式举例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-连接方式一"><span class="toc-number">2.4.1.</span> <span class="toc-text">1.连接方式一</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-连接方式二"><span class="toc-number">2.4.2.</span> <span class="toc-text">2.连接方式二</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-连接方式三"><span class="toc-number">2.4.3.</span> <span class="toc-text">3.连接方式三</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-连接方式四"><span class="toc-number">2.4.4.</span> <span class="toc-text">4.连接方式四</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-连接方式五-最终版"><span class="toc-number">2.4.5.</span> <span class="toc-text">5.连接方式五(最终版)</span></a></li></ol></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#一、JDBC介绍"><span class="toc-number">1.</span> <span class="toc-text">一、JDBC介绍</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#二、获取数据库连接"><span class="toc-number">2.</span> <span class="toc-text">二、获取数据库连接</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#要素一：Driver接口实现类"><span class="toc-number">2.1.</span> <span class="toc-text">要素一：Driver接口实现类</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Driver接口介绍"><span class="toc-number">2.1.1.</span> <span class="toc-text">1.Driver接口介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-加载与注册JDBC驱动"><span class="toc-number">2.1.2.</span> <span class="toc-text">2.加载与注册JDBC驱动</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#要素二：URL"><span class="toc-number">2.2.</span> <span class="toc-text">要素二：URL</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#要素三：用户名和密码"><span class="toc-number">2.3.</span> <span class="toc-text">要素三：用户名和密码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数据库连接方式举例"><span class="toc-number">2.4.</span> <span class="toc-text">数据库连接方式举例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-连接方式一"><span class="toc-number">2.4.1.</span> <span class="toc-text">1.连接方式一</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-连接方式二"><span class="toc-number">2.4.2.</span> <span class="toc-text">2.连接方式二</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-连接方式三"><span class="toc-number">2.4.3.</span> <span class="toc-text">3.连接方式三</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-连接方式四"><span class="toc-number">2.4.4.</span> <span class="toc-text">4.连接方式四</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-连接方式五-最终版"><span class="toc-number">2.4.5.</span> <span class="toc-text">5.连接方式五(最终版)</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#三、使用PreparedStatement实现CRUD操作"><span class="toc-number">3.</span> <span class="toc-text">三、使用PreparedStatement实现CRUD操作</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -583,6 +592,14 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">科研</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Leetcode</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">JAVA面试</a>
               </li>
              
@@ -591,19 +608,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Leetcode</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">科研</a>
+                <a href="javascript:void(0)" class="js-tag color5">JDBC</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">MySQL</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">JDBC</a>
               </li>
             
             <div class="clearfix"></div>
