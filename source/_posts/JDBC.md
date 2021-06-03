@@ -263,3 +263,7 @@ driverClass=com.mysql.jdbc.Driver
 >
 > ①实现了代码和数据的分离，如果需要修改配置信息，直接在配置文件中修改，不需要深入代码
 > ②如果修改了配置信息，省去重新编译的过程。
+
+
+
+# 三、使用PreparedStatement实现CRUD操作

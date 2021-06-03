@@ -1,6 +1,6 @@
 ---
 title: 'Leetcode(mid100-)'
-date: 2021/6/2 20:14:03 
+date: 2021/6/3 21:03:16 
 tags:
 	- Leetcode
 ---
@@ -17,6 +17,7 @@ tags:
 >421.数组中两个数的最大异或值(字典树)
 >477.汉明距离总和（异或运算）
 >523.连续的子数组和(前缀和)
+>525.连续数组（前缀和）
 >692.前K个高频单词（暴力排序，或者Comparator接口）
 >740.删除并获得点数（dp）
 >990.等式方程的可满足性（并查集）
@@ -39,7 +40,7 @@ tags:
 
 
 
-31道题目
+32道题目
 <!-- more -->
 # 102.二叉树的层序遍历
 ## 题目
@@ -548,6 +549,40 @@ class Solution {
             }
         }
         return false;
+    }
+}
+```
+
+# 525.连续数组
+## 题目
+https://leetcode-cn.com/problems/contiguous-array/
+
+## 题解
+创建一个哈希表ant，key存放[0,i]的前缀和，value存放下标i（对于重复的前缀和只存放第一个前缀和的下标，**注意**求前缀和时我们要把0变为-1，这样能够和1相加变为0，便于运算）,遍历一遍数组进行前缀和计算与判断，过程为：
+**1.先求前缀和：0变为-1，1还是1**
+**2.判断截止到i为止的最长连续子数组，共三种情况：**
+- **①当前的前缀和 nums[i]== 0：** 说明当前最长连续子数组为[0,i],长度为i + 1
+- **②当前的前缀和在哈希表里存在：**（也就是与之前在哈希表存的前缀和相同了），那说明左开右闭区间`(ant.get(nums[i]),i]` 内0和1数量也是相同的（只有这样前缀和才会相同），所以我们让`result = Math.max(result, i - ant.get(nums[i]));`
+- **③当前的前缀和在哈希表里不存在：** 那么把它存放到哈希表里
+
+最后返回result
+## 代码
+
+```java
+class Solution {
+    public int findMaxLength(int[] nums) {
+        int result = 0;
+        Map<Integer,Integer> ant = new HashMap<>();
+        nums[0] = nums[0] == 1 ? 1 : -1;
+        ant.put(nums[0], 0);
+        for(int i = 1; i < nums.length; i++) {
+            if(nums[i] == 1) nums[i] += nums[i - 1];
+            else nums[i] = nums[i - 1] - 1;
+            if(nums[i] == 0) result = i + 1;
+            else if(ant.containsKey(nums[i])) result = Math.max(result, i - ant.get(nums[i]));
+            else ant.put(nums[i], i);
+        }
+        return result;
     }
 }
 ```
