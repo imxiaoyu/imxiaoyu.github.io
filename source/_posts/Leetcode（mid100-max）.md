@@ -1,11 +1,13 @@
 ---
 title: 'Leetcode(mid100-)'
-date: 2021/6/3 21:03:16 
+date: 2021/6/4 23:57:05 
 tags:
 	- Leetcode
 ---
 >**题目列表：**
 >102.二叉树的层序遍历(BFS)
+>113.路径总和 II(DFS)
+>151.翻转字符串里的单词(StringBuffer模拟)
 >153.寻找旋转排序数组中的最小值（二分）
 >198.打家劫舍（dp）
 >213.打家劫舍II（dp）
@@ -20,6 +22,7 @@ tags:
 >525.连续数组（前缀和）
 >692.前K个高频单词（暴力排序，或者Comparator接口）
 >740.删除并获得点数（dp）
+>946.验证栈序列（栈）
 >990.等式方程的可满足性（并查集）
 >1035.不相交的线(最长公共子序列 经典dp 模板)
 >1190.反转每对括号间的子串（栈，反转字符串）
@@ -40,7 +43,7 @@ tags:
 
 
 
-32道题目
+35道题目
 <!-- more -->
 # 102.二叉树的层序遍历
 ## 题目
@@ -76,6 +79,72 @@ class Solution {
             tempDeep = nextDeep; 
         }
         return result;  
+    }
+}
+```
+
+# 113.路径总和 II
+## 题目
+https://leetcode-cn.com/problems/path-sum-ii/
+## 题解
+搜索左右子树：直到叶子节点而且当前的和等于目标target时把当前路径加到结果中
+
+## 代码
+
+```java
+class Solution {
+     List<List<Integer>> result = new ArrayList<List<Integer>>();
+    public List<List<Integer>> pathSum(TreeNode root, int target) {
+        dfs(root, target, 0, new ArrayList<Integer>());
+        return result;
+    }
+    public void dfs(TreeNode root, int target, int sum, List<Integer> tempAns){
+        if(root == null) return;
+        else {
+            tempAns.add(root.val);
+            if(root.left == null && root.right == null && sum + root.val == target)
+                result.add(new ArrayList<Integer>(tempAns));
+            else {
+                dfs(root.left, target, sum + root.val, tempAns);
+                dfs(root.right, target, sum + root.val, tempAns);
+            }
+            tempAns.remove(tempAns.size() - 1); 
+        }
+    }
+}
+```
+
+# 151.翻转字符串里的单词
+## 题目
+https://leetcode-cn.com/problems/reverse-words-in-a-string/
+## 题解
+定义两个String Buffer，一个存放结果，一个存放当前的单词，然后倒叙判断，遇到空格就把当前单词放在结果里，最终要判断一下当前的单词是否为空（因为String s开头可能没有空格）
+
+## 代码
+
+```java
+class Solution {
+    public String reverseWords(String s) {
+        boolean flag = false;
+        StringBuffer result = new StringBuffer();
+        StringBuffer tempWord = new StringBuffer();
+        int tempPosi = s.length() - 1;
+        while(tempPosi >= 0){
+            char c = s.charAt(tempPosi);
+            if(tempWord.length() != 0 && c == ' '){
+                if(!flag) {result.append(tempWord); flag = true;}
+                else result.append(" " + tempWord);
+                tempWord.delete(0, tempWord.length());
+            }
+            else if(c != ' ') tempWord.insert(0, c);
+            tempPosi--;
+        }
+        if(tempWord.length() != 0){
+            if(!flag) result.append(tempWord);
+            else result.append(" " + tempWord);
+        }
+        return result.toString();
+        
     }
 }
 ```
@@ -715,6 +784,38 @@ https://leetcode-cn.com/problems/delete-and-earn
 	        return dp[max_Num];
 	    }
 	}
+```
+
+# 946.验证栈序列
+## 题目
+https://leetcode-cn.com/problems/validate-stack-sequences/
+## 题解
+创建一个栈ant和一个表示当前pushed数组的下标位置tempPosi的int：
+1.遍历一遍popped数组
+2.当栈ant为空或者当前栈顶不等于此时遍历到的popped数组位置对应元素时：
+- ①如果当前pushed数组的下标位置tempPosi小于pushed数组的长度，把pushed的当前位置元素加入到栈中
+- ②否则，返回false，说明pushed到尾了也没有匹配到和popped数组对应的元素
+
+3.当栈ant为空或者当前栈顶等于此时遍历到的popped数组位置对应元素时：删除栈顶，接着遍历popped数组
+4.遍历成功结束后，说明都匹配上了，所以返回true
+
+## 代码
+
+```java
+class Solution {
+    public boolean validateStackSequences(int[] pushed, int[] popped) {
+        Stack<Integer> ant = new Stack<Integer>();
+        int tempPosi = 0;
+        for(int i = 0; i < popped.length; i++){
+            while(ant.empty() || popped[i] != ant.peek()){
+                if(tempPosi < pushed.length) ant.push(pushed[tempPosi++]);
+                else return false;
+            } 
+            ant.pop();
+        }
+        return true;
+    }
+}
 ```
 
 # 990.等式方程的可满足性

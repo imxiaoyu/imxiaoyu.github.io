@@ -1,6 +1,6 @@
 ---
 title: 'Leetcode(剑指offer面试)'
-date: 2021/6/2 20:12:23 
+date: 2021/6/4 23:45:03 
 tags:
 	- Leetcode
 ---
@@ -11,13 +11,15 @@ tags:
 >剑指 Offer 14-I.剪绳子（dp）
 >剑指 Offer 14-II.剪绳子 II（找规律？）
 >剑指 Offer 16.数值的整数次方（位运算）
->剑指 Offer 26.树的子结构（dfs或者递归)
+>剑指 Offer 26.树的子结构（dfs或者递归）
+>剑指 Offer 31.栈的压入、弹出序列（栈）
 >剑指 Offer 32.-I.从上到下打印二叉树(BFS)
 >剑指 Offer 32.-III.从上到下打印二叉树 III(BFS)
+>剑指 Offer 34.二叉树中和为某一值的路径（DFS）
 >面试题 (10.03).搜索旋转数组（二分）
 
 
-10道题目
+12道题目
 <!-- more -->
 # 剑指 Offer 04 二维数组中查找
 
@@ -369,6 +371,38 @@ class Solution {
 }
 ```
 
+# 剑指 Offer 31.栈的压入、弹出序列
+
+## 题目
+https://leetcode-cn.com/problems/zhan-de-ya-ru-dan-chu-xu-lie-lcof/
+## 题解
+创建一个栈ant和一个表示当前pushed数组的下标位置tempPosi的int：
+1.遍历一遍popped数组
+2.当栈ant为空或者当前栈顶不等于此时遍历到的popped数组位置对应元素时：
+- ①如果当前pushed数组的下标位置tempPosi小于pushed数组的长度，把pushed的当前位置元素加入到栈中
+- ②否则，返回false，说明pushed到尾了也没有匹配到和popped数组对应的元素
+
+3.当栈ant为空或者当前栈顶等于此时遍历到的popped数组位置对应元素时：删除栈顶，接着遍历popped数组
+4.遍历成功结束后，说明都匹配上了，所以返回true
+
+## 代码
+
+```java
+class Solution {
+    public boolean validateStackSequences(int[] pushed, int[] popped) {
+        Stack<Integer> ant = new Stack<Integer>();
+        int tempPosi = 0;
+        for(int i = 0; i < popped.length; i++){
+            while(ant.empty() || popped[i] != ant.peek()){
+                if(tempPosi < pushed.length) ant.push(pushed[tempPosi++]);
+                else return false;
+            } 
+            ant.pop();
+        }
+        return true;
+    }
+}
+```
 
 # 剑指 Offer 32.-I.从上到下打印二叉树
 
@@ -447,6 +481,39 @@ class Solution {
     }
 }
 ```
+
+# 剑指 Offer 34.二叉树中和为某一值的路径
+
+## 题目
+https://leetcode-cn.com/problems/er-cha-shu-zhong-he-wei-mou-yi-zhi-de-lu-jing-lcof/
+## 题解
+搜索左右子树：直到叶子节点而且当前的和等于目标target时把当前路径加到结果中
+
+## 代码
+
+```java
+class Solution {
+     List<List<Integer>> result = new ArrayList<List<Integer>>();
+    public List<List<Integer>> pathSum(TreeNode root, int target) {
+        dfs(root, target, 0, new ArrayList<Integer>());
+        return result;
+    }
+    public void dfs(TreeNode root, int target, int sum, List<Integer> tempAns){
+        if(root == null) return;
+        else {
+            tempAns.add(root.val);
+            if(root.left == null && root.right == null && sum + root.val == target)
+                result.add(new ArrayList<Integer>(tempAns));
+            else {
+                dfs(root.left, target, sum + root.val, tempAns);
+                dfs(root.right, target, sum + root.val, tempAns);
+            }
+            tempAns.remove(tempAns.size() - 1); 
+        }
+    }
+}
+```
+
 
 # 面试题 (10.03).搜索旋转数组
 
