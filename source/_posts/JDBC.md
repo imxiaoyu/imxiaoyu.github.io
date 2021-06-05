@@ -18,9 +18,9 @@ tags:
 
 # 二、获取数据库连接
 
-## 要素一：Driver接口实现类
+## 1.要素一：Driver接口实现类
 
-### 1.Driver接口介绍
+### (1)Driver接口介绍
 
 - java.sql.Driver 接口是所有 JDBC 驱动程序需要实现的接口。这个接口是提供给数据库厂商使用的，不同数据库厂商提供不同的实现。
 
@@ -38,7 +38,7 @@ tags:
 注意：如果是Dynamic Web Project（动态的web项目）话，则是把驱动jar放到WebContent（有的开发工具叫WebRoot）目录中的WEB-INF目录中的lib目录下即可
 
 
-### 2.加载与注册JDBC驱动
+### (2)加载与注册JDBC驱动
 
 - 加载驱动：加载 JDBC 驱动需调用 Class 类的静态方法 forName()，向其传递要加载的 JDBC 驱动的类名
 
@@ -50,7 +50,7 @@ tags:
   - 通常不用显式调用 DriverManager 类的 registerDriver() 方法来注册驱动程序类的实例，因为 Driver 接口的驱动程序类**都**包含了静态代码块，在这个静态代码块中，会调用 DriverManager.registerDriver() 方法来注册自身的一个实例。
 
 
-## 要素二：URL
+## 2.要素二：URL
 
 - JDBC URL 用于标识一个被注册的驱动程序，驱动程序管理器通过这个 URL 选择正确的驱动程序，从而建立到数据库的连接。
 
@@ -82,14 +82,14 @@ tags:
 
     - jdbc:sqlserver://localhost:1433:DatabaseName=atguigu
 
-## 要素三：用户名和密码
+## 3.要素三：用户名和密码
 
 - user,password可以用“属性名=属性值”方式告诉数据库
 - 可以调用 DriverManager 类的 getConnection() 方法建立到数据库的连接
 
-## 数据库连接方式举例
+## 4.数据库连接方式举例
 
-### 1.连接方式一
+### (1)连接方式一
 
 ```java
 	@Test
@@ -118,7 +118,7 @@ tags:
 
 > 说明：上述代码中显式出现了第三方数据库的API
 
-### 2.连接方式二
+### (2)连接方式二
 
 ```java
 	@Test
@@ -149,7 +149,7 @@ tags:
 
 > 说明：相较于方式一，这里使用反射实例化Driver，不在代码中体现第三方数据库的API。体现了面向接口编程思想。
 
-### 3.连接方式三
+### (3)连接方式三
 
 ```java
 	@Test
@@ -178,7 +178,7 @@ tags:
 
 > 说明：使用DriverManager实现数据库的连接。体会获取连接必要的4个基本要素。
 
-### 4.连接方式四
+### (4)连接方式四
 
 ```java
 	@Test
@@ -222,7 +222,7 @@ tags:
 
 > 说明：不必显式的注册驱动了。因为在DriverManager的源码中已经存在静态代码块，实现了驱动的注册。
 
-### 5.连接方式五(最终版)
+### (5)连接方式五(最终版)
 
 ```java
 	@Test

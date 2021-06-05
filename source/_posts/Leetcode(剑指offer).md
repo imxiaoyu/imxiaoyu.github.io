@@ -16,10 +16,13 @@ tags:
 >剑指 Offer 32.-I.从上到下打印二叉树(BFS)
 >剑指 Offer 32.-III.从上到下打印二叉树 III(BFS)
 >剑指 Offer 34.二叉树中和为某一值的路径（DFS）
+>剑指 Offer 47.礼物的最大价值（dp）
+>剑指 Offer 63.股票的最大利润（数组）
+>剑指 Offer 64.求1+2+…+n（数学）
 >面试题 (10.03).搜索旋转数组（二分）
 
 
-12道题目
+15道题目
 <!-- more -->
 # 剑指 Offer 04 二维数组中查找
 
@@ -514,6 +517,81 @@ class Solution {
 }
 ```
 
+# 剑指 Offer 47.礼物的最大价值
+
+## 题目
+https://leetcode-cn.com/problems/li-wu-de-zui-da-jie-zhi-lcof/
+## 题解
+**dp[x][y]表示走到(x,y)位置时的最大价值：** 对于(x,y)位置来说 **只能从** 上面(x - 1, y) **或者** 左面(x, y - 1)走过来，所以dp[x][y] = 上面位置、左面位置的 **最大值加上** 当前位置的价值
+**dp公式：**
+`dp[x][y] = Math.max(dp[x][y - 1], dp[x - 1][y]) + grid[x][y]`
+
+**注意：**
+1.边界情况,即：
+- ①(x = 0, y = 0)时，dp[x][y] = grid[0][0]
+- ②(x = 0, y != 0)时，dp[x][y] = dp[0][y - 1] + grid[0][y]
+- ③(x != 0, y = 0)时，dp[x][y] = dp[x - 1][0] + grid[x][0]
+
+2.代码中我没有创建dp数组，直接用原数组替代了
+
+## 代码
+
+```java
+class Solution {
+    public int maxValue(int[][] grid) {
+        int m = grid.length, n = grid[0].length;
+        for(int x = 0; x < m; x++){
+            for(int y = 0; y < n; y++){
+                if(x == 0 && y == 0) ;
+                else if(x == 0) grid[x][y] += grid[x][y - 1];
+                else if(y == 0) grid[x][y] += grid[x - 1][y];
+                else grid[x][y] += Math.max(grid[x][y - 1], grid[x - 1][y]);
+            }
+        }
+        return grid[m - 1][n - 1];
+    }
+}
+```
+
+# 剑指 Offer 63.股票的最大利润
+
+## 题目
+https://leetcode-cn.com/problems/gu-piao-de-zui-da-li-run-lcof/
+## 题解
+创建两个int，一个记录当前最小股票tempMin价格，一个记录结果result，遍历一遍数组：
+1.如果数组当前位置的价格比tempMin小，则更新tempMin
+2.如果数组当前位置的价格比tempMin大，则更新结果（看一下当前位置卖出是否更赚钱）
+## 代码
+
+```java
+class Solution {
+    public int maxProfit(int[] prices) {
+        int tempMin = 10000, result = 0;
+        for(int price : prices){
+            if(price < tempMin) tempMin = price;
+            else result = Math.max(result, price - tempMin);
+        }
+        return result;
+    }
+}
+```
+
+# 剑指 Offer 64.求1+2+…+n
+
+## 题目
+https://leetcode-cn.com/problems/qiu-12n-lcof/solution/
+## 题解
+求和公式 `(n + 1) * n / 2 = (n * n + n) / 2 = ((int)Math.pow(n, 2) + n) >> 1`
+
+## 代码
+
+```java
+class Solution {
+    public int sumNums(int n) {
+        return ((int)Math.pow(n, 2) + n) >> 1;
+    }
+}
+```
 
 # 面试题 (10.03).搜索旋转数组
 
