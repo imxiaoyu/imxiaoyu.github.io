@@ -16,8 +16,11 @@ tags:
 >275.H 指数 II（规律+数组）
 >337.打家劫舍III(需要多写几次**)
 >343.整数拆分（dp）
+>400.第 N 位数字（找规律）
 >421.数组中两个数的最大异或值(字典树)
+>474.一和零（dp）
 >477.汉明距离总和（异或运算）
+>494.目标和(dp或dfs)
 >523.连续的子数组和(前缀和)
 >525.连续数组（前缀和）
 >692.前K个高频单词（暴力排序，或者Comparator接口）
@@ -43,7 +46,7 @@ tags:
 
 
 
-35道题目
+38道题目
 <!-- more -->
 # 102.二叉树的层序遍历
 ## 题目
@@ -488,6 +491,48 @@ class Solution {
     }
 }
 ```
+
+# 400.第 N 位数字
+## 题目
+https://leetcode-cn.com/problems/nth-digit/
+## 题解
+数字位数|数字范围|字符序列范围
+:-:|:-:|:-:
+1|0 - 9|0 - 9
+2|10 - 99|10 - 189
+3|100 - 999|190 - 2889
+4|1000 - 9999|2890 - 38889
+5|10000 - 99999|38890 - 488889
+6|100000 - 999999|488890 - 5888889
+7|1000000 - 9999999|5888890 - 68888889
+8|10000000 - 99999999|68888890 - 788888889
+9|100000000 - 999999999|788888890 - 8888888889
+
+根据上表我们就能求出题目给的n是哪个数字的第几位，那就结束了……
+**举例：** n = 13  (01234567891011) 答案按说是1，其实就是数字11的个位数
+- 1.先求n对应的是哪个数字：`num =  (13 - 10) / 2 + 10 = 11`
+- 2.再求是这个数字的哪一位 `posi = (13 - 10) % 2 = 1` (结果为0就是最高位，1是次一位，对于11这个两位数来说1表示的就是个位)
+- 3.求出这个数字的这一位并返回
+
+## 代码
+
+```java
+class Solution {
+    public int findNthDigit(int n) {
+        int[] ant = new int[]{0, 10, 190, 2890, 38890, 488890, 5888890, 68888890, 788888890};
+        int[] numBegin = new int[]{0, 10, 100, 1000, 10000, 100000, 1000000, 10000000, 100000000};
+        for(int i = ant.length - 1; i >= 0; i--){
+            if(n >= ant[i]){
+                int num = (n - ant[i]) / (i + 1) + numBegin[i];
+                int posi = (n - ant[i]) % (i + 1);
+                return num % (int)Math.pow(10, i + 1 - posi) / (int)Math.pow(10,  i - posi);
+            }
+        }
+        return 0;
+    }
+}
+```
+
 # 421.数组中两个数的最大异或值
 ## 题目
 https://leetcode-cn.com/problems/maximum-xor-of-two-numbers-in-an-array
@@ -567,6 +612,36 @@ class Solution {
 }
 ```
 
+# 474.一和零
+## 题目
+https://leetcode-cn.com/problems/ones-and-zeroes/
+## 题解
+dp[i][j] 表示i个0、j个1的时候最多可以有几个字符串：
+遍历一下字符串数组，然后倒着判断截止到当前字符串的时候dp[0 - m][0 - n]最多可以放几个字符串，遍历结束后输出一下dp[m][n]（倒着遍历是为了避免重复计算，因为计算dp数组较大位置时需要用上一个字符串计算出的小位置结果，如果先算小位置，再算大位置就可能造成大位置用的是本轮字符串计算得到的结果）
+
+## 代码
+
+```java
+class Solution {
+    public int findMaxForm(String[] strs, int m, int n) {
+        int[][] dp = new int[m + 1][n + 1];
+        for(String s : strs){
+            int zeroNum = 0, oneNum = 0;
+            for(int pos = s.length() - 1; pos >= 0 ; pos--){
+                if(s.charAt(pos) == '0') zeroNum++;
+                else oneNum++;
+            }
+            for(int zero = m; zero >= zeroNum; zero--){
+                for(int one = n; one >= oneNum; one--){
+                    dp[zero][one] = Math.max(dp[zero][one], dp[zero - zeroNum][one - oneNum] + 1);
+                }
+            }
+        }
+        return dp[m][n];
+    }
+}
+```
+
 # 477.汉明距离总和
 ## 题目
 https://leetcode-cn.com/problems/total-hamming-distance/
@@ -586,6 +661,49 @@ class Solution {
             result += (nums.length - zero) * zero;
         }
         return result;
+    }
+}
+```
+
+# 494.目标和
+## 题目
+https://leetcode-cn.com/problems/target-sum/
+## 题解
+**dfs:**
+dfs就对于数组每一位置就两种状态，加或者减，最后判断到了数组长度位置的时候和是不是等于target就好了
+**dp:**
+定义一个结果HashMap,key存放的是和，value存放到这个和一共有多少种不同的表达式：
+遍历一遍数组长度，创建一个临时temp的HashMap，复制result到temp，然后计算截止到当前数组长度时，所有不同的和一共有多少表达式，最后返回result.getOrDefault(target, 0);
+
+## 代码
+**dfs:**
+```java
+class Solution {
+    public int findTargetSumWays(int[] nums, int target) {
+        return dfs(nums, target, 0, 0);
+    }
+    int dfs(int[] nums, int target, int posi, int sum) {
+        if (posi == nums.length) return sum == target ? 1 : 0;
+        return dfs(nums, target, posi + 1, sum + nums[posi]) + dfs(nums, target, posi + 1, sum - nums[posi]);
+    }
+}
+```
+**dp:**
+```java
+class Solution {
+    public int findTargetSumWays(int[] nums, int target) {
+        Map<Integer, Integer> result = new HashMap<>();
+        result.put(nums[0], 1);
+        result.put(-nums[0], result.getOrDefault(-nums[0], 0) + 1);
+        for(int i = 1; i < nums.length; i++){
+            Map<Integer, Integer> temp = new HashMap<>(result);
+            result.clear();
+            for (Map.Entry<Integer, Integer> entry : temp.entrySet()) {
+                result.put(entry.getKey() + nums[i], entry.getValue() + result.getOrDefault(entry.getKey() + nums[i], 0));
+                result.put(entry.getKey() - nums[i], entry.getValue() + result.getOrDefault(entry.getKey() - nums[i], 0));  
+            }
+        }
+        return result.getOrDefault(target, 0);
     }
 }
 ```

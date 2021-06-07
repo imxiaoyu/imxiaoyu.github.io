@@ -16,13 +16,15 @@ tags:
 >剑指 Offer 32.-I.从上到下打印二叉树(BFS)
 >剑指 Offer 32.-III.从上到下打印二叉树 III(BFS)
 >剑指 Offer 34.二叉树中和为某一值的路径（DFS）
+>剑指 Offer 44.数字序列中某一位的数字(找规律)
 >剑指 Offer 47.礼物的最大价值（dp）
 >剑指 Offer 63.股票的最大利润（数组）
 >剑指 Offer 64.求1+2+…+n（数学）
+>剑指 Offer 66.构建乘积数组(双指针或者二分)
 >面试题 (10.03).搜索旋转数组（二分）
 
 
-15道题目
+17道题目
 <!-- more -->
 # 剑指 Offer 04 二维数组中查找
 
@@ -517,6 +519,48 @@ class Solution {
 }
 ```
 
+# 剑指 Offer 44.数字序列中某一位的数字
+
+## 题目
+https://leetcode-cn.com/problems/shu-zi-xu-lie-zhong-mou-yi-wei-de-shu-zi-lcof/
+## 题解
+数字位数|数字范围|字符序列范围
+:-:|:-:|:-:
+1|0 - 9|0 - 9
+2|10 - 99|10 - 189
+3|100 - 999|190 - 2889
+4|1000 - 9999|2890 - 38889
+5|10000 - 99999|38890 - 488889
+6|100000 - 999999|488890 - 5888889
+7|1000000 - 9999999|5888890 - 68888889
+8|10000000 - 99999999|68888890 - 788888889
+9|100000000 - 999999999|788888890 - 8888888889
+
+根据上表我们就能求出题目给的n是哪个数字的第几位，那就结束了……
+**举例：** n = 13  (01234567891011) 答案按说是1，其实就是数字11的个位数
+- 1.先求n对应的是哪个数字：`num =  (13 - 10) / 2 + 10 = 11`
+- 2.再求是这个数字的哪一位 `posi = (13 - 10) % 2 = 1` (结果为0就是最高位，1是次一位，对于11这个两位数来说1表示的就是个位)
+- 3.求出这个数字的这一位并返回
+
+## 代码
+
+```java
+class Solution {
+    public int findNthDigit(int n) {
+        int[] ant = new int[]{0, 10, 190, 2890, 38890, 488890, 5888890, 68888890, 788888890};
+        int[] numBegin = new int[]{0, 10, 100, 1000, 10000, 100000, 1000000, 10000000, 100000000};
+        for(int i = ant.length - 1; i >= 0; i--){
+            if(n >= ant[i]){
+                int num = (n - ant[i]) / (i + 1) + numBegin[i];
+                int posi = (n - ant[i]) % (i + 1);
+                return num % (int)Math.pow(10, i + 1 - posi) / (int)Math.pow(10,  i - posi);
+            }
+        }
+        return 0;
+    }
+}
+```
+
 # 剑指 Offer 47.礼物的最大价值
 
 ## 题目
@@ -589,6 +633,81 @@ https://leetcode-cn.com/problems/qiu-12n-lcof/solution/
 class Solution {
     public int sumNums(int n) {
         return ((int)Math.pow(n, 2) + n) >> 1;
+    }
+}
+```
+
+# 剑指 Offer 66.构建乘积数组
+
+## 题目
+https://leetcode-cn.com/problems/gou-jian-cheng-ji-shu-zu-lcof/solution/
+## 题解
+**法1 循环计算：**
+对于result[i]来说：
+他其实可以分成两部分计算:一部分是a[0] * a[1] *…… *a[i - 1],另一部分是a[i + 1] * a[i + 2] *…… *a[a.length - 1]。所以我们可以根据这两部分用两个for来计算，第一个for正序遍历用来把第一部分求出来并存放到reuslt中，第二个for用来计算第二部分并把最终的结果算出来存在result中。
+
+
+**法2 二分：**
+二分的话就是先计算一个所有相乘的总乘积，然后for循环对于每一个数二分查找结果即可（注意下数组中数值为负、总乘积为负、总乘积为0的情况）
+## 代码
+**循环计算：**
+```java
+class Solution {
+    public int[] constructArr(int[] a) {
+        if(a.length == 0) return a;
+        int[] result = new int[a.length];
+        result[0] = 1;
+        for(int i = 1; i < a.length; i++){
+            result[i] = result[i - 1] * a[i - 1]; 
+        }
+        int temp = 1;
+        for(int i = a.length - 2; i >= 0; i--){
+            temp *= a[i + 1];
+            result[i] *= temp;
+        }
+        return result;
+    }
+}
+```
+**二分：**
+```java
+class Solution {
+    public int[] constructArr(int[] a) {
+        int sum = 1, zeroSum = 1, zero = 0;
+        int[] result = new int[a.length];
+        for(int num : a) {
+            if(num == 0) zero++;
+            else zeroSum *= num;
+            sum *= num;
+        }
+        for(int i = 0; i < a.length; i++){
+            if(sum == 0 && (a[i] != 0 || zero != 1)) result[i] = 0;
+            else if(sum == 0 && zero == 1) result[i] = zeroSum;
+            else if(a[i] == 1) result[i] = zeroSum;
+            else if(a[i] == -1) result[i] = -zeroSum;
+            else if(a[i] == 2) result[i] = zeroSum >> 1;
+            else if(a[i] == -2) result[i] = -zeroSum >> 1;
+            else {
+                boolean flag = false;
+                if(sum < 0 && a[i] < 0){sum = -sum; a[i] = -a[i];}
+                else if(sum < 0){flag = true; sum = -sum;}
+                else if(a[i] < 0){flag = true; a[i] = -a[i];}
+                long l = 0, r = sum;
+                while(l <= r){
+                    long mid = (l + r + 1) >> 1;
+                    if(mid * a[i] == sum){
+                        if(flag) result[i] = (int)-mid;
+                        else result[i] = (int)mid;
+                        sum = zeroSum;
+                        l = r + 1;
+                        break;
+                    }
+                    else if(mid * a[i] > sum) r = mid - 1;
+                    else l = mid + 1;
+                }
+            } 
+        }
+        return result;
     }
 }
 ```
