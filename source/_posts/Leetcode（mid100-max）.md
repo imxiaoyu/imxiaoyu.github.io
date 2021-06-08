@@ -1,6 +1,6 @@
 ---
 title: 'Leetcode(mid100-)'
-date: 2021/6/4 23:57:05 
+date: 2021/6/8 23:39:47 
 tags:
 	- Leetcode
 ---
@@ -28,6 +28,7 @@ tags:
 >946.验证栈序列（栈）
 >990.等式方程的可满足性（并查集）
 >1035.不相交的线(最长公共子序列 经典dp 模板)
+>1049.最后一块石头的重量 II（dp背包）
 >1190.反转每对括号间的子串（栈，反转字符串）
 >1310.子数组异或查询（异或运用）
 >1442.形成两个异或相等数组的三元组数目（优化+异或+前缀和）
@@ -987,6 +988,31 @@ class Solution {
 }
 ```
 
+# 1049.最后一块石头的重量 II
+## 题目
+https://leetcode-cn.com/problems/last-stone-weight-ii/
+## 题解
+每次都是两个石头去碰，然后大的还剩下大的减去小的，小的没了，所以我们其实可以**把该问题变成两堆石头**，只要这两堆石头重量**尽可能接近**，让他们去分别相碰，最后结果肯定是最小的，怎么尽可能相近呢？其实只要让一堆尽可能接近所有石头总重量的一半，那么他们两堆一定最接近，所以该问题**变为了背包问题**：
+`dp[j] `表示背包能容纳j重量石头时 实际上能装的最大石头重量，**dp公式：**
+`dp[j] = Math.max(dp[j], dp[j - stones[i]] + stones[i]);`
+
+## 代码
+
+```java
+class Solution {
+    public int lastStoneWeightII(int[] stones) {
+        int sum = 0;
+        for(int num : stones) sum += num;
+        int[] result = new int[sum / 2 + 1];
+        for(int i = 0; i < stones.length; i++){
+            for(int j = sum / 2; j >= stones[i]; j--){
+                result[j] = Math.max(result[j], result[j - stones[i]] + stones[i]);
+            }
+        }
+        return sum - 2 * result[sum / 2];
+    }
+}
+```
 
 # 1035.不相交的线
 ## 题目
