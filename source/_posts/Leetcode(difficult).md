@@ -1,6 +1,6 @@
 ---
 title: 'Leetcode(difficult)'
-date: 2021/5/26 23:49:11 
+date: 2021/6/9 22:55:06 
 tags:
 	- Leetcode
 ---
@@ -10,6 +10,7 @@ tags:
 >25.K个一组翻转链表(模拟)
 >154.寻找旋转排序数组中的最小值 II（二分）
 >664.奇怪的打印机（二维动态规划dp）
+>879.盈利计划（dp背包）
 >810.黑板异或游戏
 >1074.元素和为目标值的子矩阵数量（前缀和+暴力）
 >1269.停在原地的方案数（dp）
@@ -357,6 +358,33 @@ class Solution {
             }
         }
         return dp[0][n - 1];
+    }
+}
+```
+
+# 879.盈利计划
+## 题目
+https://leetcode-cn.com/problems/profitable-schemes/
+## 题解
+dp[i][j] :可用员工个数为i时，利润>=j的个数
+for循环一下group、员工以及利润
+## 代码
+
+```java
+class Solution {
+    public int profitableSchemes(int n, int minProfit, int[] group, int[] profit) {
+        
+        int[][] dp = new int[n + 1][minProfit + 1];
+        for(int i = 0; i <= n; i++) dp[i][0] = 1;
+        
+        for(int num = 0; num < group.length; num++){
+            for(int i = n; i >= group[num]; i--){
+                for(int j = minProfit; j >= 0; j--){
+                    dp[i][j] = (dp[i][j] + dp[i - group[num]][Math.max(0, j - profit[num])]) % 1000000007;
+                }
+            }
+        }
+        return dp[n][minProfit];
     }
 }
 ```

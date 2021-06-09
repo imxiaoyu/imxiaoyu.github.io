@@ -1,6 +1,6 @@
 ---
 title: 'Leetcode(mid100-)'
-date: 2021/6/8 23:39:47 
+date: 2021/6/9 22:56:23 
 tags:
 	- Leetcode
 ---
@@ -11,6 +11,7 @@ tags:
 >153.寻找旋转排序数组中的最小值（二分）
 >198.打家劫舍（dp）
 >213.打家劫舍II（dp）
+>236.二叉树的最近公共祖先（二叉树、递归）
 >240.搜索二维矩阵 II（优化搜索）
 >274.H 指数（规律+数组）
 >275.H 指数 II（规律+数组）
@@ -47,7 +48,7 @@ tags:
 
 
 
-38道题目
+40道题目
 <!-- more -->
 # 102.二叉树的层序遍历
 ## 题目
@@ -282,6 +283,33 @@ https://leetcode-cn.com/problems/house-robber-ii
 	        }
 	    }
 	}
+```
+
+# 236.二叉树的最近公共祖先
+## 题目
+https://leetcode-cn.com/problems/lowest-common-ancestor-of-a-binary-tree/
+## 题解
+对于每一个节点root，去寻找他的左孩子和右孩子：
+- 1.如果找到了p和q说明本节点就是最近的公共祖先
+- 2.如果找不到则说明p和q在root的左子树或者右子树里，则去找左子树或右子树
+## 代码
+
+```java
+class Solution {
+    public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
+        if (root == null) return null;
+        if (root == p || root == q) return root;
+        
+        TreeNode left = lowestCommonAncestor(root.left, p, q);
+        TreeNode right = lowestCommonAncestor(root.right, p, q);
+
+        if (left != null && right != null) return root;
+        if (left != null) return left;
+        if (right != null) return right;
+
+        return null;
+    }
+}
 ```
 
 # 240.搜索二维矩阵 II
