@@ -1,6 +1,6 @@
 ---
 title: 'Leetcode(mid100-)'
-date: 2021/6/9 22:56:23 
+date: 2021/6/10 22:21:51 
 tags:
 	- Leetcode
 ---
@@ -13,8 +13,10 @@ tags:
 >213.打家劫舍II（dp）
 >236.二叉树的最近公共祖先（二叉树、递归）
 >240.搜索二维矩阵 II（优化搜索）
+>264.丑数 II(数学规律推导)
 >274.H 指数（规律+数组）
 >275.H 指数 II（规律+数组）
+>322.零钱兑换(dp)
 >337.打家劫舍III(需要多写几次**)
 >343.整数拆分（dp）
 >400.第 N 位数字（找规律）
@@ -22,6 +24,7 @@ tags:
 >474.一和零（dp）
 >477.汉明距离总和（异或运算）
 >494.目标和(dp或dfs)
+>518.零钱兑换 II(dp)
 >523.连续的子数组和(前缀和)
 >525.连续数组（前缀和）
 >692.前K个高频单词（暴力排序，或者Comparator接口）
@@ -48,7 +51,8 @@ tags:
 
 
 
-40道题目
+
+43道题目
 <!-- more -->
 # 102.二叉树的层序遍历
 ## 题目
@@ -384,6 +388,31 @@ class Solution {
 }
 ```
 
+# 丑数 II
+## 题目
+https://leetcode-cn.com/problems/ugly-number-ii/
+## 题解
+因为后面的丑数是前面丑数×2、×3、×5得到的，所以记录一下，接下来要去×的数，遍历一遍即可
+
+## 代码
+
+```java
+class Solution {
+    public int nthUglyNumber(int n) {
+        int[] result = new int[n];
+        result[0] = 1;
+        int two = 0, three = 0, five = 0;
+        for (int i = 1; i < n; i++) {
+            result[i] = Math.min(2 * result[two], Math.min(3 * result[three], 5 * result[five]));
+ 
+            if (2 * result[two] == result[i]) two++;
+            if (3 * result[three] == result[i]) three++;
+            if (5 * result[five] == result[i]) five++;      
+        }
+        return result[n - 1];
+    }
+}
+```
 
 # 274.H 指数
 
@@ -426,6 +455,36 @@ class Solution {
             else result++;
         }
         return result;
+    }
+}
+```
+
+# 322.零钱兑换
+
+## 题目
+https://leetcode-cn.com/problems/coin-change/solution/dp-by-rain-ru-xlm6/
+## 题解
+dp[i]：表示金额i时凑成金额i所需的最少的硬币个数
+两层for循环：一重遍历不同面额的硬币、一重计算截止当前面额的硬币时所需的最少的硬币个数
+
+## 代码
+
+```java
+class Solution {
+    public int coinChange(int[] coins, int amount) {
+        if(amount == 0) return 0;
+        int[] dp = new int[amount + 1];
+        for(int i = 0; i < coins.length; i++){
+            if(coins[i] > amount) continue;
+            else dp[coins[i]] = 1;
+            for(int j = coins[i] + 1; j <= amount; j++){
+                if(dp[coins[i]] != 0 && dp[j - coins[i]] != 0){
+                    if(dp[j] == 0) dp[j] = dp[coins[i]] + dp[j - coins[i]];
+                    else dp[j] = Math.min(dp[j], dp[coins[i]] + dp[j - coins[i]]);
+                }
+            }
+        }
+        return dp[amount] == 0 ? -1 : dp[amount];
     }
 }
 ```
@@ -733,6 +792,32 @@ class Solution {
             }
         }
         return result.getOrDefault(target, 0);
+    }
+}
+```
+
+
+# 518.零钱兑换 II
+## 题目
+https://leetcode-cn.com/problems/continuous-subarray-sum/
+
+## 题解
+dp[i] 表示总金额为i时可以有多少组合数
+两个for：一重遍历不同面额的硬币、一重计算截止当前面额的硬币时不同金额可以有多少组合数
+## 代码
+
+```java
+class Solution {
+    public int change(int amount, int[] coins) {
+        int[] dp = new int[amount + 1];
+        dp[0] = 1;
+        for(int i = 0; i < coins.length; i++){
+            if(coins[i] > amount) continue;
+            for(int j = coins[i]; j <= amount; j++){
+                dp[j] += dp[j - coins[i]];
+            }
+        }
+        return dp[amount];
     }
 }
 ```

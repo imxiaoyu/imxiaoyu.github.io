@@ -1,6 +1,6 @@
 ---
 title: 'Leetcode(剑指offer面试)'
-date: 2021/6/4 23:45:03 
+date: 2021/6/10 22:17:47 
 tags:
 	- Leetcode
 ---
@@ -18,13 +18,14 @@ tags:
 >剑指 Offer 34.二叉树中和为某一值的路径（DFS）
 >剑指 Offer 44.数字序列中某一位的数字(找规律)
 >剑指 Offer 47.礼物的最大价值（dp）
+>剑指 Offer 49.丑数(数学规律推导)
 >剑指 Offer 63.股票的最大利润（数组）
 >剑指 Offer 64.求1+2+…+n（数学）
 >剑指 Offer 66.构建乘积数组(双指针或者二分)
 >面试题 (10.03).搜索旋转数组（二分）
 
 
-17道题目
+18道题目
 <!-- more -->
 # 剑指 Offer 04 二维数组中查找
 
@@ -596,6 +597,34 @@ class Solution {
     }
 }
 ```
+
+
+# 剑指 Offer 49.丑数
+## 题目
+https://leetcode-cn.com/problems/chou-shu-lcof/
+## 题解
+因为后面的丑数是前面丑数×2、×3、×5得到的，所以记录一下，接下来要去×的数，遍历一遍即可
+
+## 代码
+
+```java
+class Solution {
+    public int nthUglyNumber(int n) {
+        int[] result = new int[n];
+        result[0] = 1;
+        int two = 0, three = 0, five = 0;
+        for (int i = 1; i < n; i++) {
+            result[i] = Math.min(2 * result[two], Math.min(3 * result[three], 5 * result[five]));
+ 
+            if (2 * result[two] == result[i]) two++;
+            if (3 * result[three] == result[i]) three++;
+            if (5 * result[five] == result[i]) five++;      
+        }
+        return result[n - 1];
+    }
+}
+```
+
 
 # 剑指 Offer 63.股票的最大利润
 
