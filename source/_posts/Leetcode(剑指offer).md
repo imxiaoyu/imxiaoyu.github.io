@@ -1,6 +1,6 @@
 ---
 title: 'Leetcode(剑指offer面试)'
-date: 2021/6/10 22:17:47 
+date: 2021/6/11 23:11:40 
 tags:
 	- Leetcode
 ---
@@ -17,15 +17,21 @@ tags:
 >剑指 Offer 32.-III.从上到下打印二叉树 III(BFS)
 >剑指 Offer 34.二叉树中和为某一值的路径（DFS）
 >剑指 Offer 44.数字序列中某一位的数字(找规律)
+>剑指 Offer 46.把数字翻译成字符串
 >剑指 Offer 47.礼物的最大价值（dp）
+>剑指 Offer 48.最长不含重复字符的子字符串(模拟)
 >剑指 Offer 49.丑数(数学规律推导)
+>剑指 Offer 59.-II.队列的最大值（模拟）
 >剑指 Offer 63.股票的最大利润（数组）
 >剑指 Offer 64.求1+2+…+n（数学）
 >剑指 Offer 66.构建乘积数组(双指针或者二分)
 >面试题 (10.03).搜索旋转数组（二分）
 
 
-18道题目
+
+
+
+21道题目
 <!-- more -->
 # 剑指 Offer 04 二维数组中查找
 
@@ -562,6 +568,37 @@ class Solution {
 }
 ```
 
+# 剑指 Offer 46.把数字翻译成字符串
+
+## 题目
+https://leetcode-cn.com/problems/ba-shu-zi-fan-yi-cheng-zi-fu-chuan-lcof/
+## 题解
+因为一个数字倒着好提取最后一位，所以我们倒着判断
+dp[i]表示倒着截至到倒数第i位可以由多少种不同翻译方法
+**dp公式：** 
+1.当前数字和后面的那个数字组成了>=10 && <=26的数字时 dp[i] = dp[i - 1] + dp[i - 2]
+2.其他情况 dp[i] = dp[i - 1]
+## 代码
+
+```java
+class Solution {
+    public int translateNum(int num) {
+        int[] dp = new int[11];
+        dp[0] = 1;
+        int posi = 0;
+        int lastNum = 100;
+        while(num != 0){
+            int tempNum = num % 10;
+            num /= 10;
+            if(tempNum * 10 + lastNum < 26 && tempNum != 0) dp[++posi] = dp[posi - 1] + dp[posi - 2];
+            else dp[++posi] = dp[posi - 1];
+            lastNum = tempNum;
+        }
+        return dp[posi];
+    }
+}
+```
+
 # 剑指 Offer 47.礼物的最大价值
 
 ## 题目
@@ -598,6 +635,31 @@ class Solution {
 }
 ```
 
+# 剑指 Offer 48.最长不含重复字符的子字符串
+## 题目
+https://leetcode-cn.com/problems/zui-chang-bu-han-zhong-fu-zi-fu-de-zi-zi-fu-chuan-lcof/
+## 题解
+StringBuffer存一下现在的不重复字符串，遍历一遍
+
+## 代码
+
+```java
+class Solution {
+    public int lengthOfLongestSubstring(String s) {
+        if(s.length() == 0) return 0;
+        int result = 0;
+        StringBuffer sb = new StringBuffer();
+        for(int i = 0; i < s.length(); i++){
+            char c = s.charAt(i);
+            int have = sb.indexOf(String.valueOf(c));
+            sb.append(c);
+            if(have != -1) sb.delete(0, have + 1);
+            result = Math.max(result, sb.length());
+        }
+        return result;
+    }
+}
+```
 
 # 剑指 Offer 49.丑数
 ## 题目
@@ -625,6 +687,76 @@ class Solution {
 }
 ```
 
+# 剑指 Offer 59.-II.队列的最大值
+## 题目
+https://leetcode-cn.com/problems/gu-piao-de-zui-da-li-run-lcof/
+## 题解
+这题感觉挺离谱的？两个队列也不是O（1）吧，反而一个队列的更快……
+## 代码
+**一个链表：**
+```java
+class MaxQueue {
+    List<Integer> list;
+    int max;
+    public MaxQueue() {
+        list = new ArrayList<>();
+        max = -1;
+    }
+    
+    public int max_value() {
+        return max;
+    }
+    
+    public void push_back(int value) {
+        if(value > max) max = value;
+        list.add(value);
+    }
+    
+    public int pop_front() {
+        if(list.size() == 0) return -1;
+        if(list.get(0) == max){
+            int posi = 1;
+            max = -1;
+            while(posi < list.size()) max = Math.max(max, list.get(posi++));
+        }
+        return list.remove(0);
+    }
+}
+```
+**两个链表：**
+```java
+class MaxQueue {
+    List<Integer> list;
+    List<Integer> max;
+    public MaxQueue() {
+        list = new ArrayList<>();
+        max = new ArrayList<>();
+    }
+    
+    public int max_value() {
+        if(list.size() == 0) return -1;
+        return max.get(0);
+    }
+    
+    public void push_back(int value) {
+        list.add(value);
+        int l = 0, r = max.size() - 1;
+        while(l <= r) {
+            int temp = (l + r) / 2;
+            if(max.get(temp) == value) break;
+            else if(max.get(temp) > value) l = temp + 1;
+            else r = temp - 1;
+        }
+        max.add(r + 1, value);
+    }
+    
+    public int pop_front() {
+        if(list.size() == 0) return -1;
+        max.remove(list.get(0));
+        return list.remove(0);
+    }
+}
+```
 
 # 剑指 Offer 63.股票的最大利润
 

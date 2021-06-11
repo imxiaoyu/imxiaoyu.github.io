@@ -1,6 +1,6 @@
 ---
 title: 'Leetcode(mid100-)'
-date: 2021/6/10 22:21:51 
+date: 2021/6/11 23:07:08 
 tags:
 	- Leetcode
 ---
@@ -16,6 +16,7 @@ tags:
 >264.丑数 II(数学规律推导)
 >274.H 指数（规律+数组）
 >275.H 指数 II（规律+数组）
+>279.完全平方数(dp)
 >322.零钱兑换(dp)
 >337.打家劫舍III(需要多写几次**)
 >343.整数拆分（dp）
@@ -52,7 +53,7 @@ tags:
 
 
 
-43道题目
+44道题目
 <!-- more -->
 # 102.二叉树的层序遍历
 ## 题目
@@ -388,7 +389,7 @@ class Solution {
 }
 ```
 
-# 丑数 II
+# 264.丑数 II
 ## 题目
 https://leetcode-cn.com/problems/ugly-number-ii/
 ## 题解
@@ -455,6 +456,51 @@ class Solution {
             else result++;
         }
         return result;
+    }
+}
+```
+
+# 279.完全平方数
+
+## 题目
+https://leetcode-cn.com/problems/perfect-squares/
+## 题解
+dp[i]表示 正整数i 需要完全平方数的最少的个数
+两层for：一层遍历正整数i,另一层遍历各种小于i的完全平方数
+## 代码
+
+```java
+class Solution {
+    public int numSquares(int n) {
+        int[] dp = new int[n + 1];
+        for (int i = 1; i <= n; i++) {
+            dp[i] = i;
+            for (int j = 2; i - j * j >= 0; j++) { 
+                dp[i] = Math.min(dp[i], dp[i - j * j] + 1);
+            }
+        }
+        return dp[n];
+    }
+}
+```
+**有点麻烦的dp：**先把n里面的完全平方存下来，然后遍历小于i的每一个数字
+```java
+class Solution {
+    public int numSquares(int n) {
+        int len = (int)Math.sqrt(n);
+        if(len * len == n) return 1;
+        else if(Math.abs(len * len - n) == 1 || Math.abs(len * len - n) == 4) return 2;
+        int[] dp = new int[n + 1];
+        for(int i = 1; i <= len; i++) dp[i * i] = 1; 
+
+        for(int i = 1; i <= n; i++){
+            for(int j = 1; j < i; j++){
+                if(dp[i] == 0)  dp[i] = dp[i - j] + dp[j];
+                else if(dp[j] == 0) ;
+                else dp[i] = Math.min(dp[i], dp[i - j] + dp[j]);
+            }
+        }
+        return dp[n];
     }
 }
 ```
