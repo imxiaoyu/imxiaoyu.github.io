@@ -1,6 +1,6 @@
 ---
 title: 'Leetcode(difficult)'
-date: 2021/6/9 22:55:06 
+date: 2021/6/12 23:44:43 
 tags:
 	- Leetcode
 ---
@@ -14,6 +14,7 @@ tags:
 >810.黑板异或游戏
 >1074.元素和为目标值的子矩阵数量（前缀和+暴力）
 >1269.停在原地的方案数（dp）
+>1449.数位成本和为目标值的最大数字（完全背包）
 >1723.完成所有工作的最短时间（dfs+剪枝多写）
 >1862.向下取整数对和 （化简遍历数目）
 
@@ -483,6 +484,57 @@ class Solution {
             }
         }
         return result[steps & 1][1];
+    }
+}
+```
+
+
+# 1449.数位成本和为目标值的最大数字
+## 题目
+https://leetcode-cn.com/problems/form-largest-integer-with-digits-that-add-up-to-target/
+
+## 题解
+result[i]:表示和为i时存储的最长字串
+思路就是判断长度，最后需要把数字大的提到前面来
+## 代码
+
+```java
+class Solution {
+    public String largestNumber(int[] cost, int target) {
+        StringBuffer[] result = new StringBuffer[target + 1];
+        for(int i = 0; i <= target; i++) result[i] = new StringBuffer();
+        for(int i = 0; i < 9; i++){
+            if(cost[i] > target) continue;
+            StringBuffer t = new StringBuffer(String.valueOf(i + 1));
+            if(result[cost[i]].length() < t.length()) result[cost[i]] = t;
+            else if(result[cost[i]].length() == t.length() && t.compareTo(result[cost[i]]) > 0) result[cost[i]] = t;
+            int iLength = result[cost[i]].length();
+            for(int j = cost[i] + 1; j <= target; j++){
+                int jLength = result[j].length();
+                int jiLength = result[j - cost[i]].length();
+                if(jLength < jiLength + iLength && jiLength != 0 && iLength != 0){
+                    result[j] = new StringBuffer(result[j - cost[i]].toString() + result[cost[i]].toString());
+                }
+                else if(jLength == jiLength + iLength && jiLength != 0 && iLength != 0){
+                    StringBuffer a = new StringBuffer(result[j - cost[i]].toString() + result[cost[i]].toString());
+                    StringBuffer b = new StringBuffer(result[cost[i]].toString() + result[j - cost[i]].toString());
+                    if(a.compareTo(b) < 0) a = b;
+                    if(a.compareTo(result[j]) > 0) result[j] = a;
+                }
+            }
+        }
+        if(result[target].length() == 0) return "0";
+        else {
+            int[] num = new int[10];
+            for(int i = 0; i < result[target].length(); i++){
+                num[result[target].charAt(i) - '0']++;
+            }
+            result[target].delete(0, result[target].length());
+            for(int i = 9; i > 0; i--){
+                while(num[i]-- > 0) result[target].append(i);
+            }
+            return result[target].toString();
+        }
     }
 }
 ```
