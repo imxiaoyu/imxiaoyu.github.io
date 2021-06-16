@@ -1,6 +1,6 @@
 ---
 title: 'Leetcode(mid100-)'
-date: 2021/6/11 23:07:08 
+date: 2021/6/16 19:38:41 
 tags:
 	- Leetcode
 ---
@@ -30,6 +30,7 @@ tags:
 >525.连续数组（前缀和）
 >692.前K个高频单词（暴力排序，或者Comparator接口）
 >740.删除并获得点数（dp）
+>877.石子游戏（dp或脑筋急转弯？）
 >946.验证栈序列（栈）
 >990.等式方程的可满足性（并查集）
 >1035.不相交的线(最长公共子序列 经典dp 模板)
@@ -49,11 +50,13 @@ tags:
 >1878.矩阵中最大的三个菱形和(模拟)
 >1881.插入后的最大值（模拟）
 >1882.使用服务器处理任务(优先队列)
+>1894.找到需要补充粉笔的学生编号（前缀和）
+>1895.最大的幻方(前缀和)
 
 
 
 
-44道题目+两道周赛（6.12）中等题目
+47道题目
 <!-- more -->
 # 102.二叉树的层序遍历
 ## 题目
@@ -1064,6 +1067,21 @@ https://leetcode-cn.com/problems/delete-and-earn
 	}
 ```
 
+# 877.石子游戏
+## 题目
+https://leetcode-cn.com/problems/stone-game/
+## 题解
+必胜？
+## 代码
+
+```java
+class Solution {
+    public boolean stoneGame(int[] piles) {
+        return true;
+    }
+}
+```
+
 # 946.验证栈序列
 ## 题目
 https://leetcode-cn.com/problems/validate-stack-sequences/
@@ -1875,6 +1893,78 @@ class Solution {
             if(time <= i) time++;
         }
         return tasks;
+    }
+}
+```
+
+# 1894.找到需要补充粉笔的学生编号
+## 题目
+https://leetcode-cn.com/problems/find-the-student-that-will-replace-the-chalk/
+## 题解 
+普通前缀和，注意总和超过int
+## 代码
+
+```java
+class Solution {
+    public int chalkReplacer(int[] chalk, int k) {
+        long[] sum = new long[chalk.length + 1];
+        for(int i = 0; i < chalk.length; i++){
+            sum[i + 1] += (sum[i] + chalk[i]); 
+        }
+        k %= sum[chalk.length];
+        for(int i = 0; i < chalk.length; i++){
+            if(sum[i + 1] > k) return i;
+        }
+        return -1;
+    }
+}
+```
+
+# 1895.最大的幻方
+## 题目
+https://leetcode-cn.com/problems/largest-magic-square/
+
+## 题解 
+普通前缀和+模拟
+## 代码
+
+```java
+class Solution {
+    public int largestMagicSquare(int[][] grid) {
+        int m = grid.length, n = grid[0].length;
+        int k = Math.min(m, n);
+        int[][] result = new int[m + 1][n + 1];
+        for(int i = 1; i <= m; i++)
+            for(int j = 1; j <= n; j++)
+                result[i][j] = grid[i - 1][j - 1] + result[i - 1][j] + result[i][j - 1] - result[i - 1][j - 1];
+        for(int l = k; l >= 2; l--){
+            for(int x = 0; x <= m - l; x++){
+                for(int y = 0; y <= n - l; y++){
+                    boolean flag = false;
+                    int sum = result[x + 1][y + l] - result[x + 1][y] - result[x][y + l] + result[x][y];
+                    //System.out.println(l + " " + sum);
+                    int sum1 = 0, sum2 = 0;
+                    for(int i = 0; i < l; i++){
+                        if(sum != result[x + 1 + i][y + l] - result[x + 1 + i][y] - result[x + i][y + l] + result[x + i][y]){
+                            //int temp = result[x + 1 + i][y + l] - result[x + 1 + i][y] - result[x][y + l] + result[x][y + i];
+                            //System.out.println("temp "+ temp + " i:" + i + "???" + 1);
+                            flag = true;
+                            break;
+                        }
+                        if(sum != result[x + l][y + 1 + i] - result[x + l][y + i] - result[x][y + 1 + i] + result[x][y + i]){
+                            flag = true;
+                            //System.out.println(i + "???" + 2);
+                            break;
+                        }
+                        sum1 += grid[x + i][y + i];
+                        sum2 += grid[x + i][y + l - i - 1];
+                    }
+                    if(sum1 != sum || sum2 != sum) flag = true;
+                    if(!flag) return l;
+                }
+            }   
+        }
+        return 1;
     }
 }
 ```
