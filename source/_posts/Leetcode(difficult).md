@@ -1,6 +1,6 @@
 ---
 title: 'Leetcode(difficult)'
-date: 2021/6/12 23:44:43 
+date: 2021/6/17 20:34:44 
 tags:
 	- Leetcode
 ---
@@ -8,6 +8,7 @@ tags:
 >4.寻找两个正序数组的中位数
 >23.合并K个升序链表（优先队列）
 >25.K个一组翻转链表(模拟)
+>65.有效数字（模拟）
 >154.寻找旋转排序数组中的最小值 II（二分）
 >664.奇怪的打印机（二维动态规划dp）
 >879.盈利计划（dp背包）
@@ -275,6 +276,37 @@ class Solution {
             last = tempLast;
         }
         return tempLast;
+    }
+}
+```
+
+# 65.有效数字
+## 题目
+https://leetcode-cn.com/problems/valid-number/
+
+## 题解
+记录一下当前的字母和上一个字母，还有'e'或'E'出现过没有,'.'出现过没有，'数字'出现过没有
+## 代码
+
+```java
+class Solution {
+    public boolean isNumber(String s) {
+        char last = ' ', temp;
+        boolean flag = false, num = false, fleg = false;
+        for(int i = 0;i < s.length(); i++){
+            temp = s.charAt(i);
+            if((temp == 'e' || temp == 'E' || temp == '.' || temp == '+' || temp == '-') || (temp >= '0' && temp <= '9')){
+                if((temp == 'e' || temp == 'E') && !fleg && num && ((last >= '0' && last <= '9') || last == '.') ) {flag = true; fleg = true;}
+                else if((temp == '+' || temp == '-') && (last == ' ' || last == 'e' || last == 'E')) ;
+                else if(temp == '.' && !flag && (last == ' ' || last == '+' || last == '-' || (last >= '0' && last <= '9'))) flag = true;
+                else if(temp >= '0' && temp <= '9') num = true;
+                else return false;
+                last = temp;  
+            }
+            else return false;
+        }
+        if(last == 'e' || last == 'E' || last == '+' || last == '-' || !num) return false;
+        return true;
     }
 }
 ```
