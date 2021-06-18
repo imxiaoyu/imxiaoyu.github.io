@@ -1,6 +1,6 @@
 ---
 title: 'Leetcode(difficult)'
-date: 2021/6/17 20:34:44 
+date: 2021/6/18 22:27:47 
 tags:
 	- Leetcode
 ---
@@ -10,6 +10,7 @@ tags:
 >25.K个一组翻转链表(模拟)
 >65.有效数字（模拟）
 >154.寻找旋转排序数组中的最小值 II（二分）
+>483.最小好进制(数学)
 >664.奇怪的打印机（二维动态规划dp）
 >879.盈利计划（dp背包）
 >810.黑板异或游戏
@@ -350,6 +351,32 @@ class Solution {
             }
         }
         return result;
+    }
+}
+```
+
+# 483.最小好进制
+## 题目
+https://leetcode-cn.com/problems/smallest-good-base/
+## 题解
+可以推出n的符合题意的除了(n - 1)进制外的最大进制不会超过Math.log(n) / Math.log(2)，这样就大大减小了遍历次数，然后从小到大判断一遍符合直接输出，都不符合说明需要返回对每一个数字都符合的(n - 1)进制
+## 代码
+
+```java
+class Solution {
+    public String smallestGoodBase(String n) {
+        long num = Long.parseLong(n);
+        int max = (int) (Math.log(num) / Math.log(2)), k;
+        for (int i = 2; i <= max; i++) {
+            k = (int) Math.pow(num, 1.0 / i);
+            if (num == sum(k, i, 1)) return Integer.toString(k);
+        }
+        return Long.toString(num - 1);
+    }
+
+    private long sum(long k, long t, long sum) {
+        for (int i = 0; i < t; i++) sum = sum * k + 1;
+        return sum;
     }
 }
 ```
