@@ -1,6 +1,6 @@
 ---
 title: 'Leetcode(mid100-)'
-date: 2021/6/16 19:38:41 
+date: 2021/6/20 19:15:13 
 tags:
 	- Leetcode
 ---
@@ -36,9 +36,11 @@ tags:
 >1035.不相交的线(最长公共子序列 经典dp 模板)
 >1049.最后一块石头的重量 II（dp背包）
 >1190.反转每对括号间的子串（栈，反转字符串）
+>1239.串联字符串的最大长度（dfs）
 >1310.子数组异或查询（异或运用）
 >1442.形成两个异或相等数组的三元组数目（优化+异或+前缀和）
 >1482.制作 m 束花所需的最少天数（二分）
+>1600.皇位继承顺序（模拟）
 >1734.解码异或后的排列（异或规律）
 >1738.找出第 K 大的异或坐标值（二维前缀和）
 >1744.你能在你最喜欢的那天吃到你最喜欢的糖果吗？（前缀和）
@@ -56,7 +58,7 @@ tags:
 
 
 
-47道题目
+48道题目
 <!-- more -->
 # 102.二叉树的层序遍历
 ## 题目
@@ -1258,6 +1260,47 @@ class Solution {
 
 ```
 
+#1239.串联字符串的最大长度
+## 题目
+https://leetcode-cn.com/problems/maximum-length-of-a-concatenated-string-with-unique-characters/
+## 题解
+遍历一遍字符串，遍历到的直接加到当前判断里面，然后去dfs后面的字符串，后面的字符串就 **两种情况：** 要么有，要么没有，没有的直接dfs下一个直到遍历结束，有的就判断一下重复没有，没有重复才会加上
+## 代码
+```java
+class Solution {
+    int result = 0;
+    public int maxLength(List<String> arr) {
+        for(int i = 0; i < arr.size(); i++){
+            int tempResult = 0;
+            boolean flag = false;
+            boolean[] used = new boolean[26];
+            for(int j = 0; j < arr.get(i).length(); j++){
+                int c = arr.get(i).charAt(j) - 'a';
+                if(used[c]) {flag = true; break;}
+                else {tempResult++; used[c] = true;}
+            }
+            if(!flag) dfs(arr, used, i + 1, tempResult);    
+        }
+        return result;
+    }
+    public void dfs(List<String> arr, boolean[] used, int posi, int tempResult){
+        if(posi == arr.size()) result = Math.max(result, tempResult);
+        else{
+            boolean[] tempUsed = new boolean[26];
+            for(int i = 0; i < 26; i++) tempUsed[i] = used[i];
+            dfs(arr, tempUsed, posi + 1, tempResult);
+
+            boolean flag = false;
+            for(int i = 0; i < arr.get(posi).length(); i++){
+                int c = arr.get(posi).charAt(i) - 'a';
+                if(tempUsed[c]) {flag = true; break;}
+                else {tempResult++; tempUsed[c] = true;}
+            }
+            if(!flag) dfs(arr, tempUsed, posi + 1, tempResult);
+        }
+    }
+}
+```
 
 # 1310.子数组异或查询
 ## 题目
@@ -1450,6 +1493,48 @@ https://leetcode-cn.com/problems/minimum-number-of-days-to-make-m-bouquets/solut
 	    }
 	}
 ```
+
+# 1600.皇位继承顺序
+## 题目
+https://leetcode-cn.com/problems/throne-inheritance/
+## 题解
+模拟一下，求的时候用DFS
+## 代码
+```java
+class ThroneInheritance {
+    Map<String, List<String>> child;
+    Set<String> dead;
+    String king;
+    public ThroneInheritance(String kingName) {
+        king = kingName;
+        child = new HashMap<>();
+        dead = new HashSet<>();
+        child.put(kingName, new ArrayList<String>());
+    }
+    
+    public void birth(String parentName, String childName) {
+        List<String> children = child.getOrDefault(parentName, new ArrayList<String>());
+        children.add(childName);
+        child.put(parentName, children);
+    }
+    
+    public void death(String name) {
+        dead.add(name);
+    }
+    
+    public List<String> getInheritanceOrder() {
+        List<String> result = new ArrayList<String>();
+        preorder(result, king);
+        return result;
+    }
+    private void preorder(List<String> result, String name) {
+        if (!dead.contains(name)) result.add(name);
+        List<String> children = child.getOrDefault(name, new ArrayList<String>());
+        for (String childName : children) preorder(result, childName);
+    }
+}
+```
+
 # 1734.解码异或后的排列
 ## 题目
 https://leetcode-cn.com/problems/decode-xored-permutation/
