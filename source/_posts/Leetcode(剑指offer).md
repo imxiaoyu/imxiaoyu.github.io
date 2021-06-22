@@ -1,6 +1,6 @@
 ---
 title: 'Leetcode(剑指offer面试)'
-date: 2021/6/11 23:11:40 
+date: 2021/6/22 22:57:30 
 tags:
 	- Leetcode
 ---
@@ -16,6 +16,7 @@ tags:
 >剑指 Offer 32.-I.从上到下打印二叉树(BFS)
 >剑指 Offer 32.-III.从上到下打印二叉树 III(BFS)
 >剑指 Offer 34.二叉树中和为某一值的路径（DFS）
+>剑指 Offer 38.字符串的排列（DFS）
 >剑指 Offer 44.数字序列中某一位的数字(找规律)
 >剑指 Offer 46.把数字翻译成字符串
 >剑指 Offer 47.礼物的最大价值（dp）
@@ -31,7 +32,7 @@ tags:
 
 
 
-21道题目
+22道题目
 <!-- more -->
 # 剑指 Offer 04 二维数组中查找
 
@@ -521,6 +522,41 @@ class Solution {
                 dfs(root.right, target, sum + root.val, tempAns);
             }
             tempAns.remove(tempAns.size() - 1); 
+        }
+    }
+}
+```
+
+# 剑指 Offer 38.字符串的排列
+
+## 题目
+https://leetcode-cn.com/problems/zi-fu-chuan-de-pai-lie-lcof/
+## 题解
+普通dfs一下就可以
+
+## 代码
+
+```java
+class Solution {
+    boolean[] used;
+    Set<String> result = new HashSet<>();
+    public String[] permutation(String s) {
+        used = new boolean[s.length()];
+        dfs(s, new StringBuffer());
+        return (String[])result.toArray(new String[result.size()]);  
+    }
+    public void dfs(String s, StringBuffer ans){
+        if(ans.length() == s.length()) result.add(ans.toString());
+        else{
+            for(int i = 0; i < s.length(); i++){
+                if(!used[i]) {
+                    used[i] = true;
+                    ans.append(s.charAt(i));
+                    dfs(s, ans);
+                    ans.deleteCharAt(ans.length() - 1);
+                    used[i] = false;
+                }
+            }
         }
     }
 }
