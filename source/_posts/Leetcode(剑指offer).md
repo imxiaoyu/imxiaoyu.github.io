@@ -1,6 +1,6 @@
 ---
 title: 'Leetcode(剑指offer面试)'
-date: 2021/6/22 22:57:30 
+date: 2021/6/24 21:59:44 
 tags:
 	- Leetcode
 ---
@@ -26,6 +26,7 @@ tags:
 >剑指 Offer 63.股票的最大利润（数组）
 >剑指 Offer 64.求1+2+…+n（数学）
 >剑指 Offer 66.构建乘积数组(双指针或者二分)
+>面试题 (05.02).二进制数转字符串(模拟)
 >面试题 (10.03).搜索旋转数组（二分）
 
 
@@ -905,6 +906,36 @@ class Solution {
             } 
         }
         return result;
+    }
+}
+```
+
+# 面试题 (05.02).二进制数转字符串
+
+## 题目
+https://leetcode-cn.com/problems/bianry-number-to-string-lcci/
+## 题解
+**小数的二进制是小数部分一直*2取个位数。**
+**0.625举例子：**
+- 0.625 * 2 = 1.25 -> 个位数为 1，剩余小数部分0.25，继续
+- 0.25 * 2 = 0.5 -> 个位数为 0，剩余小数部分0.5，继续
+- 0.5 * 2 = 1.0 -> 个位数为 1，剩余小数部分0.0，结束
+
+所以最终0.625的二进制为0.101
+## 代码
+
+```java
+class Solution {
+    public String printBin(double num) {
+        int flag = 0;
+        StringBuffer result = new StringBuffer("0.");
+        while(num != 0.0 && flag++ < 30){
+            num *= 2;
+            result.append(String.valueOf((int)num)); 
+            num -= (int)num;
+        }
+        if(num == 0.0) return result.toString();
+        else return "ERROR";
     }
 }
 ```

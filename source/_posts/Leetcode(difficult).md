@@ -1,6 +1,6 @@
 ---
 title: 'Leetcode(difficult)'
-date: 2021/6/18 22:27:47 
+date: 2021/6/24 21:58:43 
 tags:
 	- Leetcode
 ---
@@ -9,6 +9,7 @@ tags:
 >23.合并K个升序链表（优先队列）
 >25.K个一组翻转链表(模拟)
 >65.有效数字（模拟）
+>149.直线上最多的点数（利用斜率，Map）
 >154.寻找旋转排序数组中的最小值 II（二分）
 >483.最小好进制(数学)
 >664.奇怪的打印机（二维动态规划dp）
@@ -308,6 +309,39 @@ class Solution {
         }
         if(last == 'e' || last == 'E' || last == '+' || last == '-' || !num) return false;
         return true;
+    }
+}
+```
+
+# 149.直线上最多的点数
+## 题目
+https://leetcode-cn.com/problems/max-points-on-a-line/
+
+## 题解
+定义一个HashMap,key为斜率值，value为该斜率下在同一条直线上有多少点
+计算每一个点及其后面点是否同斜率（即在同一条直线上），最后返回最大的value即可
+## 代码
+
+```java
+class Solution {
+    public int maxPoints(int[][] points) {  
+        int result = 1;
+        for(int i = 0; i < points.length; i++){
+            if(result >= points.length - i) break;
+            double x1 = points[i][0], y1 = points[i][1];
+            Map<Double, Integer> temp = new HashMap<>();
+            for(int j = i + 1; j < points.length; j++){
+                double x2 = points[j][0], y2 = points[j][1];
+                double k = 0.0;
+                if(x1 == x2) k = 10001.0;
+                else if(y1 == y2) ;
+                else k = (y2 - y1) / (x2 - x1);
+                int num = temp.getOrDefault(k, 1);
+                temp.put(k, num + 1);
+                result = Math.max(result, num + 1);
+            }
+        }
+        return result;
     }
 }
 ```
