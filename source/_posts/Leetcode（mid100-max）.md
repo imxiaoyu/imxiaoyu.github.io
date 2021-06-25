@@ -1,6 +1,6 @@
 ---
 title: 'Leetcode(mid100-)'
-date: 2021/6/20 19:15:13 
+date: 2021/6/25 22:25:11 
 tags:
 	- Leetcode
 ---
@@ -30,6 +30,7 @@ tags:
 >525.连续数组（前缀和）
 >692.前K个高频单词（暴力排序，或者Comparator接口）
 >740.删除并获得点数（dp）
+>752.打开转盘锁（bfs）
 >877.石子游戏（dp或脑筋急转弯？）
 >946.验证栈序列（栈）
 >990.等式方程的可满足性（并查集）
@@ -58,7 +59,7 @@ tags:
 
 
 
-49道题目
+50道题目
 <!-- more -->
 # 102.二叉树的层序遍历
 ## 题目
@@ -1068,6 +1069,60 @@ https://leetcode-cn.com/problems/delete-and-earn
 	    }
 	}
 ```
+
+# 752.打开转盘锁
+## 题目
+https://leetcode-cn.com/problems/open-the-lock/
+## 题解
+Set存一下每一步能到的（非锁死）位置，直到到达target 或者 遍历17次也没找到结束返回-1
+
+## 代码
+
+```java
+class Solution {
+    public int openLock(String[] deadends, String target) {
+        Set<String> dead = new HashSet<>();
+        for(int i = 0; i < deadends.length; i++){
+            dead.add(deadends[i]);
+        }
+        if(dead.contains("0000")) return -1;
+        int result = 0;
+        Set<String> ant = new HashSet<>();
+        ant.add("0000");
+        while(result < 17){
+            if(ant.contains(target)) return result;
+            else result++;
+            Set<String> temp = new HashSet<>(ant);
+            ant.clear();
+            Iterator iter = temp.iterator();
+            while(iter.hasNext()){
+                String tempS = (String)iter.next();
+                dead.add(tempS);
+                for(int i = 0; i < 4; i++){
+                    StringBuffer sb1 = new StringBuffer(tempS);
+                    StringBuffer sb2 = new StringBuffer(tempS);
+                    char c = sb1.charAt(i);
+                    c -= 1;
+                    sb1.setCharAt(i, c);
+                    c += 2;
+                    sb2.setCharAt(i, c);
+                    if(tempS.charAt(i) == '0'){
+                        sb1.setCharAt(i, '9');
+                    } else if(tempS.charAt(i) == '9'){
+                        sb2.setCharAt(i, '0');
+                    }
+                    if(!dead.contains(sb1.toString())) ant.add(sb1.toString());
+                    if(!dead.contains(sb2.toString())) ant.add(sb2.toString());
+                    //System.out.println("result: " + result  + " " + sb1 + " " + sb2 + " ");
+                }
+            }
+       
+        }
+        return -1;
+    }
+}
+```
+
 
 # 877.石子游戏
 ## 题目
