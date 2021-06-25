@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="Flying My Dream">
 <meta property="og:description" content="题目列表：剑指 Offer 04 二维数组中查找剑指 Offer 12.矩阵中的路径（dfs）剑指 Offer 13.机器人的运动范围（dfs）剑指 Offer 14-I.剪绳子（dp）剑指 Offer 14-II.剪绳子 II（找规律？）剑指 Offer 16.数值的整数次方（位运算）剑指 Offer 26.树的子结构（dfs或者递归）剑指 Offer 31.栈的压入、弹出序列（栈）剑指 Of">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2021-06-24T14:00:59.315Z">
+<meta property="og:updated_time" content="2021-06-25T14:23:16.706Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Leetcode(剑指offer面试)">
 <meta name="twitter:description" content="题目列表：剑指 Offer 04 二维数组中查找剑指 Offer 12.矩阵中的路径（dfs）剑指 Offer 13.机器人的运动范围（dfs）剑指 Offer 14-I.剪绳子（dp）剑指 Offer 14-II.剪绳子 II（找规律？）剑指 Offer 16.数值的整数次方（位运算）剑指 Offer 26.树的子结构（dfs或者递归）剑指 Offer 31.栈的压入、弹出序列（栈）剑指 Of">
@@ -180,7 +180,7 @@
         <blockquote>
 <p><strong>题目列表：</strong><br>剑指 Offer 04 二维数组中查找<br>剑指 Offer 12.矩阵中的路径（dfs）<br>剑指 Offer 13.机器人的运动范围（dfs）<br>剑指 Offer 14-I.剪绳子（dp）<br>剑指 Offer 14-II.剪绳子 II（找规律？）<br>剑指 Offer 16.数值的整数次方（位运算）<br>剑指 Offer 26.树的子结构（dfs或者递归）<br>剑指 Offer 31.栈的压入、弹出序列（栈）<br>剑指 Offer 32.-I.从上到下打印二叉树(BFS)<br>剑指 Offer 32.-III.从上到下打印二叉树 III(BFS)<br>剑指 Offer 34.二叉树中和为某一值的路径（DFS）<br>剑指 Offer 38.字符串的排列（DFS）<br>剑指 Offer 44.数字序列中某一位的数字(找规律)<br>剑指 Offer 46.把数字翻译成字符串<br>剑指 Offer 47.礼物的最大价值（dp）<br>剑指 Offer 48.最长不含重复字符的子字符串(模拟)<br>剑指 Offer 49.丑数(数学规律推导)<br>剑指 Offer 59.-II.队列的最大值（模拟）<br>剑指 Offer 63.股票的最大利润（数组）<br>剑指 Offer 64.求1+2+…+n（数学）<br>剑指 Offer 66.构建乘积数组(双指针或者二分)<br>面试题 (05.02).二进制数转字符串(模拟)<br>面试题 (10.03).搜索旋转数组（二分）</p>
 </blockquote>
-<p>22道题目<br><a id="more"></a></p>
+<p>23道题目<br><a id="more"></a></p>
 <h1 id="剑指-Offer-04-二维数组中查找"><a href="#剑指-Offer-04-二维数组中查找" class="headerlink" title="剑指 Offer 04 二维数组中查找"></a>剑指 Offer 04 二维数组中查找</h1><h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p><a href="https://leetcode-cn.com/problems/er-wei-shu-zu-zhong-de-cha-zhao-lcof" target="_blank" rel="noopener">https://leetcode-cn.com/problems/er-wei-shu-zu-zhong-de-cha-zhao-lcof</a></p>
 <h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p><a href="https://leetcode-cn.com/problems/er-wei-shu-zu-zhong-de-cha-zhao-lcof/solution/xun-zhao-dao-zui-xiao-de-ju-zhen-fan-wei-4l26/" target="_blank" rel="noopener">https://leetcode-cn.com/problems/er-wei-shu-zu-zhong-de-cha-zhao-lcof/solution/xun-zhao-dao-zui-xiao-de-ju-zhen-fan-wei-4l26/</a><br><strong>寻找最小矩阵的行起始位置、行终止位置；列起始位置、列终止位置：</strong></p>
 <p>1.判断每一行最后一个，如果小于target 则更新最小矩阵行起始位置rowl为当前行的下一行<br>2.判断每一行第一个，如果大于target 则更新最小矩阵行终止位置rowr为当前行的上一行<br>3.判断每一列最后一个，如果小于target 则更新最小矩阵列起始位置lisl为当前列的下一列<br>4.判断每一列第一个，如果大于target 则更新最小矩阵列终止位置lisr为当前列的上一列</p>
@@ -524,6 +524,15 @@
   
 <nav id="article-nav">
   
+    <a href="/2021/06/25/Leetcode（mid100-max）/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          Leetcode(mid100-)
+        
+      </div>
+    </a>
+  
   
     <a href="/2021/06/24/Leetcode(difficult)/" id="article-nav-older" class="article-nav-link-wrap">
       <div class="article-nav-title">Leetcode(difficult)</div>
@@ -696,14 +705,6 @@ MathJax.Hub.Queue(function() {
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">科研</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">软件使用</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">JAVA</a>
               </li>
              
@@ -712,7 +713,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">JAVA面试</a>
+                <a href="javascript:void(0)" class="js-tag color5">软件使用</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -720,7 +721,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">JAVA面试</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">博客</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">科研</a>
               </li>
              
               <li class="article-tag-list-item">
