@@ -42,6 +42,7 @@ tags:
 >1442.形成两个异或相等数组的三元组数目（优化+异或+前缀和）
 >1482.制作 m 束花所需的最少天数（二分）
 >1600.皇位继承顺序（模拟）
+>1679.K 和数对的最大数目（HashMap）
 >1734.解码异或后的排列（异或规律）
 >1738.找出第 K 大的异或坐标值（二维前缀和）
 >1744.你能在你最喜欢的那天吃到你最喜欢的糖果吗？（前缀和）
@@ -59,7 +60,7 @@ tags:
 
 
 
-50道题目
+51道题目 + 双周赛两道
 <!-- more -->
 # 102.二叉树的层序遍历
 ## 题目
@@ -1586,6 +1587,36 @@ class ThroneInheritance {
         if (!dead.contains(name)) result.add(name);
         List<String> children = child.getOrDefault(name, new ArrayList<String>());
         for (String childName : children) preorder(result, childName);
+    }
+}
+```
+
+# 1679.K 和数对的最大数目
+## 题目
+https://leetcode-cn.com/problems/max-number-of-k-sum-pairs/
+## 题解
+HashMap存一下小于k的每个数字出现的次数，然后看和为k的有多少对
+
+## 代码
+
+```java
+class Solution {
+    public int maxOperations(int[] nums, int k) {
+        int result = 0;
+        Map<Integer, Integer> hashMap = new HashMap<>();
+        for(int i = 0; i < nums.length; i++){
+            if(nums[i] >= k) continue;
+            else { 
+                int a = hashMap.getOrDefault(nums[i], 0);
+                int b = hashMap.getOrDefault(k - nums[i], 0);
+                if(nums[i] == k - nums[i]) result -= a / 2;
+                else result -= Math.min(a, b);
+                hashMap.put(nums[i], a + 1);
+                if(nums[i] == k - nums[i]) result += (a + 1) / 2;
+                else result += Math.min(a + 1, b);
+            }
+        }
+        return result;
     }
 }
 ```

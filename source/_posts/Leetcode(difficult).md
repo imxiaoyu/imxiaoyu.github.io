@@ -1,6 +1,6 @@
 ---
 title: 'Leetcode(difficult)'
-date: 2021/6/24 21:58:43 
+date: 2021/6/26 21:42:15 
 tags:
 	- Leetcode
 ---
@@ -13,6 +13,7 @@ tags:
 >154.寻找旋转排序数组中的最小值 II（二分）
 >483.最小好进制(数学)
 >664.奇怪的打印机（二维动态规划dp）
+>773.滑动谜题（bfs）
 >879.盈利计划（dp背包）
 >810.黑板异或游戏
 >1074.元素和为目标值的子矩阵数量（前缀和+暴力）
@@ -452,6 +453,63 @@ class Solution {
             }
         }
         return dp[0][n - 1];
+    }
+}
+```
+
+# 773.滑动谜题
+## 题目
+https://leetcode-cn.com/problems/sliding-puzzle/
+## 题解
+把这六个格子变成字符串存起来每一步可能变成啥，然后变成过啥也存起来，直到到结果
+
+## 代码
+
+```java
+class Solution {
+    public int slidingPuzzle(int[][] board) {
+        Set<String> dead = new HashSet<>();
+        int result = 0;
+        Set<String> ant = new HashSet<>();
+        ant.add(String.valueOf(board[0][0]) + String.valueOf(board[0][1]) + String.valueOf(board[0][2]) + String.valueOf(board[1][0]) + String.valueOf(board[1][1]) + String.valueOf(board[1][2]));
+        while(result < 20){
+            if(ant.contains("123450")) return result;
+            else result++;
+            Set<String> temp = new HashSet<>(ant);
+            ant.clear();
+            Iterator iter = temp.iterator();
+            while(iter.hasNext()){
+                String tempS = (String)iter.next();
+                dead.add(tempS);
+                int zeroPosi = tempS.indexOf("0");
+                StringBuffer sb1 = new StringBuffer(tempS);
+                StringBuffer sb2 = new StringBuffer(tempS);
+                if(zeroPosi < 3){
+                    sb1.setCharAt(zeroPosi, sb1.charAt(zeroPosi + 3));
+                    sb1.setCharAt(zeroPosi + 3, '0');
+                } else {
+                    sb1.setCharAt(zeroPosi, sb1.charAt(zeroPosi - 3));
+                    sb1.setCharAt(zeroPosi - 3, '0');
+                }
+                if(zeroPosi == 0 || zeroPosi == 3){
+                    sb2.setCharAt(zeroPosi, sb2.charAt(zeroPosi + 1));
+                    sb2.setCharAt(zeroPosi + 1, '0');
+                } else if(zeroPosi == 2 || zeroPosi == 5){
+                    sb2.setCharAt(zeroPosi, sb2.charAt(zeroPosi - 1));
+                    sb2.setCharAt(zeroPosi - 1, '0');
+                } else {
+                    sb2.setCharAt(zeroPosi, sb2.charAt(zeroPosi + 1));
+                    sb2.setCharAt(zeroPosi + 1, '0');
+                    StringBuffer sb3 = new StringBuffer(tempS);
+                    sb3.setCharAt(zeroPosi, sb3.charAt(zeroPosi - 1));
+                    sb3.setCharAt(zeroPosi - 1, '0');
+                    if(!dead.contains(sb3.toString())) ant.add(sb3.toString());
+                }
+                if(!dead.contains(sb1.toString())) ant.add(sb1.toString());
+                if(!dead.contains(sb2.toString())) ant.add(sb2.toString());
+            }
+        }
+        return -1;
     }
 }
 ```
