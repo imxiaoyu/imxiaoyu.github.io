@@ -1,6 +1,6 @@
 ---
 title: 'Leetcode(剑指offer面试)'
-date: 2021/6/24 21:59:44 
+date: 2021/6/30 22:14:00 
 tags:
 	- Leetcode
 ---
@@ -16,6 +16,7 @@ tags:
 >剑指 Offer 32.-I.从上到下打印二叉树(BFS)
 >剑指 Offer 32.-III.从上到下打印二叉树 III(BFS)
 >剑指 Offer 34.二叉树中和为某一值的路径（DFS）
+>剑指 Offer 37.序列化二叉树（bfs）
 >剑指 Offer 38.字符串的排列（DFS）
 >剑指 Offer 44.数字序列中某一位的数字(找规律)
 >剑指 Offer 46.把数字翻译成字符串
@@ -33,7 +34,7 @@ tags:
 
 
 
-23道题目
+24道题目
 <!-- more -->
 # 剑指 Offer 04 二维数组中查找
 
@@ -524,6 +525,87 @@ class Solution {
             }
             tempAns.remove(tempAns.size() - 1); 
         }
+    }
+}
+```
+
+# 剑指 Offer 37.序列化二叉树
+
+## 题目
+https://leetcode-cn.com/problems/xu-lie-hua-er-cha-shu-lcof/
+## 题解
+**序列化：** 用bfs存每一层的节点（也要把val存在String中），注意叶子节点的孩子（也就是空）要存下来，反序列化时需要用
+**反序列化：** bfs的逆过程
+
+## 代码
+
+```java
+public class Codec {
+    public String serialize(TreeNode root) {
+        StringBuffer s = new StringBuffer();
+        List<TreeNode> next = new ArrayList<TreeNode>();
+        if(root != null) next.add(root);
+        while(next.size() != 0){
+            List<TreeNode> temp = new ArrayList<TreeNode>(next);
+            next.clear();
+            for(int i = 0; i < temp.size(); i++){
+                TreeNode tempNode = temp.get(i);
+                if(tempNode != null){
+                    s.append(String.valueOf(tempNode.val) + " ");
+                    next.add(tempNode.left);
+                    next.add(tempNode.right);
+                } else {
+                    s.append("n ");
+                }
+            }
+        }
+        return s.toString();
+    }
+    public TreeNode deserialize(String data) {
+        if(data.length() == 0) return null;
+
+        TreeNode root = null;
+        List<TreeNode> temp = new ArrayList<TreeNode>();
+        TreeNode tempNode = null;
+        boolean flag = false;
+        for(int i = 0; i < data.length(); i++){
+            if(data.charAt(i) == '-'){
+                flag = true;
+            } else if(data.charAt(i) == 'n'){
+                if(tempNode == null) {
+                    tempNode = temp.remove(0);
+                }
+                else tempNode = null;
+                i++;
+            } else {
+                int val = 0;
+                while(data.charAt(i) != ' '){
+                    val = val * 10 + data.charAt(i) - '0';
+                    i++;
+                }
+                if(flag) {
+                    val = -val;
+                    flag = false;
+                }
+                if(root == null){
+                    root = new TreeNode(val);
+                    temp.add(root);
+                } else{
+                    if(tempNode == null){
+                        tempNode = temp.remove(0);
+                        TreeNode nodeLeft = new TreeNode(val);
+                        tempNode.left = nodeLeft;
+                        temp.add(nodeLeft);
+                    } else {
+                        TreeNode nodeRight = new TreeNode(val);
+                        tempNode.right = nodeRight;
+                        temp.add(nodeRight);
+                        tempNode = null;
+                    }
+                }
+            }          
+        }
+        return root;
     }
 }
 ```

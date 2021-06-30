@@ -1,6 +1,6 @@
 ---
 title: 'Leetcode(mid100-)'
-date: 2021/6/25 22:25:11 
+date: 2021/6/30 22:22:12 
 tags:
 	- Leetcode
 ---
@@ -56,11 +56,13 @@ tags:
 >1882.使用服务器处理任务(优先队列)
 >1894.找到需要补充粉笔的学生编号（前缀和）
 >1895.最大的幻方(前缀和)
+>1910.删除一个字符串中所有出现的给定子字符串（模拟）
+>1911.最大子序列交替和（模拟，本质就是dp）
 
 
 
-
-51道题目 + 双周赛两道
+909.蛇梯棋 + 
+53道题目
 <!-- more -->
 # 102.二叉树的层序遍历
 ## 题目
@@ -2136,6 +2138,69 @@ class Solution {
             }   
         }
         return 1;
+    }
+}
+```
+
+# 1910.删除一个字符串中所有出现的给定子字符串
+## 题目
+https://leetcode-cn.com/problems/remove-all-occurrences-of-a-substring/
+## 题解 
+简单模拟一下
+## 代码
+
+```java
+class Solution {
+    public String removeOccurrences(String s, String part) {
+        int posi = s.indexOf(part);
+        while(posi != -1){
+            s = s.replaceFirst(part, "");
+            posi = s.indexOf(part);
+        }
+        return s;
+    }
+}
+```
+
+
+# 1911.最大子序列交替和
+## 题目
+https://leetcode-cn.com/problems/maximum-alternating-subsequence-sum/
+## 题解 
+记录下上一次加的数和上一次减的数还有当前和，进行模拟
+
+## 代码
+```java
+class Solution {
+    public long maxAlternatingSum(int[] nums) {
+        long result = nums[0];
+        long tempSum = nums[0];
+        boolean flag = false;
+        int a = 0, b = nums[0];
+        for(int i = 0; i < nums.length; i++){
+            if(flag){ //要去加
+                if(nums[i] <= a) {
+                    tempSum += (a - nums[i]);
+                    a = nums[i];
+                } else{
+                    b = nums[i];
+                    tempSum += nums[i];
+                    result = Math.max(tempSum, result);
+                    flag = false;
+                }
+            } else{ //要去减
+                if(nums[i] > b) {
+                    tempSum += (nums[i] - b);
+                    b = nums[i];
+                    result = Math.max(tempSum, result);
+                } else{
+                    a = nums[i];
+                    tempSum -= nums[i];
+                    flag = true;
+                }
+            }
+        }
+        return result;
     }
 }
 ```

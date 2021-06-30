@@ -1,6 +1,6 @@
 ---
 title: 'Leetcode(difficult)'
-date: 2021/6/26 21:42:15 
+date: 2021/6/30 22:21:59 
 tags:
 	- Leetcode
 ---
@@ -11,6 +11,7 @@ tags:
 >65.有效数字（模拟）
 >149.直线上最多的点数（利用斜率，Map）
 >154.寻找旋转排序数组中的最小值 II（二分）
+>297.二叉树的序列化与反序列化（BFS）
 >483.最小好进制(数学)
 >664.奇怪的打印机（二维动态规划dp）
 >773.滑动谜题（bfs）
@@ -24,7 +25,7 @@ tags:
 
 
 
-
+815.公交路线
 1707.与数组中元素的最大异或值
 1787.使所有区间的异或结果为零
 <!-- more -->
@@ -386,6 +387,86 @@ class Solution {
             }
         }
         return result;
+    }
+}
+```
+
+# 297.二叉树的序列化与反序列化
+## 题目
+https://leetcode-cn.com/problems/serialize-and-deserialize-binary-tree/
+## 题解
+**序列化：** 用bfs存每一层的节点（也要把val存在String中），注意叶子节点的孩子（也就是空）要存下来，反序列化时需要用
+**反序列化：** bfs的逆过程
+
+## 代码
+
+```java
+public class Codec {
+    public String serialize(TreeNode root) {
+        StringBuffer s = new StringBuffer();
+        List<TreeNode> next = new ArrayList<TreeNode>();
+        if(root != null) next.add(root);
+        while(next.size() != 0){
+            List<TreeNode> temp = new ArrayList<TreeNode>(next);
+            next.clear();
+            for(int i = 0; i < temp.size(); i++){
+                TreeNode tempNode = temp.get(i);
+                if(tempNode != null){
+                    s.append(String.valueOf(tempNode.val) + " ");
+                    next.add(tempNode.left);
+                    next.add(tempNode.right);
+                } else {
+                    s.append("n ");
+                }
+            }
+        }
+        return s.toString();
+    }
+    public TreeNode deserialize(String data) {
+        if(data.length() == 0) return null;
+
+        TreeNode root = null;
+        List<TreeNode> temp = new ArrayList<TreeNode>();
+        TreeNode tempNode = null;
+        boolean flag = false;
+        for(int i = 0; i < data.length(); i++){
+            if(data.charAt(i) == '-'){
+                flag = true;
+            } else if(data.charAt(i) == 'n'){
+                if(tempNode == null) {
+                    tempNode = temp.remove(0);
+                }
+                else tempNode = null;
+                i++;
+            } else {
+                int val = 0;
+                while(data.charAt(i) != ' '){
+                    val = val * 10 + data.charAt(i) - '0';
+                    i++;
+                }
+                if(flag) {
+                    val = -val;
+                    flag = false;
+                }
+                if(root == null){
+                    root = new TreeNode(val);
+                    temp.add(root);
+                } else{
+                    if(tempNode == null){
+                        tempNode = temp.remove(0);
+                        TreeNode nodeLeft = new TreeNode(val);
+                        tempNode.left = nodeLeft;
+                        temp.add(nodeLeft);
+                    } else {
+                        TreeNode nodeRight = new TreeNode(val);
+                        tempNode.right = nodeRight;
+                        temp.add(nodeRight);
+                        tempNode = null;
+                    }
+                }
+            }          
+        }
+        return root;
     }
 }
 ```
