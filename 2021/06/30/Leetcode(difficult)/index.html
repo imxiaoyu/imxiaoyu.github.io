@@ -6,20 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="https:">
-  <title>JAVA常用类 | Flying My Dream</title>
+  <title>Leetcode(difficult) | Flying My Dream</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="一、java.lang.String类1.概述 String:字符串，使用一对””引起来表示。1.String声明为final的，不可被继承2.  String实现了Serializable接口：表示字符串是支持序列化的。 String实现了Comparable接口：表示String可以比较大小  3.String内部定义了final char[] value用于存储字符串数据4.通过字面量的方式">
-<meta name="keywords" content="JAVA,JAVA基础">
+  <meta name="description" content="题目列表：4.寻找两个正序数组的中位数23.合并K个升序链表（优先队列）25.K个一组翻转链表(模拟)65.有效数字（模拟）149.直线上最多的点数（利用斜率，Map）154.寻找旋转排序数组中的最小值 II（二分）297.二叉树的序列化与反序列化（BFS）483.最小好进制(数学)664.奇怪的打印机（二维动态规划dp）773.滑动谜题（bfs）879.盈利计划（dp背包）810.黑板异或游戏">
+<meta name="keywords" content="Leetcode">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JAVA常用类">
-<meta property="og:url" content="https:/2021/04/29/JAVA常用类/index.html">
+<meta property="og:title" content="Leetcode(difficult)">
+<meta property="og:url" content="https:/2021/06/30/Leetcode(difficult)/index.html">
 <meta property="og:site_name" content="Flying My Dream">
-<meta property="og:description" content="一、java.lang.String类1.概述 String:字符串，使用一对””引起来表示。1.String声明为final的，不可被继承2.  String实现了Serializable接口：表示字符串是支持序列化的。 String实现了Comparable接口：表示String可以比较大小  3.String内部定义了final char[] value用于存储字符串数据4.通过字面量的方式">
+<meta property="og:description" content="题目列表：4.寻找两个正序数组的中位数23.合并K个升序链表（优先队列）25.K个一组翻转链表(模拟)65.有效数字（模拟）149.直线上最多的点数（利用斜率，Map）154.寻找旋转排序数组中的最小值 II（二分）297.二叉树的序列化与反序列化（BFS）483.最小好进制(数学)664.奇怪的打印机（二维动态规划dp）773.滑动谜题（bfs）879.盈利计划（dp背包）810.黑板异或游戏">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2021-05-30T05:44:22.588Z">
+<meta property="og:updated_time" content="2021-06-30T14:22:00.307Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JAVA常用类">
-<meta name="twitter:description" content="一、java.lang.String类1.概述 String:字符串，使用一对””引起来表示。1.String声明为final的，不可被继承2.  String实现了Serializable接口：表示字符串是支持序列化的。 String实现了Comparable接口：表示String可以比较大小  3.String内部定义了final char[] value用于存储字符串数据4.通过字面量的方式">
+<meta name="twitter:title" content="Leetcode(difficult)">
+<meta name="twitter:description" content="题目列表：4.寻找两个正序数组的中位数23.合并K个升序链表（优先队列）25.K个一组翻转链表(模拟)65.有效数字（模拟）149.直线上最多的点数（利用斜率，Map）154.寻找旋转排序数组中的最小值 II（二分）297.二叉树的序列化与反序列化（BFS）483.最小好进制(数学)664.奇怪的打印机（二维动态规划dp）773.滑动谜题（bfs）879.盈利计划（dp背包）810.黑板异或游戏">
   
     <link rel="alternative" href="/atom.xml" title="Flying My Dream" type="application/atom+xml">
   
@@ -155,716 +155,128 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-JAVA常用类" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-Leetcode(difficult)" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      JAVA常用类
+      Leetcode(difficult)
     </h1>
   
 
 
 
         
-        <a href="/2021/04/29/JAVA常用类/" class="archive-article-date">
-  	<time datetime="2021-04-29T14:24:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-04-29</time>
+        <a href="/2021/06/30/Leetcode(difficult)/" class="archive-article-date">
+  	<time datetime="2021-06-30T14:21:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-06-30</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="一、java-lang-String类"><a href="#一、java-lang-String类" class="headerlink" title="一、java.lang.String类"></a>一、java.lang.String类</h1><h2 id="1-概述"><a href="#1-概述" class="headerlink" title="1.概述"></a>1.概述</h2><blockquote>
-<p><strong>String:字符串，使用一对””引起来表示。</strong><br>1.String声明为final的，不可被继承<br>2.</p>
+        <blockquote>
+<p><strong>题目列表：</strong><br>4.寻找两个正序数组的中位数<br>23.合并K个升序链表（优先队列）<br>25.K个一组翻转链表(模拟)<br>65.有效数字（模拟）<br>149.直线上最多的点数（利用斜率，Map）<br>154.寻找旋转排序数组中的最小值 II（二分）<br>297.二叉树的序列化与反序列化（BFS）<br>483.最小好进制(数学)<br>664.奇怪的打印机（二维动态规划dp）<br>773.滑动谜题（bfs）<br>879.盈利计划（dp背包）<br>810.黑板异或游戏<br>1074.元素和为目标值的子矩阵数量（前缀和+暴力）<br>1269.停在原地的方案数（dp）<br>1449.数位成本和为目标值的最大数字（完全背包）<br>1723.完成所有工作的最短时间（dfs+剪枝多写）<br>1862.向下取整数对和 （化简遍历数目）</p>
+</blockquote>
+<p>815.公交路线<br>1707.与数组中元素的最大异或值<br>1787.使所有区间的异或结果为零<br><a id="more"></a></p>
+<h1 id="4-寻找两个正序数组的中位数"><a href="#4-寻找两个正序数组的中位数" class="headerlink" title="4.寻找两个正序数组的中位数"></a>4.寻找两个正序数组的中位数</h1><h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p><a href="https://leetcode-cn.com/problems/median-of-two-sorted-arrays/" target="_blank" rel="noopener">https://leetcode-cn.com/problems/median-of-two-sorted-arrays/</a></p>
+<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><blockquote>
+<p><strong>方法一：</strong><br>创建一个数组，把两个数组的元素都加进去，然后排序，去中位数<br><strong>方法二：</strong><br>1.两个数组分别排序；<br>2.然后把一个数组为空的情况输出一下，两个数组都只有一个元素的情况输出一下；<br>3.对于剩下的情况，两个数组同步进行记录小的元素，然后次小的……直到中位数（两个数组长度为奇数）或者中间两个数（两个数组长度为偶数），输出。</p>
+</blockquote>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><p><strong>方法一：</strong><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">findMedianSortedArrays</span><span class="params">(<span class="keyword">int</span>[] nums1, <span class="keyword">int</span>[] nums2)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> oneLength = nums1.length;</span><br><span class="line">        <span class="keyword">int</span> twoLength = nums2.length;</span><br><span class="line">        <span class="keyword">int</span> length = oneLength + twoLength;</span><br><span class="line">        <span class="keyword">int</span>[] result = <span class="keyword">new</span> <span class="keyword">int</span>[length];</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; oneLength; i++)&#123;</span><br><span class="line">            result[i] = nums1[i];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; twoLength; i++)&#123;</span><br><span class="line">            result[oneLength + i] = nums2[i];</span><br><span class="line">        &#125;</span><br><span class="line">        Arrays.sort(result);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(length == <span class="number">1</span>)</span><br><span class="line">            <span class="keyword">return</span> (<span class="keyword">double</span>)result[<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(length % <span class="number">2</span> == <span class="number">0</span>)</span><br><span class="line">            <span class="keyword">return</span> ((<span class="keyword">double</span>)result[length / <span class="number">2</span> - <span class="number">1</span>] + (<span class="keyword">double</span>)result[length / <span class="number">2</span>]) / <span class="number">2.0</span>;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            <span class="keyword">return</span> (<span class="keyword">double</span>)result[length / <span class="number">2</span>];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><strong>方法二：</strong><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">findMedianSortedArrays</span><span class="params">(<span class="keyword">int</span>[] nums1, <span class="keyword">int</span>[] nums2)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> oneLength = nums1.length;</span><br><span class="line">        <span class="keyword">int</span> twoLength = nums2.length;</span><br><span class="line">        <span class="keyword">int</span> length = oneLength + twoLength;</span><br><span class="line">        <span class="keyword">boolean</span> flag = <span class="keyword">true</span>;</span><br><span class="line">        <span class="keyword">if</span>(length % <span class="number">2</span> == <span class="number">0</span>)</span><br><span class="line">            flag = <span class="keyword">false</span>;</span><br><span class="line">        <span class="keyword">if</span>(length == <span class="number">1</span>)&#123;</span><br><span class="line">            <span class="keyword">if</span>(oneLength == <span class="number">1</span>)</span><br><span class="line">                <span class="keyword">return</span> (<span class="keyword">double</span>)nums1[<span class="number">0</span>];</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                <span class="keyword">return</span> (<span class="keyword">double</span>)nums2[<span class="number">0</span>];</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        Arrays.sort(nums1);</span><br><span class="line">        Arrays.sort(nums2);</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span>(oneLength == <span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">if</span>(!flag)</span><br><span class="line">                <span class="keyword">return</span> ((<span class="keyword">double</span>)nums2[twoLength / <span class="number">2</span> - <span class="number">1</span>] + (<span class="keyword">double</span>)nums2[twoLength / <span class="number">2</span>]) / <span class="number">2.0</span>;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                <span class="keyword">return</span>  (<span class="keyword">double</span>)nums2[twoLength / <span class="number">2</span>];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(twoLength == <span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">if</span>(!flag)</span><br><span class="line">                <span class="keyword">return</span> ((<span class="keyword">double</span>)nums1[oneLength / <span class="number">2</span> - <span class="number">1</span>] + (<span class="keyword">double</span>)nums1[oneLength / <span class="number">2</span>]) / <span class="number">2.0</span>;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                <span class="keyword">return</span>  (<span class="keyword">double</span>)nums1[oneLength / <span class="number">2</span>];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(length == <span class="number">2</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> ( (<span class="keyword">double</span>)nums1[<span class="number">0</span>] + (<span class="keyword">double</span>)nums2[<span class="number">0</span>] ) / <span class="number">2.0</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> ant = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">double</span> ans1 = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">double</span> ans2 = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> onePos = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> twoPos = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span>(<span class="keyword">true</span>)&#123;</span><br><span class="line">            ant = Math.min(nums1[onePos],nums2[twoPos]);</span><br><span class="line">            <span class="keyword">if</span>( (onePos + twoPos) == length / <span class="number">2</span> &amp;&amp; flag )&#123;</span><br><span class="line">                <span class="keyword">return</span> (<span class="keyword">double</span>)ant;</span><br><span class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span>( (onePos + twoPos) == length / <span class="number">2</span> - <span class="number">1</span> &amp;&amp; !flag )&#123;</span><br><span class="line">                ans1 = (<span class="keyword">double</span>)ant;</span><br><span class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span>( (onePos + twoPos) == length / <span class="number">2</span> &amp;&amp; !flag )&#123;</span><br><span class="line">                ans2 = (<span class="keyword">double</span>)ant;</span><br><span class="line">                <span class="keyword">return</span> (ans1 + ans2) / <span class="number">2</span>;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            </span><br><span class="line">            <span class="keyword">if</span>(nums1[onePos] &lt;= nums2[twoPos] &amp;&amp; onePos == oneLength - <span class="number">1</span>)&#123;</span><br><span class="line">                <span class="keyword">int</span> temp = nums1[onePos];</span><br><span class="line">                nums1[onePos] = nums2[twoPos];</span><br><span class="line">                nums2[twoPos] = temp;</span><br><span class="line">                twoPos++;</span><br><span class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span>(nums1[onePos] &gt;= nums2[twoPos] &amp;&amp; twoPos == twoLength - <span class="number">1</span>)&#123;</span><br><span class="line">                <span class="keyword">int</span> temp = nums1[onePos];</span><br><span class="line">                nums1[onePos] = nums2[twoPos];</span><br><span class="line">                nums2[twoPos] = temp;</span><br><span class="line">                onePos++;</span><br><span class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span>(nums1[onePos] &gt;= nums2[twoPos])&#123;</span><br><span class="line">                twoPos++;</span><br><span class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span>(nums1[onePos] &lt;= nums2[twoPos])&#123;</span><br><span class="line">                onePos++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;   </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h1 id="23-合并K个升序链表"><a href="#23-合并K个升序链表" class="headerlink" title="23.合并K个升序链表"></a>23.合并K个升序链表</h1><h2 id="题目-1"><a href="#题目-1" class="headerlink" title="题目"></a>题目</h2><p><a href="https://leetcode-cn.com/problems/merge-k-sorted-lists" target="_blank" rel="noopener">https://leetcode-cn.com/problems/merge-k-sorted-lists</a></p>
+<h2 id="题解-1"><a href="#题解-1" class="headerlink" title="题解"></a>题解</h2><p>优先队列的写法</p>
+<h2 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h2><p><strong>暴力模拟：</strong><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> ListNode <span class="title">mergeKLists</span><span class="params">(ListNode[] lists)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span>[] pos = <span class="keyword">new</span> <span class="keyword">int</span>[lists.length];</span><br><span class="line">        <span class="keyword">int</span> tempMinPosi = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> nums = <span class="number">0</span>;</span><br><span class="line">        ListNode ans = <span class="keyword">new</span> ListNode(<span class="number">10000</span>);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; lists.length; i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(lists[i] != <span class="keyword">null</span>)&#123;</span><br><span class="line">                <span class="keyword">if</span>(lists[i].val &lt; ans.val)&#123;</span><br><span class="line">                    tempMinPosi = i;</span><br><span class="line">                    ans = lists[i];</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> nums++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(nums == lists.length)</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">        ListNode result = ans;</span><br><span class="line">        lists[tempMinPosi] = lists[tempMinPosi].next;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span>(<span class="keyword">true</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            ListNode tempMin = <span class="keyword">new</span> ListNode(<span class="number">10000</span>);</span><br><span class="line">            tempMinPosi = <span class="number">0</span>;</span><br><span class="line">            nums = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; lists.length; i++)&#123;</span><br><span class="line">                <span class="keyword">if</span>(lists[i] != <span class="keyword">null</span>)&#123;</span><br><span class="line">                    <span class="keyword">if</span>(lists[i].val &lt; tempMin.val)&#123;</span><br><span class="line">                        tempMinPosi = i;</span><br><span class="line">                        tempMin = lists[i];</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span>&#123;</span><br><span class="line">                    nums++;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(nums == lists.length)</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            ans.next = tempMin;</span><br><span class="line">            ans = ans.next;</span><br><span class="line">            lists[tempMinPosi] = lists[tempMinPosi].next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><strong>优先队列：</strong><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> ListNode <span class="title">mergeKLists</span><span class="params">(ListNode[] lists)</span> </span>&#123;</span><br><span class="line">        PriorityQueue&lt;ListNode&gt; q = <span class="keyword">new</span> PriorityQueue&lt;&gt;((x,y)-&gt;x.val-y.val);</span><br><span class="line">        <span class="keyword">for</span>(ListNode node : lists)&#123;</span><br><span class="line">            <span class="keyword">if</span>(node != <span class="keyword">null</span>)&#123;</span><br><span class="line">                q.add(node);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        ListNode head = <span class="keyword">new</span> ListNode();</span><br><span class="line">        ListNode tail = head;</span><br><span class="line">        <span class="keyword">while</span>(!q.isEmpty())&#123;</span><br><span class="line">            tail.next = q.poll();</span><br><span class="line">            tail = tail.next;</span><br><span class="line">            <span class="keyword">if</span> (tail.next != <span class="keyword">null</span>)&#123;</span><br><span class="line">                q.add(tail.next);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> head.next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h1 id="25-K个一组翻转链表"><a href="#25-K个一组翻转链表" class="headerlink" title="25.K个一组翻转链表"></a>25.K个一组翻转链表</h1><h2 id="题目-2"><a href="#题目-2" class="headerlink" title="题目"></a>题目</h2><p><a href="https://leetcode-cn.com/problems/reverse-nodes-in-k-group/" target="_blank" rel="noopener">https://leetcode-cn.com/problems/reverse-nodes-in-k-group/</a></p>
+<h2 id="题解-2"><a href="#题解-2" class="headerlink" title="题解"></a>题解</h2><p><strong>思路：</strong><br>用ArrayList存取所有的ListNode  然后看ListNode的长度是不是k的整数倍，不是话把最大整数倍的后一个节点取出来（后面会用到），然后把不是整数倍的节点在List中删除掉，接下里就是反转k个一组了，用一个while里面套取for来反转，下面举例子说一下反转过程。</p>
+<p><strong>例子：</strong> 1-&gt;2-&gt;3-&gt;4-&gt;5，k = 3<br>1.首先把1-&gt;2-&gt;3-&gt;4-&gt;5存到ArrayList中，然后得到ArrayList长度为5不是k（3）的整数倍，所以删除最后一个节点，然后还剩下4个节点此时ArrayList.size() % k = 1,所以把4节点存下来，后面需要用他来连接4和5节点，存下来后在ArrayList中 把4也删除掉，现在ArrayList中只有<br>1-&gt;2-&gt;3了<br>2.判断while(ArrayList.size() != 0) 所以进入while进行k个一组的反转，先把ArrayList中最后一个元素3存下里，然后删除掉ArrayList中的3<br>3.for</p>
 <ul>
-<li><strong>String实现了Serializable接口：</strong>表示字符串是支持序列化的。</li>
-<li><strong>String实现了Comparable接口：</strong>表示String可以比较大小</li>
+<li>1.进入for(i = 1, i &lt; k; i++)，让刚刚存取的3节点的next指向此时ArrayList中最后一个元素2，然后存下来2，删除ArrayList中的2；</li>
+<li>2.再判断for循环条件，还在for里面，让刚刚存取的2节点的next指向此时ArrayList中最后一个元素1，然后存下来1，删除ArrayList中的1；</li>
+<li>3.再判断for循环条件，此时不满足了，跳出for，再去判断while(ArrayList.size() != 0)，也不满足了，所以结束</li>
 </ul>
-<p>3.String内部定义了final char[] value用于存储字符串数据<br>4.通过字面量的方式（区别于new给一个字符串赋值，此时的字符串值声明在字符串常量池中)。<br>5.字符串常量池中是不会存储相同内容(使用String类的equals()比较，返回true)的字符串的。</p>
-</blockquote>
-<a id="more"></a>
-<h2 id="2-String的不可变性"><a href="#2-String的不可变性" class="headerlink" title="2.String的不可变性"></a>2.String的不可变性</h2><h3 id="1-说明"><a href="#1-说明" class="headerlink" title="(1)说明"></a>(1)说明</h3><blockquote>
-<p>1.当对字符串重新赋值时，需要重写指定内存区域赋值，不能使用原有的value进行赋值。<br>2.当对现的字符串进行连接操作时，也需要重新指定内存区域赋值，不能使用原有的value进行赋值。<br>3.当调用String的replace()方法修改指定字符或字符串时，也需要重新指定内存区域赋值，不能使用原有的value进行赋值。</p>
-</blockquote>
-<h3 id="2-代码举例"><a href="#2-代码举例" class="headerlink" title="(2)代码举例"></a>(2)代码举例</h3><pre><code>String s1 = &quot;abc&quot;;//字面量的定义方式
-String s2 = &quot;abc&quot;;
-s1 = &quot;hello&quot;;
-
-System.out.println(s1 == s2);//比较s1和s2的地址值
-
-System.out.println(s1);//hello
-System.out.println(s2);//abc
-
-System.out.println(&quot;*****************&quot;);
-
-String s3 = &quot;abc&quot;;
-s3 += &quot;def&quot;;
-System.out.println(s3);//abcdef
-System.out.println(s2);
-
-System.out.println(&quot;*****************&quot;);
-
-String s4 = &quot;abc&quot;;
-String s5 = s4.replace(&apos;a&apos;, &apos;m&apos;);
-System.out.println(s4);//abc
-System.out.println(s5);//mbc
-</code></pre><h2 id="3-String实例化的不同方式"><a href="#3-String实例化的不同方式" class="headerlink" title="3.String实例化的不同方式"></a>3.String实例化的不同方式</h2><h3 id="1-方式说明"><a href="#1-方式说明" class="headerlink" title="(1)方式说明"></a>(1)方式说明</h3><blockquote>
-<p><strong>方式一：</strong>通过字面量定义的方式<br><strong>方式二：</strong>通过new + 构造器的方式</p>
-</blockquote>
-<h3 id="2-代码举例-1"><a href="#2-代码举例-1" class="headerlink" title="(2)代码举例"></a>(2)代码举例</h3><pre><code>//通过字面量定义的方式：此时的s1和s2的数据javaEE声明在方法区中的字符串常量池中。
-String s1 = &quot;javaEE&quot;;
-String s2 = &quot;javaEE&quot;;
-//通过new + 构造器的方式:此时的s3和s4保存的地址值，是数据在堆空间中开辟空间以后对应的地址值。
-String s3 = new String(&quot;javaEE&quot;);
-String s4 = new String(&quot;javaEE&quot;);
-
-System.out.println(s1 == s2);//true
-System.out.println(s1 == s3);//false
-System.out.println(s1 == s4);//false
-System.out.println(s3 == s4);//false
-</code></pre><h3 id="3-面试题"><a href="#3-面试题" class="headerlink" title="(3)面试题"></a>(3)面试题</h3><blockquote>
-<p><strong>String s = new String(“abc”);方式创建对象，在内存中创建了几个对象？</strong><br>两个:一个是堆空间中new结构，另一个是char[]对应的常量池中的数据：”abc”</p>
-</blockquote>
-<h2 id="4-字符串拼接方式赋值的对比"><a href="#4-字符串拼接方式赋值的对比" class="headerlink" title="4.字符串拼接方式赋值的对比"></a>4.字符串拼接方式赋值的对比</h2><h3 id="1-说明-1"><a href="#1-说明-1" class="headerlink" title="(1)说明"></a>(1)说明</h3><blockquote>
-<p>1.常量与常量的拼接结果在常量池。且常量池中不会存在相同内容的常量。<br>2.只要其中一个是变量，结果就在堆中。<br>3.如果拼接的结果调用intern()方法，返回值就在常量池中</p>
-</blockquote>
-<h3 id="2-代码举例-2"><a href="#2-代码举例-2" class="headerlink" title="(2)代码举例"></a>(2)代码举例</h3><pre><code>String s1 = &quot;javaEE&quot;;
-String s2 = &quot;hadoop&quot;;
-
-String s3 = &quot;javaEEhadoop&quot;;
-String s4 = &quot;javaEE&quot; + &quot;hadoop&quot;;
-String s5 = s1 + &quot;hadoop&quot;;
-String s6 = &quot;javaEE&quot; + s2;
-String s7 = s1 + s2;
-
-System.out.println(s3 == s4);//true
-System.out.println(s3 == s5);//false
-System.out.println(s3 == s6);//false
-System.out.println(s3 == s7);//false
-System.out.println(s5 == s6);//false
-System.out.println(s5 == s7);//false
-System.out.println(s6 == s7);//false
-
-String s8 = s6.intern();//返回值得到的s8使用的常量值中已经存在的“javaEEhadoop”
-System.out.println(s3 == s8);//true
-
-String s1 = &quot;javaEEhadoop&quot;;
-String s2 = &quot;javaEE&quot;;
-String s3 = s2 + &quot;hadoop&quot;;
-System.out.println(s1 == s3);//false
-
-final String s4 = &quot;javaEE&quot;;//s4:常量
-String s5 = s4 + &quot;hadoop&quot;;
-System.out.println(s1 == s5);//true
-</code></pre><h2 id="5-常用方法"><a href="#5-常用方法" class="headerlink" title="5.常用方法"></a>5.常用方法</h2><blockquote>
-<p>1.int length()：返回字符串的长度： return value.length<br>2.char charAt(int index)： 返回某索引处的字符return value[index]<br>3.boolean isEmpty()：判断是否是空字符串：return value.length == 0<br>4.String toLowerCase()：使用默认语言环境，将 String 中的所字符转换为小写<br>5.String toUpperCase()：使用默认语言环境，将 String 中的所字符转换为大写<br>6.String trim()：返回字符串的副本，忽略前导空白和尾部空白<br>7.boolean equals(Object obj)：比较字符串的内容是否相同<br>8.boolean equalsIgnoreCase(String anotherString)：与equals方法类似，忽略大小写<br>9.String concat(String str)：将指定字符串连接到此字符串的结尾。 等价于用“+”<br>10.int compareTo(String anotherString)：比较两个字符串的大小<br>11.String substring(int beginIndex)：返回一个新的字符串，它是此字符串的从beginIndex开始截取到最后的一个子字符串。<br>12.String substring(int beginIndex, int endIndex) ：返回一个新字符串，它是此字符串从beginIndex开始截取到endIndex(不包含)的一个子字符串。</p>
-</blockquote>
-<blockquote>
-<p>13.boolean endsWith(String suffix)：测试此字符串是否以指定的后缀结束<br>14.boolean startsWith(String prefix)：测试此字符串是否以指定的前缀开始<br>15.boolean startsWith(String prefix, int toffset)：测试此字符串从指定索引开始的子字符串是否以指定前缀开始</p>
-</blockquote>
-<blockquote>
-<p>16.boolean contains(CharSequence s)：当且仅当此字符串包含指定的 char 值序列时，返回 true<br>17.int indexOf(String str)：返回指定子字符串在此字符串中第一次出现处的索引<br>18.int indexOf(String str, int fromIndex)：返回指定子字符串在此字符串中第一次出现处的索引，从指定的索引开始<br>19.int lastIndexOf(String str)：返回指定子字符串在此字符串中最右边出现处的索引<br>20.int lastIndexOf(String str, int fromIndex)：返回指定子字符串在此字符串中最后一次出现处的索引，从指定的索引开始反向搜索<br><strong>注：</strong>indexOf和lastIndexOf方法如果未找到都是返回-1</p>
-</blockquote>
-<p><strong>替换：</strong></p>
-<blockquote>
-<p>1.String replace(char oldChar, char newChar)：返回一个新的字符串，它是通过用 newChar 替换此字符串中出现的所 oldChar 得到的。<br>2.String replace(CharSequence target, CharSequence replacement)：使用指定的字面值替换序列替换此字符串所匹配字面值目标序列的子字符串。<br>3.String replaceAll(String regex, String replacement)：使用给定的replacement 替换此字符串所匹配给定的正则表达式的子字符串。<br>4.String replaceFirst(String regex, String replacement)：使用给定的replacement 替换此字符串匹配给定的正则表达式的第一个子字符串。<br>匹配:<br>5.boolean matches(String regex)：告知此字符串是否匹配给定的正则表达式。</p>
-</blockquote>
-<p><strong>切片：</strong></p>
-<blockquote>
-<p>1.String[] split(String regex)：根据给定正则表达式的匹配拆分此字符串。<br>2.String[] split(String regex, int limit)：根据匹配给定的正则表达式来拆分此字符&gt;串，最多不超过limit个，如果超过了，剩下的全部都放到最后一个元素中。</p>
-</blockquote>
-<h2 id="6-String与其它结构的转换"><a href="#6-String与其它结构的转换" class="headerlink" title="6.String与其它结构的转换"></a>6.String与其它结构的转换</h2><h3 id="1-与基本数据类型、包装类之间的转换"><a href="#1-与基本数据类型、包装类之间的转换" class="headerlink" title="(1)与基本数据类型、包装类之间的转换"></a>(1)与基本数据类型、包装类之间的转换</h3><pre><code>String --&gt; 基本数据类型、包装类：调用包装类的静态方法：parseXxx(str)
-基本数据类型、包装类 --&gt; String:调用String重载的valueOf(xxx)
-
-@Test
-public void test1(){
-    String str1 = &quot;123&quot;;
-    //int num = (int)str1;//错误的
-    int num = Integer.parseInt(str1);
-
-    String str2 = String.valueOf(num);//&quot;123&quot;
-    String str3 = num + &quot;&quot;;
-
-    System.out.println(str1 == str3);
-}
-</code></pre><h3 id="2-与字符数组之间的转换"><a href="#2-与字符数组之间的转换" class="headerlink" title="(2)与字符数组之间的转换"></a>(2)与字符数组之间的转换</h3><pre><code>String --&gt; char[]:调用String的toCharArray()
-char[] --&gt; String:调用String的构造器
-
-@Test
-public void test2(){
-    String str1 = &quot;abc123&quot;;  //题目： a21cb3
-
-    char[] charArray = str1.toCharArray();
-    for (int i = 0; i &lt; charArray.length; i++) {
-        System.out.println(charArray[i]);
-    }
-
-    char[] arr = new char[]{&apos;h&apos;,&apos;e&apos;,&apos;l&apos;,&apos;l&apos;,&apos;o&apos;};
-    String str2 = new String(arr);
-    System.out.println(str2);
-}
-</code></pre><h3 id="3-与字节数组之间的转换"><a href="#3-与字节数组之间的转换" class="headerlink" title="(3)与字节数组之间的转换"></a>(3)与字节数组之间的转换</h3><blockquote>
-<p><strong>编码：</strong>String –&gt; byte[]:调用String的getBytes()<br><strong>解码：</strong>byte[] –&gt; String:调用String的构造器</p>
-<p><strong>编码：</strong>字符串 –&gt;字节  (看得懂 —&gt;看不懂的二进制数据)<br><strong>解码：</strong>编码的逆过程，字节 –&gt; 字符串 （看不懂的二进制数据 —&gt; 看得懂</p>
-<p><strong>说明：</strong>解码时，要求解码使用的字符集必须与编码时使用的字符集一致，否则会出现乱码。</p>
-</blockquote>
-<pre><code>@Test
-public void test3() throws UnsupportedEncodingException {
-    String str1 = &quot;abc123中国&quot;;
-    byte[] bytes = str1.getBytes();//使用默认的字符集，进行编码。
-    System.out.println(Arrays.toString(bytes));
-
-    byte[] gbks = str1.getBytes(&quot;gbk&quot;);//使用gbk字符集进行编码。
-    System.out.println(Arrays.toString(gbks));
-
-    System.out.println(&quot;******************&quot;);
-
-    String str2 = new String(bytes);//使用默认的字符集，进行解码。
-    System.out.println(str2);
-
-    String str3 = new String(gbks);
-    System.out.println(str3);//出现乱码。原因：编码集和解码集不一致！
-
-
-    String str4 = new String(gbks, &quot;gbk&quot;);
-    System.out.println(str4);//没出现乱码。原因：编码集和解码集一致！
-}
-</code></pre><h3 id="4-与StringBuffer、StringBuilder之间的转换"><a href="#4-与StringBuffer、StringBuilder之间的转换" class="headerlink" title="(4)与StringBuffer、StringBuilder之间的转换"></a>(4)与StringBuffer、StringBuilder之间的转换</h3><blockquote>
-<p>1.String –&gt;StringBuffer、StringBuilder:调用StringBuffer、StringBuilder构造器<br>2.StringBuffer、StringBuilder –&gt;String:①调用String构造器；②StringBuffer、StringBuilder的toString()</p>
-</blockquote>
-<h2 id="7-JVM中字符串常量池存放位置说明"><a href="#7-JVM中字符串常量池存放位置说明" class="headerlink" title="7.JVM中字符串常量池存放位置说明"></a>7.JVM中字符串常量池存放位置说明</h2><blockquote>
-<p><strong>jdk 1.6 (jdk 6.0 ,java 6.0)</strong>:字符串常量池存储在方法区（永久区）<br><strong>jdk 1.7</strong>:字符串常量池存储在堆空间<br><strong>jdk 1.8</strong>:字符串常量池存储在方法区（元空间）</p>
-</blockquote>
-<h2 id="8-常见算法题目的考查"><a href="#8-常见算法题目的考查" class="headerlink" title="8.常见算法题目的考查"></a>8.常见算法题目的考查</h2><blockquote>
-<p>1.模拟一个trim方法，去除字符串两端的空格。<br>2.将一个字符串进行反转。将字符串中指定部分进行反转。比如“abcdefg”反转为”abfedcg”<br>3.获取一个字符串在另一个字符串中出现的次数。</p>
+<p>返回我们存取的最后一次while循环里面存放的3节点</p>
+<h2 id="代码-2"><a href="#代码-2" class="headerlink" title="代码"></a>代码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> ListNode <span class="title">reverseKGroup</span><span class="params">(ListNode head, <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">        List&lt;ListNode&gt; node = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        <span class="keyword">while</span>(head != <span class="keyword">null</span>)&#123;</span><br><span class="line">            node.add(head);</span><br><span class="line">            head = head.next;</span><br><span class="line">        &#125;</span><br><span class="line">        ListNode last = <span class="keyword">null</span>;</span><br><span class="line">        <span class="keyword">if</span>(node.size() % k != <span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">while</span>(node.size() % k != <span class="number">1</span>)&#123;</span><br><span class="line">                node.remove(node.size() - <span class="number">1</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            last = node.get(node.size() - <span class="number">1</span>);</span><br><span class="line">            node.remove(node.size() - <span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        ListNode temp = <span class="keyword">null</span>;</span><br><span class="line">        ListNode tempLast = <span class="keyword">null</span>;</span><br><span class="line">        <span class="keyword">while</span>(node.size() != <span class="number">0</span>)&#123; </span><br><span class="line">            temp = node.get(node.size() - <span class="number">1</span>);</span><br><span class="line">            tempLast = temp;</span><br><span class="line">            node.remove(node.size() - <span class="number">1</span>);</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; k; i++)&#123;</span><br><span class="line">                temp.next = node.get(node.size() - <span class="number">1</span>);</span><br><span class="line">                node.remove(node.size() - <span class="number">1</span>);</span><br><span class="line">                temp = temp.next;</span><br><span class="line">            &#125;</span><br><span class="line">            temp.next = last;</span><br><span class="line">            last = tempLast;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> tempLast;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="65-有效数字"><a href="#65-有效数字" class="headerlink" title="65.有效数字"></a>65.有效数字</h1><h2 id="题目-3"><a href="#题目-3" class="headerlink" title="题目"></a>题目</h2><p><a href="https://leetcode-cn.com/problems/valid-number/" target="_blank" rel="noopener">https://leetcode-cn.com/problems/valid-number/</a></p>
+<h2 id="题解-3"><a href="#题解-3" class="headerlink" title="题解"></a>题解</h2><p>记录一下当前的字母和上一个字母，还有’e’或’E’出现过没有,’.’出现过没有，’数字’出现过没有</p>
+<h2 id="代码-3"><a href="#代码-3" class="headerlink" title="代码"></a>代码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isNumber</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">char</span> last = <span class="string">' '</span>, temp;</span><br><span class="line">        <span class="keyword">boolean</span> flag = <span class="keyword">false</span>, num = <span class="keyword">false</span>, fleg = <span class="keyword">false</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; s.length(); i++)&#123;</span><br><span class="line">            temp = s.charAt(i);</span><br><span class="line">            <span class="keyword">if</span>((temp == <span class="string">'e'</span> || temp == <span class="string">'E'</span> || temp == <span class="string">'.'</span> || temp == <span class="string">'+'</span> || temp == <span class="string">'-'</span>) || (temp &gt;= <span class="string">'0'</span> &amp;&amp; temp &lt;= <span class="string">'9'</span>))&#123;</span><br><span class="line">                <span class="keyword">if</span>((temp == <span class="string">'e'</span> || temp == <span class="string">'E'</span>) &amp;&amp; !fleg &amp;&amp; num &amp;&amp; ((last &gt;= <span class="string">'0'</span> &amp;&amp; last &lt;= <span class="string">'9'</span>) || last == <span class="string">'.'</span>) ) &#123;flag = <span class="keyword">true</span>; fleg = <span class="keyword">true</span>;&#125;</span><br><span class="line">                <span class="keyword">else</span> <span class="keyword">if</span>((temp == <span class="string">'+'</span> || temp == <span class="string">'-'</span>) &amp;&amp; (last == <span class="string">' '</span> || last == <span class="string">'e'</span> || last == <span class="string">'E'</span>)) ;</span><br><span class="line">                <span class="keyword">else</span> <span class="keyword">if</span>(temp == <span class="string">'.'</span> &amp;&amp; !flag &amp;&amp; (last == <span class="string">' '</span> || last == <span class="string">'+'</span> || last == <span class="string">'-'</span> || (last &gt;= <span class="string">'0'</span> &amp;&amp; last &lt;= <span class="string">'9'</span>))) flag = <span class="keyword">true</span>;</span><br><span class="line">                <span class="keyword">else</span> <span class="keyword">if</span>(temp &gt;= <span class="string">'0'</span> &amp;&amp; temp &lt;= <span class="string">'9'</span>) num = <span class="keyword">true</span>;</span><br><span class="line">                <span class="keyword">else</span> <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">                last = temp;  </span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(last == <span class="string">'e'</span> || last == <span class="string">'E'</span> || last == <span class="string">'+'</span> || last == <span class="string">'-'</span> || !num) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="149-直线上最多的点数"><a href="#149-直线上最多的点数" class="headerlink" title="149.直线上最多的点数"></a>149.直线上最多的点数</h1><h2 id="题目-4"><a href="#题目-4" class="headerlink" title="题目"></a>题目</h2><p><a href="https://leetcode-cn.com/problems/max-points-on-a-line/" target="_blank" rel="noopener">https://leetcode-cn.com/problems/max-points-on-a-line/</a></p>
+<h2 id="题解-4"><a href="#题解-4" class="headerlink" title="题解"></a>题解</h2><p>定义一个HashMap,key为斜率值，value为该斜率下在同一条直线上有多少点<br>计算每一个点及其后面点是否同斜率（即在同一条直线上），最后返回最大的value即可</p>
+<h2 id="代码-4"><a href="#代码-4" class="headerlink" title="代码"></a>代码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">maxPoints</span><span class="params">(<span class="keyword">int</span>[][] points)</span> </span>&#123;  </span><br><span class="line">        <span class="keyword">int</span> result = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; points.length; i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(result &gt;= points.length - i) <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">double</span> x1 = points[i][<span class="number">0</span>], y1 = points[i][<span class="number">1</span>];</span><br><span class="line">            Map&lt;Double, Integer&gt; temp = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = i + <span class="number">1</span>; j &lt; points.length; j++)&#123;</span><br><span class="line">                <span class="keyword">double</span> x2 = points[j][<span class="number">0</span>], y2 = points[j][<span class="number">1</span>];</span><br><span class="line">                <span class="keyword">double</span> k = <span class="number">0.0</span>;</span><br><span class="line">                <span class="keyword">if</span>(x1 == x2) k = <span class="number">10001.0</span>;</span><br><span class="line">                <span class="keyword">else</span> <span class="keyword">if</span>(y1 == y2) ;</span><br><span class="line">                <span class="keyword">else</span> k = (y2 - y1) / (x2 - x1);</span><br><span class="line">                <span class="keyword">int</span> num = temp.getOrDefault(k, <span class="number">1</span>);</span><br><span class="line">                temp.put(k, num + <span class="number">1</span>);</span><br><span class="line">                result = Math.max(result, num + <span class="number">1</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="154-寻找旋转排序数组中的最小值-II"><a href="#154-寻找旋转排序数组中的最小值-II" class="headerlink" title="154.寻找旋转排序数组中的最小值 II"></a>154.寻找旋转排序数组中的最小值 II</h1><h2 id="题目-5"><a href="#题目-5" class="headerlink" title="题目"></a>题目</h2><p><a href="https://leetcode-cn.com/problems/find-minimum-in-rotated-sorted-array-ii" target="_blank" rel="noopener">https://leetcode-cn.com/problems/find-minimum-in-rotated-sorted-array-ii</a></p>
+<h2 id="题解-5"><a href="#题解-5" class="headerlink" title="题解"></a>题解</h2><p><strong>二分：</strong><br>每次对比都是<strong>左侧元素</strong>和<strong>中间元素</strong>对比，<strong>共三种情况</strong>：<br><strong>1.左 == 中：</strong>此时最小值<strong>可能在[左，mid]中</strong>，<strong>也可能在[mid + 1, r]中</strong>，更新一下结果 ，左 = 左 + 1<br><strong>2.左 &lt; 中：</strong>此时最小值<strong>仅可能</strong>是<strong>左或在[mid + 1，r]中</strong>，更新一下结果 ，左 = mid + 1<br><strong>3.左 &gt; 中：</strong>此时最小值<strong>仅可能</strong>是<strong>中或在[l，mid - 1]中</strong>，更新一下结果 ，右 = mid - 1</p>
+<p><strong>三种情况例子：</strong><br><strong>1.</strong>[3，<strong>1</strong>，3，3，3]或[3，3，3，3，<strong>2</strong>]，3 == 3(nums[0] == nums[2])，最小值1在[左，mid]中 <strong>或</strong> 最小值2在[mid + 1, r]中<br><strong>2.</strong>[<strong>1</strong>，2，3，4，5]或[1，2，3，4，<strong>0</strong>]，1 &lt; 3(nums[0] &lt; nums[2])，最小值1是左 <strong>或</strong> 最小值0在[mid + 1，r]中<br><strong>3.</strong>[3，4，<strong>2</strong>，3，3]或[3，<strong>1</strong>，2，3，3]，3 &gt; 2(nums[0] &gt; nums[2])，最小值2是中 <strong>或</strong> 最小值1在在[l，mid - 1]中</p>
+<h2 id="代码-5"><a href="#代码-5" class="headerlink" title="代码"></a>代码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">findMin</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> n = nums.length;</span><br><span class="line">        <span class="keyword">int</span> result = nums[<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">int</span> l = <span class="number">0</span>, r = n - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span>(l &lt;= r)&#123;</span><br><span class="line">            <span class="keyword">int</span> mid = (l + r + <span class="number">1</span>) &gt;&gt; <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">if</span>(nums[l] == nums[mid])&#123;</span><br><span class="line">                result = Math.min(result, nums[mid]); </span><br><span class="line">                l++;</span><br><span class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span>(nums[l] &lt; nums[mid])&#123;</span><br><span class="line">                result = Math.min(result, nums[l]); </span><br><span class="line">                l = mid  + <span class="number">1</span>;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                result = Math.min(result, nums[mid]);</span><br><span class="line">                r = mid  - <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="297-二叉树的序列化与反序列化"><a href="#297-二叉树的序列化与反序列化" class="headerlink" title="297.二叉树的序列化与反序列化"></a>297.二叉树的序列化与反序列化</h1><h2 id="题目-6"><a href="#题目-6" class="headerlink" title="题目"></a>题目</h2><p><a href="https://leetcode-cn.com/problems/serialize-and-deserialize-binary-tree/" target="_blank" rel="noopener">https://leetcode-cn.com/problems/serialize-and-deserialize-binary-tree/</a></p>
+<h2 id="题解-6"><a href="#题解-6" class="headerlink" title="题解"></a>题解</h2><p><strong>序列化：</strong> 用bfs存每一层的节点（也要把val存在String中），注意叶子节点的孩子（也就是空）要存下来，反序列化时需要用<br><strong>反序列化：</strong> bfs的逆过程</p>
+<h2 id="代码-6"><a href="#代码-6" class="headerlink" title="代码"></a>代码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Codec</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">serialize</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">        StringBuffer s = <span class="keyword">new</span> StringBuffer();</span><br><span class="line">        List&lt;TreeNode&gt; next = <span class="keyword">new</span> ArrayList&lt;TreeNode&gt;();</span><br><span class="line">        <span class="keyword">if</span>(root != <span class="keyword">null</span>) next.add(root);</span><br><span class="line">        <span class="keyword">while</span>(next.size() != <span class="number">0</span>)&#123;</span><br><span class="line">            List&lt;TreeNode&gt; temp = <span class="keyword">new</span> ArrayList&lt;TreeNode&gt;(next);</span><br><span class="line">            next.clear();</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; temp.size(); i++)&#123;</span><br><span class="line">                TreeNode tempNode = temp.get(i);</span><br><span class="line">                <span class="keyword">if</span>(tempNode != <span class="keyword">null</span>)&#123;</span><br><span class="line">                    s.append(String.valueOf(tempNode.val) + <span class="string">" "</span>);</span><br><span class="line">                    next.add(tempNode.left);</span><br><span class="line">                    next.add(tempNode.right);</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    s.append(<span class="string">"n "</span>);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> s.toString();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> TreeNode <span class="title">deserialize</span><span class="params">(String data)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(data.length() == <span class="number">0</span>) <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line"></span><br><span class="line">        TreeNode root = <span class="keyword">null</span>;</span><br><span class="line">        List&lt;TreeNode&gt; temp = <span class="keyword">new</span> ArrayList&lt;TreeNode&gt;();</span><br><span class="line">        TreeNode tempNode = <span class="keyword">null</span>;</span><br><span class="line">        <span class="keyword">boolean</span> flag = <span class="keyword">false</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; data.length(); i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(data.charAt(i) == <span class="string">'-'</span>)&#123;</span><br><span class="line">                flag = <span class="keyword">true</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span>(data.charAt(i) == <span class="string">'n'</span>)&#123;</span><br><span class="line">                <span class="keyword">if</span>(tempNode == <span class="keyword">null</span>) &#123;</span><br><span class="line">                    tempNode = temp.remove(<span class="number">0</span>);</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span> tempNode = <span class="keyword">null</span>;</span><br><span class="line">                i++;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">int</span> val = <span class="number">0</span>;</span><br><span class="line">                <span class="keyword">while</span>(data.charAt(i) != <span class="string">' '</span>)&#123;</span><br><span class="line">                    val = val * <span class="number">10</span> + data.charAt(i) - <span class="string">'0'</span>;</span><br><span class="line">                    i++;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span>(flag) &#123;</span><br><span class="line">                    val = -val;</span><br><span class="line">                    flag = <span class="keyword">false</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span>(root == <span class="keyword">null</span>)&#123;</span><br><span class="line">                    root = <span class="keyword">new</span> TreeNode(val);</span><br><span class="line">                    temp.add(root);</span><br><span class="line">                &#125; <span class="keyword">else</span>&#123;</span><br><span class="line">                    <span class="keyword">if</span>(tempNode == <span class="keyword">null</span>)&#123;</span><br><span class="line">                        tempNode = temp.remove(<span class="number">0</span>);</span><br><span class="line">                        TreeNode nodeLeft = <span class="keyword">new</span> TreeNode(val);</span><br><span class="line">                        tempNode.left = nodeLeft;</span><br><span class="line">                        temp.add(nodeLeft);</span><br><span class="line">                    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                        TreeNode nodeRight = <span class="keyword">new</span> TreeNode(val);</span><br><span class="line">                        tempNode.right = nodeRight;</span><br><span class="line">                        temp.add(nodeRight);</span><br><span class="line">                        tempNode = <span class="keyword">null</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;          </span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> root;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="483-最小好进制"><a href="#483-最小好进制" class="headerlink" title="483.最小好进制"></a>483.最小好进制</h1><h2 id="题目-7"><a href="#题目-7" class="headerlink" title="题目"></a>题目</h2><p><a href="https://leetcode-cn.com/problems/smallest-good-base/" target="_blank" rel="noopener">https://leetcode-cn.com/problems/smallest-good-base/</a></p>
+<h2 id="题解-7"><a href="#题解-7" class="headerlink" title="题解"></a>题解</h2><p>可以推出n的符合题意的除了(n - 1)进制外的最大进制不会超过Math.log(n) / Math.log(2)，这样就大大减小了遍历次数，然后从小到大判断一遍符合直接输出，都不符合说明需要返回对每一个数字都符合的(n - 1)进制</p>
+<h2 id="代码-7"><a href="#代码-7" class="headerlink" title="代码"></a>代码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">smallestGoodBase</span><span class="params">(String n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">long</span> num = Long.parseLong(n);</span><br><span class="line">        <span class="keyword">int</span> max = (<span class="keyword">int</span>) (Math.log(num) / Math.log(<span class="number">2</span>)), k;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= max; i++) &#123;</span><br><span class="line">            k = (<span class="keyword">int</span>) Math.pow(num, <span class="number">1.0</span> / i);</span><br><span class="line">            <span class="keyword">if</span> (num == sum(k, i, <span class="number">1</span>)) <span class="keyword">return</span> Integer.toString(k);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> Long.toString(num - <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">long</span> <span class="title">sum</span><span class="params">(<span class="keyword">long</span> k, <span class="keyword">long</span> t, <span class="keyword">long</span> sum)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; t; i++) sum = sum * k + <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">return</span> sum;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="664-奇怪的打印机"><a href="#664-奇怪的打印机" class="headerlink" title="664.奇怪的打印机"></a>664.奇怪的打印机</h1><h2 id="题目-8"><a href="#题目-8" class="headerlink" title="题目"></a>题目</h2><p><a href="https://leetcode-cn.com/problems/strange-printer/" target="_blank" rel="noopener">https://leetcode-cn.com/problems/strange-printer/</a></p>
+<h2 id="题解-8"><a href="#题解-8" class="headerlink" title="题解"></a>题解</h2><p><code>dp[i][j]</code>表示的是区间<code>[i,j]</code>内的<strong>字符需要的最少打印次数</strong>，那么对于区间<code>[left,right]</code>我们进行分析:<br>1.如果区间<code>[left,right]</code>中<code>left</code>位置的字符 <strong>等于</strong> <code>right</code>位置的字符，此时<code>dp[left][right] = dp[left][right - 1]</code>,</p>
 <ul>
-<li>比如：获取“ ab”在 “abkkcadkabkebfkabkskab” 中出现的次数</li>
+<li><strong>举例:</strong> </li>
+<li><code>s = &quot;aaab&quot;,left = 0, right = 2,dp[0][0] = 1,dp[0][1] = 1</code></li>
+<li>那么<code>dp[left][right] = dp[0][2] = dp[0][1] = 1;</code></li>
 </ul>
-<p>4.获取两个字符串中最大相同子串。比如：</p>
+<p>2.如果区间<code>[left,right]</code>中<code>left</code>位置的字符 <strong>不等于</strong> <code>right</code>位置的字符，此时<code>dp[left][right] = min(dp[left][mid - 1] + dp[mid][right]) (left &lt; mid &lt;= right)</code></p>
 <ul>
-<li>str1 = “abcwerthelloyuiodef“;str2 = “cvhellobnm”</li>
-<li><strong>提示：</strong>将短的那个串进行长度依次递减的子串与较长的串比较。</li>
+<li><strong>举例:</strong> </li>
+<li><code>s = &quot;aaab&quot;,left = 0, right = 3,dp[0][0] = 1,dp[0][1] = 1,dp[0][2] = 1</code></li>
+<li>那么<code>dp[left][right] = min(dp[left][mid - 1] + dp[mid][right]) = min(dp[0][0] + dp[1][3], dp[0][1] + dp[2][3], dp[0][2] + dp[3][3]) = 2;</code></li>
 </ul>
-<p>5.对字符串中字符进行自然顺序排序。</p>
-</blockquote>
-<p><strong>提示：</strong></p>
-<blockquote>
-<p>1.字符串变成字符数组。<br>2.对数组排序，择，冒泡，Arrays.sort();<br>3.将排序后的数组变成字符串。</p>
-</blockquote>
-<h1 id="二、StringBuffer、StringBuilder"><a href="#二、StringBuffer、StringBuilder" class="headerlink" title="二、StringBuffer、StringBuilder"></a>二、StringBuffer、StringBuilder</h1><h2 id="1-String、StringBuffer、StringBuilder三者的对比"><a href="#1-String、StringBuffer、StringBuilder三者的对比" class="headerlink" title="1.String、StringBuffer、StringBuilder三者的对比"></a>1.String、StringBuffer、StringBuilder三者的对比</h2><blockquote>
-<p>1.String:不可变的字符序列；底层使用char[]存储<br>2.StringBuffer:可变的字符序列；线程安全的，效率低；底层使用char[]存储<br>3.StringBuilder:可变的字符序列；jdk5.0新增的，线程不安全的，效率高；底层使用char[]存储</p>
-</blockquote>
-<h2 id="2-StringBuffer与StringBuilder的内存解析"><a href="#2-StringBuffer与StringBuilder的内存解析" class="headerlink" title="2.StringBuffer与StringBuilder的内存解析"></a>2.StringBuffer与StringBuilder的内存解析</h2><p><strong>以StringBuffer为例：</strong></p>
-<pre><code>String str = new String();//char[] value = new char[0];
-String str1 = new String(&quot;abc&quot;);//char[] value = new char[]{&apos;a&apos;,&apos;b&apos;,&apos;c&apos;};
-
-StringBuffer sb1 = new StringBuffer();//char[] value = new char[16];底层创建了一个长度是16的数组。
-System.out.println(sb1.length());//
-sb1.append(&apos;a&apos;);//value[0] = &apos;a&apos;;
-sb1.append(&apos;b&apos;);//value[1] = &apos;b&apos;;
-
-StringBuffer sb2 = new StringBuffer(&quot;abc&quot;);//char[] value = new char[&quot;abc&quot;.length() + 16];
-</code></pre><blockquote>
-<p><strong>问题1.</strong>System.out.println(sb2.length());//3<br><strong>问题2.</strong>扩容问题:如果要添加的数据底层数组盛不下了，那就需要扩容底层的数组。</p>
+<h2 id="代码-8"><a href="#代码-8" class="headerlink" title="代码"></a>代码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">strangePrinter</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> n = s.length();</span><br><span class="line">        <span class="keyword">int</span>[][] dp = <span class="keyword">new</span> <span class="keyword">int</span>[n][n];</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) dp[i][i] = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> right = <span class="number">0</span>; right &lt; n; right++)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> left = right - <span class="number">1</span>; left &gt;= <span class="number">0</span>; left--)&#123;</span><br><span class="line">                <span class="keyword">if</span>(s.charAt(left) == s.charAt(right)) dp[left][right] = dp[left][right - <span class="number">1</span>];</span><br><span class="line">                <span class="keyword">else</span>&#123;</span><br><span class="line">                    <span class="keyword">int</span> min = Integer.MAX_VALUE;</span><br><span class="line">                    <span class="keyword">for</span>(<span class="keyword">int</span> mid = right; mid &gt; left; mid--) </span><br><span class="line">                        min = Math.min(min, dp[left][mid - <span class="number">1</span>] + dp[mid][right]);          </span><br><span class="line">                    dp[left][right] = min;</span><br><span class="line">                &#125;</span><br><span class="line">                </span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dp[<span class="number">0</span>][n - <span class="number">1</span>];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="773-滑动谜题"><a href="#773-滑动谜题" class="headerlink" title="773.滑动谜题"></a>773.滑动谜题</h1><h2 id="题目-9"><a href="#题目-9" class="headerlink" title="题目"></a>题目</h2><p><a href="https://leetcode-cn.com/problems/sliding-puzzle/" target="_blank" rel="noopener">https://leetcode-cn.com/problems/sliding-puzzle/</a></p>
+<h2 id="题解-9"><a href="#题解-9" class="headerlink" title="题解"></a>题解</h2><p>把这六个格子变成字符串存起来每一步可能变成啥，然后变成过啥也存起来，直到到结果</p>
+<h2 id="代码-9"><a href="#代码-9" class="headerlink" title="代码"></a>代码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">slidingPuzzle</span><span class="params">(<span class="keyword">int</span>[][] board)</span> </span>&#123;</span><br><span class="line">        Set&lt;String&gt; dead = <span class="keyword">new</span> HashSet&lt;&gt;();</span><br><span class="line">        <span class="keyword">int</span> result = <span class="number">0</span>;</span><br><span class="line">        Set&lt;String&gt; ant = <span class="keyword">new</span> HashSet&lt;&gt;();</span><br><span class="line">        ant.add(String.valueOf(board[<span class="number">0</span>][<span class="number">0</span>]) + String.valueOf(board[<span class="number">0</span>][<span class="number">1</span>]) + String.valueOf(board[<span class="number">0</span>][<span class="number">2</span>]) + String.valueOf(board[<span class="number">1</span>][<span class="number">0</span>]) + String.valueOf(board[<span class="number">1</span>][<span class="number">1</span>]) + String.valueOf(board[<span class="number">1</span>][<span class="number">2</span>]));</span><br><span class="line">        <span class="keyword">while</span>(result &lt; <span class="number">20</span>)&#123;</span><br><span class="line">            <span class="keyword">if</span>(ant.contains(<span class="string">"123450"</span>)) <span class="keyword">return</span> result;</span><br><span class="line">            <span class="keyword">else</span> result++;</span><br><span class="line">            Set&lt;String&gt; temp = <span class="keyword">new</span> HashSet&lt;&gt;(ant);</span><br><span class="line">            ant.clear();</span><br><span class="line">            Iterator iter = temp.iterator();</span><br><span class="line">            <span class="keyword">while</span>(iter.hasNext())&#123;</span><br><span class="line">                String tempS = (String)iter.next();</span><br><span class="line">                dead.add(tempS);</span><br><span class="line">                <span class="keyword">int</span> zeroPosi = tempS.indexOf(<span class="string">"0"</span>);</span><br><span class="line">                StringBuffer sb1 = <span class="keyword">new</span> StringBuffer(tempS);</span><br><span class="line">                StringBuffer sb2 = <span class="keyword">new</span> StringBuffer(tempS);</span><br><span class="line">                <span class="keyword">if</span>(zeroPosi &lt; <span class="number">3</span>)&#123;</span><br><span class="line">                    sb1.setCharAt(zeroPosi, sb1.charAt(zeroPosi + <span class="number">3</span>));</span><br><span class="line">                    sb1.setCharAt(zeroPosi + <span class="number">3</span>, <span class="string">'0'</span>);</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    sb1.setCharAt(zeroPosi, sb1.charAt(zeroPosi - <span class="number">3</span>));</span><br><span class="line">                    sb1.setCharAt(zeroPosi - <span class="number">3</span>, <span class="string">'0'</span>);</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span>(zeroPosi == <span class="number">0</span> || zeroPosi == <span class="number">3</span>)&#123;</span><br><span class="line">                    sb2.setCharAt(zeroPosi, sb2.charAt(zeroPosi + <span class="number">1</span>));</span><br><span class="line">                    sb2.setCharAt(zeroPosi + <span class="number">1</span>, <span class="string">'0'</span>);</span><br><span class="line">                &#125; <span class="keyword">else</span> <span class="keyword">if</span>(zeroPosi == <span class="number">2</span> || zeroPosi == <span class="number">5</span>)&#123;</span><br><span class="line">                    sb2.setCharAt(zeroPosi, sb2.charAt(zeroPosi - <span class="number">1</span>));</span><br><span class="line">                    sb2.setCharAt(zeroPosi - <span class="number">1</span>, <span class="string">'0'</span>);</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    sb2.setCharAt(zeroPosi, sb2.charAt(zeroPosi + <span class="number">1</span>));</span><br><span class="line">                    sb2.setCharAt(zeroPosi + <span class="number">1</span>, <span class="string">'0'</span>);</span><br><span class="line">                    StringBuffer sb3 = <span class="keyword">new</span> StringBuffer(tempS);</span><br><span class="line">                    sb3.setCharAt(zeroPosi, sb3.charAt(zeroPosi - <span class="number">1</span>));</span><br><span class="line">                    sb3.setCharAt(zeroPosi - <span class="number">1</span>, <span class="string">'0'</span>);</span><br><span class="line">                    <span class="keyword">if</span>(!dead.contains(sb3.toString())) ant.add(sb3.toString());</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span>(!dead.contains(sb1.toString())) ant.add(sb1.toString());</span><br><span class="line">                <span class="keyword">if</span>(!dead.contains(sb2.toString())) ant.add(sb2.toString());</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="879-盈利计划"><a href="#879-盈利计划" class="headerlink" title="879.盈利计划"></a>879.盈利计划</h1><h2 id="题目-10"><a href="#题目-10" class="headerlink" title="题目"></a>题目</h2><p><a href="https://leetcode-cn.com/problems/profitable-schemes/" target="_blank" rel="noopener">https://leetcode-cn.com/problems/profitable-schemes/</a></p>
+<h2 id="题解-10"><a href="#题解-10" class="headerlink" title="题解"></a>题解</h2><p>dp[i][j] :可用员工个数为i时，利润&gt;=j的个数<br>for循环一下group、员工以及利润</p>
+<h2 id="代码-10"><a href="#代码-10" class="headerlink" title="代码"></a>代码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">profitableSchemes</span><span class="params">(<span class="keyword">int</span> n, <span class="keyword">int</span> minProfit, <span class="keyword">int</span>[] group, <span class="keyword">int</span>[] profit)</span> </span>&#123;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">int</span>[][] dp = <span class="keyword">new</span> <span class="keyword">int</span>[n + <span class="number">1</span>][minProfit + <span class="number">1</span>];</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= n; i++) dp[i][<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> num = <span class="number">0</span>; num &lt; group.length; num++)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i = n; i &gt;= group[num]; i--)&#123;</span><br><span class="line">                <span class="keyword">for</span>(<span class="keyword">int</span> j = minProfit; j &gt;= <span class="number">0</span>; j--)&#123;</span><br><span class="line">                    dp[i][j] = (dp[i][j] + dp[i - group[num]][Math.max(<span class="number">0</span>, j - profit[num])]) % <span class="number">1000000007</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dp[n][minProfit];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="810-黑板异或游戏"><a href="#810-黑板异或游戏" class="headerlink" title="810.黑板异或游戏"></a>810.黑板异或游戏</h1><h2 id="题目-11"><a href="#题目-11" class="headerlink" title="题目"></a>题目</h2><p><a href="https://leetcode-cn.com/problems/chalkboard-xor-game/" target="_blank" rel="noopener">https://leetcode-cn.com/problems/chalkboard-xor-game/</a></p>
+<h2 id="题解-11"><a href="#题解-11" class="headerlink" title="题解"></a>题解</h2><p><strong>思路：</strong><br>先手和后手肯定都不会想去擦除一个元素来使得剩余的结果异或和为0，<strong>除非</strong> 最后只剩下一个元素了  <strong>或者</strong> 初始数组[2,2,2,2,2] 这种情况（但是这种情况只可能会是初始数组长度为奇数，并且Alice输了，因为他先手去哪一个都会使得剩下的异或为0）<br><strong>分情况讨论：</strong><br>1.如果数组长度为偶数，先手的一方也就是Alice肯定会赢，因为数组长度为偶数去掉一个不可能立即使得剩下的异或和为0，所以最终肯定是Bob把最后一个擦掉，然后Alic赢了：</p>
 <ul>
-<li>默认情况下，扩容为原来容量的2倍 + 2，同时将原数组中的元素复制到新的数组中。</li>
+<li>举例：[1,2,3,4]  Alice先手肯定不会去掉4，不然他就输了，所以他会去掉1，2，3中的一个，然后Bob再去掉一个，最后肯定是Bob去掉的最后一个，Alice赢了</li>
 </ul>
-<p><strong>指导意义：</strong>开发中建议大家使用：StringBuffer(int capacity) 或 StringBuilder(int capacity)</p>
-</blockquote>
-<h2 id="3-对比String、StringBuffer、StringBuilder三者的执行效率"><a href="#3-对比String、StringBuffer、StringBuilder三者的执行效率" class="headerlink" title="3.对比String、StringBuffer、StringBuilder三者的执行效率"></a>3.对比String、StringBuffer、StringBuilder三者的执行效率</h2><p>从高到低排列：StringBuilder &gt; StringBuffer &gt; String</p>
-<h2 id="4-StringBuffer、StringBuilder中的常用方法"><a href="#4-StringBuffer、StringBuilder中的常用方法" class="headerlink" title="4.StringBuffer、StringBuilder中的常用方法"></a>4.StringBuffer、StringBuilder中的常用方法</h2><blockquote>
-<p>1.增：append(xxx)<br>2.删：delete(int start,int end)<br>3.改：setCharAt(int n ,char ch) / replace(int start, int end, String str)<br>4.查：charAt(int n )<br>5.插：insert(int offset, xxx)<br>6.长度：length();<br>7.遍历：for() + charAt() / toString()</p>
-</blockquote>
-<h1 id="三、JDK-8之前日期时间API"><a href="#三、JDK-8之前日期时间API" class="headerlink" title="三、JDK 8之前日期时间API"></a>三、JDK 8之前日期时间API</h1><h2 id="1-获取系统当前时间：System类中的currentTimeMillis"><a href="#1-获取系统当前时间：System类中的currentTimeMillis" class="headerlink" title="1.获取系统当前时间：System类中的currentTimeMillis()"></a>1.获取系统当前时间：System类中的currentTimeMillis()</h2><pre><code>//返回当前时间与1970年1月1日0时0分0秒之间以毫秒为单位的时间差。
-//称为时间戳
-long time = System.currentTimeMillis();
-System.out.println(time);
-</code></pre><h2 id="2-java-util-Date类与java-sql-Date类"><a href="#2-java-util-Date类与java-sql-Date类" class="headerlink" title="2. java.util.Date类与java.sql.Date类"></a>2. java.util.Date类与java.sql.Date类</h2><blockquote>
-<p>1.<strong>两个构造器的使用</strong></p>
+<p>2.如果数组长度为奇数，先手的一方也就是Bob一般也会赢，和上面同样的情况（但是有一个是例外的就是初始数组异或和本来就为0，那么Alice上来就赢了）</p>
+<p><strong>总结：</strong><br>Bob（后手）仅一种情况赢，那就是数组长度为奇数 <strong>而且</strong> 初始数组异或和不为0</p>
+<h2 id="代码-11"><a href="#代码-11" class="headerlink" title="代码"></a>代码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">xorGame</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(nums.length % <span class="number">2</span> == <span class="number">1</span>)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; nums.length; i++) nums[<span class="number">0</span>] ^= nums[i];</span><br><span class="line">            <span class="keyword">if</span>(nums[<span class="number">0</span>] != <span class="number">0</span>) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="1074-元素和为目标值的子矩阵数量"><a href="#1074-元素和为目标值的子矩阵数量" class="headerlink" title="1074.元素和为目标值的子矩阵数量"></a>1074.元素和为目标值的子矩阵数量</h1><h2 id="题目-12"><a href="#题目-12" class="headerlink" title="题目"></a>题目</h2><p><a href="https://leetcode-cn.com/problems/number-of-submatrices-that-sum-to-target/" target="_blank" rel="noopener">https://leetcode-cn.com/problems/number-of-submatrices-that-sum-to-target/</a></p>
+<h2 id="题解-12"><a href="#题解-12" class="headerlink" title="题解"></a>题解</h2><p>1.先创建一个数组存一下矩阵<code>[0,i][0,j]</code>的矩阵和(存的时候注意加上两个小一号矩阵时会多加一部分，所以需要减去，其实跟下面暴力求解中求任意矩阵的和思路类似，可结合第二步理解这个公式)</p>
+<ol start="2">
+<li><strong>暴力上up下down左left右right矩阵边界</strong> ，如上图：<br>求红色的矩阵和<code>[up,down][left,right]</code>，用矩阵和<code>[0,down][0,right]</code><strong>减去两个褐色的矩阵和</strong><code>[0,up][0,right]</code>、<code>[0,down][0,left]</code>，因为<strong>多减去了</strong>一遍紫色矩阵和，所以需要<strong>再加上</strong><code>[0,up][0,left]</code>，然后判断该<strong>矩阵和的值是否与target值相同</strong>，相同结果<code>+1</code></li>
+</ol>
+<h2 id="代码-12"><a href="#代码-12" class="headerlink" title="代码"></a>代码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">numSubmatrixSumTarget</span><span class="params">(<span class="keyword">int</span>[][] matrix, <span class="keyword">int</span> target)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> n = matrix.length + <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">int</span> m = matrix[<span class="number">0</span>].length + <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">int</span> ans = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span>[][] result = <span class="keyword">new</span> <span class="keyword">int</span>[n][m];</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; n; i++)</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">1</span>; j &lt; m; j++)</span><br><span class="line">                result[i][j] = matrix[i - <span class="number">1</span>][j - <span class="number">1</span>] + result[i - <span class="number">1</span>][j] + result[i][j - <span class="number">1</span>] - result[i - <span class="number">1</span>][j - <span class="number">1</span>];</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> down = <span class="number">1</span>; down &lt; n; down++)</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> right = <span class="number">1</span>; right &lt; m; right++)</span><br><span class="line">                <span class="keyword">for</span>(<span class="keyword">int</span> up = <span class="number">0</span>; up &lt; down; up++)</span><br><span class="line">                    <span class="keyword">for</span>(<span class="keyword">int</span> left = <span class="number">0</span>; left &lt; right; left++)</span><br><span class="line">                        <span class="keyword">if</span>((result[down][right] - result[up][right] - result[down][left] + result[up][left]) == target)</span><br><span class="line">                            ans++;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="1269-停在原地的方案数"><a href="#1269-停在原地的方案数" class="headerlink" title="1269.停在原地的方案数"></a>1269.停在原地的方案数</h1><h2 id="题目-13"><a href="#题目-13" class="headerlink" title="题目"></a>题目</h2><p><a href="https://leetcode-cn.com/problems/number-of-ways-to-stay-in-the-same-place-after-some-steps" target="_blank" rel="noopener">https://leetcode-cn.com/problems/number-of-ways-to-stay-in-the-same-place-after-some-steps</a></p>
+<h2 id="题解-13"><a href="#题解-13" class="headerlink" title="题解"></a>题解</h2><p><strong>思路：</strong></p>
 <ul>
-<li><strong>构造器一：</strong>Date()：创建一个对应当前时间的Date对象</li>
-<li><strong>构造器二：</strong>创建指定毫秒数的Date对象</li>
+<li><strong>动态规划公式</strong> dp[i][j] = dp[i - 1][j - 1] + dp[i - 1][j] + dp[i - 1][j + 1]:</li>
+<li><strong>说明：</strong> i表示<strong>步数</strong>，j表示<strong>位置</strong>，dp[i][j] 表示第i步到达j位置的方案数，此时因为只能从i - 1步的 j - 1 位置、j 位置、 j + 1 位置到达，公式由此得到。</li>
 </ul>
-<p>2.<strong>两个方法的使用</strong></p>
+<p><strong>代码优化：</strong></p>
 <ul>
-<li><strong>toString():</strong>显示当前的年、月、日、时、分、秒</li>
-<li><strong>getTime():</strong>获取当前Date对象对应的毫秒数。（时间戳）</li>
+<li><strong>1.创建数组的行数：</strong> 因为第 i 步和上一步的结果有关，所以可以用两个一维数组来存取，这里直接创建一个二维数组 然后加上<strong>位运算来分上下步</strong>；</li>
+<li><strong>2.创建数组的列数：</strong> 二维数组两行的话，那应该多少列呢？最简单的就是arrLen列了，但是我们可以优化一下，因为你如果想要返回起点，肯定<strong>走到一半步数时</strong>就要往回走了，不然就无法回到起点，所以<strong>最多就走到一半的位置</strong>，所以我们<strong>取Math.min(steps / 2 + 1, arrLen)来创建数组</strong>；</li>
+<li><strong>3.创建数组的列数（修正）：</strong> 然后写代码时会发现，第i步j位置和 i - 1的j - 1位置 <strong>以及</strong> i - 1 的 j + 1位置有关，那么他有可能超出数组长度的上界和下界（即j为0 <strong>或者</strong> j为一半位置时），那么我们创建数组时<strong>列空间再 +2</strong>好了，<strong>用数组列下标1表示起始位置，列下标arrLen表示终止位置</strong>；</li>
+<li><strong>4.数据初始化：</strong> 起始时，即0步1位置（也就是0步初始位置）要初始化为1（result[0][1] = 1;）</li>
+<li><strong>5.位运算须知：</strong> 奇 &amp; 1 = 1 ，偶数 &amp; 1 = 0，所以for循环中的行进行位运算实现了上一步和下一步的转换</li>
 </ul>
-</blockquote>
-<h2 id="3-java-sql-Date对应着数据库中的日期类型的变量"><a href="#3-java-sql-Date对应着数据库中的日期类型的变量" class="headerlink" title="3.java.sql.Date对应着数据库中的日期类型的变量"></a>3.java.sql.Date对应着数据库中的日期类型的变量</h2><blockquote>
-<p>如何实例化<br>如何将java.util.Date对象转换为java.sql.Date对象</p>
-</blockquote>
-<pre><code>@Test
-public void test2(){
-    //构造器一：Date()：创建一个对应当前时间的Date对象
-    Date date1 = new Date();
-    System.out.println(date1.toString());//Sat Feb 16 16:35:31 GMT+08:00 2019
-
-    System.out.println(date1.getTime());//1550306204104
-
-    //构造器二：创建指定毫秒数的Date对象
-    Date date2 = new Date(155030620410L);
-    System.out.println(date2.toString());
-
-    //创建java.sql.Date对象
-    java.sql.Date date3 = new java.sql.Date(35235325345L);
-    System.out.println(date3);//1971-02-13
-
-    //如何将java.util.Date对象转换为java.sql.Date对象
-    //情况一：
-    //Date date4 = new java.sql.Date(2343243242323L);
-    //java.sql.Date date5 = (java.sql.Date) date4;
-    //情况二：
-    Date date6 = new Date();
-    java.sql.Date date7 = new java.sql.Date(date6.getTime());
-}
-</code></pre><h2 id="4-java-text-SimpleDataFormat类"><a href="#4-java-text-SimpleDataFormat类" class="headerlink" title="4. java.text.SimpleDataFormat类"></a>4. java.text.SimpleDataFormat类</h2><blockquote>
-<p><strong>SimpleDateFormat对日期Date类的格式化和解析:</strong><br>1.两个操作</p>
-<ul>
-<li><strong>格式化：</strong>日期 —&gt;字符串</li>
-<li><strong>解析：</strong>格式化的逆过程，字符串 —&gt; 日期</li>
-</ul>
-<p>2.SimpleDateFormat的实例化:new + 构造器</p>
-</blockquote>
-<p><strong>照指定的方式格式化和解析：调用带参的构造器</strong></p>
-<pre><code>SimpleDateFormat sdf1 = new SimpleDateFormat(&quot;yyyyy.MMMMM.dd GGG hh:mm aaa&quot;);
-SimpleDateFormat sdf1 = new SimpleDateFormat(&quot;yyyy-MM-dd hh:mm:ss&quot;);
-//格式化
-String format1 = sdf1.format(date);
-System.out.println(format1);//2019-02-18 11:48:27
-//解析:要求字符串必须是符合SimpleDateFormat识别的格式(通过构造器参数体现),
-//否则，抛异常
-Date date2 = sdf1.parse(&quot;2020-02-18 11:48:27&quot;);
-System.out.println(date2);
-</code></pre><p><strong>小练习：</strong></p>
-<pre><code>练习一：字符串&quot;2020-09-08&quot;转换为java.sql.Date
-
-练习二：&quot;天打渔两天晒网&quot;   1990-01-01  xxxx-xx-xx 打渔？晒网？
-
-举例：2020-09-08 ？ 总天数
-
-总天数 % 5 == 1,2,3 : 打渔
-总天数 % 5 == 4,0 : 晒网
-
-总天数的计算？
-方式一：( date2.getTime() - date1.getTime()) / (1000 * 60 * 60 * 24) + 1
-方式二：1990-01-01  --&gt; 2019-12-31  +  2020-01-01 --&gt;2020-09-08
- */
-@Test
-public void testExer() throws ParseException {
-    String birth = &quot;2020-09-08&quot;;
-
-    SimpleDateFormat sdf1 = new SimpleDateFormat(&quot;yyyy-MM-dd&quot;);
-    Date date = sdf1.parse(birth);
-    //System.out.println(date);
-
-    java.sql.Date birthDate = new java.sql.Date(date.getTime());
-    System.out.println(birthDate);
-}
-</code></pre><h2 id="5-Calendar类：日历类、抽象类"><a href="#5-Calendar类：日历类、抽象类" class="headerlink" title="5.Calendar类：日历类、抽象类"></a>5.Calendar类：日历类、抽象类</h2><pre><code>//1.实例化
-//方式一：创建其子类（GregorianCalendar的对象
-//方式二：调用其静态方法getInstance()
-Calendar calendar = Calendar.getInstance();
-//System.out.println(calendar.getClass());
-
-//2.常用方法
-//get()
-int days = calendar.get(Calendar.DAY_OF_MONTH);
-System.out.println(days);
-System.out.println(calendar.get(Calendar.DAY_OF_YEAR));
-
-//set()
-//calendar可变性
- calendar.set(Calendar.DAY_OF_MONTH,22);
-days = calendar.get(Calendar.DAY_OF_MONTH);
-System.out.println(days);
-
-//add()
-calendar.add(Calendar.DAY_OF_MONTH,-3);
-days = calendar.get(Calendar.DAY_OF_MONTH);
-System.out.println(days);
-
-//getTime():日历类---&gt; Date
-Date date = calendar.getTime();
-System.out.println(date);
-
-//setTime():Date ---&gt; 日历类
-Date date1 = new Date();
-calendar.setTime(date1);
-days = calendar.get(Calendar.DAY_OF_MONTH);
-System.out.println(days);
-</code></pre><h1 id="四、JDK8中新日期时间API"><a href="#四、JDK8中新日期时间API" class="headerlink" title="四、JDK8中新日期时间API"></a>四、JDK8中新日期时间API</h1><h2 id="1-日期时间API的迭代"><a href="#1-日期时间API的迭代" class="headerlink" title="1.日期时间API的迭代"></a>1.日期时间API的迭代</h2><blockquote>
-<p><strong>第一代：</strong>jdk 1.0 Date类<br><strong>第二代：</strong>jdk 1.1 Calendar类，一定程度上替换Date类<br><strong>第三代：</strong>jdk 1.8 提出了新的一套API</p>
-</blockquote>
-<h2 id="2-前两代存在的问题举例："><a href="#2-前两代存在的问题举例：" class="headerlink" title="2.前两代存在的问题举例："></a>2.前两代存在的问题举例：</h2><blockquote>
-<p><strong>可变性：</strong>像日期和时间这样的类应该是不可变的。<br><strong>偏移性：</strong>Date中的年份是从1900开始的，而月份都从0开始。<br><strong>格式化：</strong>格式化只对Date用，Calendar则不行。<br>此外，它们也不是线程安全的；不能处理闰秒等。</p>
-</blockquote>
-<h2 id="3-java-8-中新的日期时间API涉及到的包"><a href="#3-java-8-中新的日期时间API涉及到的包" class="headerlink" title="3.java 8 中新的日期时间API涉及到的包"></a>3.java 8 中新的日期时间API涉及到的包</h2><blockquote>
-<p>1.java.time＋包含值对象的基础包<br>2.java.time.chrono-提供对不同的日历系统的访问<br>3.java.time.format格式化和解析时间和日期<br>4.java.time.temporal一包括底层框架和扩展特性<br>5.java.time.zone-包含时区支持的类<br><strong>说明:</strong>大多数开发者只会用到基础包和format包，也可能会用到temporal包。因此，尽管有68个新的公开类型，大多数开发者，大概将只会用到其中的三分之一。</p>
-</blockquote>
-<h2 id="4-本地日期、本地时间、本地日期时间的使用：LocalDate-LocalTime-LocalDateTime"><a href="#4-本地日期、本地时间、本地日期时间的使用：LocalDate-LocalTime-LocalDateTime" class="headerlink" title="4.本地日期、本地时间、本地日期时间的使用：LocalDate / LocalTime / LocalDateTime"></a>4.本地日期、本地时间、本地日期时间的使用：LocalDate / LocalTime / LocalDateTime</h2><h3 id="1-说明-2"><a href="#1-说明-2" class="headerlink" title="(1)说明"></a>(1)说明</h3><blockquote>
-<p>1.分别表示使用 ISO-8601日历系统的日期、时间、日期和时间。它们提供了简单的本地日期或时间，并不包含当前的时间信息，也不包含与时区相关的信息。<br>2.LocalDateTime相较于LocalDate、LocalTime，使用频率要高<br>3.类似于Calendar</p>
-</blockquote>
-<h3 id="2-常用方法"><a href="#2-常用方法" class="headerlink" title="(2)常用方法"></a>(2)常用方法</h3><table>
-<thead>
-<tr>
-<th style="text-align:center">方法</th>
-<th style="text-align:center">描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">now() / now(zoneld zone)</td>
-<td style="text-align:center">静态方法，根据当前时间创建对象 / 指定时区的对象</td>
-</tr>
-<tr>
-<td style="text-align:center">of()</td>
-<td style="text-align:center">静态方法，根据指定日期 / 时间创建对象</td>
-</tr>
-<tr>
-<td style="text-align:center">getDayOfMonth() / getDayOfYear()</td>
-<td style="text-align:center">获得月份天数(1-31) / 获得年份天数(1-366)</td>
-</tr>
-<tr>
-<td style="text-align:center">getDayofWeek()</td>
-<td style="text-align:center">获得星期几(返回一个DayOfWeek枚举值)</td>
-</tr>
-<tr>
-<td style="text-align:center">getMonth()</td>
-<td style="text-align:center">获得月份,返回一个 Month 枚举值</td>
-</tr>
-<tr>
-<td style="text-align:center">getMonthValue() / getYear()</td>
-<td style="text-align:center">获得月份(1-12) / 获得年份</td>
-</tr>
-<tr>
-<td style="text-align:center">getHour() / getMinute()/getsecond()</td>
-<td style="text-align:center">获得当前对象对应的小时、分钟、秒</td>
-</tr>
-<tr>
-<td style="text-align:center">withDayOfMonth() / withDayOfYear()/withMonth()withYear()</td>
-<td style="text-align:center">将月份天数、年份天数、月份、年份修改为指定的值并返回新的对象</td>
-</tr>
-<tr>
-<td style="text-align:center">plusDays(),plusWeeks(),plusMonths(), plusYears(),plusHours()</td>
-<td style="text-align:center">向当前对象添加几天、几周、几个月、几年、几小时</td>
-</tr>
-<tr>
-<td style="text-align:center">minusMonths() / minusWeeks() / minusDays() / minusYears() / minusHours()</td>
-<td style="text-align:center">从当前对象减去几月、几周、几天、几年、几小时</td>
-</tr>
-</tbody>
-</table>
-<h2 id="5-时间点：Instant"><a href="#5-时间点：Instant" class="headerlink" title="5.时间点：Instant"></a>5.时间点：Instant</h2><h3 id="1-说明-3"><a href="#1-说明-3" class="headerlink" title="(1)说明"></a>(1)说明</h3><blockquote>
-<p>1.时间线上的一个瞬时点。 概念上讲，它只是简单的表示自1970年1月1日0时0分0秒（UTC开始的秒数。）<br>2.类似于 java.util.Date类</p>
-</blockquote>
-<h3 id="2-常用方法-1"><a href="#2-常用方法-1" class="headerlink" title="(2)常用方法"></a>(2)常用方法</h3><table>
-<thead>
-<tr>
-<th style="text-align:center">方法</th>
-<th style="text-align:center">描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">now()</td>
-<td style="text-align:center">静态方法，返回默认UTC时区的Instant类的对象</td>
-</tr>
-<tr>
-<td style="text-align:center">ofEpochMilli(long epochMilli)</td>
-<td style="text-align:center">静态方法,返回在1970-01-01 00:00:00基础上加上指定毫秒数之后的Instant类的对象</td>
-</tr>
-<tr>
-<td style="text-align:center">atoffset(zoneOffset offset)</td>
-<td style="text-align:center">结合即时的偏移来创建一个 OffsetDateTime</td>
-</tr>
-<tr>
-<td style="text-align:center">toEpochMilli()</td>
-<td style="text-align:center">返回1970-01-01 00:00:00到当前时间的毫秒数，即为时间戳</td>
-</tr>
-</tbody>
-</table>
-<p><strong>时间戳是指格林威治时间1970年01月01日00时00分0O秒(北京时间1970年01月01日08时00分00秒)起至现在的总秒数。</strong></p>
-<h2 id="6-日期时间格式化类：DateTimeFormatter"><a href="#6-日期时间格式化类：DateTimeFormatter" class="headerlink" title="6.日期时间格式化类：DateTimeFormatter"></a>6.日期时间格式化类：DateTimeFormatter</h2><h3 id="1-说明-4"><a href="#1-说明-4" class="headerlink" title="(1)说明"></a>(1)说明</h3><blockquote>
-<p>1.格式化或解析日期、时间<br>2.类似于SimpleDateFormat</p>
-</blockquote>
-<h3 id="2-常用方法-2"><a href="#2-常用方法-2" class="headerlink" title="(2)常用方法"></a>(2)常用方法</h3><blockquote>
-<p>1.<strong>实例化方式：</strong></p>
-<ul>
-<li>预定义的标准格式。如：ISO_LOCAL_DATE_TIME;ISO_LOCAL_DATE;ISO_LOCAL_TIME</li>
-<li>本地化相关的格式。如：ofLocalizedDateTime(FormatStyle.LONG)</li>
-<li>自定义的格式。如：ofPattern(“yyyy-MM-dd hh:mm:ss”)</li>
-</ul>
-<p>2.<strong>常用方法：</strong></p>
-</blockquote>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">方法</th>
-<th style="text-align:center">描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">ofPattern(String pattern)</td>
-<td style="text-align:center">静态方法﹐返回一个指定字符串格式的DateTimeFormatter</td>
-</tr>
-<tr>
-<td style="text-align:center">format(TemporalAccessor t)</td>
-<td style="text-align:center">格式化一个日期、时间，返回字符串</td>
-</tr>
-<tr>
-<td style="text-align:center">parse(CharSequence text)</td>
-<td style="text-align:center">将指定格式的字符序列解析为一个日期、时间</td>
-</tr>
-</tbody>
-</table>
-<pre><code>特别的：自定义的格式。如：ofPattern(“yyyy-MM-dd hh:mm:ss”)
-重点：自定义的格式。如：ofPattern(“yyyy-MM-dd hh:mm:ss”)
-DateTimeFormatter formatter3 = DateTimeFormatter.ofPattern(&quot;yyyy-MM-dd hh:mm:ss&quot;);
-格式化
-String str4 = formatter3.format(LocalDateTime.now());
-System.out.println(str4);//2019-02-18 03:52:09
-
-解析
-TemporalAccessor accessor = formatter3.parse(&quot;2019-02-18 03:52:09&quot;);
-System.out.println(accessor);
-</code></pre><h2 id="7-其它API的使用-（不讲）"><a href="#7-其它API的使用-（不讲）" class="headerlink" title="7.其它API的使用 （不讲）"></a>7.其它API的使用 （不讲）</h2><h3 id="1-带时区的日期时间：ZonedDateTime-ZoneId"><a href="#1-带时区的日期时间：ZonedDateTime-ZoneId" class="headerlink" title="(1)带时区的日期时间：ZonedDateTime / ZoneId"></a>(1)带时区的日期时间：ZonedDateTime / ZoneId</h3><p><strong>举例：</strong></p>
-<pre><code>// ZoneId:类中包含了所的时区信息
-    @Test
-    public void test1(){
-        //getAvailableZoneIds():获取所的ZoneId
-        Set&lt;String&gt; zoneIds = ZoneId.getAvailableZoneIds();
-        for(String s : zoneIds){
-            System.out.println(s);
-        }
-        System.out.println();
-
-        //获取“Asia/Tokyo”时区对应的时间
-        LocalDateTime localDateTime = LocalDateTime.now(ZoneId.of(&quot;Asia/Tokyo&quot;));
-        System.out.println(localDateTime);
-
-
-    }
-//ZonedDateTime:带时区的日期时间
-    @Test
-    public void test2(){
-        //now():获取本时区的ZonedDateTime对象
-        ZonedDateTime zonedDateTime = ZonedDateTime.now();
-        System.out.println(zonedDateTime);
-        //now(ZoneId id):获取指定时区的ZonedDateTime对象
-        ZonedDateTime zonedDateTime1 = ZonedDateTime.now(ZoneId.of(&quot;Asia/Tokyo&quot;));
-        System.out.println(zonedDateTime1);
-    }
-</code></pre><h3 id="2-时间间隔：Duration–用于计算两个“时间”间隔，以秒和纳秒为基准"><a href="#2-时间间隔：Duration–用于计算两个“时间”间隔，以秒和纳秒为基准" class="headerlink" title="(2)时间间隔：Duration–用于计算两个“时间”间隔，以秒和纳秒为基准"></a>(2)时间间隔：Duration–用于计算两个“时间”间隔，以秒和纳秒为基准</h3><table>
-<thead>
-<tr>
-<th style="text-align:center">方法</th>
-<th style="text-align:center">描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">between(Temporal start,Temporal end)</td>
-<td style="text-align:center">静态方法,返回Duration对象，表示两个时间的间隔</td>
-</tr>
-<tr>
-<td style="text-align:center">getNano()/getSeconds()</td>
-<td style="text-align:center">返回时间间隔的纳秒数/返回时间间隔的秒数</td>
-</tr>
-<tr>
-<td style="text-align:center">toDays()/toHours()/toMinutes()/toMillis()/toNanos()</td>
-<td style="text-align:center">返回时间间隔期间的天数、小时数、分钟数、毫秒数、纳秒数</td>
-</tr>
-</tbody>
-</table>
-<p><strong>举例：</strong></p>
-<pre><code>@Test
-    public void test3(){
-        LocalTime localTime = LocalTime.now();
-        LocalTime localTime1 = LocalTime.of(15, 23, 32);
-        //between():静态方法，返回Duration对象，表示两个时间的间隔
-        Duration duration = Duration.between(localTime1, localTime);
-        System.out.println(duration);
-
-        System.out.println(duration.getSeconds());
-        System.out.println(duration.getNano());
-
-        LocalDateTime localDateTime = LocalDateTime.of(2016, 6, 12, 15, 23, 32);
-        LocalDateTime localDateTime1 = LocalDateTime.of(2017, 6, 12, 15, 23, 32);
-
-        Duration duration1 = Duration.between(localDateTime1, localDateTime);
-        System.out.println(duration1.toDays());
-
-    }
-</code></pre><h3 id="3-日期间隔：Period-–用于计算两个“日期”间隔，以年、月、日衡量"><a href="#3-日期间隔：Period-–用于计算两个“日期”间隔，以年、月、日衡量" class="headerlink" title="(3)日期间隔：Period –用于计算两个“日期”间隔，以年、月、日衡量"></a>(3)日期间隔：Period –用于计算两个“日期”间隔，以年、月、日衡量</h3><table>
-<thead>
-<tr>
-<th style="text-align:center">方法</th>
-<th style="text-align:center">描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">between(LocalDatestart,LocalDate end)</td>
-<td style="text-align:center">静态方法,返回Period对象,表示两个本地日期的间隔</td>
-</tr>
-<tr>
-<td style="text-align:center">getYears()/getMonths()/getDays()</td>
-<td style="text-align:center">返回此期间的年数、月数、天数</td>
-</tr>
-<tr>
-<td style="text-align:center">withYears(int years)/withMonths(int months)/withDays(int days)</td>
-<td style="text-align:center">返回设置间隔指定年、月、日数以后的Period对象</td>
-</tr>
-</tbody>
-</table>
-<p><strong>举例：</strong></p>
-<pre><code>@Test
-public void test4(){
-    LocalDate localDate = LocalDate.now();
-    LocalDate localDate1 = LocalDate.of(2028, 3, 18);
-
-    Period period = Period.between(localDate, localDate1);
-    System.out.println(period);
-
-    System.out.println(period.getYears());
-    System.out.println(period.getMonths());
-    System.out.println(period.getDays());
-
-    Period period1 = period.withYears(2);
-    System.out.println(period1);
-
-}
-</code></pre><h3 id="4-日期时间校正器：TemporalAdjuster"><a href="#4-日期时间校正器：TemporalAdjuster" class="headerlink" title="(4)日期时间校正器：TemporalAdjuster"></a>(4)日期时间校正器：TemporalAdjuster</h3><p><strong>举例：</strong></p>
-<pre><code>@Test
-public void test5(){
-    //获取当前日期的下一个周日是哪天？
-    TemporalAdjuster temporalAdjuster = TemporalAdjusters.next(DayOfWeek.SUNDAY);
-
-    LocalDateTime localDateTime = LocalDateTime.now().with(temporalAdjuster);
-    System.out.println(localDateTime);
-
-    //获取下一个工作日是哪天？
-    LocalDate localDate = LocalDate.now().with(new TemporalAdjuster(){
-
-        @Override
-        public Temporal adjustInto(Temporal temporal) {
-            LocalDate date = (LocalDate)temporal;
-            if(date.getDayOfWeek().equals(DayOfWeek.FRIDAY)){
-                return date.plusDays(3);
-            }else if(date.getDayOfWeek().equals(DayOfWeek.SATURDAY)){
-                return date.plusDays(2);
-            }else{
-                return date.plusDays(1);
-            }
-
-        }
-
-    });
-
-    System.out.println(&quot;下一个工作日是：&quot; + localDate);
-}
-</code></pre><h1 id="五、Java比较器"><a href="#五、Java比较器" class="headerlink" title="五、Java比较器"></a>五、Java比较器</h1><h2 id="1-Java比较器的使用背景"><a href="#1-Java比较器的使用背景" class="headerlink" title="1.Java比较器的使用背景"></a>1.Java比较器的使用背景</h2><blockquote>
-<p>1.Java中的对象，正常情况下，只能进行比较：==  或  != 。不能使用 &gt; 或 &lt; 的<br>2.但是在开发场景中，我们需要对多个对象进行排序，言外之意，就需要比较对象的大小。<br>3.<strong>如何实现？</strong>使用两个接口中的任何一个：Comparable 或 Comparator</p>
-</blockquote>
-<h2 id="2-自然排序：使用Comparable接口"><a href="#2-自然排序：使用Comparable接口" class="headerlink" title="2.自然排序：使用Comparable接口"></a>2.自然排序：使用Comparable接口</h2><h3 id="1-说明-5"><a href="#1-说明-5" class="headerlink" title="(1)说明"></a>(1)说明</h3><blockquote>
-<p>1.像String、包装类等实现了Comparable接口，重写了compareTo(obj)方法，给出了比较两个对象大小的方式。<br>2.像String、包装类重写compareTo()方法以后，进行了从小到大的排列<br>3.重写compareTo(obj)的规则：</p>
-<ul>
-<li>如果当前对象this大于形参对象obj，则返回正整数，</li>
-<li>如果当前对象this小于形参对象obj，则返回负整数，</li>
-<li>如果当前对象this等于形参对象obj，则返回零。</li>
-</ul>
-<p>4.对于自定义类来说，如果需要排序，我们可以让自定义类实现Comparable接口，重写compareTo(obj)方法。在compareTo(obj)方法中指明如何排序</p>
-</blockquote>
-<h3 id="2-自定义类代码举例"><a href="#2-自定义类代码举例" class="headerlink" title="(2)自定义类代码举例"></a>(2)自定义类代码举例</h3><pre><code>public class Goods implements  Comparable{
-
-    private String name;
-    private double price;
-
-    //指明商品比较大小的方式:照价格从低到高排序,再照产品名称从高到低排序
-    @Override
-    public int compareTo(Object o) {
-//        System.out.println(&quot;**************&quot;);
-        if(o instanceof Goods){
-            Goods goods = (Goods)o;
-            //方式一：
-            if(this.price &gt; goods.price){
-                return 1;
-            }else if(this.price &lt; goods.price){
-                return -1;
-            }else{
-//                return 0;
-               return -this.name.compareTo(goods.name);
-            }
-            //方式二：
-//           return Double.compare(this.price,goods.price);
-        }
-//        return 0;
-        throw new RuntimeException(&quot;传入的数据类型不一致！&quot;);
-    }
-// getter、setter、toString()、构造器：省略
-}
-</code></pre><h2 id="3-定制排序：使用Comparator接口"><a href="#3-定制排序：使用Comparator接口" class="headerlink" title="3.定制排序：使用Comparator接口"></a>3.定制排序：使用Comparator接口</h2><h3 id="1-说明-6"><a href="#1-说明-6" class="headerlink" title="(1)说明"></a>(1)说明</h3><blockquote>
-<p>1.<strong>背景：</strong></p>
-<ul>
-<li>当元素的类型没实现java.lang.Comparable接口而又不方便修改代码，或者实现了java.lang.Comparable接口的排序规则不适合当前的操作，那么可以考虑使用 Comparator 的对象来排序</li>
-</ul>
-<p>2.<strong>重写compare(Object o1,Object o2)方法，比较o1和o2的大小：</strong></p>
-<ul>
-<li>如果方法返回正整数，则表示o1大于o2；</li>
-<li>如果返回0，表示相等；</li>
-<li>返回负整数，表示o1小于o2。</li>
-</ul>
-</blockquote>
-<h3 id="2-代码举例-3"><a href="#2-代码举例-3" class="headerlink" title="(2)代码举例"></a>(2)代码举例</h3><pre><code>Comparator com = new Comparator() {
-    //指明商品比较大小的方式:照产品名称从低到高排序,再照价格从高到低排序
-    @Override
-    public int compare(Object o1, Object o2) {
-        if(o1 instanceof Goods &amp;&amp; o2 instanceof Goods){
-            Goods g1 = (Goods)o1;
-            Goods g2 = (Goods)o2;
-            if(g1.getName().equals(g2.getName())){
-                return -Double.compare(g1.getPrice(),g2.getPrice());
-            }else{
-                return g1.getName().compareTo(g2.getName());
-            }
-        }
-        throw new RuntimeException(&quot;输入的数据类型不一致&quot;);
-    }
-}
-</code></pre><p><strong>使用：</strong></p>
-<blockquote>
-<p>1.Arrays.sort(goods,com);<br>2.Collections.sort(coll,com);<br>3.new TreeSet(com);</p>
-</blockquote>
-<h2 id="4-两种排序方式对比"><a href="#4-两种排序方式对比" class="headerlink" title="4.两种排序方式对比"></a>4.两种排序方式对比</h2><blockquote>
-<p>1.Comparable接口的方式一旦一定，保证Comparable接口实现类的对象在任何位置都可以比较大小。<br>2.Comparator接口属于临时性的比较。</p>
-</blockquote>
-<h1 id="六、其他类"><a href="#六、其他类" class="headerlink" title="六、其他类"></a>六、其他类</h1><h2 id="1-System类"><a href="#1-System类" class="headerlink" title="1.System类"></a>1.System类</h2><blockquote>
-<p>1.System类代表系统，系统级的很多属性和控制方法都放置在该类的内部。该类位于java.lang包。<br>2.由于该类的构造器是private的，所以无法创建该类的对象，也就是无法实例化该类。其内部的成员变量和成员方法都是static的，所以也可以很方便的进行调用。<br><strong>方法：</strong></p>
-</blockquote>
-<pre><code>native long currentTimeMillis()
-void exit(int status)
-void gc()
-String getProperty(String key)
-</code></pre><h2 id="2-Math类"><a href="#2-Math类" class="headerlink" title="2.Math类"></a>2.Math类</h2><p>java.lang.Math提供了一系列静态方法用于科学计算。其方法的参数和返回值类型一般为double型。</p>
-<h2 id="3-BigInteger类、BigDecimal类"><a href="#3-BigInteger类、BigDecimal类" class="headerlink" title="3.BigInteger类、BigDecimal类"></a>3.BigInteger类、BigDecimal类</h2><blockquote>
-<p><strong>说明：</strong><br>1.java.math包的BigInteger可以表示不可变的任意精度的整数。<br>2.要求数字精度比较高，用到java.math.BigDecimal类</p>
-</blockquote>
-<p><strong>代码举例：</strong></p>
-<pre><code>public void testBigInteger() {
-    BigInteger bi = new BigInteger(&quot;12433241123&quot;);
-    BigDecimal bd = new BigDecima1(&quot;12435.351&quot;);
-    BigDecimal bd2 = new BigDecima1(&quot;11&quot;);
-    System.out.println(bi);
-    //System.out.println( bd .divide(bd2) );
-    system.out.println(bd.divide(bd2，BigDecimal.ROUND_HALF_UP));
-    System.out.println(bd.divide(bd2,15,BigDecimaL.ROUND_HALF_UP));
-}
-</code></pre>
+<h2 id="代码-13"><a href="#代码-13" class="headerlink" title="代码"></a>代码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">numWays</span><span class="params">(<span class="keyword">int</span> steps, <span class="keyword">int</span> arrLen)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span>  min = Math.min(steps / <span class="number">2</span> + <span class="number">1</span>, arrLen);</span><br><span class="line">        <span class="keyword">int</span>[][] result = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">2</span>][min + <span class="number">2</span>];</span><br><span class="line">        result[<span class="number">0</span>][<span class="number">1</span>] = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= steps; i++)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= min; j++)&#123;</span><br><span class="line">                result[i &amp; <span class="number">1</span>][j] =( ( result[(i - <span class="number">1</span>) &amp; <span class="number">1</span>][j - <span class="number">1</span>] + result[(i - <span class="number">1</span>) &amp; <span class="number">1</span>][j] ) % (<span class="number">1000000007</span>) + result[(i - <span class="number">1</span>) &amp; <span class="number">1</span>][j + <span class="number">1</span>] ) % (<span class="number">1000000007</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result[steps &amp; <span class="number">1</span>][<span class="number">1</span>];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="1449-数位成本和为目标值的最大数字"><a href="#1449-数位成本和为目标值的最大数字" class="headerlink" title="1449.数位成本和为目标值的最大数字"></a>1449.数位成本和为目标值的最大数字</h1><h2 id="题目-14"><a href="#题目-14" class="headerlink" title="题目"></a>题目</h2><p><a href="https://leetcode-cn.com/problems/form-largest-integer-with-digits-that-add-up-to-target/" target="_blank" rel="noopener">https://leetcode-cn.com/problems/form-largest-integer-with-digits-that-add-up-to-target/</a></p>
+<h2 id="题解-14"><a href="#题解-14" class="headerlink" title="题解"></a>题解</h2><p>result[i]:表示和为i时存储的最长字串<br>思路就是判断长度，最后需要把数字大的提到前面来</p>
+<h2 id="代码-14"><a href="#代码-14" class="headerlink" title="代码"></a>代码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">largestNumber</span><span class="params">(<span class="keyword">int</span>[] cost, <span class="keyword">int</span> target)</span> </span>&#123;</span><br><span class="line">        StringBuffer[] result = <span class="keyword">new</span> StringBuffer[target + <span class="number">1</span>];</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= target; i++) result[i] = <span class="keyword">new</span> StringBuffer();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">9</span>; i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(cost[i] &gt; target) <span class="keyword">continue</span>;</span><br><span class="line">            StringBuffer t = <span class="keyword">new</span> StringBuffer(String.valueOf(i + <span class="number">1</span>));</span><br><span class="line">            <span class="keyword">if</span>(result[cost[i]].length() &lt; t.length()) result[cost[i]] = t;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(result[cost[i]].length() == t.length() &amp;&amp; t.compareTo(result[cost[i]]) &gt; <span class="number">0</span>) result[cost[i]] = t;</span><br><span class="line">            <span class="keyword">int</span> iLength = result[cost[i]].length();</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = cost[i] + <span class="number">1</span>; j &lt;= target; j++)&#123;</span><br><span class="line">                <span class="keyword">int</span> jLength = result[j].length();</span><br><span class="line">                <span class="keyword">int</span> jiLength = result[j - cost[i]].length();</span><br><span class="line">                <span class="keyword">if</span>(jLength &lt; jiLength + iLength &amp;&amp; jiLength != <span class="number">0</span> &amp;&amp; iLength != <span class="number">0</span>)&#123;</span><br><span class="line">                    result[j] = <span class="keyword">new</span> StringBuffer(result[j - cost[i]].toString() + result[cost[i]].toString());</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span> <span class="keyword">if</span>(jLength == jiLength + iLength &amp;&amp; jiLength != <span class="number">0</span> &amp;&amp; iLength != <span class="number">0</span>)&#123;</span><br><span class="line">                    StringBuffer a = <span class="keyword">new</span> StringBuffer(result[j - cost[i]].toString() + result[cost[i]].toString());</span><br><span class="line">                    StringBuffer b = <span class="keyword">new</span> StringBuffer(result[cost[i]].toString() + result[j - cost[i]].toString());</span><br><span class="line">                    <span class="keyword">if</span>(a.compareTo(b) &lt; <span class="number">0</span>) a = b;</span><br><span class="line">                    <span class="keyword">if</span>(a.compareTo(result[j]) &gt; <span class="number">0</span>) result[j] = a;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(result[target].length() == <span class="number">0</span>) <span class="keyword">return</span> <span class="string">"0"</span>;</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">int</span>[] num = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">10</span>];</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; result[target].length(); i++)&#123;</span><br><span class="line">                num[result[target].charAt(i) - <span class="string">'0'</span>]++;</span><br><span class="line">            &#125;</span><br><span class="line">            result[target].delete(<span class="number">0</span>, result[target].length());</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">9</span>; i &gt; <span class="number">0</span>; i--)&#123;</span><br><span class="line">                <span class="keyword">while</span>(num[i]-- &gt; <span class="number">0</span>) result[target].append(i);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> result[target].toString();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="1723-完成所有工作的最短时间（dfs-剪枝多写）"><a href="#1723-完成所有工作的最短时间（dfs-剪枝多写）" class="headerlink" title="1723.完成所有工作的最短时间（dfs+剪枝多写）**"></a>1723.完成所有工作的最短时间（dfs+剪枝多写）**</h1><h2 id="题目-15"><a href="#题目-15" class="headerlink" title="题目"></a>题目</h2><p><a href="https://leetcode-cn.com/problems/find-minimum-time-to-finish-all-jobs/" target="_blank" rel="noopener">https://leetcode-cn.com/problems/find-minimum-time-to-finish-all-jobs/</a></p>
+<h2 id="题解-15"><a href="#题解-15" class="headerlink" title="题解"></a>题解</h2><p><a href="https://leetcode-cn.com/problems/find-minimum-time-to-finish-all-jobs/solution/gong-shui-san-xie-yi-ti-shuang-jie-jian-4epdd/" target="_blank" rel="noopener">https://leetcode-cn.com/problems/find-minimum-time-to-finish-all-jobs/solution/gong-shui-san-xie-yi-ti-shuang-jie-jian-4epdd/</a></p>
+<p>1.dfs（TL）<br>2.dfs+剪枝<br>3.模拟退火<br>4.状压dp</p>
+<h2 id="代码-15"><a href="#代码-15" class="headerlink" title="代码"></a>代码</h2><p><strong>dfs无剪枝（会超时）：</strong><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> num;</span><br><span class="line">    <span class="keyword">int</span>[] job;</span><br><span class="line">    <span class="keyword">int</span> kk;</span><br><span class="line">    <span class="keyword">int</span> ans = Integer.MAX_VALUE;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">minimumTimeRequired</span><span class="params">(<span class="keyword">int</span>[] jobs, <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">        num = jobs.length;</span><br><span class="line">        job = jobs;</span><br><span class="line">        kk = k;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//工人长度的数组，dfs相当于给工人分任务</span></span><br><span class="line">        <span class="keyword">int</span>[] sum = <span class="keyword">new</span> <span class="keyword">int</span>[kk];</span><br><span class="line">        dfs(<span class="number">0</span>, sum, <span class="number">0</span>);</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> cur, <span class="keyword">int</span>[] sum, <span class="keyword">int</span> max)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(max &gt;= ans) <span class="keyword">return</span> ;</span><br><span class="line">        <span class="keyword">if</span>(cur == num)&#123;</span><br><span class="line">            ans = max;</span><br><span class="line">            <span class="keyword">return</span> ;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; kk; i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(sum[i] == <span class="number">0</span>)&#123;</span><br><span class="line">                sum[i] += job[cur];</span><br><span class="line">                dfs(cur + <span class="number">1</span>, sum, Math.max(max,sum[i]));</span><br><span class="line">                sum[i] -= job[cur];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; kk; i++)&#123;</span><br><span class="line">            sum[i] += job[cur];</span><br><span class="line">            dfs(cur + <span class="number">1</span>, sum, Math.max(max,sum[i]));</span><br><span class="line">            sum[i] -= job[cur];</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><strong>dfs剪枝：</strong><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> num;</span><br><span class="line">    <span class="keyword">int</span>[] job;</span><br><span class="line">    <span class="keyword">int</span> kk;</span><br><span class="line">    <span class="keyword">int</span> ans = Integer.MAX_VALUE;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">minimumTimeRequired</span><span class="params">(<span class="keyword">int</span>[] jobs, <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">        num = jobs.length;</span><br><span class="line">        job = jobs;</span><br><span class="line">        kk = k;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//工人长度的数组，dfs相当于给工人分任务</span></span><br><span class="line">        <span class="keyword">int</span>[] sum = <span class="keyword">new</span> <span class="keyword">int</span>[kk];</span><br><span class="line">        dfs(<span class="number">0</span>, <span class="number">0</span>, sum, <span class="number">0</span>);</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> cur, <span class="keyword">int</span> used, <span class="keyword">int</span>[] sum, <span class="keyword">int</span> max)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(max &gt;= ans) <span class="keyword">return</span> ;</span><br><span class="line">        <span class="keyword">if</span>(cur == num)&#123;</span><br><span class="line">            ans = max;</span><br><span class="line">            <span class="keyword">return</span> ;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">		<span class="comment">//剪枝</span></span><br><span class="line">        <span class="keyword">if</span>(used &lt; kk)&#123;</span><br><span class="line">            sum[used] += job[cur];</span><br><span class="line">            dfs(cur + <span class="number">1</span>, used + <span class="number">1</span>, sum, Math.max(max,sum[used]));</span><br><span class="line">            sum[used] = <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//剪枝结束</span></span><br><span class="line">		</span><br><span class="line">		<span class="comment">//剪枝中uesd也改了</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; used; i++)&#123;</span><br><span class="line">            sum[i] += job[cur];</span><br><span class="line">            dfs(cur + <span class="number">1</span>, used, sum, Math.max(max,sum[i]));</span><br><span class="line">            sum[i] -= job[cur];</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h1 id="1862-向下取整数对和"><a href="#1862-向下取整数对和" class="headerlink" title="1862.向下取整数对和"></a>1862.向下取整数对和</h1><h2 id="题目-16"><a href="#题目-16" class="headerlink" title="题目"></a>题目</h2><p><a href="https://leetcode-cn.com/problems/sum-of-floored-pairs/" target="_blank" rel="noopener">https://leetcode-cn.com/problems/sum-of-floored-pairs/</a></p>
+<h2 id="题解-16"><a href="#题解-16" class="headerlink" title="题解"></a>题解</h2><p><strong>举个例子：</strong> nums = [2,5,9]<br>我们创建一个数组number[] 长度为nums中最大值+1，这里就是10,然后number初始化：<br>number[0] = 0, number[1] = 0, number[2] = 1, number[3] = 1, number[4] = 1,<br>number[5] = 2, number[6] = 2, number[7] = 2, number[8] = 2, number[9] = 3,<br>对的，就是把截止到现在在nums中&lt;=当前number下标的数字出现的次数，然后我们就可以用来求取结果了，对于2来说，我们分段求取[2,3]是÷2 = 1的，[4,5]是÷2 = 2的，[6,7]是÷2 = 3的，[8,9]是÷2 = 4的，分段就能够求取出所有除以2的结果的和，然后再去求5，求9，结束</p>
+<h2 id="代码-16"><a href="#代码-16" class="headerlink" title="代码"></a>代码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">sumOfFlooredPairs</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">        Arrays.sort(nums);</span><br><span class="line">        <span class="keyword">int</span> maxNum = nums[nums.length - <span class="number">1</span>];</span><br><span class="line">        <span class="keyword">int</span>[] number = <span class="keyword">new</span> <span class="keyword">int</span>[maxNum + <span class="number">1</span>];</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">long</span> res = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> num : nums)&#123;number[num]++;&#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= maxNum; i++)&#123;number[i] += number[i - <span class="number">1</span>];&#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.length; i++)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">1</span>; j &lt; maxNum / nums[i] + <span class="number">1</span>; j++)&#123;</span><br><span class="line">                res += (number[Math.min(nums[i] * (j + <span class="number">1</span>) - <span class="number">1</span>, maxNum)] - number[nums[i] * j - <span class="number">1</span>]) * j;</span><br><span class="line">                res %= <span class="number">1000000007</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> (<span class="keyword">int</span>)res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
 
       
@@ -908,11 +320,7 @@ String getProperty(String key)
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">JAVA</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">JAVA基础</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Leetcode</a>
         		</li>
       		
 		</ul>
@@ -968,7 +376,7 @@ String getProperty(String key)
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http:https:/2021/04/29/JAVA常用类/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http:https:/2021/06/30/Leetcode(difficult)/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -982,18 +390,18 @@ String getProperty(String key)
   
 <nav id="article-nav">
   
-    <a href="/2021/04/30/JAVA枚举类和注解/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2021/06/30/Leetcode（mid100-max）/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          JAVA枚举类和注解
+          Leetcode(mid100-)
         
       </div>
     </a>
   
   
-    <a href="/2021/04/28/JAVA多线程/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">JAVA多线程</div>
+    <a href="/2021/06/30/Leetcode(剑指offer)/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Leetcode(剑指offer面试)</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -1020,7 +428,7 @@ String getProperty(String key)
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#一、java-lang-String类"><span class="toc-number">1.</span> <span class="toc-text">一、java.lang.String类</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-概述"><span class="toc-number">1.1.</span> <span class="toc-text">1.概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-String的不可变性"><span class="toc-number">1.2.</span> <span class="toc-text">2.String的不可变性</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-说明"><span class="toc-number">1.2.1.</span> <span class="toc-text">(1)说明</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-代码举例"><span class="toc-number">1.2.2.</span> <span class="toc-text">(2)代码举例</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-String实例化的不同方式"><span class="toc-number">1.3.</span> <span class="toc-text">3.String实例化的不同方式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-方式说明"><span class="toc-number">1.3.1.</span> <span class="toc-text">(1)方式说明</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-代码举例-1"><span class="toc-number">1.3.2.</span> <span class="toc-text">(2)代码举例</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-面试题"><span class="toc-number">1.3.3.</span> <span class="toc-text">(3)面试题</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-字符串拼接方式赋值的对比"><span class="toc-number">1.4.</span> <span class="toc-text">4.字符串拼接方式赋值的对比</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-说明-1"><span class="toc-number">1.4.1.</span> <span class="toc-text">(1)说明</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-代码举例-2"><span class="toc-number">1.4.2.</span> <span class="toc-text">(2)代码举例</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-常用方法"><span class="toc-number">1.5.</span> <span class="toc-text">5.常用方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-String与其它结构的转换"><span class="toc-number">1.6.</span> <span class="toc-text">6.String与其它结构的转换</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-与基本数据类型、包装类之间的转换"><span class="toc-number">1.6.1.</span> <span class="toc-text">(1)与基本数据类型、包装类之间的转换</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-与字符数组之间的转换"><span class="toc-number">1.6.2.</span> <span class="toc-text">(2)与字符数组之间的转换</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-与字节数组之间的转换"><span class="toc-number">1.6.3.</span> <span class="toc-text">(3)与字节数组之间的转换</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-与StringBuffer、StringBuilder之间的转换"><span class="toc-number">1.6.4.</span> <span class="toc-text">(4)与StringBuffer、StringBuilder之间的转换</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-JVM中字符串常量池存放位置说明"><span class="toc-number">1.7.</span> <span class="toc-text">7.JVM中字符串常量池存放位置说明</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-常见算法题目的考查"><span class="toc-number">1.8.</span> <span class="toc-text">8.常见算法题目的考查</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#二、StringBuffer、StringBuilder"><span class="toc-number">2.</span> <span class="toc-text">二、StringBuffer、StringBuilder</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-String、StringBuffer、StringBuilder三者的对比"><span class="toc-number">2.1.</span> <span class="toc-text">1.String、StringBuffer、StringBuilder三者的对比</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-StringBuffer与StringBuilder的内存解析"><span class="toc-number">2.2.</span> <span class="toc-text">2.StringBuffer与StringBuilder的内存解析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-对比String、StringBuffer、StringBuilder三者的执行效率"><span class="toc-number">2.3.</span> <span class="toc-text">3.对比String、StringBuffer、StringBuilder三者的执行效率</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-StringBuffer、StringBuilder中的常用方法"><span class="toc-number">2.4.</span> <span class="toc-text">4.StringBuffer、StringBuilder中的常用方法</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#三、JDK-8之前日期时间API"><span class="toc-number">3.</span> <span class="toc-text">三、JDK 8之前日期时间API</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-获取系统当前时间：System类中的currentTimeMillis"><span class="toc-number">3.1.</span> <span class="toc-text">1.获取系统当前时间：System类中的currentTimeMillis()</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-java-util-Date类与java-sql-Date类"><span class="toc-number">3.2.</span> <span class="toc-text">2. java.util.Date类与java.sql.Date类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-java-sql-Date对应着数据库中的日期类型的变量"><span class="toc-number">3.3.</span> <span class="toc-text">3.java.sql.Date对应着数据库中的日期类型的变量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-java-text-SimpleDataFormat类"><span class="toc-number">3.4.</span> <span class="toc-text">4. java.text.SimpleDataFormat类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-Calendar类：日历类、抽象类"><span class="toc-number">3.5.</span> <span class="toc-text">5.Calendar类：日历类、抽象类</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#四、JDK8中新日期时间API"><span class="toc-number">4.</span> <span class="toc-text">四、JDK8中新日期时间API</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-日期时间API的迭代"><span class="toc-number">4.1.</span> <span class="toc-text">1.日期时间API的迭代</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-前两代存在的问题举例："><span class="toc-number">4.2.</span> <span class="toc-text">2.前两代存在的问题举例：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-java-8-中新的日期时间API涉及到的包"><span class="toc-number">4.3.</span> <span class="toc-text">3.java 8 中新的日期时间API涉及到的包</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-本地日期、本地时间、本地日期时间的使用：LocalDate-LocalTime-LocalDateTime"><span class="toc-number">4.4.</span> <span class="toc-text">4.本地日期、本地时间、本地日期时间的使用：LocalDate / LocalTime / LocalDateTime</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-说明-2"><span class="toc-number">4.4.1.</span> <span class="toc-text">(1)说明</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-常用方法"><span class="toc-number">4.4.2.</span> <span class="toc-text">(2)常用方法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-时间点：Instant"><span class="toc-number">4.5.</span> <span class="toc-text">5.时间点：Instant</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-说明-3"><span class="toc-number">4.5.1.</span> <span class="toc-text">(1)说明</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-常用方法-1"><span class="toc-number">4.5.2.</span> <span class="toc-text">(2)常用方法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-日期时间格式化类：DateTimeFormatter"><span class="toc-number">4.6.</span> <span class="toc-text">6.日期时间格式化类：DateTimeFormatter</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-说明-4"><span class="toc-number">4.6.1.</span> <span class="toc-text">(1)说明</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-常用方法-2"><span class="toc-number">4.6.2.</span> <span class="toc-text">(2)常用方法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-其它API的使用-（不讲）"><span class="toc-number">4.7.</span> <span class="toc-text">7.其它API的使用 （不讲）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-带时区的日期时间：ZonedDateTime-ZoneId"><span class="toc-number">4.7.1.</span> <span class="toc-text">(1)带时区的日期时间：ZonedDateTime / ZoneId</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-时间间隔：Duration–用于计算两个“时间”间隔，以秒和纳秒为基准"><span class="toc-number">4.7.2.</span> <span class="toc-text">(2)时间间隔：Duration–用于计算两个“时间”间隔，以秒和纳秒为基准</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-日期间隔：Period-–用于计算两个“日期”间隔，以年、月、日衡量"><span class="toc-number">4.7.3.</span> <span class="toc-text">(3)日期间隔：Period –用于计算两个“日期”间隔，以年、月、日衡量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-日期时间校正器：TemporalAdjuster"><span class="toc-number">4.7.4.</span> <span class="toc-text">(4)日期时间校正器：TemporalAdjuster</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#五、Java比较器"><span class="toc-number">5.</span> <span class="toc-text">五、Java比较器</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-Java比较器的使用背景"><span class="toc-number">5.1.</span> <span class="toc-text">1.Java比较器的使用背景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-自然排序：使用Comparable接口"><span class="toc-number">5.2.</span> <span class="toc-text">2.自然排序：使用Comparable接口</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-说明-5"><span class="toc-number">5.2.1.</span> <span class="toc-text">(1)说明</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-自定义类代码举例"><span class="toc-number">5.2.2.</span> <span class="toc-text">(2)自定义类代码举例</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-定制排序：使用Comparator接口"><span class="toc-number">5.3.</span> <span class="toc-text">3.定制排序：使用Comparator接口</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-说明-6"><span class="toc-number">5.3.1.</span> <span class="toc-text">(1)说明</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-代码举例-3"><span class="toc-number">5.3.2.</span> <span class="toc-text">(2)代码举例</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-两种排序方式对比"><span class="toc-number">5.4.</span> <span class="toc-text">4.两种排序方式对比</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#六、其他类"><span class="toc-number">6.</span> <span class="toc-text">六、其他类</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-System类"><span class="toc-number">6.1.</span> <span class="toc-text">1.System类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-Math类"><span class="toc-number">6.2.</span> <span class="toc-text">2.Math类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-BigInteger类、BigDecimal类"><span class="toc-number">6.3.</span> <span class="toc-text">3.BigInteger类、BigDecimal类</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#4-寻找两个正序数组的中位数"><span class="toc-number">1.</span> <span class="toc-text">4.寻找两个正序数组的中位数</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#题目"><span class="toc-number">1.1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#题解"><span class="toc-number">1.2.</span> <span class="toc-text">题解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#代码"><span class="toc-number">1.3.</span> <span class="toc-text">代码</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#23-合并K个升序链表"><span class="toc-number">2.</span> <span class="toc-text">23.合并K个升序链表</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#题目-1"><span class="toc-number">2.1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#题解-1"><span class="toc-number">2.2.</span> <span class="toc-text">题解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#代码-1"><span class="toc-number">2.3.</span> <span class="toc-text">代码</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#25-K个一组翻转链表"><span class="toc-number">3.</span> <span class="toc-text">25.K个一组翻转链表</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#题目-2"><span class="toc-number">3.1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#题解-2"><span class="toc-number">3.2.</span> <span class="toc-text">题解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#代码-2"><span class="toc-number">3.3.</span> <span class="toc-text">代码</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#65-有效数字"><span class="toc-number">4.</span> <span class="toc-text">65.有效数字</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#题目-3"><span class="toc-number">4.1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#题解-3"><span class="toc-number">4.2.</span> <span class="toc-text">题解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#代码-3"><span class="toc-number">4.3.</span> <span class="toc-text">代码</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#149-直线上最多的点数"><span class="toc-number">5.</span> <span class="toc-text">149.直线上最多的点数</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#题目-4"><span class="toc-number">5.1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#题解-4"><span class="toc-number">5.2.</span> <span class="toc-text">题解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#代码-4"><span class="toc-number">5.3.</span> <span class="toc-text">代码</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#154-寻找旋转排序数组中的最小值-II"><span class="toc-number">6.</span> <span class="toc-text">154.寻找旋转排序数组中的最小值 II</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#题目-5"><span class="toc-number">6.1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#题解-5"><span class="toc-number">6.2.</span> <span class="toc-text">题解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#代码-5"><span class="toc-number">6.3.</span> <span class="toc-text">代码</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#297-二叉树的序列化与反序列化"><span class="toc-number">7.</span> <span class="toc-text">297.二叉树的序列化与反序列化</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#题目-6"><span class="toc-number">7.1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#题解-6"><span class="toc-number">7.2.</span> <span class="toc-text">题解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#代码-6"><span class="toc-number">7.3.</span> <span class="toc-text">代码</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#483-最小好进制"><span class="toc-number">8.</span> <span class="toc-text">483.最小好进制</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#题目-7"><span class="toc-number">8.1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#题解-7"><span class="toc-number">8.2.</span> <span class="toc-text">题解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#代码-7"><span class="toc-number">8.3.</span> <span class="toc-text">代码</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#664-奇怪的打印机"><span class="toc-number">9.</span> <span class="toc-text">664.奇怪的打印机</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#题目-8"><span class="toc-number">9.1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#题解-8"><span class="toc-number">9.2.</span> <span class="toc-text">题解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#代码-8"><span class="toc-number">9.3.</span> <span class="toc-text">代码</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#773-滑动谜题"><span class="toc-number">10.</span> <span class="toc-text">773.滑动谜题</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#题目-9"><span class="toc-number">10.1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#题解-9"><span class="toc-number">10.2.</span> <span class="toc-text">题解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#代码-9"><span class="toc-number">10.3.</span> <span class="toc-text">代码</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#879-盈利计划"><span class="toc-number">11.</span> <span class="toc-text">879.盈利计划</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#题目-10"><span class="toc-number">11.1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#题解-10"><span class="toc-number">11.2.</span> <span class="toc-text">题解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#代码-10"><span class="toc-number">11.3.</span> <span class="toc-text">代码</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#810-黑板异或游戏"><span class="toc-number">12.</span> <span class="toc-text">810.黑板异或游戏</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#题目-11"><span class="toc-number">12.1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#题解-11"><span class="toc-number">12.2.</span> <span class="toc-text">题解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#代码-11"><span class="toc-number">12.3.</span> <span class="toc-text">代码</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1074-元素和为目标值的子矩阵数量"><span class="toc-number">13.</span> <span class="toc-text">1074.元素和为目标值的子矩阵数量</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#题目-12"><span class="toc-number">13.1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#题解-12"><span class="toc-number">13.2.</span> <span class="toc-text">题解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#代码-12"><span class="toc-number">13.3.</span> <span class="toc-text">代码</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1269-停在原地的方案数"><span class="toc-number">14.</span> <span class="toc-text">1269.停在原地的方案数</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#题目-13"><span class="toc-number">14.1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#题解-13"><span class="toc-number">14.2.</span> <span class="toc-text">题解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#代码-13"><span class="toc-number">14.3.</span> <span class="toc-text">代码</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1449-数位成本和为目标值的最大数字"><span class="toc-number">15.</span> <span class="toc-text">1449.数位成本和为目标值的最大数字</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#题目-14"><span class="toc-number">15.1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#题解-14"><span class="toc-number">15.2.</span> <span class="toc-text">题解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#代码-14"><span class="toc-number">15.3.</span> <span class="toc-text">代码</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1723-完成所有工作的最短时间（dfs-剪枝多写）"><span class="toc-number">16.</span> <span class="toc-text">1723.完成所有工作的最短时间（dfs+剪枝多写）**</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#题目-15"><span class="toc-number">16.1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#题解-15"><span class="toc-number">16.2.</span> <span class="toc-text">题解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#代码-15"><span class="toc-number">16.3.</span> <span class="toc-text">代码</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1862-向下取整数对和"><span class="toc-number">17.</span> <span class="toc-text">1862.向下取整数对和</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#题目-16"><span class="toc-number">17.1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#题解-16"><span class="toc-number">17.2.</span> <span class="toc-text">题解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#代码-16"><span class="toc-number">17.3.</span> <span class="toc-text">代码</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
@@ -1036,7 +444,7 @@ String getProperty(String key)
   
 
   
-  <div id="SOHUCS" sid="JAVA常用类" ></div> 
+  <div id="SOHUCS" sid="Leetcode(difficult)" ></div> 
 <script charset="utf-8" type="text/javascript" src="//changyan.sohu.com/upload/changyan.js" ></script>
 <script type="text/javascript">
     window.changyan.api.config({
