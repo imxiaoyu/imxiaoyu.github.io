@@ -1,6 +1,6 @@
 ---
 title: 'Leetcode(mid100-)'
-date: 2021/6/30 22:22:12 
+date: 2021/7/2 22:52:51 
 tags:
 	- Leetcode
 ---
@@ -46,6 +46,8 @@ tags:
 >1734.解码异或后的排列（异或规律）
 >1738.找出第 K 大的异或坐标值（二维前缀和）
 >1744.你能在你最喜欢的那天吃到你最喜欢的糖果吗？（前缀和）
+>1828.统计一个圆中点的数目（暴力？）
+>1833.雪糕的最大数量（排序？）
 >1860.增长的内存泄露（模拟）
 >1861.旋转盒子（模拟）
 >1864.构成交替字符串需要的最小交换次数（统计+规律）
@@ -1728,6 +1730,52 @@ class Solution {
             else if(type != 0 && day <= candies[type] && day * dayMaxEatNum > candies[type - 1]) result[i] = true;
         }
         return result;
+    }
+}
+```
+
+
+# 1828.统计一个圆中点的数目
+## 题目
+https://leetcode-cn.com/problems/queries-on-number-of-points-inside-a-circle/
+## 题解
+暴力，看每个点在不在圆内
+## 代码
+
+```java
+class Solution {
+    public int[] countPoints(int[][] points, int[][] queries) {
+        int[] result = new int[queries.length];
+        for(int i = 0; i < queries.length; i++){
+            double x = queries[i][0], y = queries[i][1], r = queries[i][2];
+            for(int j = 0; j < points.length; j++){
+                if(Math.pow((double)points[j][0] - x, 2) + Math.pow((double)points[j][1] - y, 2) <= Math.pow(r, 2)) result[i]++;
+            }
+        }
+        return result;
+    }
+}
+```
+
+
+# 1833.雪糕的最大数量
+## 题目
+https://leetcode-cn.com/problems/maximum-ice-cream-bars/
+## 题解 
+排序下，然后看累加和
+
+## 代码
+
+```java
+class Solution {
+    public int maxIceCream(int[] costs, int coins) {
+        Arrays.sort(costs);
+        int sum = 0;
+        for(int i = 0; i < costs.length; i++){
+            sum += costs[i];
+            if(sum > coins) return i;
+        }
+        return costs.length;
     }
 }
 ```
