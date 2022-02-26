@@ -247,3 +247,12 @@ containsAll, equals, hashCode, isEmpty, removeAll, retainAll
 	        return i2-i1;
 	    }
 	});
+
+# 六、自定义排序
+
+	//自定义二维数组的排序（从小到大）
+	Arrays.sort(int[][], new Comparator<int[]>() {
+	        @Override
+	        public int compare(int[] o1, int[] o2) {
+	        return o1[0] - o2[0];
+	        }
