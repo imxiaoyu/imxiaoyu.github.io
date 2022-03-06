@@ -7,8 +7,8 @@ tags:
 ---
 在LeetCode上刷题自己常用的java类方法，总结了一下：
 
-
 <!-- more -->
+
 # 一、String
 ## 1.方法
 **常用方法：**
@@ -120,32 +120,35 @@ Set<Object> set = new HashSet<>();
 >8.是否包含：contains(Object obj)
 >9.是否为空：isEmpty()
 >10.遍历：
+>
 >- ① Iterator迭代器方式
 >- ② 增强for循环
 >- ③ 普通的循环
 
 Collections的一些方法：
 
-	Collections.reverse(arrayList); //反转
-	add(Object obj),
-	addAll(Collection coll),
-	size(),
-	isEmpty(),
-	clear();
+```java
+Collections.reverse(arrayList); //反转
+add(Object obj),
+addAll(Collection coll),
+size(),
+isEmpty(),
+clear();
 
-	contains(Object obj),
-	containsAll(Collection coll),
-	remove(Object obj),
-	removeAll(Collection coll),
-	retainsAll(Collection coll),
-	equals(Object obj);
+contains(Object obj),
+containsAll(Collection coll),
+remove(Object obj),
+removeAll(Collection coll),
+retainsAll(Collection coll),
+equals(Object obj);
 
-	hasCode(),
-	toArray(),//可以这么用的：！！！
-	List<int[]> res = new ArrayList<>();
-	return res.toArray(new int[0][]);
+hasCode(),
+toArray(),//可以这么用的：！！！
+List<int[]> res = new ArrayList<>();
+return res.toArray(new int[0][]);
 
-	iterator();
+iterator();
+```
 
 
 # 四、HashMap:底层<Set,List>
@@ -162,50 +165,60 @@ Collections的一些方法：
 ## 2.遍历
 ### (1)通过键值对entrySet()
 
-	Map<Integer, Integer> map = new HashMap<Integer, Integer>();
-	//键值对entrySet
-	for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
-		System.out.println("Key = " + entry.getKey() + ", Value = " + entry.getValue());
-	}
+```java
+Map<Integer, Integer> map = new HashMap<Integer, Integer>();
+//键值对entrySet
+for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
+	System.out.println("Key = " + entry.getKey() + ", Value = " + entry.getValue());
+}
+```
 
 ### (2)通过keySet()和values()
-		
-	Map<Integer, Integer> map = new HashMap<Integer, Integer>();
-	//迭代key,
-	for (Integer key : map.keySet()) {
-		System.out.println("Key = " + key);
-	}
+
+```java
+Map<Integer, Integer> map = new HashMap<Integer, Integer>();
+//迭代key,
+for (Integer key : map.keySet()) {
+	System.out.println("Key = " + key);
+}
  
-	//迭代value
-	for (Integer value : map.values()) {
-		System.out.println("Value = " + value);
-	}
+//迭代value
+for (Integer value : map.values()) {
+	System.out.println("Value = " + value);
+}
+```
 ### (3)使用带泛型的迭代器进行遍历
 
-	Map<Integer, Integer> map = new HashMap<Integer, Integer>();
+```java
+Map<Integer, Integer> map = new HashMap<Integer, Integer>();
 
-	Iterator<Map.Entry<Integer, Integer>> entries = map.entrySet().iterator();
-	while (entries.hasNext()) {
-		Map.Entry<Integer, Integer> entry = entries.next();
-		System.out.println("Key = " + entry.getKey() + ", Value = " + entry.getValue());
-	}
+Iterator<Map.Entry<Integer, Integer>> entries = map.entrySet().iterator();
+while (entries.hasNext()) {
+	Map.Entry<Integer, Integer> entry = entries.next();
+	System.out.println("Key = " + entry.getKey() + ", Value = " + entry.getValue());
+}
+```
 ### (4)使用不带泛型的迭代器进行遍历
 
-	Map map = new HashMap();
+```java
+Map map = new HashMap();
 
-	Iterator<Map.Entry> entries = map.entrySet().iterator();
-	while (entries.hasNext()) {
-		Map.Entry entry = (Map.Entry) entries.next();
-		Integer key = (Integer) entry.getKey();
-		Integer value = (Integer) entry.getValue();
-		System.out.println("Key = " + key + ", Value = " + value);
-	}
+Iterator<Map.Entry> entries = map.entrySet().iterator();
+while (entries.hasNext()) {
+	Map.Entry entry = (Map.Entry) entries.next();
+	Integer key = (Integer) entry.getKey();
+	Integer value = (Integer) entry.getValue();
+	System.out.println("Key = " + key + ", Value = " + value);
+}
+```
 
 ### (5)通过Java8 Lambda表达式遍历
 
-	Map<Integer, Integer> map = new HashMap<Integer, Integer>();
-		
-	map.forEach((k, v) -> System.out.println("key: " + k + " value:" + v));
+```java
+Map<Integer, Integer> map = new HashMap<Integer, Integer>();
+	
+map.forEach((k, v) -> System.out.println("key: " + k + " value:" + v));
+```
 
 # 五、PriorityQueue
 ## 1.方法
@@ -234,25 +247,30 @@ containsAll, isEmpty, removeAll, retainAll, toString
 
 从类 java.lang.Object 继承的方法：
 clone, equals, finalize, getClass, hashCode, notify, notifyAll, wait, wait, wait
- 
+
 
 从接口 java.util.Collection 继承的方法：
 containsAll, equals, hashCode, isEmpty, removeAll, retainAll
 ## 2.用法
 
-	PriorityQueue<Integer> minHeap = new PriorityQueue<Integer>(); //小顶堆，默认容量为11
-	PriorityQueue<Integer> maxHeap = new PriorityQueue<Integer>(new Comparator<Integer>(){ //大顶堆，容量11
-	    @Override
-	    public int compare(Integer i1,Integer i2){
-	        return i2-i1;
-	    }
-	});
+```java
+PriorityQueue<Integer> minHeap = new PriorityQueue<Integer>(); //小顶堆，默认容量为11
+PriorityQueue<Integer> maxHeap = new PriorityQueue<Integer>(new Comparator<Integer>(){ //大顶堆，容量11
+    @Override
+    public int compare(Integer i1,Integer i2){
+        return i2-i1;
+    }
+});
+```
 
 # 六、自定义排序
 
-	//自定义二维数组的排序（从小到大）
-	Arrays.sort(int[][], new Comparator<int[]>() {
-	        @Override
-	        public int compare(int[] o1, int[] o2) {
-	        return o1[0] - o2[0];
-	        }
+```java
+//自定义二维数组的排序（从小到大）
+Arrays.sort(int[][], new Comparator<int[]>() {
+        @Override
+        public int compare(int[] o1, int[] o2) {
+        return o1[0] - o2[0];
+        }
+});
+```
