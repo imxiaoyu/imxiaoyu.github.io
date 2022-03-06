@@ -175,29 +175,9 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h1 id="MVC模块化架构"><a href="#MVC模块化架构" class="headerlink" title="MVC模块化架构"></a>MVC模块化架构</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">DB中的表</span><br><span class="line"></span><br><span class="line">-&gt;</span><br><span class="line"></span><br><span class="line">mapper创建接口实现接口BaseMapper&lt;对应实体类&gt;</span><br><span class="line"></span><br><span class="line">-&gt;</span><br><span class="line"></span><br><span class="line">service创建接口实现接口IService&lt;对应实体类&gt;</span><br><span class="line"></span><br><span class="line">service创建实施类继承ServiceImpl&lt;mapper接口，对应实体类&gt; 并 实现service接口</span><br><span class="line"></span><br><span class="line">-&gt;</span><br><span class="line"></span><br><span class="line">controller用service接口的方法实现CURD</span><br></pre></td></tr></table></figure>
-<h1 id="Redis技术（day06）"><a href="#Redis技术（day06）" class="headerlink" title="Redis技术（day06）"></a>Redis技术（day06）</h1><p><strong>1.安装redis</strong> </p>
-<p><strong>2.根据自己的配置运行redis</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./redis-server /home/ailab/YY/redis-6.2.6/redis.conf</span><br></pre></td></tr></table></figure>
-<p><strong><em>如果想要远程连接服务器端的redis需要把redis.conf中的127.0.0.1给注释掉，并且要设置</em></strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CONFIG SET protected-mode no</span><br></pre></td></tr></table></figure>
-<p><strong><em>3.Redis</em></strong> <strong><em>通过命令行查看 ./redis-cli 然后使用 keys \</em>来查看缓存中是否有内容*</strong></p>
-<p><strong><em>4.</em></strong> <strong><em>关闭redis服务 ps -ef | grep redis</em></strong></p>
-<h1 id="nginx技术（day07）"><a href="#nginx技术（day07）" class="headerlink" title="nginx技术（day07）"></a>nginx技术（day07）</h1><p>后端有很多服务模块，每个模块都有对应的访问路径与端口，为了提供统一的api接口，所以使用nginx作为<strong>反向代理</strong>服务器；</p>
-<p>反向代理，其实客户端对代理是无感知的，因为客户端不需要任何配置就可以访问，我们只需要将请求发送到反向代理服务器，由反向代理服务器去选择目标服务器获取数据后，在返回给客户端，此时反向代理服务器和目标服务器对外就是一个服务器，暴露的是代理服务器地址，隐藏了真实服务器IP地址</p>
-<p><strong>使用</strong>：改了conf后直接windows命令行启动就可以了，需要把前端的地址改成9001</p>
-<h1 id="mongo技术（day07）"><a href="#mongo技术（day07）" class="headerlink" title="mongo技术（day07）"></a>mongo技术（day07）</h1><p>1.创建和启动容器 </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">docker run -d --restart=always -p 27017:27017 --name rainmongo -v </span><br><span class="line"></span><br><span class="line">/home/ailab/YY/db:/data/db -d mongo</span><br></pre></td></tr></table></figure>
-<p>2.进入容器 </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker exec -it **r**ain**mongo** /bin/bash</span><br></pre></td></tr></table></figure>
-<p>3.使用MongoDB客户端进行操作</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mongo </span><br><span class="line">show dbs #查询所有的数据库</span><br></pre></td></tr></table></figure>
-<p>MongoDB 是由C++语言编写的，是一个基于分布式文件存储的开源数据库系统。</p>
-<p>在高负载的情况下，添加更多的节点，可以保证服务器性能。</p>
-<p>MongoDB 旨在为WEB应用提供可扩展的高性能数据存储解决方案。</p>
-<p>MongoDB 将数据存储为一个文档，数据结构由键值(key=&gt;value)对组成。MongoDB 文档类似于 JSON 对象。字段值可以包含其他文档，数组及文档数组。</p>
-<p><strong>两种使用方法：</strong></p>
-<p>spring-data-mongodb提供了<strong>MongoTemplate与MongoRepository</strong>两种方式访问mongodb，MongoRepository操作简单，MongoTemplate操作灵活，我们在项目中可以灵活适用这两种方式操作mongodb，MongoRepository的缺点是不够灵活，MongoTemplate正好可以弥补不足。</p>
-
+        
+          <a class="article-more-a" href="/2022/02/22/尚医通项目/#more">more >></a>
+        
       
 
       
@@ -1876,7 +1856,11 @@ MathJax.Hub.Queue(function() {
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">科研</a>
+                <a href="javascript:void(0)" class="js-tag color5">JAVA</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">JAVA基础</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1884,11 +1868,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">JAVA</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">JAVA基础</a>
+                <a href="javascript:void(0)" class="js-tag color3">科研</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1908,11 +1888,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">JDBC</a>
+                <a href="javascript:void(0)" class="js-tag color3">项目</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">项目</a>
+                <a href="javascript:void(0)" class="js-tag color5">JDBC</a>
               </li>
             
             <div class="clearfix"></div>
