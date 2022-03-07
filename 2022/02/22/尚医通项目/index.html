@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="Rain&#39;s Blog">
 <meta property="og:description" content="MVC模块化架构123456789101112131415DB中的表-&amp;gt;mapper创建接口实现接口BaseMapper&amp;lt;对应实体类&amp;gt;-&amp;gt;service创建接口实现接口IService&amp;lt;对应实体类&amp;gt;service创建实施类继承ServiceImpl&amp;lt;mapper接口，对应实体类&amp;gt; 并 实现service接口-&amp;gt;controller用servic">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2022-03-06T12:17:53.758Z">
+<meta property="og:updated_time" content="2022-03-07T15:01:30.427Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="尚医通项目总结">
 <meta name="twitter:description" content="MVC模块化架构123456789101112131415DB中的表-&amp;gt;mapper创建接口实现接口BaseMapper&amp;lt;对应实体类&amp;gt;-&amp;gt;service创建接口实现接口IService&amp;lt;对应实体类&amp;gt;service创建实施类继承ServiceImpl&amp;lt;mapper接口，对应实体类&amp;gt; 并 实现service接口-&amp;gt;controller用servic">
@@ -201,7 +201,8 @@
 <p>MongoDB 将数据存储为一个文档，数据结构由键值(key=&gt;value)对组成。MongoDB 文档类似于 JSON 对象。字段值可以包含其他文档，数组及文档数组。</p>
 <p><strong>两种使用方法：</strong></p>
 <p>spring-data-mongodb提供了<strong>MongoTemplate与MongoRepository</strong>两种方式访问mongodb，MongoRepository操作简单，MongoTemplate操作灵活，我们在项目中可以灵活适用这两种方式操作mongodb，MongoRepository的缺点是不够灵活，MongoTemplate正好可以弥补不足。</p>
-
+<h1 id="项目总结day08"><a href="#项目总结day08" class="headerlink" title="项目总结day08"></a>项目总结day08</h1><p>医院接口填写:<br>1.先创建对应的repository接口<br>2.service里面创建接口定义抽象的方法(增删改查)<br>3.service.impl里面创建类实现接口(写具体的方法、增删改查)<br>4.controller层里面把得到的数据进行校验，然后调用impl类的具体方法</p>
+<h1 id="nacos注册中心"><a href="#nacos注册中心" class="headerlink" title="nacos注册中心"></a>nacos注册中心</h1>
       
 
       
@@ -348,7 +349,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#MVC模块化架构"><span class="toc-number">1.</span> <span class="toc-text">MVC模块化架构</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Redis技术（day06）"><span class="toc-number">2.</span> <span class="toc-text">Redis技术（day06）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#nginx技术（day07）"><span class="toc-number">3.</span> <span class="toc-text">nginx技术（day07）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#mongo技术（day07）"><span class="toc-number">4.</span> <span class="toc-text">mongo技术（day07）</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#MVC模块化架构"><span class="toc-number">1.</span> <span class="toc-text">MVC模块化架构</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Redis技术（day06）"><span class="toc-number">2.</span> <span class="toc-text">Redis技术（day06）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#nginx技术（day07）"><span class="toc-number">3.</span> <span class="toc-text">nginx技术（day07）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#mongo技术（day07）"><span class="toc-number">4.</span> <span class="toc-text">mongo技术（day07）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#项目总结day08"><span class="toc-number">5.</span> <span class="toc-text">项目总结day08</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#nacos注册中心"><span class="toc-number">6.</span> <span class="toc-text">nacos注册中心</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -491,11 +492,7 @@ MathJax.Hub.Queue(function() {
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">JAVA</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">JAVA基础</a>
+                <a href="javascript:void(0)" class="js-tag color3">科研</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -503,7 +500,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">科研</a>
+                <a href="javascript:void(0)" class="js-tag color5">JAVA</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">JAVA基础</a>
               </li>
              
               <li class="article-tag-list-item">

@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="Rain&#39;s Blog">
 <meta property="og:description" content="存储引擎存储引擎是 MySQL 的组件，用于处理不同表类型的 SQL 操作。不同的存储引擎提供不同的存储机制、索引技巧、锁定水平等功能，使用不同的存储引擎，还可以获得特定的功能。 使用哪一种引擎可以灵活选择， 一个数据库中多个表可以使用不同引擎以满足各种性能和实际需求 ，使用合适的存储引擎，将会提高整个数据库的性能。 MySQL 服务器使用可插拔的存储引擎体系结构，可以从运行中的 MySQL 服务">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2022-03-06T12:12:29.005Z">
+<meta property="og:updated_time" content="2022-03-06T12:26:31.819Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MySQL进阶">
 <meta name="twitter:description" content="存储引擎存储引擎是 MySQL 的组件，用于处理不同表类型的 SQL 操作。不同的存储引擎提供不同的存储机制、索引技巧、锁定水平等功能，使用不同的存储引擎，还可以获得特定的功能。 使用哪一种引擎可以灵活选择， 一个数据库中多个表可以使用不同引擎以满足各种性能和实际需求 ，使用合适的存储引擎，将会提高整个数据库的性能。 MySQL 服务器使用可插拔的存储引擎体系结构，可以从运行中的 MySQL 服务">
@@ -180,6 +180,7 @@
         <h1 id="存储引擎"><a href="#存储引擎" class="headerlink" title="存储引擎"></a>存储引擎</h1><p>存储引擎是 MySQL 的组件，用于处理不同表类型的 SQL 操作。不同的存储引擎提供不同的存储机制、索引技巧、锁定水平等功能，使用不同的存储引擎，还可以获得特定的功能。</p>
 <p>使用哪一种引擎可以灵活选择， <strong>一个数据库中多个表可以使用不同引擎以满足各种性能和实际需求</strong> ，使用合适的存储引擎，将会提高整个数据库的性能。</p>
 <p>MySQL 服务器使用可插拔的存储引擎体系结构，可以从运行中的 MySQL 服务器加载或卸载存储引擎。</p>
+<a id="more"></a>
 <h2 id="查看存储引擎"><a href="#查看存储引擎" class="headerlink" title="查看存储引擎"></a>查看存储引擎</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 查看支持的存储引擎</span></span><br><span class="line"><span class="keyword">SHOW</span> <span class="keyword">ENGINES</span>；</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 查看默认存储引擎</span></span><br><span class="line"><span class="keyword">SHOW</span> <span class="keyword">VARIABLES</span> <span class="keyword">LIKE</span> <span class="string">'storage_engine'</span>；</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 查看具体某一个表所使用的存储引擎，这个默认存储引擎被修改了!</span></span><br><span class="line"><span class="keyword">show</span> <span class="keyword">create</span> <span class="keyword">table</span> tablename；</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 准确查看某个数据库中的某一表所使用的存储引擎</span></span><br><span class="line"><span class="keyword">show</span> <span class="keyword">table</span> <span class="keyword">status</span> <span class="keyword">like</span> <span class="string">'tablename'</span>；</span><br><span class="line"><span class="keyword">show</span> <span class="keyword">table</span> <span class="keyword">status</span> <span class="keyword">from</span> <span class="keyword">database</span> <span class="keyword">where</span> <span class="keyword">name</span>=<span class="string">"tablename"</span>；</span><br></pre></td></tr></table></figure>
 <h2 id="设置存储引擎"><a href="#设置存储引擎" class="headerlink" title="设置存储引擎"></a>设置存储引擎</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 建表时指定存储引擎。默认的就是 INNODB，不需要设置</span></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> t1 （i <span class="built_in">INT</span>） <span class="keyword">ENGINE</span> = <span class="keyword">INNODB</span>；</span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> t2 （i <span class="built_in">INT</span>） <span class="keyword">ENGINE</span> = CSV；</span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> t3 （i <span class="built_in">INT</span>） <span class="keyword">ENGINE</span> = <span class="keyword">MEMORY</span>；</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 修改存储引擎</span></span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> t <span class="keyword">ENGINE</span> = <span class="keyword">InnoDB</span>；</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 修改默认存储引擎，也可以在配置文件 my.cnf 中修改默认引擎</span></span><br><span class="line"><span class="keyword">SET</span> default_storage_engine = NDBCLUSTER；</span><br></pre></td></tr></table></figure>
 <p>默认情况下，每当<code>CREATE TABLE</code>或<code>ALTER TABLE</code>不能使用默认存储引擎时，都会生成一个警告。为了防止在所需的引擎不可用时出现令人困惑的意外行为，可以启用<code>NO_ENGINE_SUBSTITUTION SQL</code>模式。如果所需的引擎不可用，则此设置将产生错误而不是警告，并且不会创建或更改表。</p>
@@ -1215,11 +1216,7 @@ MathJax.Hub.Queue(function() {
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">JAVA</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">JAVA基础</a>
+                <a href="javascript:void(0)" class="js-tag color3">科研</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1227,7 +1224,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">科研</a>
+                <a href="javascript:void(0)" class="js-tag color5">JAVA</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">JAVA基础</a>
               </li>
              
               <li class="article-tag-list-item">
