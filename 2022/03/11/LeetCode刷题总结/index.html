@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="Rain&#39;s Blog">
 <meta property="og:description" content="LeetCode上刷题知识点">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2022-03-11T15:45:51.686Z">
+<meta property="og:updated_time" content="2022-03-13T16:28:37.718Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="LeetCode刷题总结">
 <meta name="twitter:description" content="LeetCode上刷题知识点">
@@ -180,8 +180,79 @@
         <p>LeetCode上刷题知识点</p>
 <a id="more"></a>
 <h1 id="常用方法"><a href="#常用方法" class="headerlink" title="常用方法"></a>常用方法</h1><h2 id="自定义排序"><a href="#自定义排序" class="headerlink" title="自定义排序"></a>自定义排序</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//二维数组，根据数组nums[i][0]位置,从小到大排序</span></span><br><span class="line"><span class="keyword">int</span>[][] nums;</span><br><span class="line">Arrays.sort(nums, <span class="keyword">new</span> Comparator&lt;<span class="keyword">int</span>[]&gt;()&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compare</span><span class="params">(<span class="keyword">int</span>[] o1, <span class="keyword">int</span>[] o2)</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> o1[<span class="number">0</span>] - o2[<span class="number">0</span>];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<h2 id="优先队列"><a href="#优先队列" class="headerlink" title="优先队列"></a>优先队列</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//小顶堆，默认容量为11</span></span><br><span class="line">PriorityQueue&lt;Integer&gt; minHeap = <span class="keyword">new</span> PriorityQueue&lt;&gt;();</span><br><span class="line"><span class="comment">//大顶堆，容量11</span></span><br><span class="line">PriorityQueue&lt;Integer&gt; maxHeap = <span class="keyword">new</span> PriorityQueue&lt;&gt;(<span class="keyword">new</span> Comparator&lt;Integer&gt;()&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compare</span><span class="params">(Integer o1, Integer o2)</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> o1 - o2;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<h1 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h1><h1 id="二叉树"><a href="#二叉树" class="headerlink" title="二叉树"></a>二叉树</h1><h1 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h1><h1 id="动态规划"><a href="#动态规划" class="headerlink" title="动态规划"></a>动态规划</h1><h1 id="dfs"><a href="#dfs" class="headerlink" title="dfs"></a>dfs</h1><h1 id="bfs"><a href="#bfs" class="headerlink" title="bfs"></a>bfs</h1><h1 id="图论"><a href="#图论" class="headerlink" title="图论"></a>图论</h1>
+<p><strong>注意：</strong></p>
+<p><code>Comparator&lt;T&gt;()</code>中T必须为类，也就是T必须父类继承自Object，所以:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span>[] nums</span><br><span class="line">Arrays.sort(nums, <span class="keyword">new</span> Comparator&lt;<span class="keyword">int</span>&gt;()&#123;……&#125;);错误，泛型不能是基本数据类型</span><br><span class="line">Arrays.sort(nums, <span class="keyword">new</span> Comparator&lt;Integer&gt;()&#123;……&#125;);错误，nums是<span class="keyword">int</span>数组</span><br><span class="line">*******************************************************************************</span><br><span class="line">Integer[] nums</span><br><span class="line">Arrays.sort(nums, <span class="keyword">new</span> Comparator&lt;Integer&gt;()&#123;……&#125;);正确，nums格式和泛型匹配</span><br></pre></td></tr></table></figure>
+<h2 id="PriorityQueue优先队列"><a href="#PriorityQueue优先队列" class="headerlink" title="PriorityQueue优先队列"></a>PriorityQueue优先队列</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//小顶堆，默认容量为11</span></span><br><span class="line">PriorityQueue&lt;Integer&gt; minHeap = <span class="keyword">new</span> PriorityQueue&lt;&gt;();</span><br><span class="line"><span class="comment">//大顶堆，容量11</span></span><br><span class="line">PriorityQueue&lt;Integer&gt; maxHeap = <span class="keyword">new</span> PriorityQueue&lt;&gt;(<span class="keyword">new</span> Comparator&lt;Integer&gt;()&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compare</span><span class="params">(Integer o1, Integer o2)</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> o1 - o2;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h1 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h1><h1 id="二叉树"><a href="#二叉树" class="headerlink" title="二叉树"></a>二叉树</h1><h1 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h1><h1 id="动态规划"><a href="#动态规划" class="headerlink" title="动态规划"></a>动态规划</h1><h1 id="dfs"><a href="#dfs" class="headerlink" title="dfs"></a>dfs</h1><h1 id="bfs"><a href="#bfs" class="headerlink" title="bfs"></a>bfs</h1><h1 id="图论"><a href="#图论" class="headerlink" title="图论"></a>图论</h1><h2 id="邻接表"><a href="#邻接表" class="headerlink" title="邻接表"></a>邻接表</h2><pre><code>输入：
+1 4 9
+4 3 8
+1 2 5
+2 4 6
+1 3 7
+</code></pre><table>
+<thead>
+<tr>
+<th style="text-align:center">编号</th>
+<th style="text-align:center">u</th>
+<th style="text-align:center">v</th>
+<th style="text-align:center">w</th>
+<th style="text-align:center">…</th>
+<th style="text-align:center">first</th>
+<th style="text-align:center">next</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">4</td>
+<td style="text-align:center">9</td>
+<td style="text-align:center">…</td>
+<td style="text-align:center">5</td>
+<td style="text-align:center">-1</td>
+</tr>
+<tr>
+<td style="text-align:center">2</td>
+<td style="text-align:center">4</td>
+<td style="text-align:center">3</td>
+<td style="text-align:center">8</td>
+<td style="text-align:center">…</td>
+<td style="text-align:center">4</td>
+<td style="text-align:center">-1</td>
+</tr>
+<tr>
+<td style="text-align:center">3</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">2</td>
+<td style="text-align:center">5</td>
+<td style="text-align:center">…</td>
+<td style="text-align:center">-1</td>
+<td style="text-align:center">1</td>
+</tr>
+<tr>
+<td style="text-align:center">4</td>
+<td style="text-align:center">2</td>
+<td style="text-align:center">4</td>
+<td style="text-align:center">6</td>
+<td style="text-align:center">…</td>
+<td style="text-align:center">2</td>
+<td style="text-align:center">-1</td>
+</tr>
+<tr>
+<td style="text-align:center">5</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">3</td>
+<td style="text-align:center">7</td>
+<td style="text-align:center">…</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">3</td>
+</tr>
+</tbody>
+</table>
+<p>u[i] - v[i]表示边i，w[i]表示边i的权重，first[u[i]]表示边为u[i] - (…)的最新位置，next[i]表示边为u[i] - (…)的下一位置</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//传入坐标i，边a-b，以及权重w，更新邻接表</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(i, a, b, w)</span></span>&#123;</span><br><span class="line">    u[i] = a;</span><br><span class="line">    v[i] = b;</span><br><span class="line">    w[i] = w;</span><br><span class="line">	next[i] = first[a]; 或 next[i] = first[u[i]];</span><br><span class="line">	first[a] = i; 或 first[u[i]] = i;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
       
 
       
@@ -328,7 +399,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#常用方法"><span class="toc-number">1.</span> <span class="toc-text">常用方法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#自定义排序"><span class="toc-number">1.1.</span> <span class="toc-text">自定义排序</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#优先队列"><span class="toc-number">1.2.</span> <span class="toc-text">优先队列</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#数据结构"><span class="toc-number">2.</span> <span class="toc-text">数据结构</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#二叉树"><span class="toc-number">3.</span> <span class="toc-text">二叉树</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#递归"><span class="toc-number">4.</span> <span class="toc-text">递归</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#动态规划"><span class="toc-number">5.</span> <span class="toc-text">动态规划</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#dfs"><span class="toc-number">6.</span> <span class="toc-text">dfs</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#bfs"><span class="toc-number">7.</span> <span class="toc-text">bfs</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#图论"><span class="toc-number">8.</span> <span class="toc-text">图论</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#常用方法"><span class="toc-number">1.</span> <span class="toc-text">常用方法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#自定义排序"><span class="toc-number">1.1.</span> <span class="toc-text">自定义排序</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#PriorityQueue优先队列"><span class="toc-number">1.2.</span> <span class="toc-text">PriorityQueue优先队列</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#数据结构"><span class="toc-number">2.</span> <span class="toc-text">数据结构</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#二叉树"><span class="toc-number">3.</span> <span class="toc-text">二叉树</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#递归"><span class="toc-number">4.</span> <span class="toc-text">递归</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#动态规划"><span class="toc-number">5.</span> <span class="toc-text">动态规划</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#dfs"><span class="toc-number">6.</span> <span class="toc-text">dfs</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#bfs"><span class="toc-number">7.</span> <span class="toc-text">bfs</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#图论"><span class="toc-number">8.</span> <span class="toc-text">图论</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#邻接表"><span class="toc-number">8.1.</span> <span class="toc-text">邻接表</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
@@ -471,18 +542,6 @@ MathJax.Hub.Queue(function() {
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">个人总结</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">JAVA</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Leetcode</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">科研</a>
               </li>
              
@@ -491,7 +550,19 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">个人总结</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">JAVA</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">JAVA基础</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Leetcode</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -499,11 +570,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">博客</a>
+                <a href="javascript:void(0)" class="js-tag color1">MySQL</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">MySQL</a>
+                <a href="javascript:void(0)" class="js-tag color2">Spring</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">博客</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -516,10 +591,6 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">JDBC</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Spring</a>
               </li>
             
             <div class="clearfix"></div>
