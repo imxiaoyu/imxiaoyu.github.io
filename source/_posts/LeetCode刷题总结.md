@@ -45,12 +45,15 @@ Arrays.sort(nums, new Comparator<Integer>(){……});正确，nums格式和泛�
 //小顶堆，默认容量为11
 PriorityQueue<Integer> minHeap = new PriorityQueue<>();
 //大顶堆，容量11
+//写法一
 PriorityQueue<Integer> maxHeap = new PriorityQueue<>(new Comparator<Integer>(){
     @Override
     public int compare(Integer o1, Integer o2){
-        return o1 - o2;
+        return o2 - o1;
     }
 });
+//写法二：
+PriorityQueue<Integer> maxHeap = new PriorityQueue<>(Comparator.reverseOrder());
 ```
 
 # 数据结构
