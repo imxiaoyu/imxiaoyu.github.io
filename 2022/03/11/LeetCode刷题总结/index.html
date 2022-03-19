@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="Rain&#39;s Blog">
 <meta property="og:description" content="LeetCode上刷题知识点">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2022-03-13T16:28:37.718Z">
+<meta property="og:updated_time" content="2022-03-14T04:53:21.878Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="LeetCode刷题总结">
 <meta name="twitter:description" content="LeetCode上刷题知识点">
@@ -183,7 +183,7 @@
 <p><strong>注意：</strong></p>
 <p><code>Comparator&lt;T&gt;()</code>中T必须为类，也就是T必须父类继承自Object，所以:</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span>[] nums</span><br><span class="line">Arrays.sort(nums, <span class="keyword">new</span> Comparator&lt;<span class="keyword">int</span>&gt;()&#123;……&#125;);错误，泛型不能是基本数据类型</span><br><span class="line">Arrays.sort(nums, <span class="keyword">new</span> Comparator&lt;Integer&gt;()&#123;……&#125;);错误，nums是<span class="keyword">int</span>数组</span><br><span class="line">*******************************************************************************</span><br><span class="line">Integer[] nums</span><br><span class="line">Arrays.sort(nums, <span class="keyword">new</span> Comparator&lt;Integer&gt;()&#123;……&#125;);正确，nums格式和泛型匹配</span><br></pre></td></tr></table></figure>
-<h2 id="PriorityQueue优先队列"><a href="#PriorityQueue优先队列" class="headerlink" title="PriorityQueue优先队列"></a>PriorityQueue优先队列</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//小顶堆，默认容量为11</span></span><br><span class="line">PriorityQueue&lt;Integer&gt; minHeap = <span class="keyword">new</span> PriorityQueue&lt;&gt;();</span><br><span class="line"><span class="comment">//大顶堆，容量11</span></span><br><span class="line">PriorityQueue&lt;Integer&gt; maxHeap = <span class="keyword">new</span> PriorityQueue&lt;&gt;(<span class="keyword">new</span> Comparator&lt;Integer&gt;()&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compare</span><span class="params">(Integer o1, Integer o2)</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> o1 - o2;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h2 id="PriorityQueue优先队列"><a href="#PriorityQueue优先队列" class="headerlink" title="PriorityQueue优先队列"></a>PriorityQueue优先队列</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//小顶堆，默认容量为11</span></span><br><span class="line">PriorityQueue&lt;Integer&gt; minHeap = <span class="keyword">new</span> PriorityQueue&lt;&gt;();</span><br><span class="line"><span class="comment">//大顶堆，容量11</span></span><br><span class="line"><span class="comment">//写法一</span></span><br><span class="line">PriorityQueue&lt;Integer&gt; maxHeap = <span class="keyword">new</span> PriorityQueue&lt;&gt;(<span class="keyword">new</span> Comparator&lt;Integer&gt;()&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compare</span><span class="params">(Integer o1, Integer o2)</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> o2 - o1;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">//写法二：</span></span><br><span class="line">PriorityQueue&lt;Integer&gt; maxHeap = <span class="keyword">new</span> PriorityQueue&lt;&gt;(Comparator.reverseOrder());</span><br></pre></td></tr></table></figure>
 <h1 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h1><h1 id="二叉树"><a href="#二叉树" class="headerlink" title="二叉树"></a>二叉树</h1><h1 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h1><h1 id="动态规划"><a href="#动态规划" class="headerlink" title="动态规划"></a>动态规划</h1><h1 id="dfs"><a href="#dfs" class="headerlink" title="dfs"></a>dfs</h1><h1 id="bfs"><a href="#bfs" class="headerlink" title="bfs"></a>bfs</h1><h1 id="图论"><a href="#图论" class="headerlink" title="图论"></a>图论</h1><h2 id="邻接表"><a href="#邻接表" class="headerlink" title="邻接表"></a>邻接表</h2><pre><code>输入：
 1 4 9
 4 3 8
@@ -542,7 +542,11 @@ MathJax.Hub.Queue(function() {
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">科研</a>
+                <a href="javascript:void(0)" class="js-tag color5">JAVA</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">JAVA基础</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -554,11 +558,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">JAVA</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">JAVA基础</a>
+                <a href="javascript:void(0)" class="js-tag color3">科研</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -570,11 +570,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">MySQL</a>
+                <a href="javascript:void(0)" class="js-tag color2">Spring</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Spring</a>
+                <a href="javascript:void(0)" class="js-tag color1">MySQL</a>
               </li>
              
               <li class="article-tag-list-item">

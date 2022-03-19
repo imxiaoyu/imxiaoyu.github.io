@@ -8,18 +8,42 @@
   <link rel="dns-prefetch" href="https:">
   <title>尚医通项目总结 | Rain&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="MVC模块化架构123456789101112131415DB中的表-&amp;gt;mapper创建接口实现接口BaseMapper&amp;lt;对应实体类&amp;gt;-&amp;gt;service创建接口实现接口IService&amp;lt;对应实体类&amp;gt;service创建实施类继承ServiceImpl&amp;lt;mapper接口，对应实体类&amp;gt; 并 实现service接口-&amp;gt;controller用servic">
+  <meta name="description" content="介绍简介尚医通即为网上预约挂号系统，网上预约挂号是近年来开展的一项便民就医服务，旨在缓解看病难、挂号难的就医难题，许多患者为看一次病要跑很多次医院，最终还不一定能保证看得上医生。网上预约挂号全面提供的预约挂号业务从根本上解决了这一就医难题。随时随地轻松挂号！不用排长队！">
 <meta name="keywords" content="JAVA,项目">
 <meta property="og:type" content="article">
 <meta property="og:title" content="尚医通项目总结">
 <meta property="og:url" content="https:/2022/02/22/尚医通项目/index.html">
 <meta property="og:site_name" content="Rain&#39;s Blog">
-<meta property="og:description" content="MVC模块化架构123456789101112131415DB中的表-&amp;gt;mapper创建接口实现接口BaseMapper&amp;lt;对应实体类&amp;gt;-&amp;gt;service创建接口实现接口IService&amp;lt;对应实体类&amp;gt;service创建实施类继承ServiceImpl&amp;lt;mapper接口，对应实体类&amp;gt; 并 实现service接口-&amp;gt;controller用servic">
+<meta property="og:description" content="介绍简介尚医通即为网上预约挂号系统，网上预约挂号是近年来开展的一项便民就医服务，旨在缓解看病难、挂号难的就医难题，许多患者为看一次病要跑很多次医院，最终还不一定能保证看得上医生。网上预约挂号全面提供的预约挂号业务从根本上解决了这一就医难题。随时随地轻松挂号！不用排长队！">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2022-03-07T15:01:30.427Z">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/imxiaoyu/PicGo/img/尚医通业务流程.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/imxiaoyu/PicGo/img/尚医通架构图.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/imxiaoyu/PicGo/img/后台管理系统.png">
+<meta property="og:image" content="c:/Users/37874/AppData/Roaming/Typora/typora-user-images/image-20220319170104744.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/imxiaoyu/PicGo/img/医院设置添加.png">
+<meta property="og:image" content="c:/Users/37874/AppData/Roaming/Typora/typora-user-images/image-20220319170439157.png">
+<meta property="og:image" content="c:/Users/37874/AppData/Roaming/Typora/typora-user-images/image-20220319170830755.png">
+<meta property="og:image" content="c:/Users/37874/AppData/Roaming/Typora/typora-user-images/image-20220319170901947.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/imxiaoyu/PicGo/img/数据管理.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/imxiaoyu/PicGo/img/用户列表.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/imxiaoyu/PicGo/img/用户的信息.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/imxiaoyu/PicGo/img/用户认证列表.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/imxiaoyu/PicGo/img/预约统计.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/imxiaoyu/PicGo/img/前台用户系统首页医院数据显示.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/imxiaoyu/PicGo/img/前台系统医院详情显示.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/imxiaoyu/PicGo/img/邮箱登录.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/imxiaoyu/PicGo/img/前台用户实名认证.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/imxiaoyu/PicGo/img/前台就诊人管理.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/imxiaoyu/PicGo/img/前台就诊人详情.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/imxiaoyu/PicGo/img/前台添加就诊人.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/imxiaoyu/PicGo/img/排班和挂号详情.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/imxiaoyu/PicGo/img/确认挂号.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/imxiaoyu/PicGo/img/预约挂号订单.png">
+<meta property="og:updated_time" content="2022-03-19T12:29:59.797Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="尚医通项目总结">
-<meta name="twitter:description" content="MVC模块化架构123456789101112131415DB中的表-&amp;gt;mapper创建接口实现接口BaseMapper&amp;lt;对应实体类&amp;gt;-&amp;gt;service创建接口实现接口IService&amp;lt;对应实体类&amp;gt;service创建实施类继承ServiceImpl&amp;lt;mapper接口，对应实体类&amp;gt; 并 实现service接口-&amp;gt;controller用servic">
+<meta name="twitter:description" content="介绍简介尚医通即为网上预约挂号系统，网上预约挂号是近年来开展的一项便民就医服务，旨在缓解看病难、挂号难的就医难题，许多患者为看一次病要跑很多次医院，最终还不一定能保证看得上医生。网上预约挂号全面提供的预约挂号业务从根本上解决了这一就医难题。随时随地轻松挂号！不用排长队！">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/imxiaoyu/PicGo/img/尚医通业务流程.png">
   
     <link rel="alternative" href="/atom.xml" title="Rain&#39;s Blog" type="application/atom+xml">
   
@@ -177,22 +201,51 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="MVC模块化架构"><a href="#MVC模块化架构" class="headerlink" title="MVC模块化架构"></a>MVC模块化架构</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">DB中的表</span><br><span class="line"></span><br><span class="line">-&gt;</span><br><span class="line"></span><br><span class="line">mapper创建接口实现接口BaseMapper&lt;对应实体类&gt;</span><br><span class="line"></span><br><span class="line">-&gt;</span><br><span class="line"></span><br><span class="line">service创建接口实现接口IService&lt;对应实体类&gt;</span><br><span class="line"></span><br><span class="line">service创建实施类继承ServiceImpl&lt;mapper接口，对应实体类&gt; 并 实现service接口</span><br><span class="line"></span><br><span class="line">-&gt;</span><br><span class="line"></span><br><span class="line">controller用service接口的方法实现CURD</span><br></pre></td></tr></table></figure>
-<a id="more"></a>
-<h1 id="Redis技术（day06）"><a href="#Redis技术（day06）" class="headerlink" title="Redis技术（day06）"></a>Redis技术（day06）</h1><p><strong>1.安装redis</strong> </p>
+        <h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>尚医通即为网上预约挂号系统，网上预约挂号是近年来开展的一项便民就医服务，旨在缓解看病难、挂号难的就医难题，许多患者为看一次病要跑很多次医院，最终还不一定能保证看得上医生。网上预约挂号全面提供的预约挂号业务从根本上解决了这一就医难题。随时随地轻松挂号！不用排长队！<br><a id="more"></a></p>
+<h2 id="业务流程"><a href="#业务流程" class="headerlink" title="业务流程"></a>业务流程</h2><p><img src="https://cdn.jsdelivr.net/gh/imxiaoyu/PicGo/img/尚医通业务流程.png" alt></p>
+<h2 id="服务架构"><a href="#服务架构" class="headerlink" title="服务架构"></a>服务架构</h2><p><img src="https://cdn.jsdelivr.net/gh/imxiaoyu/PicGo/img/尚医通架构图.png" alt></p>
+<h1 id="项目总结"><a href="#项目总结" class="headerlink" title="项目总结"></a>项目总结</h1><h2 id="后台管理系统"><a href="#后台管理系统" class="headerlink" title="后台管理系统"></a>后台管理系统</h2><p><img src="https://cdn.jsdelivr.net/gh/imxiaoyu/PicGo/img/后台管理系统.png" alt></p>
+<h3 id="1、医院设置管理"><a href="#1、医院设置管理" class="headerlink" title="1、医院设置管理"></a>1、医院设置管理</h3><h4 id="1-医院设置列表、添加、锁定、删除"><a href="#1-医院设置列表、添加、锁定、删除" class="headerlink" title="(1)医院设置列表、添加、锁定、删除"></a>(1)医院设置列表、添加、锁定、删除</h4><p><img src="C:\Users\37874\AppData\Roaming\Typora\typora-user-images\image-20220319170104744.png" alt="image-20220319170104744"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/imxiaoyu/PicGo/img/医院设置添加.png" alt></p>
+<h4 id="2-医院列表、查看详情、排班、下线"><a href="#2-医院列表、查看详情、排班、下线" class="headerlink" title="(2)医院列表、查看详情、排班、下线"></a>(2)医院列表、查看详情、排班、下线</h4><p><img src="C:\Users\37874\AppData\Roaming\Typora\typora-user-images\image-20220319170439157.png" alt="image-20220319170439157"></p>
+<p><img src="C:\Users\37874\AppData\Roaming\Typora\typora-user-images\image-20220319170830755.png" alt="image-20220319170830755"></p>
+<p><img src="C:\Users\37874\AppData\Roaming\Typora\typora-user-images\image-20220319170901947.png" alt="image-20220319170901947"></p>
+<h3 id="2、数据管理"><a href="#2、数据管理" class="headerlink" title="2、数据管理"></a>2、数据管理</h3><h4 id="1-数据字典树形显示、导入、导出"><a href="#1-数据字典树形显示、导入、导出" class="headerlink" title="(1)数据字典树形显示、导入、导出"></a>(1)数据字典树形显示、导入、导出</h4><p><img src="https://cdn.jsdelivr.net/gh/imxiaoyu/PicGo/img/数据管理.png" alt></p>
+<h3 id="3、用户管理"><a href="#3、用户管理" class="headerlink" title="3、用户管理"></a>3、用户管理</h3><h4 id="1-用户列表、查看、锁定"><a href="#1-用户列表、查看、锁定" class="headerlink" title="(1)用户列表、查看、锁定"></a>(1)用户列表、查看、锁定</h4><p><img src="https://cdn.jsdelivr.net/gh/imxiaoyu/PicGo/img/用户列表.png" alt></p>
+<p><img src="https://cdn.jsdelivr.net/gh/imxiaoyu/PicGo/img/用户的信息.png" alt></p>
+<h4 id="2-认证用户审批"><a href="#2-认证用户审批" class="headerlink" title="(2)认证用户审批"></a>(2)认证用户审批</h4><p><img src="https://cdn.jsdelivr.net/gh/imxiaoyu/PicGo/img/用户认证列表.png" alt></p>
+<h3 id="4、订单管理"><a href="#4、订单管理" class="headerlink" title="4、订单管理"></a>4、订单管理</h3><h4 id="1-订单列表、详情"><a href="#1-订单列表、详情" class="headerlink" title="(1)订单列表、详情"></a>(1)订单列表、详情</h4><h3 id="5、统计管理"><a href="#5、统计管理" class="headerlink" title="5、统计管理"></a>5、统计管理</h3><h4 id="1-预约统计"><a href="#1-预约统计" class="headerlink" title="(1)预约统计"></a>(1)预约统计</h4><p><img src="https://cdn.jsdelivr.net/gh/imxiaoyu/PicGo/img/预约统计.png" alt></p>
+<h2 id="前台用户系统"><a href="#前台用户系统" class="headerlink" title="前台用户系统"></a>前台用户系统</h2><h3 id="1、首页数据显示"><a href="#1、首页数据显示" class="headerlink" title="1、首页数据显示"></a>1、首页数据显示</h3><h4 id="1-医院列表"><a href="#1-医院列表" class="headerlink" title="(1)医院列表"></a>(1)医院列表</h4><p><img src="https://cdn.jsdelivr.net/gh/imxiaoyu/PicGo/img/前台用户系统首页医院数据显示.png" alt></p>
+<h3 id="2、医院详情显示"><a href="#2、医院详情显示" class="headerlink" title="2、医院详情显示"></a>2、医院详情显示</h3><h4 id="1-医院科室显示"><a href="#1-医院科室显示" class="headerlink" title="(1)医院科室显示"></a>(1)医院科室显示</h4><p><img src="https://cdn.jsdelivr.net/gh/imxiaoyu/PicGo/img/前台系统医院详情显示.png" alt></p>
+<h3 id="3、用户登录功能"><a href="#3、用户登录功能" class="headerlink" title="3、用户登录功能"></a>3、用户登录功能</h3><h4 id="1-手机号登录（短信验证码发送）—-gt-改成了邮箱登录"><a href="#1-手机号登录（短信验证码发送）—-gt-改成了邮箱登录" class="headerlink" title="(1)手机号登录（短信验证码发送）—&gt;改成了邮箱登录"></a>(1)手机号登录（短信验证码发送）—&gt;改成了邮箱登录</h4><h4 id><a href="#" class="headerlink" title></a><img src="https://cdn.jsdelivr.net/gh/imxiaoyu/PicGo/img/邮箱登录.png" alt></h4><h3 id="4、用户实名认证"><a href="#4、用户实名认证" class="headerlink" title="4、用户实名认证"></a>4、用户实名认证</h3><p><img src="https://cdn.jsdelivr.net/gh/imxiaoyu/PicGo/img/前台用户实名认证.png" alt></p>
+<h3 id="5、就诊人管理"><a href="#5、就诊人管理" class="headerlink" title="5、就诊人管理"></a>5、就诊人管理</h3><h4 id="1-列表、添加、详情、删除"><a href="#1-列表、添加、详情、删除" class="headerlink" title="(1)列表、添加、详情、删除"></a>(1)列表、添加、详情、删除</h4><p><img src="https://cdn.jsdelivr.net/gh/imxiaoyu/PicGo/img/前台就诊人管理.png" alt></p>
+<p><img src="https://cdn.jsdelivr.net/gh/imxiaoyu/PicGo/img/前台就诊人详情.png" alt></p>
+<p><img src="https://cdn.jsdelivr.net/gh/imxiaoyu/PicGo/img/前台添加就诊人.png" alt></p>
+<h3 id="6、预约挂号功能"><a href="#6、预约挂号功能" class="headerlink" title="6、预约挂号功能"></a>6、预约挂号功能</h3><h4 id="1-排班和挂号详情信息"><a href="#1-排班和挂号详情信息" class="headerlink" title="(1)排班和挂号详情信息"></a>(1)排班和挂号详情信息</h4><p><img src="https://cdn.jsdelivr.net/gh/imxiaoyu/PicGo/img/排班和挂号详情.png" alt></p>
+<h4 id="2-确认挂号信息"><a href="#2-确认挂号信息" class="headerlink" title="(2)确认挂号信息"></a>(2)确认挂号信息</h4><p><img src="https://cdn.jsdelivr.net/gh/imxiaoyu/PicGo/img/确认挂号.png" alt></p>
+<h4 id="3生成预约挂号订单、订单微信支付和取消订单"><a href="#3生成预约挂号订单、订单微信支付和取消订单" class="headerlink" title="(3生成预约挂号订单、订单微信支付和取消订单"></a>(3生成预约挂号订单、订单微信支付和取消订单</h4><p><img src="https://cdn.jsdelivr.net/gh/imxiaoyu/PicGo/img/预约挂号订单.png" alt></p>
+<h1 id="使用技术"><a href="#使用技术" class="headerlink" title="使用技术"></a>使用技术</h1><h2 id="SpringBoot"><a href="#SpringBoot" class="headerlink" title="SpringBoot"></a>SpringBoot</h2><p>本身就是spring，启动类，配置类，简化了新Spring应用的初始搭建以及开发过程</p>
+<h2 id="SpringCloud"><a href="#SpringCloud" class="headerlink" title="SpringCloud"></a>SpringCloud</h2><p>一系列架构的集合，基于Spring Boot实现的云原生应用开发工具，SpringCloud使用的技术：（SpringCloudGateway、Spring Cloud Alibaba Nacos、Spring Cloud Alibaba Sentinel、SpringCloud Task和SpringCloudFeign等）</p>
+<h3 id="nacos注册中心"><a href="#nacos注册中心" class="headerlink" title="nacos注册中心"></a>nacos注册中心</h3><p>实现了不同服务之间的调用，让服务在注册中心注册，然后进行调用</p>
+<h3 id="Feign"><a href="#Feign" class="headerlink" title="Feign"></a>Feign</h3><p>服务发现，最终实现调用</p>
+<h3 id="GateWay"><a href="#GateWay" class="headerlink" title="GateWay"></a>GateWay</h3><p>最早用的nginx，创建了模块service_gateway，在配置里面写了服务的配置</p>
+<h2 id="MyBatis-Plus：持久层框架"><a href="#MyBatis-Plus：持久层框架" class="headerlink" title="MyBatis-Plus：持久层框架"></a>MyBatis-Plus：持久层框架</h2><p>MyBatis的增强，比较基本的增删改查可以用MP直接调用方法实现</p>
+<h2 id="Redis技术：内存缓冲（day06）"><a href="#Redis技术：内存缓冲（day06）" class="headerlink" title="Redis技术：内存缓冲（day06）"></a>Redis技术：内存缓冲（day06）</h2><h3 id="简介-1"><a href="#简介-1" class="headerlink" title="简介"></a>简介</h3><p><strong>1.安装redis</strong> </p>
 <p><strong>2.根据自己的配置运行redis</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./redis-server /home/ailab/YY/redis-6.2.6/redis.conf</span><br></pre></td></tr></table></figure>
 <p><strong><em>如果想要远程连接服务器端的redis需要把redis.conf中的127.0.0.1给注释掉，并且要设置</em></strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CONFIG SET protected-mode no</span><br></pre></td></tr></table></figure>
 <p><strong><em>3.Redis</em></strong> <strong><em>通过命令行查看 ./redis-cli 然后使用 keys \</em>来查看缓存中是否有内容*</strong></p>
 <p><strong><em>4.</em></strong> <strong><em>关闭redis服务 ps -ef | grep redis</em></strong></p>
-<h1 id="nginx技术（day07）"><a href="#nginx技术（day07）" class="headerlink" title="nginx技术（day07）"></a>nginx技术（day07）</h1><p>后端有很多服务模块，每个模块都有对应的访问路径与端口，为了提供统一的api接口，所以使用nginx作为<strong>反向代理</strong>服务器；</p>
+<h3 id="使用Redis作为缓存"><a href="#使用Redis作为缓存" class="headerlink" title="使用Redis作为缓存"></a>使用Redis作为缓存</h3><h3 id="验证码有效时间、支付二维码有效时间"><a href="#验证码有效时间、支付二维码有效时间" class="headerlink" title="验证码有效时间、支付二维码有效时间"></a>验证码有效时间、支付二维码有效时间</h3><h2 id="RabbitMQ：消息中间件"><a href="#RabbitMQ：消息中间件" class="headerlink" title="RabbitMQ：消息中间件"></a>RabbitMQ：消息中间件</h2><p>订单相关操作，发送mq消息，common里面封装了有给rabbit_util模块，里面有RabbitService工具类，在service_order模块面使用，订单生成，号源数量更新，发送rabbit并且使用service_hosp接受</p>
+<h2 id="EasyExcel"><a href="#EasyExcel" class="headerlink" title="EasyExcel"></a>EasyExcel</h2><p>操作excel表格，进行读和写操作，数据字典里面使用的</p>
+<h2 id="HTTPClient-Http协议客户端"><a href="#HTTPClient-Http协议客户端" class="headerlink" title="HTTPClient: Http协议客户端"></a>HTTPClient: Http协议客户端</h2><h2 id="Swagger2：Api接口文档工具"><a href="#Swagger2：Api接口文档工具" class="headerlink" title="Swagger2：Api接口文档工具"></a>Swagger2：Api接口文档工具</h2><h2 id="Nginx：负载均衡（day07）"><a href="#Nginx：负载均衡（day07）" class="headerlink" title="Nginx：负载均衡（day07）"></a>Nginx：负载均衡（day07）</h2><p>后端有很多服务模块，每个模块都有对应的访问路径与端口，为了提供统一的api接口，所以使用nginx作为<strong>反向代理</strong>服务器；</p>
 <p>反向代理，其实客户端对代理是无感知的，因为客户端不需要任何配置就可以访问，我们只需要将请求发送到反向代理服务器，由反向代理服务器去选择目标服务器获取数据后，在返回给客户端，此时反向代理服务器和目标服务器对外就是一个服务器，暴露的是代理服务器地址，隐藏了真实服务器IP地址</p>
 <p><strong>使用</strong>：改了conf后直接windows命令行启动就可以了，需要把前端的地址改成9001</p>
-<h1 id="mongo技术（day07）"><a href="#mongo技术（day07）" class="headerlink" title="mongo技术（day07）"></a>mongo技术（day07）</h1><p>1.创建和启动容器 </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">docker run -d --restart=always -p 27017:27017 --name rainmongo -v </span><br><span class="line"></span><br><span class="line">/home/ailab/YY/db:/data/db -d mongo</span><br></pre></td></tr></table></figure>
+<h2 id="Lombok"><a href="#Lombok" class="headerlink" title="Lombok"></a>Lombok</h2><h2 id="Mysql：关系型数据库"><a href="#Mysql：关系型数据库" class="headerlink" title="Mysql：关系型数据库"></a>Mysql：关系型数据库</h2><h2 id="MongoDB：面向文档的NoSQL数据库（day07）"><a href="#MongoDB：面向文档的NoSQL数据库（day07）" class="headerlink" title="MongoDB：面向文档的NoSQL数据库（day07）"></a>MongoDB：面向文档的NoSQL数据库（day07）</h2><h3 id="简介-2"><a href="#简介-2" class="headerlink" title="简介"></a>简介</h3><p>1.创建和启动容器 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo docker run -d --restart=always -p 27017:27017 --name rainmongo -v </span><br><span class="line"></span><br><span class="line">/home/ailab/YY/db:/data/db -d mongo</span><br></pre></td></tr></table></figure>
 <p>2.进入容器 </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker exec -it **r**ain**mongo** /bin/bash</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo docker exec -it rainmongo /bin/bash</span><br></pre></td></tr></table></figure>
 <p>3.使用MongoDB客户端进行操作</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mongo </span><br><span class="line">show dbs #查询所有的数据库</span><br></pre></td></tr></table></figure>
 <p>MongoDB 是由C++语言编写的，是一个基于分布式文件存储的开源数据库系统。</p>
@@ -201,8 +254,10 @@
 <p>MongoDB 将数据存储为一个文档，数据结构由键值(key=&gt;value)对组成。MongoDB 文档类似于 JSON 对象。字段值可以包含其他文档，数组及文档数组。</p>
 <p><strong>两种使用方法：</strong></p>
 <p>spring-data-mongodb提供了<strong>MongoTemplate与MongoRepository</strong>两种方式访问mongodb，MongoRepository操作简单，MongoTemplate操作灵活，我们在项目中可以灵活适用这两种方式操作mongodb，MongoRepository的缺点是不够灵活，MongoTemplate正好可以弥补不足。</p>
-<h1 id="项目总结day08"><a href="#项目总结day08" class="headerlink" title="项目总结day08"></a>项目总结day08</h1><p>医院接口填写:<br>1.先创建对应的repository接口<br>2.service里面创建接口定义抽象的方法(增删改查)<br>3.service.impl里面创建类实现接口(写具体的方法、增删改查)<br>4.controller层里面把得到的数据进行校验，然后调用impl类的具体方法</p>
-<h1 id="nacos注册中心"><a href="#nacos注册中心" class="headerlink" title="nacos注册中心"></a>nacos注册中心</h1>
+<h3 id="使用MongoDB存储-医院相关数据"><a href="#使用MongoDB存储-医院相关数据" class="headerlink" title="使用MongoDB存储 医院相关数据"></a>使用MongoDB存储 医院相关数据</h3><p>比如service-&gt;service_hosp里面impl中ScheduleServiceImpl的mongoTemplate和Repository实现了mongo的增删改查</p>
+<h2 id="Docker"><a href="#Docker" class="headerlink" title="Docker"></a>Docker</h2><h3 id="下载镜像-docker-pull"><a href="#下载镜像-docker-pull" class="headerlink" title="下载镜像 docker pull"></a>下载镜像 docker pull</h3><h3 id="创建容器-docker-run"><a href="#创建容器-docker-run" class="headerlink" title="创建容器 docker run"></a>创建容器 docker run</h3><h1 id="个人思考"><a href="#个人思考" class="headerlink" title="个人思考"></a>个人思考</h1><h2 id="MVC模块化架构"><a href="#MVC模块化架构" class="headerlink" title="MVC模块化架构"></a>MVC模块化架构</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">DB中的表</span><br><span class="line"></span><br><span class="line">-&gt;</span><br><span class="line"></span><br><span class="line">mapper创建接口实现接口BaseMapper&lt;对应实体类&gt;</span><br><span class="line"></span><br><span class="line">-&gt;</span><br><span class="line"></span><br><span class="line">service创建接口实现接口IService&lt;对应实体类&gt;</span><br><span class="line"></span><br><span class="line">service创建实施类继承ServiceImpl&lt;mapper接口，对应实体类&gt; 并 实现service接口</span><br><span class="line"></span><br><span class="line">-&gt;</span><br><span class="line"></span><br><span class="line">controller用service接口的方法实现CURD</span><br></pre></td></tr></table></figure>
+<h2 id="项目总结day08"><a href="#项目总结day08" class="headerlink" title="项目总结day08"></a>项目总结day08</h2><p>医院接口填写:<br>1.先创建对应的repository接口<br>2.service里面创建接口定义抽象的方法(增删改查)<br>3.service.impl里面创建类实现接口(写具体的方法、增删改查)<br>4.controller层里面把得到的数据进行校验，然后调用impl类的具体方法</p>
+
       
 
       
@@ -358,7 +413,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#MVC模块化架构"><span class="toc-number">1.</span> <span class="toc-text">MVC模块化架构</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Redis技术（day06）"><span class="toc-number">2.</span> <span class="toc-text">Redis技术（day06）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#nginx技术（day07）"><span class="toc-number">3.</span> <span class="toc-text">nginx技术（day07）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#mongo技术（day07）"><span class="toc-number">4.</span> <span class="toc-text">mongo技术（day07）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#项目总结day08"><span class="toc-number">5.</span> <span class="toc-text">项目总结day08</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#nacos注册中心"><span class="toc-number">6.</span> <span class="toc-text">nacos注册中心</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#介绍"><span class="toc-number">1.</span> <span class="toc-text">介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#简介"><span class="toc-number">1.1.</span> <span class="toc-text">简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#业务流程"><span class="toc-number">1.2.</span> <span class="toc-text">业务流程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#服务架构"><span class="toc-number">1.3.</span> <span class="toc-text">服务架构</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#项目总结"><span class="toc-number">2.</span> <span class="toc-text">项目总结</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#后台管理系统"><span class="toc-number">2.1.</span> <span class="toc-text">后台管理系统</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、医院设置管理"><span class="toc-number">2.1.1.</span> <span class="toc-text">1、医院设置管理</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-医院设置列表、添加、锁定、删除"><span class="toc-number">2.1.1.1.</span> <span class="toc-text">(1)医院设置列表、添加、锁定、删除</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-医院列表、查看详情、排班、下线"><span class="toc-number">2.1.1.2.</span> <span class="toc-text">(2)医院列表、查看详情、排班、下线</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、数据管理"><span class="toc-number">2.1.2.</span> <span class="toc-text">2、数据管理</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-数据字典树形显示、导入、导出"><span class="toc-number">2.1.2.1.</span> <span class="toc-text">(1)数据字典树形显示、导入、导出</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3、用户管理"><span class="toc-number">2.1.3.</span> <span class="toc-text">3、用户管理</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-用户列表、查看、锁定"><span class="toc-number">2.1.3.1.</span> <span class="toc-text">(1)用户列表、查看、锁定</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-认证用户审批"><span class="toc-number">2.1.3.2.</span> <span class="toc-text">(2)认证用户审批</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4、订单管理"><span class="toc-number">2.1.4.</span> <span class="toc-text">4、订单管理</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-订单列表、详情"><span class="toc-number">2.1.4.1.</span> <span class="toc-text">(1)订单列表、详情</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5、统计管理"><span class="toc-number">2.1.5.</span> <span class="toc-text">5、统计管理</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-预约统计"><span class="toc-number">2.1.5.1.</span> <span class="toc-text">(1)预约统计</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#前台用户系统"><span class="toc-number">2.2.</span> <span class="toc-text">前台用户系统</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、首页数据显示"><span class="toc-number">2.2.1.</span> <span class="toc-text">1、首页数据显示</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-医院列表"><span class="toc-number">2.2.1.1.</span> <span class="toc-text">(1)医院列表</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、医院详情显示"><span class="toc-number">2.2.2.</span> <span class="toc-text">2、医院详情显示</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-医院科室显示"><span class="toc-number">2.2.2.1.</span> <span class="toc-text">(1)医院科室显示</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3、用户登录功能"><span class="toc-number">2.2.3.</span> <span class="toc-text">3、用户登录功能</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-手机号登录（短信验证码发送）—-gt-改成了邮箱登录"><span class="toc-number">2.2.3.1.</span> <span class="toc-text">(1)手机号登录（短信验证码发送）—&gt;改成了邮箱登录</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#null"><span class="toc-number">2.2.3.2.</span> <span class="toc-text"></span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4、用户实名认证"><span class="toc-number">2.2.4.</span> <span class="toc-text">4、用户实名认证</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5、就诊人管理"><span class="toc-number">2.2.5.</span> <span class="toc-text">5、就诊人管理</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-列表、添加、详情、删除"><span class="toc-number">2.2.5.1.</span> <span class="toc-text">(1)列表、添加、详情、删除</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6、预约挂号功能"><span class="toc-number">2.2.6.</span> <span class="toc-text">6、预约挂号功能</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-排班和挂号详情信息"><span class="toc-number">2.2.6.1.</span> <span class="toc-text">(1)排班和挂号详情信息</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-确认挂号信息"><span class="toc-number">2.2.6.2.</span> <span class="toc-text">(2)确认挂号信息</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3生成预约挂号订单、订单微信支付和取消订单"><span class="toc-number">2.2.6.3.</span> <span class="toc-text">(3生成预约挂号订单、订单微信支付和取消订单</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#使用技术"><span class="toc-number">3.</span> <span class="toc-text">使用技术</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#SpringBoot"><span class="toc-number">3.1.</span> <span class="toc-text">SpringBoot</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SpringCloud"><span class="toc-number">3.2.</span> <span class="toc-text">SpringCloud</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#nacos注册中心"><span class="toc-number">3.2.1.</span> <span class="toc-text">nacos注册中心</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Feign"><span class="toc-number">3.2.2.</span> <span class="toc-text">Feign</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#GateWay"><span class="toc-number">3.2.3.</span> <span class="toc-text">GateWay</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MyBatis-Plus：持久层框架"><span class="toc-number">3.3.</span> <span class="toc-text">MyBatis-Plus：持久层框架</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Redis技术：内存缓冲（day06）"><span class="toc-number">3.4.</span> <span class="toc-text">Redis技术：内存缓冲（day06）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#简介-1"><span class="toc-number">3.4.1.</span> <span class="toc-text">简介</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用Redis作为缓存"><span class="toc-number">3.4.2.</span> <span class="toc-text">使用Redis作为缓存</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#验证码有效时间、支付二维码有效时间"><span class="toc-number">3.4.3.</span> <span class="toc-text">验证码有效时间、支付二维码有效时间</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#RabbitMQ：消息中间件"><span class="toc-number">3.5.</span> <span class="toc-text">RabbitMQ：消息中间件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#EasyExcel"><span class="toc-number">3.6.</span> <span class="toc-text">EasyExcel</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HTTPClient-Http协议客户端"><span class="toc-number">3.7.</span> <span class="toc-text">HTTPClient: Http协议客户端</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Swagger2：Api接口文档工具"><span class="toc-number">3.8.</span> <span class="toc-text">Swagger2：Api接口文档工具</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Nginx：负载均衡（day07）"><span class="toc-number">3.9.</span> <span class="toc-text">Nginx：负载均衡（day07）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Lombok"><span class="toc-number">3.10.</span> <span class="toc-text">Lombok</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Mysql：关系型数据库"><span class="toc-number">3.11.</span> <span class="toc-text">Mysql：关系型数据库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MongoDB：面向文档的NoSQL数据库（day07）"><span class="toc-number">3.12.</span> <span class="toc-text">MongoDB：面向文档的NoSQL数据库（day07）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#简介-2"><span class="toc-number">3.12.1.</span> <span class="toc-text">简介</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用MongoDB存储-医院相关数据"><span class="toc-number">3.12.2.</span> <span class="toc-text">使用MongoDB存储 医院相关数据</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Docker"><span class="toc-number">3.13.</span> <span class="toc-text">Docker</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#下载镜像-docker-pull"><span class="toc-number">3.13.1.</span> <span class="toc-text">下载镜像 docker pull</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#创建容器-docker-run"><span class="toc-number">3.13.2.</span> <span class="toc-text">创建容器 docker run</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#个人思考"><span class="toc-number">4.</span> <span class="toc-text">个人思考</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#MVC模块化架构"><span class="toc-number">4.1.</span> <span class="toc-text">MVC模块化架构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#项目总结day08"><span class="toc-number">4.2.</span> <span class="toc-text">项目总结day08</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
@@ -501,7 +556,11 @@ MathJax.Hub.Queue(function() {
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">科研</a>
+                <a href="javascript:void(0)" class="js-tag color5">JAVA</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">JAVA基础</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -513,11 +572,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">JAVA</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">JAVA基础</a>
+                <a href="javascript:void(0)" class="js-tag color3">科研</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -529,11 +584,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">MySQL</a>
+                <a href="javascript:void(0)" class="js-tag color2">Spring</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Spring</a>
+                <a href="javascript:void(0)" class="js-tag color1">MySQL</a>
               </li>
              
               <li class="article-tag-list-item">
